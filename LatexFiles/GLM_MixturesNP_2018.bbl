@@ -1,0 +1,133 @@
+\begin{thebibliography}{28}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Bermúdez~L(2012)}]{Bermúdez+Karlis:2012}
+Bermúdez~L, K.~D., 2012. A finite mixture of bivariate poisson regression
+  models with an application to insurance ratemaking. Comput Stat Data Anal
+  56~(12), 3988--3999.
+
+\bibitem[{Brown and Buckley(2015)}]{Brown+Buckley:2015}
+Brown, G., Buckley, W., 2015. Experience rating with poisson mixtures. Annals
+  of Actuarial Science 9~(02), 304--321.
+
+\bibitem[{Charpentier(2014)}]{Charpentier:2014}
+Charpentier, A., 2014. Computational Actuarial Science with R. CRC press.
+
+\bibitem[{Czado et~al.(2012)Czado, Kastenmeier, Brechmann, and
+  Min}]{Czado+Kastenmeier+Brechmann+Min:2012}
+Czado, C., Kastenmeier, R., Brechmann, E., Min, A., 2012. A mixed copula model
+  for insurance claims and claim sizes. Scandinavian Actuarial Journal 4,
+  278--305.
+
+\bibitem[{Dempster et~al.(1977)Dempster, Laird, and
+  Rubin}]{Dempster+Laird+Rubin:1977}
+Dempster, A.~P., Laird, N.~M., Rubin, D.~B., 1977. Maximum likelihood from
+  incomplete data via the {EM}-algorithm. Journal of the Royal Statistical
+  Society B 39, 1--38.
+
+\bibitem[{Ezzahid(2012)}]{EzzahidEuro}
+Ezzahid, E., 12 2012. Poisson regression and zero-inflated poisson regression:
+  application to private health insurance data 2.
+
+\bibitem[{Frees and Meyers(2014)}]{Frees+Derrig+Meyer:2014}
+Frees, E.W., D.~R., Meyers, G.~e., 2014. Predictive modeling applications in
+  actuarial science. Cambridge University Press 1.
+
+\bibitem[{Frees et~al.(2016)Frees, Lee, and Yang}]{Frees+Lee+Yang:2016}
+Frees, E., Lee, G., Yang, L., 2016. Multivariate frequency-severity regression
+  models in insurance. Risks 4~(1), 4.
+
+\bibitem[{Frees and Wang(2006)}]{Frees+Wang:2006}
+Frees, E., Wang, P., 2006. Copula credibility for aggregate loss models.
+  Insurance: Mathematics and Economics 38~(2), 360--373.
+
+\bibitem[{Garrido et~al.(2016)Garrido, Genest, and
+  Schulz}]{Garrido+Genest+Schulz:2016}
+Garrido, J., Genest, C., Schulz, J., 2016. Generalized linear models for
+  dependent frequency and severity of insurance claims. Insurance: Mathematics
+  and Economics 70, 205--215.
+
+\bibitem[{Gershenfeld(1997)}]{Gershenfeld:1997}
+Gershenfeld, N., 1997. Nonlinear inference and cluster-weighted modeling.
+  Annals of the New York Academy of Sciences 808~(1), 18--24.
+
+\bibitem[{Gershenfeld(1999)}]{Gershenfeld:1999}
+Gershenfeld, N., 1999. The nature of mathematical modeling. Cambridge
+  university press.
+
+\bibitem[{Gershenfeld and Metois(1999)}]{Gershenfeld:Schoner+Metois:1999}
+Gershenfeld, N., S.~B., Metois, E., ., 1999. Cluster-weighted modelling for
+  time-series analysis. Nature 397~(67171), 329--332.
+
+\bibitem[{Ibrahim and Laud(1991)}]{Ibrahim+Laud:1991}
+Ibrahim, J., Laud, P., 1991. On bayesian analysis of generalized linear models
+  using jeffreys's prior. Journal of the American Statistical Association
+  86~(416), 981--986.
+
+\bibitem[{Ingrassia and Punzo(2014)}]{Ingrassia+Minotti+Punzo:2014}
+Ingrassia, S., M.~S., Punzo, A., 2014. Model-based clustering via linear
+  cluster-weighted models. Computational Statistics \& Data Analysis 71,
+  159--182.
+
+\bibitem[{Ingrassia and Vittadini(2014)}]{Ingrassia+Minotti+Vittadini:2012}
+Ingrassia, S., M.~S., Vittadini, G., 2014. Local statistical modeling via a
+  cluster-weighted approach with elliptical distributions. Journal of
+  classification 29~(3), 363--401.
+
+\bibitem[{Ingrassia and Minotti(2015)}]{Ingrassia+Punzo+Vittadini+Minotti:2015}
+Ingrassia, S., P. A. V.~G., Minotti, S., 2015. The generalized linear mixed
+  cluster-weighted model. Journal of Classification 32~(1), 85--113.
+
+\bibitem[{Kr\"amer et~al.(2013)Kr\"amer, Brechmann, Silvestrini, and
+  Czado}]{Kramer+Brechmann+Silvestrini+Czado:2013}
+Kr\"amer, N., Brechmann, E., Silvestrini, D., Czado, C., 2013. Total loss
+  estimation using copula-based regression models. Insurance: Mathematics and
+  Economics 53~(3), 829--839.
+
+\bibitem[{Lambert(1992)}]{Lambert}
+Lambert, D., 02 1992. Zero-inflated poisson regression, with an application to
+  defects in manufacturing 34, 1--14.
+
+\bibitem[{Lee and Lin(2010)}]{Lee+Lin:2010}
+Lee, S. C.~K., Lin, X.~S., 2010. Modeling and evaluating insurance losses via
+  mixtures of {E}rlang distributions. North American Actuarial Journal 14~(1),
+  107--130.
+
+\bibitem[{Lim et~al.(2014)Lim, Li, and Yu}]{LimHwa}
+Lim, H., Li, W., Yu, P., 03 2014. Zero-inflated poisson regression mixture
+  model 71, 151?158.
+
+\bibitem[{McLachlan and Peel(2000)}]{McLachlan+Peel:2000}
+McLachlan, S., Peel, D., 2000. Finite Mixture Models. John Wiley \& Sons,
+  Hobuken, NJ.
+
+\bibitem[{Miljkovic and Gr\"un(2016)}]{Miljkovic+Grun:2016}
+Miljkovic, T., Gr\"un, B., 2016. Modeling loss data using mixtures of
+  distributions. Insurance: Mathematics and Economics.
+
+\bibitem[{Punzo and Ingrassia(2014)}]{Punzo+Ingrassia:2015}
+Punzo, A., Ingrassia, S., ., 2014. Parsimonious generalized linear Gaussian
+  cluster-weighted models. Springer International Publishing.
+
+\bibitem[{Shi et~al.(2015)Shi, Feng, and Ivantsova}]{Shi+Feng+Ivantsova:2015}
+Shi, P., Feng, X., Ivantsova, A., 2015. Dependent frequency–severity modeling
+  of insurance claims. Insurance: Mathematics and Economics 64, 417--428.
+
+\bibitem[{Verbelen et~al.(2015)Verbelen, Gong, Antonio, Badescu, and
+  Lin}]{Verbelen+Gong+Antonio+Badescu+Lin:2015}
+Verbelen, R., Gong, L., Antonio, K., Badescu, A., Lin, S., 2015. Fitting
+  mixtures of {E}rlangs to censored and truncated data using the {EM}
+  algorithm. ASTIN Bulletin 45~(3), 729--758.
+
+\bibitem[{Wedel(2002)}]{Wedel:2002}
+Wedel, M., 2002. Concominat variables in finite mixture modeling. Statistica
+  Neerlandica 56~(3), 362--375.
+
+\bibitem[{Wedel and De~Sabro(1995)}]{Wedel+DeSabro:1995}
+Wedel, M., De~Sabro, W., 1995. A mixture likelihood approach for generalized
+  linear models. Journal of Classification 12~(3), 21--55.
+
+\end{thebibliography}

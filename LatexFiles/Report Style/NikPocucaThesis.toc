@@ -1,0 +1,7 @@
+\contentsline {chapter}{Introduction}{2}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {1.1}Methodology}{5}
+\contentsline {section}{Methodology}{5}
+\contentsline {subsection}{\numberline {1.1.1}Transformation Function Selection}{6}
+\contentsline {subsection}{\numberline {1.1.2}Parameter Estimation}{7}
+\contentsline {subsection}{\numberline {1.1.3}Model Selection Criterion}{9}

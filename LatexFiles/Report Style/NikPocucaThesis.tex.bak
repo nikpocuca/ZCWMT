@@ -1,0 +1,249 @@
+\documentclass[11pt,letterpaper]{report}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{times}
+\usepackage[mathscr]{euscript}
+%\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{bm}
+\usepackage{setspace}
+\usepackage{epstopdf}
+\numberwithin{equation}{section}
+\usepackage{mathrsfs}
+\usepackage[round]{natbib}
+\usepackage{subcaption}
+\graphicspath{ {images/} }
+ \usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{changepage}
+\usepackage[affil-it]{authblk}
+
+
+\title{\bf Modeling Individual Claims with the Generalized Linear Transformed Mixture Cluster-Weighted Model}
+
+\author{\textbf{Nik Po\^ cu\^ ca}\\ $\quad$ \\
+ Supervisor: Dr. Paul McNicholas}
+\affil{Department of Mathematics and Statistics \\$\quad$ \\ McMaster University}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Acknowledgements}
+
+First and foremost, I would like to express my sincere gratitude to Dr. Paul McNicholas for his guidance over the course of this year. I would like to thank Dr. Petar Jevtic, and Dr. Tatjana Miljkovic for their patience, support, and intuition. I would like to personally acknowledge Dr. Ben Bolker for his assistance in R.  Finally, I would to thank Dr. Antonio Punzo for his technical support regarding his model. 
+
+
+\section*{Abstract}
+
+In this paper, we extend the assumption behind the generalized linear mixture cluster-weighted models (CWM) to accommodate non-Gaussian distribution of the continues covariates which is more appropriate for the insurance applications. Generalized linear mixture cluster-weighted models are considered as a flexible family of mixture models for fitting the joint distribution of a random vector composed of a response variable and a set of continues and discrete covariates. However, these models assume that the continuous covariates come from the Gaussian distribution. If this assumption is violated, then the current CWM may provide suboptimal results. We developed a generalized linear transformed mixture cluster-weighted model (TCWM) that considers a transformed distribution of covariates. A simulation study showed that the TCWM performs well for different settings. A real data set based on French automobile policies is used to illustrate the application of the proposed method.
+
+\tableofcontents
+
+
+\addcontentsline{toc}{chapter}{Introduction}
+
+\chapter{Introduction}
+
+Predictive modelling gained a lot of attention in the past decade in the area of actuarial science, risk management, and insurance in general. While the term predictive modelling has been used in many other areas, in context of insurance, it is referred to as a process of using statistics in estimating the insurance cost  \citep{Frees+Derrig+Meyer:2014}. Various predictive models are used in the area of actuarial science with generalized linear models (GLMs) being the most popular tools actively integrated in pricing, reserving, and underwriting of property and casualty insurance. A generalized linear model is a framework for extending the concept of a linear regression. A GLM consists of three components. The conditional distribution of Y $\lvert$ X must belong to the exponential family, A link function $g$ that relates the conditional mean and the covariates must be defined, and finally a linear predictor denoted as $\eta = X\beta$ for design matrix $X$ and vector of coefficients $\beta$.   \citep{Charpentier:2014}.
+
+
+The origin of GLMs began with the paper of Nelder and Wedderburn (1972). The text \cite{McCullagh+Nelder:1989} explained the framework in detail, and then was further expanded with the review of applications by \cite{Haberman+Renshaw:1996}. GLMs are flexible tools for handling non-normal data, typically observed in frequency and severity of claims. GLMs can also handle additive, multiplicative, or logistic effect of explanatory variables on a transformation of the mean. Several extensions of GLMs with  applications in actuarial science have been developed by \cite{Laird+Ware:1982}, \cite{Fahrmeir+Lang+Spies:2003}, \cite{Denuit+Lang:2004}, and \cite{Antonio+Beirlant:2007}. GLMs with  categorical response variables are usually used for modelling frequency while GLMs with continues response variables can be used for modelling severity of claims. The results from both of these analyses are used in pricing. The concept of a mixture of GLMs is defined as a partitioned probability space where each component of the mixture is a separate GLM \citep{Leisch:2004}. Consider a mixture model with $K$ components of the form: 
+
+$$ f(y|x, \phi) = \sum_{k=1}^K \pi_k f(y|x,\theta_k) $$ In which $\pi_k$ is the prior probability of component $k$, and $\theta_k$ is the component parameter. $\phi = ( \pi_1 \dots \pi_k, \theta_1^{'} \dots \theta_k^{'})^{'}$. Mixture of GLMs with applications outside of actuarial science was considered by \citep{Gruen+Leisch:2008a}. Other applications of mixtures of GLMs are explored in other fields such as market segmentation, see \cite{Wedel+Kamakura:2012}, in biology or medicine, see \cite{Aitkin:1999}, \cite{Follmann+Lambert:1989} and \cite{Wang:1996}. Several actuarial applications of GLMs are based on gamma and log-normal regressions discussed by Boucher and Charpentier (Chapter 14) in the book by \cite{Charpentier:2014}. It is observed that the coefficients of these models will be impacted by claim size (i.e., the outliers may effect gamma regression more than log-normal due to the logarithmic scale). To overcome this issue, the authors proposed modelling large and normal size claims separately with a predetermined threshold. The probability of a large or standard claim can be modelled with separate logistic regressions. The extension of this model is considered as a multinomial regression where the mixing probabilities associated with each category of claim size are based on a multinomial random variable. This is an example of a mixture model where the population of claims is manually grouped based on a similar loss experience within a group.
+
+Rather than using manual thresholds to classify claims into groups, we propose a statistical method based on a finite mixture of GLMs. This approach would also allow for finding an optimal number of groups based on a given clustering criteria (e.g. BIC). The estimated regression coefficients will vary for each GLM component.  We introduce the concept of a generalized linear mixture cluster-weighted model (CWM) proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. CWM is a flexible family of mixture models for fitting the joint distribution of a random vector. This random vector is composed of a response variable and a set of mixed-type covariates with the assumption that continues covariates come from Gaussian distribution. Like the mixture model, CWM is a partitioned mixture of a weighted model in the form: 
+
+$$f(\bm x, \bm y; \Phi) = \sum_{g=1}^{G} \tau_j f(\bm{y}|\bm{x},\vartheta_j)f(\bm{v},\theta_j^{'})f(\bm{w},\theta_j^{''})$$
+
+We have that $x = (v,w)$ where $x$ is decomposed into two separate variables. $v$ denotes the continuous variables,  and $w$ denotes the discrete variables. The $f(x,y,\Phi)$ term denotes a joint distribution of $x,y$ with parameters $\Phi$.  The joint distribution is partitioned into G groups, with prior probability component $\tau_j$. The $f(\bm{y}|\bm{x},\vartheta_j)$ is the conditional density of y given x, with parameters $\vartheta_j$. $f(\bm{v},\theta_j^{'})$ is the marginal density of the continuous covariates $v$ with parameters $\vartheta_j^{'}$. Finally the  $f(\bm{w},\theta_j^{''}$ is the marginal density of discrete covariates with parameters $\vartheta_j^{''}$. Additional applications of CWM's can be found in the papers written by \cite{Gershenfeld:1997}, \cite{Gershenfeld:Schoner+Metois:1999}, and \cite{Gershenfeld:1999} in a context of media technology. Some extensions of this class of models have been considered by \cite{Punzo+Ingrassia:2015}, \cite{Ingrassia+Minotti+Punzo:2014}, and \cite{Ingrassia+Minotti+Vittadini:2012}.
+
+In this paper, we propose an extension of CWM to allow covariates to belong to a non-Gaussian family. Our method requires a transformation to be applied to the non-Gaussian covariates, we define our proposed model as generalized linear transformed cluster-weighted model (TCWM). The justification for this approach is that some insurance rating variables may not follow a Gaussian distribution on a positive domain (e.g. car exposure or population density).
+
+Evidence suggests that insurance losses exhibit multimodality. Mixture models of univariate insurance data based on non-Gaussian distributions have been developed by \cite{Miljkovic+Grun:2016}. \cite{Verbelen+Gong+Antonio+Badescu+Lin:2015} and \cite{Lee+Lin:2010} proposed mixture models of Erlang distributions. \cite{Klugman+Rioux:2006} worked toward developing a unified approach in fitting loss distributions. They determined that finite mixture models, using a small number of base distributions, provided an ideal set. Mixtures were also studied in a regression setting. \citep{Bermúdez+Karlis:2012} developed a mixture of bivariate Poisson regression that uses zero-inflated bivariate Poisson regression as a special case. The authors fitted the model using the EM algorithm. Another type of Poisson mixture model for count data was proposed by \cite{Brown+Buckley:2015} and applied to a group life Insurance portfolio.
+
+Motivated by the idea of mixture modeling, we extend the idea of univariate mixture modeling to the mixture modeling of regressions including the GLMs, where losses are modeled as a function of several covariates. This approach would allow for finding the groups of observations with similar regression coefficients that can be further considered in the general insurance pricing.
+
+This paper is organized as follows. Section 2 presents the proposed TCWM model for mixture of GLMs. Section 3 shows an application of the TCWM model. Section 4 describes the simulation study. Section 5 discuss the results obtain from a real data set when modelling individual insurance claims. Conclusion is provided in Section 6.
+
+
+
+\section{Methodology}
+\subsection*{The General Linear Transformed Cluster-Weighted Model}
+
+
+\addcontentsline{toc}{section}{Methodology}
+
+In this section, we present TCWM approach as the extension of CWM approach for modeling amount or claims count, $\bm{Y}$, as a function of several covariates $\bm{x}$. The CWM model was proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} as a class of mixture of regression models with random covariates and  is currently implemented in CRAN library as flexCWM. 
+
+Suppose that $\bm{Y}=(Y_1,\ldots, Y_N)$ is a vector of independent random variables with the density function of a distribution from the exponential family.  For this family of distributions, $\bm{Y}$ is related to a set of variables $\bm{x}=(x_1,\ldots, x_p)$ through the following linear relationship
+\begin{align}
+\eta=g[E(\bm{y}|\bm{x})]=\bm{X}\bm{\beta},
+\label{eq01}
+\end{align}
+where $\bm{\beta}$ is $p \times 1$ vector of parameters, $\bm{X}$ is an $N \times p$ design matrix, $\eta$ is the linear predictor, and $g[E(\bm{y}|\bm{x})]$ is a link function in which it is considered as a simple mathematical function in the original formulation of GLMs by \cite{Nelder+Wedderburn:1972}. In this model, $\bm{Y}$ is referred to as a response variable and $\bm{x}$ is a vector of continuous and discrete type explanatory variables (i.e., covariates).
+
+Let $(\bm {X^{'}}, \bm{Y})^{'}$ be a vector defined on some space $\mathcal{R}$ with values in $ \mathcal{X} \times \mathcal{Y}$. If there exist $G$ partitions of $\mathcal{R}$, defined as $\mathcal{R}_1, \ldots, \mathcal{R}_G$, \cite{Gershenfeld:1997} defined the CWM as a finite mixture of GLMs where the joint distribution $f(\bm x, \bm y)$ of $(\bm {X^{'}}, \bm{Y})^{'}$ is expressed as follows
+ \begin{align}
+ f(\bm x, \bm y)= \sum_{g=1}^{G} \tau_g f(\bm y|\bm{x},\mathcal{R}_g)f(\bm{x},\mathcal{R}_g)
+\label{eq1}
+\end{align}
+where $f(\bm y|\bm{x},\mathcal{R}_g)$ and $f(\bm{x},\mathcal{R}_g)$ are conditional and marginal distributions of $(\bm {X^{'}}, \bm{Y})^{'}$ and $\tau_g$. Further, the weights $\{\tau_{1},\ldots,\tau_{G}\}$, with $\sum_{g=1}^{G}\tau_g=1$ and $\tau_g>0$, are defined as the unknown proportions of observations in each $g^{th}$ group.
+
+\cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed mixture models for fitting the joint distribution of a random vector $(\bm {X^{'}}, \bm{Y})^{'}$ by splitting the covariates into continuous and discrete as $\bm X=(\bm V^{'}, \bm W^{'})^{'}$ so that their corresponding marginal distributions can be multiplied. Therefore, the model in Equation \ref{eq1} can be written as  
+\begin{align}
+ f(\bm x, y; \Phi)= \sum_{g=1}^{G} \tau_g f(y|\bm{x},\vartheta_g)f(\bm{x},\theta_g)=\sum_{g=1}^{G} \tau_g f(y|\bm{x},\vartheta_g)f(\bm{v},\theta_g^{'})f(\bm{w},\theta_g^{''})
+\label{eq2}
+\end{align}
+where $\bm{v}$ and $\bm{w}$ are the vectors of continues and discrete covariates respectively, $f(y|\bm{x},\vartheta_g)$ is a conditional density of $y|\bm{x}$ with parameter $\vartheta_g$, $f(\bm{v},\theta_g^{'})$ is the marginal distribution of $\bm{v}$ with parameter $\theta_g^{'}$, $f(\bm{w},\theta_g^{''})$ is the marginal distribution of $\bm{w}$ with parameter $\theta_g^{''}$, and $\Phi=(\bm {\theta}, \bm{\tau}, \bm{\vartheta})$ includes all model parameters. Conditional distribution $f(y|\bm{x},\vartheta_g)$ is assumed to belong to the exponential family and as such, can be modelled in the framework of GLMs. Here, the marginal distribution of continues covariates is assumed to be Gaussian. This may be a strong assumption for the covariates used in the insurance applications. Many of them are defined on the positive domain and as such, require to be modelled with a non-Gaussian distribution (e.g. density or exposure).
+    
+In our TCWM approach, we further augment Equation \ref{eq2} to accommodate modelling of continues covariates through a transformation function $\phi(.)$.
+\begin{align}
+ f(\bm x, y; \Phi)= \sum_{g=1}^{G} \tau_g f(y|\bm{x},\vartheta_g)\phi\{f^{T}(\bm{v},\theta_{g})\}f(\bm{w},\theta_{g})
+\label{eq3}
+\end{align}
+where $f^{T}(\bm{v},\theta_g^{'})$ represents the transformed function of $f(\bm{v},\theta_g^{'})$. The $\phi(.)$ function can be applied to any continuous covariates that are non-Gaussian. The existence of $\phi(.)$ is only possible if there exists a bijective map from a non-Gaussian, to a Gaussian. If we consider the case where not all continuous covariates need transformation, we can further split the continues covariates $\bm V=(\bm U^{'}, \bm T^{'})^{'}$ to those that need transformation $\bm{U}$ and those that do not need transformation $\bm{T}$. Due to independence, Equation \ref{eq3} can be easily modified as follows
+\begin{align}
+ f(\bm x, y; \Phi)= \sum_{g=1}^{G} \tau_g f(y|\bm{x},\vartheta_g)\phi\{f^{T}(\bm{u},\theta_g^{'})\}f(\bm{t},\theta_g^{''})f(\bm{w},\theta_g^{'''}).
+\label{eq4}
+\end{align}
+We denote Equation as the \ref{eq4} transformed generalized linear mixed (TGWM) model. Here, the term "transformed" allows us to relax the Gaussian assumption for some continues covariates by introducing a transformation to Gaussian distribution, the term "generalized linear" refers to the conditional distribution of $Y|\bm{x}$, the term ``mixed" emphasizes the presence of both continues and discrete (mixed type) covariates.
+
+\subsection{Transformation Function Selection}
+
+The choice of transformation functions depend on the existence of a bijective map from a non-Gaussian to Gaussian distribution. In this paper, we focus on the log-normal distribution as it is relevant to most actuarial applications. We aim to show the existence of a relevant transformation function beginning with the univariate log-normal distribution denoted as $\mathcal{LN}(x; \mu, \sigma)$. 
+
+$$\mathcal{LN}(x; \mu, \sigma) = \frac{1}{x\sigma\sqrt{2\pi}}\exp\left[-\frac{(\ln x - \mu)^2}{2\sigma^2}	\right]$$ 
+
+We then use the property that a change of variables must conserve differential probability. 
+
+
+$$ \mathcal{LN}(x; \mu, \sigma) = \frac{\mathcal{N}(\ln x ; \mu, \sigma)}{x} dx = \mathcal{N}(\ln x; \mu, \sigma) \frac{d\ln x}{dx} dx = \mathcal{N}( \ln x; \mu, \sigma) d \ln x  $$
+
+Thus log normal distribution can be written as a Gaussian form. 
+\begin{align}
+ \mathcal{N}(\ln x;\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left[-\frac {(\ln x - \mu)^2} {2\sigma^2}\right] =  \mathcal{LN}(x; \mu, \sigma) \times x  \label{eq5} 
+\end{align}
+We then extend this identity to the multivariate log-normal case where $f^{T}(\bm{u}; \mu_g^{'} , \Sigma _g^{'}) $ is the multivariate log-normal distribution with component vectors $\theta_g^{'} = 
+( \mu_g^{'} , \Sigma _g^{'})$. 
+
+$$ f^{T}(\bm{u}; \mu_g^{'} , \Sigma _g^{'})= \frac{1}{(\prod_{i=1}^{N}u_{i})| \Sigma_g |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln (u)-\mu_g)^{'}\Sigma_g^{-1}(\ln (u)-\mu_g)\right]  $$
+
+By the identity (2.6),  $f^{T}(\bm{u}; \mu_g^{'} , \Sigma _g^{'})$ is transformed into a Gaussian distribution. 
+
+$$  f ( \ln \bm{u} ; \mu_g^{'} , \Sigma _g^{'})  =  f^{T}(\bm{u}; \mu_g^{'} , \Sigma _g^{'}) \times (\prod_{i=1}^{N}u_{i}) $$
+
+As a result the relevant transformation function for a log-normal to Gaussian distribution for some arbitrary covariate $x$.  $$\phi (f^T(x;\theta_g))= f^T(x;\theta_g) * (\prod_{i=1}^{N}x_{i})$$. With the relevant transformation function shown to exist the TGWM model is rewritten as: 
+
+\begin{align}
+ f(\bm x, y; \Phi)= \sum_{g=1}^{G} \tau_g f(y|\bm{x},\vartheta_g)f(\ln \bm{u},\theta_g^{'})f(\bm{t},\theta_g^{''})f(\bm{w},\theta_g^{'''}).
+\label{eq6}
+\end{align}
+
+
+
+
+\subsection{Parameter Estimation}
+
+In most finite mixture problems, the standard method for estimating the optimal number of components G is based on the expectation-maximization (EM) algorithm proposed by \cite{Dempster+Laird+Rubin:1977} and further discussed by \cite{McLachlan+Peel:2000}. The EM algorithm is based on the maximum likelihood estimation. The initial values of the parameter estimates are generated through a stochastic initialization, then the algorithm proceeds by alternation of the E-step and M-step in order to update the parameter estimates as well as missing data which in this case correspond to the posterior probability that $x_i$ comes from the $g$th mixture component, computed at each iteration of the EM algorithm. In order to find an optimal number of components, maximum likelihood estimation is obtained over a range of $G$, and the best model is selected based on a chosen model selection criterion.
+the convergence of the EM algorithm is achieved when the relative increase in the log-likelihood function is no bigger than a small pre-specified tolerance value or the number of iterations reach a limit. In this subsection, we explain the parameter estimation in line with the CWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}.
+
+
+Proposed TGWM model is based on the assumption that $f(y|\bm{x},\vartheta_g)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function in Equation \ref{eq01} relates the expected value $g(\mu_g)= \beta_{0g} + \beta_{1g} x_{1}, \ldots,+\beta_{pg} x_{p}$. We are interested in estimation of the vector $\bm \beta_g$, thus the distribution of $\bm{y}|\bm{x}, \mathcal{R}_g$ is denoted by $f(\bm{y}|\bm{x},\beta_g, \lambda_g)$, where $\lambda_g$ denotes an additional parameter to account for when a distribution belong to a two-parameter exponential family.
+
+The marginal distribution $f(\bm{x},\theta_g)$ has the following components: $f^{T}(\bm{u},\theta_g^{'})$, $f(\bm{t},\theta_g^{''})$, and $f(\bm{w},\theta_{g}^{'''})$. The first two components are modelled as Gaussian density with mean $\bm {\mu_g}$ and covariance matrix $\bm \Sigma_g$ as $\phi(\bm v, \bm {\mu_g}, \bm \Sigma_g)$.
+
+The marginal density $f(\bm{w},\theta_{g}^{'''})$ assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,\bm{w}^{rc_r})^{'}$ where $w^{rs}=1$ is $w_r$ has the value $s$, s.t. $s\in\{1, \ldots, c_r\}$, $w^{rs}=0$ otherwise.
+
+
+\begin{align}
+f(\bm {w}, \bm {\gamma_g})=\prod_{r=1}^{q}\prod_{s=1}^{c_r}(\gamma_{grs} )^{w^{rs}}, g=1, \ldots, G
+\label{eq31}
+\end{align}
+where $\bm {\gamma_g}=(\gamma_{g1}^{'}, \ldots, \gamma_{gq}^{'})^{'}$, $\bm \gamma_{gr}=(\gamma_{gr1}^{'}, \ldots, \gamma_{grc_q}^{'})^{'}$, $\gamma_{grs} > 0$, and  $\sum_{s=1}^{c_r}\gamma_{grs}$, $r=1,\ldots,q$. The density $f(\bm {w}, \bm{\gamma_g})$ represents the product of $q$ conditionally independent multinomial distributions with parameters $\bm {\gamma_{gr}}$, $r=1,\ldots, q$.
+
+Let $(\bm x_i, y_i),\ldots,  (\bm x_n, y_n)$ be a sample of $n$ independent observations drawn from model in \eqref{eq3}.
+For this sample, the complete data likelihood function, $L(\bm\Phi)$, is given by
+\begin{align}
+ \L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{g=1}^{G}\left[{\tau_g}f(y_i|x_i, \bm \beta_g, \lambda_{g})\phi\{f^T(u_i, \bm\mu_g, \bm\Sigma_g)\}f(t_i, \bm\mu_g, \bm\Sigma_g) f(w_i, \gamma_g) \right]^{z_{ig}}
+\label{eq27}
+\end{align}
+
+\noindent where $Z_{ig}$ is an indicator variable with value of $Z_{ig}=1$ indicating that observation $(\bm{x_i}, y_i)$, originated from the $g$-th mixture component and $z_{ig}=0$ otherwise.
+
+By taking the logarithm of \eqref{eq27}, the complete data log-likelihood function, $\ell_c(\bm\Phi)$, is written by
+\begin{align}
+\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{g=1}^{G}{z_{ig}}\left[\log(\tau_{g}) + \log{f}(y_i|x_i,\bm \beta_g,\lambda_g)+ \log \phi\{f^T(u_i, \bm\mu_g, \bm\Sigma_g)\} + \log f(t_i, \bm\mu_g, \bm\Sigma_g) +\log {f}(w_i, \gamma_g)\right]
+\label{eq28}
+\end{align}
+
+\noindent It follows that at the $s$th iteration, the conditional expectation of Equation \ref{eq28} on the observed data and the estimates from the $(s-1)$th iteration results in
+\begin{multline}\nonumber
+Q(\bm\Phi|\bm\Phi^{(s-1)}) = \sum_{i=1}^{n}\sum_{g=1}^{G}{\tau_{ig}^{(s-1)}} \big[ \log(\tau_{g}) + \log{f}(y_i|x_i,\bm \beta_g,\lambda_g)+  \log \phi\{f^T(u_i, \bm\mu_g, \bm\Sigma_g)\} \\
+ + \log f(t_i, \bm\mu_g, \bm\Sigma_g) +\log {f}(w_i, \gamma_g)\big]\\
+=\sum_{i=1}^{n}\sum_{g=1}^{G}{\tau_{ig}^{(s-1)}}\log(\tau_{g}) + \sum_{i=1}^{n}\sum_{g=1}^{G}{\tau_{ig}^{(s-1)}}\log{f}(y_i|x_i,\bm \beta_g,\lambda_g) +\sum_{i=1}^{n}\sum_{g=1}^{G} {\tau_{ig}^{(s-1)}}\log f(t_i, \bm\mu_g, \bm\Sigma_g) \\
++\sum_{i=1}^{n}\sum_{g=1}^{G}{\tau_{ig}^{(s-1)}}\log \phi\{f^T(u_i, \bm\mu_g, \bm\Sigma_g)\} + \sum_{i=1}^{n}\sum_{g=1}^{G}{\tau_{ig}^{(s-1)}}\log {f}(w_i, \gamma_g)
+\nonumber
+\end{multline}
+
+\noindent The idea behind the EM algorithm is to generate a sequence of the estimates from the maximum likelihood estimation starting from an initial solution $\hat{\bm{\Phi^{1}}}$ and iterating it with the following steps until convergence. Here, the $E$-step computes $Q(\bm\Phi|\bm\Phi^{(s)})$ and
+$M$-step computes $\Phi^{(s)}= \operatorname*{arg\,max}_{\Phi \in \mathscr{R}} Q(\bm\Phi|\bm\Phi^{(s)})$.
+
+\noindent The $E$-step does not depend on the form of density, and the latent data only relate to $\bm z$. The posterior probability that $(\bm{x_i}, y_i)$ comes from the $g$th mixture component is calculated at the $s$th iteration of the EM algorithm as
+\begin{align}
+    {\tau_{ig}}^{(s)} &= {E}[Z_{ig} |(\bm{x_i}, y_i), \bm{\Phi}^{(s)}]
+     =         \frac{
+                       {\tau_g}^{(s)} {f}(y_i|\bm x_i, \bm {\beta_g}^{(s)}, {\lambda_{g}}^{(s)})\phi\{ f^T(\bm u_i, \bm\mu_g^{(s)}, \bm{\Sigma_g}^{(s)})\}f(\bm t_i, \bm\mu_g^{(s)}, \bm{\Sigma_g}^{(s)}) f(\bm w_i, {\gamma_g}^{(s)})
+                       }{f(\bm{x_i}, y_y; \Phi^{(s)})
+\label{eq29}                       }.
+  \end{align}
+The denominator of \eqref{eq29} corresponds \eqref{eq3}. 
+
+The $M$-step requires maximization of the $Q$-function with respect to $\bm \Phi$ which can be done separately for each term on the right hand side in Equation 2.11. As a results, the parameter estimates $\hat{\tau}_g$, $\hat{\bm \mu^{}}_g$, $\hat{\bm \sigma}_g$, and $\hat{\bm \gamma}_g$, are obtained on the $(s+1)$th iteration as follows
+
+
+
+\begin{align*}
+{\hat{\tau}_g}^{(s+1)}&=\frac{1}{n} \sum_{i=1}^n \tau_{ig}^{(s)},\\
+{\hat{\bm \mu^{}}_g}^{(s+1)}&=\frac{1}{\sum_{i=1}^n \tau_{ig}^{(s)}} \sum_{i=1}^n \tau_{ig}^{(s)}\ln \bm u_i,\\
+{\hat{\bm \sigma^{}}_g}^{(s+1)}&=\frac{1}{\sum_{i=1}^n \tau_{ig}^{(s)}} \sum_{i=1}^n \tau_{ig}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{(s+1)}_g) (\ln \bm u_i-\hat{\bm \mu}^{(s+1)}_g)^{'},\\
+{\hat{\bm \gamma}^{(s+1)}_{gr}}&=\frac{\sum_{i=1}^n \tau_{ig}^{(s)} \omega^{rs}_i} {\sum_{i=1}^n \tau_{ig}^{(s)}},\\
+\end{align*}
+
+while the estimates of $\bm\beta$ are computed by maximizing each of the $G$ terms
+\begin{align}
+\sum_{i=1}^{n}\tau^{(s)}_{ig} \log{f}(y_i|\bm x_i,\bm \beta_g,\lambda_g)
+\label{eq30}
+\end{align}
+Maximization of Equation \ref{eq30} is performed by numerical optimization in R software in a similar framework the mixture of generalized linear models are implemented. For additional details about this implementation the reader is refer to \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
+For insurance applications, current TCWM model can be used for modelling frequency of claims assuming that $\bm{Y}$ belongs to Poisson or Binomial distributions. When modelling severity of claims, $\bm{Y}$ can be assumed accommodate Gamma or Lognormal distributions. All of these applications are based on CWM as the underlying approach. For additional information, the reader is referred to the "{\bf flexCWM}" manual for ${\bf R}$ users written by Mazza A., Punzo A., and Ingrassia S. (2015).
+
+
+
+\subsection{Model Selection Criterion}
+Model performance is assessed by computing the values of Akaike Information Criterion \citep{Akaike:1974}, and Bayesian Information Criterion \citep{Schwarz:1978}, using the following formulas
+\begin{flalign*}
+{AIC=2k+2LL}\\
+ {BIC=k\ln(n)+2LL}\\ 
+\end{flalign*}
+where $k$ represents the number of estimated parameters in the model and $n$ is the sample size. Lower values of AIC and BIC indicate better model fit to the data. While we compute all of these measures, the final model selection decision is based on the BIC criterion. \cite{Fraley+Raftery:2002} suggested that BIC performs better in mixture modelling and as such it is proffered over AIC. To be consistent with the most of the literature in this area, we will make the final decision on model selection based on the BIC criterion.
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
