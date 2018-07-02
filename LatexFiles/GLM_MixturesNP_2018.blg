@@ -1,4 +1,6 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: GLM_MixturesNP_2018.aux
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: GLM_MixturesNP_2018.aux
 The style file: elsart-harv.bst
 Database file #1: GLM_Mixtures_2018.bib
 I was expecting a `,' or a `}'---line 154 of file GLM_Mixtures_2018.bib
@@ -65,4 +67,45 @@ Too many commas in name 1 of "Ingrassia, S., Punzo, A., Vittadini, G. and Minott
 while executing---line 1545 of file elsart-harv.bst
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
+You've used 29 entries,
+            2821 wiz_defined-function locations,
+            832 strings with 9766 characters,
+and the built_in function-call counts, 13622 in all, are:
+= -- 1443
+> -- 609
+< -- 20
++ -- 237
+- -- 198
+* -- 1172
+:= -- 2446
+add.period$ -- 84
+call.type$ -- 29
+change.case$ -- 208
+chr.to.int$ -- 29
+cite$ -- 32
+duplicate$ -- 508
+empty$ -- 954
+format.name$ -- 301
+if$ -- 2740
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 33
+newline$ -- 95
+num.names$ -- 116
+pop$ -- 194
+preamble$ -- 1
+purify$ -- 182
+quote$ -- 0
+skip$ -- 396
+stack$ -- 0
+substring$ -- 826
+swap$ -- 69
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 249
+warning$ -- 3
+while$ -- 127
+width$ -- 0
+write$ -- 319
 (There were 29 error messages)

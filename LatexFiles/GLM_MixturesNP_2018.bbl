@@ -1,13 +1,13 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 
-\bibitem[{Bermúdez~L(2012)}]{Bermúdez+Karlis:2012}
-Bermúdez~L, K.~D., 2012. A finite mixture of bivariate poisson regression
-  models with an application to insurance ratemaking. Comput Stat Data Anal
-  56~(12), 3988--3999.
+\bibitem[{Berm\'{u}dez and Karlis(2012)}]{Bermudez+Karlis:2012}
+Berm\'{u}dez, L., Karlis, D., 2012. A finite mixture of bivariate poisson
+  regression models with an application to insurance ratemaking. Computational
+  Statistics and Data Analysis 56~(12), 3988--3999.
 
 \bibitem[{Brown and Buckley(2015)}]{Brown+Buckley:2015}
 Brown, G., Buckley, W., 2015. Experience rating with poisson mixtures. Annals
@@ -103,6 +103,14 @@ Lim, H., Li, W., Yu, P., 03 2014. Zero-inflated poisson regression mixture
 \bibitem[{McLachlan and Peel(2000)}]{McLachlan+Peel:2000}
 McLachlan, S., Peel, D., 2000. Finite Mixture Models. John Wiley \& Sons,
   Hobuken, NJ.
+
+\bibitem[{McNicholas et~al.(2010)McNicholas, Murphy, McDaid, and
+  Frost}]{McNicholas:2010}
+McNicholas, P., Murphy, T., McDaid, A., Frost, D., 2010. Serial and parallel
+  implementations of model-based clustering via parsimonious gaussian mixture
+  models. Computational Statistics Data Analysis 54~(3), 711 -- 723, second
+  Special Issue on Statistical Algorithms and Software.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0167947309000632}
 
 \bibitem[{Miljkovic and Gr\"un(2016)}]{Miljkovic+Grun:2016}
 Miljkovic, T., Gr\"un, B., 2016. Modeling loss data using mixtures of

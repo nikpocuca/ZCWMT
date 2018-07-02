@@ -53,32 +53,32 @@ loadDataServer <- function() {
   return(read.csv("m24.csv")[,-1])
 }
 
-m24 <- loadData()
-#m24 <- loadDataServer()
+#m24 <- loadData()
+m24 <- loadDataServer()
 
 runSev <- function(dataInput) {
   
   attach(dataInput)
-  fitLognormal <-  cwm(formulaY= LogAggClaimAmount ~ Density + CarAge + CatDriverAge + powerF ,
-                       k=3:6, data=dataInput,
-                       familyY=gaussian(link="identity"),
-                       initialization='random.hard',
-                       Xnorm = cbind(Density),
-                       Xpois = CarAge
-                       )
+  # fitLognormal <-  cwm(formulaY= LogAggClaimAmount ~ Density + CarAge + factor(CatDriverAge) + Gas ,
+  #                      k=3:6, data=dataInput,
+  #                      familyY=gaussian(link="identity"),
+  #                      initialization='random.hard',
+  #                      Xnorm = cbind(Density),
+  #                      Xpois = CarAge
+  #                      )
   
   
-  fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + CarAge + CatDriverAge + powerF ,
-                       k=3:6, data=dataInput,
+  fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + CarAge + factor(CatDriverAge) + Gas + Power,
+                       k=1:8, data=dataInput,
                        familyY=gaussian(link="identity"),
-                       initialization='random.hard',
                        Xnorm = cbind(LogDensity),
-                       Xpois = CarAge 
+                       Xpois = CarAge,
+                       modelXnorm = 'V'
                        )
   
   detach(dataInput)
   
-  return(list(u = fitLognormal,t = fitLognormalt))
+  return(list(t = fitLognormalt))
 }
 
 Results <- runSev(m24)
@@ -89,12 +89,15 @@ Results <- runSev(m24)
 # (green and teal)
 # and three tiers of high volitility drivers. 
 # (red, pink, and blue)
-plot(m24$CarAge,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1)
+plot(m24$CarAge,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19, cex= 0.5)
 
 # Plot for LogDensity and CarAge shows again two two similar contrasting tiers. 
 # Teal and Blue show to be the two oldest car age owners but with two different volitilities. 
 plot(m24$LogDensity,m24$CarAge,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
-# Green and Red show to be the two newest car age owners but with two different volitilities. 
+# Green and Red show to be the two newest car age owners but with two different volitilities.
+plot(m24$CatDriverAge,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
+plot(m24$powerF,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
+plot(m24$DriverAge,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
 
 # ==========================================================================================
 # Extra functions for later. 
