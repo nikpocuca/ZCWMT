@@ -67,45 +67,45 @@ Too many commas in name 1 of "Ingrassia, S., Punzo, A., Vittadini, G. and Minott
 while executing---line 1545 of file elsart-harv.bst
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
-You've used 29 entries,
+You've used 33 entries,
             2821 wiz_defined-function locations,
-            832 strings with 9766 characters,
-and the built_in function-call counts, 13622 in all, are:
-= -- 1443
-> -- 609
-< -- 20
-+ -- 237
-- -- 198
-* -- 1172
-:= -- 2446
-add.period$ -- 84
-call.type$ -- 29
-change.case$ -- 208
-chr.to.int$ -- 29
-cite$ -- 32
-duplicate$ -- 508
-empty$ -- 954
-format.name$ -- 301
-if$ -- 2740
+            860 strings with 10533 characters,
+and the built_in function-call counts, 15459 in all, are:
+= -- 1627
+> -- 701
+< -- 24
++ -- 271
+- -- 228
+* -- 1337
+:= -- 2773
+add.period$ -- 99
+call.type$ -- 33
+change.case$ -- 237
+chr.to.int$ -- 33
+cite$ -- 36
+duplicate$ -- 580
+empty$ -- 1085
+format.name$ -- 347
+if$ -- 3117
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 33
-newline$ -- 95
-num.names$ -- 116
-pop$ -- 194
+missing$ -- 40
+newline$ -- 109
+num.names$ -- 132
+pop$ -- 230
 preamble$ -- 1
-purify$ -- 182
+purify$ -- 208
 quote$ -- 0
-skip$ -- 396
+skip$ -- 449
 stack$ -- 0
-substring$ -- 826
-swap$ -- 69
-text.length$ -- 0
+substring$ -- 891
+swap$ -- 83
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 249
+type$ -- 276
 warning$ -- 3
-while$ -- 127
+while$ -- 140
 width$ -- 0
-write$ -- 319
+write$ -- 365
 (There were 29 error messages)

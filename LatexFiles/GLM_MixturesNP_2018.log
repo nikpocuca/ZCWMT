@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  2 JUL 2018 15:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  8 JUL 2018 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -184,9 +184,6 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 \symboldsymbols=\mathgroup8
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
-)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/setspace/setspace.sty
-Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf.sty
 Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
@@ -434,10 +431,17 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \colbreak@box=\box60
 \mc@col@check@num=\count132
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/bbm-macros/bbm.sty
+Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
+LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
+(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
+(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+)
 (./GLM_MixturesNP_2018.aux
-
-LaTeX Warning: Label `eq7' multiply defined.
-
 
 LaTeX Warning: Label `fig:vet1' multiply defined.
 
@@ -453,19 +457,19 @@ LaTeX Warning: Label `my-label' multiply defined.
 )
 \openout1 = `GLM_MixturesNP_2018.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 67.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -524,124 +528,143 @@ Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 74.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 78.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--86
+Underfull \hbox (badness 10000) in paragraph at lines 81--84
 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 86.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 101.
-LaTeX Font Info:    Try loading font information for U+msa on input line 103.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 99.
+LaTeX Font Info:    Try loading font information for U+msa on input line 101.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 103.
+LaTeX Font Info:    Try loading font information for U+msb on input line 101.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 103.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 101.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [2] [3]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 147.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [4] [5]
+[6] [7]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 125.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 238.
 
-[4] [5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 274.
+Overfull \hbox (36.9474pt too wide) detected at line 252
+ []$[]  \OML/cmm/m/it/10 Q\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 ^^H\OMS/cmsy/m/n/10
+ j\OT1/cmr/bx/n/10 ^^H[]\OT1/cmr/m/n/10 ) = [] [] [][] [](\OML/cmm/m/it/10 ^^\[
+]\OT1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y[]
+\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x[]; \OML/cmm/b/it/10 ^^L[]\OML/cmm/m/it/10 
+; ^^U[]\OT1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/
+10 t[]; \OML/cmm/b/it/10 ^^V[]\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 ^^F[]\OT1/cmr
+/m/n/10 ) + [] \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w[]; ^^M[]\O
+T1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 u[]; \
+OML/cmm/b/it/10 ^^V[]\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 ^^F[]\OT1/cmr/m/n/10 )
+[]$ 
+ []
 
+[8]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 277.
 
-(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [9] [10]
-[11] <DriverAge.pdf, id=59, 495.72704pt x 434.74922pt>
+) [9]
+[10] <DriverAge.pdf, id=57, 495.72704pt x 434.74922pt>
 File: DriverAge.pdf Graphic file (type pdf)
  <use DriverAge.pdf>
-Package pdftex.def Info: DriverAge.pdf used on input line 361.
+Package pdftex.def Info: DriverAge.pdf used on input line 369.
 (pdftex.def)             Requested size: 198.2873pt x 173.8966pt.
 
-<Density.pdf, id=60, 505.89pt x 505.89pt>
+<Density.pdf, id=58, 505.89pt x 505.89pt>
 File: Density.pdf Graphic file (type pdf)
  <use Density.pdf>
-Package pdftex.def Info: Density.pdf used on input line 368.
+Package pdftex.def Info: Density.pdf used on input line 376.
 (pdftex.def)             Requested size: 202.3524pt x 202.3524pt.
 
-<logDensity.pdf, id=61, 505.89pt x 505.89pt>
+<logDensity.pdf, id=59, 505.89pt x 505.89pt>
 File: logDensity.pdf Graphic file (type pdf)
  <use logDensity.pdf>
-Package pdftex.def Info: logDensity.pdf used on input line 369.
+Package pdftex.def Info: logDensity.pdf used on input line 377.
 (pdftex.def)             Requested size: 202.3524pt x 202.3524pt.
 
-<clms.png, id=62, 864.22874pt x 719.68875pt>
+<clms.png, id=60, 864.22874pt x 719.68875pt>
 File: clms.png Graphic file (type png)
  <use clms.png>
-Package pdftex.def Info: clms.png used on input line 399.
+Package pdftex.def Info: clms.png used on input line 407.
 (pdftex.def)             Requested size: 207.41913pt x 172.72882pt.
 
-<dens.png, id=64, 950.55125pt x 721.69624pt>
+<dens.png, id=62, 950.55125pt x 721.69624pt>
 File: dens.png Graphic file (type png)
  <use dens.png>
-Package pdftex.def Info: dens.png used on input line 400.
+Package pdftex.def Info: dens.png used on input line 408.
 (pdftex.def)             Requested size: 228.13696pt x 173.21063pt.
- [12 <./DriverAge.pdf>] [13 <./Density.pdf> <./logDensity.pdf>]
-Overfull \hbox (63.10176pt too wide) in paragraph at lines 512--513
+ [11] [12 <./DriverAge.pdf> <./Density.pdf> <./logDensity.pdf>] [13 <./clms.png
+> <./dens.png>]
+Overfull \hbox (63.10176pt too wide) in paragraph at lines 520--521
 [][] 
  []
 
-[14 <./clms.png> <./dens.png>] [15]
+[14] [15]
 
-LaTeX Warning: Reference `table:sizeFreq' on page 16 undefined on input line 53
-6.
+LaTeX Warning: Reference `table:sizeFreq' on page 16 undefined on input line 54
+4.
 
-<driverVClaimNumber.png, id=292, 913.4125pt x 493.845pt>
+<driverVClaimNumber.png, id=294, 913.4125pt x 493.845pt>
 File: driverVClaimNumber.png Graphic file (type png)
 
 <use driverVClaimNumber.png>
-Package pdftex.def Info: driverVClaimNumber.png used on input line 542.
+Package pdftex.def Info: driverVClaimNumber.png used on input line 550.
 (pdftex.def)             Requested size: 228.35257pt x 123.46094pt.
 
-Overfull \hbox (32.26277pt too wide) in paragraph at lines 601--601
+Overfull \hbox (32.26277pt too wide) in paragraph at lines 609--609
  [][] 
  []
 
 [16] [17 <./driverVClaimNumber.png>]
-Overfull \hbox (23.19044pt too wide) in paragraph at lines 614--632
+Overfull \hbox (23.19044pt too wide) in paragraph at lines 622--640
 []| []|  
  []
 
 [18]
-Overfull \hbox (17.77016pt too wide) in paragraph at lines 662--683
+Overfull \hbox (17.77016pt too wide) in paragraph at lines 670--691
 [][] 
  []
 
 [19]
-Overfull \hbox (22.97748pt too wide) in paragraph at lines 694--715
+Overfull \hbox (22.97748pt too wide) in paragraph at lines 702--723
  [][] 
  []
 
-[20]
-Overfull \hbox (22.97748pt too wide) in paragraph at lines 731--752
+
+Overfull \hbox (22.97748pt too wide) in paragraph at lines 739--760
  [][] 
  []
 
-[21] [22] [23] [24] (./GLM_MixturesNP_2018.bbl [25] [26]
+[20] [21] [22] [23] [24] [25] (./GLM_MixturesNP_2018.bbl [26] [27]
 Missing character: There is no – in font ptmr7t!
 )
 
-Package caption Warning: Unused \captionsetup[sub] on input line 36.
+Package caption Warning: Unused \captionsetup[sub] on input line 34.
 See the caption package documentation for explanation.
 
-[27] (./GLM_MixturesNP_2018.aux)
+[28] (./GLM_MixturesNP_2018.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -650,45 +673,46 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6018 strings out of 492995
- 87100 string characters out of 6132704
- 206685 words of memory out of 5000000
- 9388 multiletter control sequences out of 15000+600000
- 40167 words of font info for 104 fonts, out of 8000000 for 9000
+ 6073 strings out of 492995
+ 88405 string characters out of 6132704
+ 206150 words of memory out of 5000000
+ 9431 multiletter control sequences out of 15000+600000
+ 40011 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,19n,46p,1522b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></usr
-/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
-local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/lo
-cal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/
-local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/l
-ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local
-/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/t
-exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></usr/local
-/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/l
-ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/
-texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2
-017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/201
-7/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
-017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2017/texm
-f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (27 pages, 942843 bytes).
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc} </Users/pocu
+can/Library/texlive/2017/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr
+/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.p
+fb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pf
+b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pf
+b></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
+/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></us
+r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
+live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
+ve/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/t
+exlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
+017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-
+dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on GLM_MixturesNP_2018.pdf (28 pages, 953785 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 306 compressed objects within 4 object streams
+ 431 PDF objects out of 1000 (max. 8388607)
+ 312 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

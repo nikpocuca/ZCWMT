@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -8,6 +8,12 @@
 Berm\'{u}dez, L., Karlis, D., 2012. A finite mixture of bivariate poisson
   regression models with an application to insurance ratemaking. Computational
   Statistics and Data Analysis 56~(12), 3988--3999.
+
+\bibitem[{Biernacki et~al.(2000)Biernacki, Celeux, and
+  Govaert}]{initialPaperGrassiaRef}
+Biernacki, C., Celeux, G., Govaert, G., Jul 2000. Assessing a mixture model for
+  clustering with the integrated completed likelihood. IEEE Transactions on
+  Pattern Analysis and Machine Intelligence 22~(7), 719--725.
 
 \bibitem[{Brown and Buckley(2015)}]{Brown+Buckley:2015}
 Brown, G., Buckley, W., 2015. Experience rating with poisson mixtures. Annals
@@ -81,6 +87,13 @@ Ingrassia, S., M.~S., Vittadini, G., 2014. Local statistical modeling via a
 Ingrassia, S., P. A. V.~G., Minotti, S., 2015. The generalized linear mixed
   cluster-weighted model. Journal of Classification 32~(1), 85--113.
 
+\bibitem[{Johnson et~al.(1995)Johnson, Kotz, and
+  Balakrishnan}]{johnson1995continuous}
+Johnson, N., Kotz, S., Balakrishnan, N., 1995. Continuous univariate
+  distributions. No. v. 2 in Wiley series in probability and mathematical
+  statistics: Applied probability and statistics. Wiley \& Sons.
+\newline\urlprefix\url{https://books.google.ca/books?id=0QzvAAAAMAAJ}
+
 \bibitem[{Kr\"amer et~al.(2013)Kr\"amer, Brechmann, Silvestrini, and
   Czado}]{Kramer+Brechmann+Silvestrini+Czado:2013}
 Kr\"amer, N., Brechmann, E., Silvestrini, D., Czado, C., 2013. Total loss
@@ -100,6 +113,9 @@ Lee, S. C.~K., Lin, X.~S., 2010. Modeling and evaluating insurance losses via
 Lim, H., Li, W., Yu, P., 03 2014. Zero-inflated poisson regression mixture
   model 71, 151?158.
 
+\bibitem[{McCullagh and Nelder(1989)}]{McCullaghNelder1989}
+McCullagh, P., Nelder, J., 1989. Generalized linear models. Vol.~37. CRC press.
+
 \bibitem[{McLachlan and Peel(2000)}]{McLachlan+Peel:2000}
 McLachlan, S., Peel, D., 2000. Finite Mixture Models. John Wiley \& Sons,
   Hobuken, NJ.
@@ -115,6 +131,11 @@ McNicholas, P., Murphy, T., McDaid, A., Frost, D., 2010. Serial and parallel
 \bibitem[{Miljkovic and Gr\"un(2016)}]{Miljkovic+Grun:2016}
 Miljkovic, T., Gr\"un, B., 2016. Modeling loss data using mixtures of
   distributions. Insurance: Mathematics and Economics.
+
+\bibitem[{Murphy and Bach(2012)}]{murphy2012machine}
+Murphy, K., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
+  Adaptive Computation and Machi. MIT Press.
+\newline\urlprefix\url{https://books.google.ca/books?id=NZP6AQAAQBAJ}
 
 \bibitem[{Punzo and Ingrassia(2014)}]{Punzo+Ingrassia:2015}
 Punzo, A., Ingrassia, S., ., 2014. Parsimonious generalized linear Gaussian

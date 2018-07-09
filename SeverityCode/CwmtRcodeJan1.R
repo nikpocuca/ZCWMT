@@ -68,7 +68,7 @@ runSev <- function(dataInput) {
   #                      )
   
   
-  fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + CarAge + factor(CatDriverAge) + Gas + Power,
+  fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + CarAge + factor(CatDriverAge) + Power,
                        k=1:8, data=dataInput,
                        familyY=gaussian(link="identity"),
                        Xnorm = cbind(LogDensity),
