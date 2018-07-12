@@ -19,7 +19,7 @@ initLibrary <- function(){
 # IMPORT OF LIBRARIES.
 #library(flexCWM)
 library(pscl)
-
+library(flexCWM)
 
 load_book <- function(){
     
