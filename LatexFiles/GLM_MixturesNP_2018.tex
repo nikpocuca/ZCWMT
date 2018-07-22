@@ -61,7 +61,7 @@
 \usepackage{multirow, booktabs}
 \usepackage{multicol}
 \usepackage[nodisplayskipstretch]{setspace}
-\setstretch{1.5}
+
 \usepackage{bbm}
 
 \begin{document}
@@ -138,7 +138,7 @@ can be re-written as follows
 \end{align}
 
 \newcommand{\xTilda}{\bm{\tilde{x}}}
-Let $ \xTilda := [1,\bm{x}]$, where $\xTilda $ is a vector of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ f^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is the row coefficient vector. 
+Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ f^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is the row coefficient vector. 
 Here, the link function will be modelled with log-link for the GLM:
  \begin{align*}
 \lambda_j = e^{\xTilda \bm{\beta_j}'}, && %\beta_{0j} + \beta_j^{'}x
@@ -276,51 +276,52 @@ The estimates of $\bm\beta$ are computed by maximizing each of the $G$ terms
 Maximization of \eqref{eq30} is performed by numerical optimization in R software in a similar framework the mixture of generalized linear models are implemented. For additional details about this implementation the reader is refer to \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
 For insurance applications, current TCWM model can be used for modeling frequency of claims assuming that $\bm{Y}$ belongs to Poisson or Bernoulli distributions. When modelling severity of claims, $\bm{Y}$ can be assumed accommodate Gamma or Lognormal distributions. All of these applications are based on CWM as the underlying approach. For additional information, the reader is referred to the manual of the {\tt flexCWM} package manual for ${\bf R}$ users written by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}.%Nik: use \cite
 \subsection{EM - Zero-inflated}
+The optimization of the zero-inflated model uses the EM algorithm to maximize the incomplete-data log-liklihood iteratively \citep{Lambert}. The log-likilhood for $\psi_k$ and $\lambda_k$ is expressed as 
 
+\begin{align*}
+l(\psi_k,\lambda_k; y, \bm{x}) = \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda_i \bar{\beta}_k^{'} } } + \exp{( - e^ { -\bm{ \xTilda_i \beta_k^{'} }})} \big] + \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta_k}^{'} + e^{ \xTilda_i \bm{\beta_k}^{'} } \right) - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bar{\beta_k}^{'} } \right) - \sum_{y_i > 0} \log(y_i ! )
+\end{align*}
+
+Where $y_i$, and $\xTilda_i$ referes to the ith row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term, the log-liklihood is complicated to maximize, \cite{Lambert} provides a meaningful solution. Suppose that we could observe $\bm{Z_i} = 1$ when $y_i$ is generated from the Bernoulli random variable, and $\bm{Z_i} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-liklihood would be written as
+
+\begin{align}
+l_c(\psi_k,\lambda_k;y,\bm{z }) = & \sum_{i=1}^n \left( \bm{z_i\xTilda_i \bar{\beta_k }^{'}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}} \right) + \sum_{i=1}^n (1-\bm{z_i}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-\bm{z_i})\log(y_i!) \nonumber \\
+=  & \quad l_c(\psi_k;\bm{y,z}) + l_c(\lambda_k; \bm{y,z}) + \sum_{i=1}^n (1-\bm{z_i})\log(y_i!) \label{CompleteZLog}
+\end{align}
+
+where $\bm{z_i}$ is a realization of $\bm{Z_i}$. \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k;\bm{y,z})$ and $l_c(\lambda_k; \bm{y,z}) $ can be maximized seperately for parameters $\lambda_k$ and $\psi_k$. With the EM algorithm, the incomplete-data log-liklihood can be maximized iteratively between estimating $Z_i$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-logliklihood (M-Step). 
 
 \subsubsection{E-step -  Zero-inflated}%Nik: again, why the first "-"?
- % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density. 
-The optimization of the zero-inflated model uses the EM algorithm to maximize the complete-data log-liklihood \citep{Lambert}.
-Using current estimates $ \bm{
-\vartheta_k  }= \{ \psi_k,\lambda_k \}$ from the partition $ \Omega_{Z_k}$, we calculate the expected value of $z_{ik}$ by its posterior mean $z_{ik}^{(s)}$ for each cluster, at iteration s. We note that for s = 1 we use the parameters $\vartheta_k = \{ \psi_l,\lambda_j  \} $, as the initialization parameters. The E-Step is calculated as:%Nik: what does "now calculated as" mean?
+ % PM: There are two EzM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density. 
+
+Using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ from the partition $ \Omega_{Z_k}$, we calculate the expected value of $Z_i$ by its posterior mean $z_i^{(s)}$ for each cluster, at iteration s
 \begin{align*}
-z_{ik}^{(s)} = \begin{cases}  \left[{1+\frac{ e^{-\psi_k}}{(1+e^{\lambda_k})^{-n}}}\right]^{-1}, &  y_{ik} = 0 \\
-z_{ik}^{(s)} = 0 & y_{ik}> 0 
+z_{i}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^{'(s)}} - e^ {\bm{\xTilda_i \beta_k^{'(s)}}} \big) } \right]^{-1}, &  y_{i} = 0 \\
+  0 \quad , & y_{i}> 0 .
 \end{cases}
 \end{align*}
 
 
 \subsubsection{M-Step - Zero-inflated}
-The M-Step can be split into the maximization of two complete data log-likelihoods using parameters $ \bm{\vartheta}^{(s)}$ calculated from the previous iteration $(s)$. This type of form has been solved in \cite{Lambert},%Nik: 1992 is not recent, and please use \cite{}
-We decompose $C_{T}( \bm{\vartheta_k}^{(s+1)} $ into Lambert's equations:
-\begin{align}
- C_{T}( \bm{\vartheta_k}^{(s+1)};\bm{\vartheta_k}^{(s)}) &=\sum_{i=1}^{n}   \bigg(     z_{ik}^{(s)} \log(\psi_k) - \log{(1 + \psi_k)} + (1- z_{ik}^{(s)})(y_i\log{\lambda_k}) - (1- z_{ik}^{(s)})\log{y_i!}  \bigg)  \nonumber  \\ 
- C_{z}( \bm{\vartheta_k}^{(s+1)};\bm{\vartheta_k}^{(s)}) &=\sum_{i=1}^{n} \bigg( z_{ik}^{(s)} \log(\psi_k) - \log{(1 + \psi_k)} \bigg)  \label{eq6}   \\
- C_{n}( \bm{\vartheta_k}^{(s+1)};\bm{\vartheta_k}^{(s)}) &=\sum_{i=1}^{n} \bigg( (1- z_{ik}^{(s)})(y_i\log{\lambda_k}) - (1- z_{ik}^{(s)})\log{y_i!}  \bigg) \label{eq7} 
+The M-Step can be split into the maximization of two complete data log-likelihoods and the $\bm{z_i}$ calculated from the previous iteration $(s)$ as: 
+\begin{align} 
+l_c(\psi_k;\bm{y,z}) &=\sum_{i=1}^n \left( \bm{z_i\xTilda_i \bar{\beta_k }^{'(s)}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }}^{'(s)}} \right)  \label{eq6}   \\
+ l_c(\lambda_k; \bm{y,z}) &= \sum_{i=1}^n (1-\bm{z_i}) (y_i \bm{ \xTilda_i \beta_k^{'(s)} } - e^{\bm{\xTilda_i \beta_k}^{'(s)}})\label{eq7} 
  \end{align}
-The maximization of \eqref{eq6} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ \citep{McCullaghNelder1989}.%\Nik: need a proper citation using \citep{}   
-While the GLM coefficients of $\psi_k$ can be maximized over a gradient \citep{Lambert}.
+The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ \citep{McCullaghNelder1989}, yielding $\lambda_k^{(s+1)}$. 
+While the parameter for \eqref{eq7} can be maximized over a gradient \citep{Lambert} yielding $\psi_k^{(s+1)}$.
 
-\subsection{Comparing Models}
+\subsection{Comparing Zero-inflated Models}
 
-Once the ZIP models have been found, we wish to compare a single component CWM Poisson model on the same $\Omega_{Z_k}$. We will use Vuong's test for comparing ZIP models to other non-nested count data models. This is fairly standard shown in \cite{EzzahidEuro}. %Nik: what does this sentence mean? PM: Needs to be rewritten. 
-Similarly we define $p_n(y_{i}|x_{i})$ to be the probabilities of observed counts using model $n$. We then denote $r_i$ as the log-ratio of probabilities between the CWM/ZIP, and   Vuong's test for hypothesis with $\mathbb{E} [r_{ik}] = 0 $ defined: 
+The standard test for comparing zero-inflated to non-zero inflated models has been the Vuong Test for non-nested models \citep{vuongTest}. However recent work has shown the misuse of this test for zero inflation \citep{misuse}. \cite{newIntuitive} shows that it is sufficient to test for zero-modificiation in the form of a liklihood ratio test. The test is defined as follows: 
 \begin{align*}
- r_{ik} = \log \bigg( \frac{P_{Z_k}(y_{ik}|x_{ik})}{P_{ _{CWM_k}}(y_{ik}|x_{ik})} \bigg) && 
-V_k = \frac{  \sqrt{n_k}  \bigg(\frac{1}{n_k} \mathlarger{  \sum_{i=1}^{n_k} } r_{ik}    \bigg)    }{\sqrt{ \frac{1}{n_k}  \mathlarger{  \sum_{i=1}^{n_k} ( r_{ik} -    \overline{r_k} )^2  }}} 
+& & H_0: \quad \psi_k = 0 \quad\quad vs. \quad\quad H_a: \quad \psi_k \neq 0  & & 
 \end{align*}
-%Nik: this is confusing. Please separate these quantities. Please clearly state the null and alternative hypotheses. 
-Now,$V_k$ is asymptotically normally distributed we have with a 5\% significance level the following cut offs:
-\begin{center}
-\begin{tabular}{lll}
-\hline
-$ V < -1.96$ & $ \|V \|  < 1.96$ & $ 1.96 < V $ \\
-\hline
-CWM-P             & Equal*           & ZIP             \\
-\hline
-\end{tabular}
-\end{center}
-* We note that when models are equal, our heuristic is to choose the simple CWM-P model.%Nik: make this a proper table with a proper table footnote please.
+\begin{align*}
+\varphi = -2 \bigg[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\bigg] 
+\end{align*}
+where $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$, .  The test statistic $\varphi$ is shown to be distributed Chisquare with m degrees of freedom ($\chi^2_m $) and $\alpha = 0.10$ \citep{newIntuitive}.   
+
 
 \section{Application}
 \subsection{Data}
@@ -360,25 +361,10 @@ The model that was fitted is defined with the following equation where $\epsilon
 $$ \text{ AggClaims } \sim  \text{ Density + Driver Age + Region + CarAge + Power }+ \epsilon.$$%Nik: this is not an equation. Please reformulate.
 
 Car age is model as categorical variable with five categories: $<5$, $5-10$, $11-20$, $21-30$, $>30$. Driver age is modelled as a continuous predictor. The  shape of the distribution for driver age indicates that Gaussian assumption is reasonable for this left-truncated data. %Nik: why not refer to the histgram in Figure 1? In my view, the Gaussian assumption is clearly not reasonable here. 
-We recognize that, in the actuarial pricing, driver age may be treated as categorical variable with several categories. However, this flexibility is left up to the user to modify the setting. %Nik: user of what? This is a paper not a software manual.
 Beginning with the continuous covariate Density, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names  
 Figure 2 %Nik: \ref{} (left plot) clearly revels that the the density is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. A log-normal transformation improves the fit (see the right side of Figure \ref{fig:vet1}) of the density data.%Nik: ref not working.
-\begin{figure}[!htb]
-\begin{center}
-%\caption{Driver age }
-\includegraphics[scale=0.40]{DriverAge.pdf}
-\end{center}
-\caption{ \label{fig:DriverAge} Histogram of driver age with Gaussian distribution fitted to the data.}
-\label{fig:vet1}
-\end{figure}
-\begin{figure}[!htb]
-\begin{center}
-\includegraphics[scale=0.40]{Density.pdf}
-\includegraphics[scale=0.40]{logDensity.pdf}
-\end{center}
-\caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal transformation is applied (GCWM a approach).}
-\label{fig:vet1}
-\end{figure}
+
+
 \begin{table}[!htb]
 \begin{center}
      	\caption{Model comparisons between GCWM a and CWM.}

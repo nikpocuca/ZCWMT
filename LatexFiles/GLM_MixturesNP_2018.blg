@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2017)
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: GLM_MixturesNP_2018.aux
 The style file: elsart-harv.bst
@@ -36,7 +36,6 @@ Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." fo
 while executing---line 1456 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." for entry Ingrassia+Minotti+Vittadini:2012
 while executing---line 1456 of file elsart-harv.bst
-Warning--empty journal in EzzahidEuro
 Too many commas in name 1 of "Frees, E.W., Derrig, R.A. and Meyers, G. eds." for entry Frees+Derrig+Meyer:2014
 while executing---line 1545 of file elsart-harv.bst
 Too many commas in name 1 of "Frees, E.W., Derrig, R.A. and Meyers, G. eds." for entry Frees+Derrig+Meyer:2014
@@ -67,45 +66,46 @@ Too many commas in name 1 of "Ingrassia, S., Punzo, A., Vittadini, G. and Minott
 while executing---line 1545 of file elsart-harv.bst
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
-You've used 33 entries,
+Warning--empty journal in misuse
+You've used 35 entries,
             2821 wiz_defined-function locations,
-            860 strings with 10533 characters,
-and the built_in function-call counts, 15459 in all, are:
-= -- 1627
-> -- 701
-< -- 24
-+ -- 271
-- -- 228
-* -- 1337
-:= -- 2773
-add.period$ -- 99
-call.type$ -- 33
-change.case$ -- 237
-chr.to.int$ -- 33
-cite$ -- 36
-duplicate$ -- 580
-empty$ -- 1085
-format.name$ -- 347
-if$ -- 3117
+            877 strings with 10833 characters,
+and the built_in function-call counts, 16287 in all, are:
+= -- 1716
+> -- 730
+< -- 26
++ -- 286
+- -- 237
+* -- 1402
+:= -- 2923
+add.period$ -- 105
+call.type$ -- 35
+change.case$ -- 250
+chr.to.int$ -- 35
+cite$ -- 38
+duplicate$ -- 613
+empty$ -- 1145
+format.name$ -- 362
+if$ -- 3282
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 40
-newline$ -- 109
-num.names$ -- 132
-pop$ -- 230
+missing$ -- 42
+newline$ -- 117
+num.names$ -- 140
+pop$ -- 241
 preamble$ -- 1
-purify$ -- 208
+purify$ -- 219
 quote$ -- 0
-skip$ -- 449
+skip$ -- 476
 stack$ -- 0
-substring$ -- 891
-swap$ -- 83
+substring$ -- 942
+swap$ -- 87
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 276
+type$ -- 294
 warning$ -- 3
-while$ -- 140
+while$ -- 148
 width$ -- 0
-write$ -- 365
+write$ -- 388
 (There were 29 error messages)

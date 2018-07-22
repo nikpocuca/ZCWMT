@@ -20,7 +20,7 @@ zcwm <- function(data, formulaZP, np, runC, normModels){
                         data= data,
                         familyY = poisson(link="log"),
                         Xnorm = Xnorms,	
-                        #modelXnorm = c("VVV","VVI"),
+                        Xpois = Xpoises,
                         k = np)
     
     
@@ -32,10 +32,9 @@ zcwm <- function(data, formulaZP, np, runC, normModels){
     cat('Binomial Model', '\n')
     cwm_binomial <<- cwm(formulaY = formulaZP,
                          data = data.z,
-                        # Xnorm = cbind(DriverAge,CarAge,logDENSITY),
-			Xnorm = Xnorms,
+                         Xnorm = Xnorms,
+                         Xpois = Xpoises,
                          familyY = binomial(link = "logit"),
-                         #modelXnorm = c("VVV","VVI"),
                          k = np)
     
   }

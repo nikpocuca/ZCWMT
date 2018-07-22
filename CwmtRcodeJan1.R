@@ -136,3 +136,5 @@ fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + CarAge + DriverA
 detach(mr)
 getIC(fitLognormal)
 getIC(fitLognormalt)
+
+
