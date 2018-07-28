@@ -103,29 +103,30 @@ This paper is organized as follows. Section 2 presents the proposed model for mi
 
 Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this set is defined on some space $\Omega$ that takes values in appropriate Euclidian subspace. Now, assume that there exists $G$ partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$.  \cite{Gershenfeld:1997} characterized the Cluster weighted models as a finite mixture of GLMs hence, the joint distribution $f(\bm x, y)$ of $(\bm{X^{'}}, Y )^{'}$  is expressed as follows
  \begin{align}
- f(\bm x, y)= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\Omega_j)f(\bm{x};\Omega_j).
+ f(\bm x, y)= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\Omega_j)p(\bm{x};\Omega_j).
 \label{eq1}
 \end{align}
-\flushleft The pair $q(y|\bm{x};\Omega_j)$ and $f(\bm{x};\Omega_j)$ are conditional and marginal distributions of $(\bm{X^{'}}, Y)^{'}$ respectively, while $\tau_j$ represents the weight of the $j$th component such that $\sum_{j=1}^{G}\tau_j=1$, $\tau_j>0$.
+
+The pair $q(y|\bm{x};\Omega_j)$ and $p(\bm{x};\Omega_j)$ are conditional and marginal distributions of $(\bm{X^{'}}, Y)^{'}$ respectively, while $\tau_j$ represents the weight of the $j$th component such that $\sum_{j=1}^{G}\tau_j=1$, $\tau_j>0$.
 \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continues and discrete as $ \bm{X}=(\bm{V^{'}},  \bm{W^{'}})^{'}$. This assumption of independence between continues and discrete covariates allows us to multiply their corresponding marginal distributions. Thus, for this setting the model in \eqref{eq1} is reformulated as follows
 \begin{align}
- f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})f(\bm{x};\bm{\theta_j})=\sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})f(\bm{v}; \bm{\theta_j^{\star}})f(\bm{w};\bm{\theta_j^{\star\star}})
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})p(\bm{x};\bm{\theta_j})=\sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})p(\bm{v}; \bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})
 \label{eq2}
 \end{align}
-where $\bm{v}$ and $\bm{w}$ are the vectors of continues and discrete covariates respectively, the $f(y|\bm{x};\bm{\vartheta_j})$ is a conditional density of $Y|\bm{x}$, with parameter vector $\bm{\vartheta_j}$, the $f(\bm{v};\bm{\theta_j^{\star}})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta_j^{\star}}$. the $f(\bm{w};\bm{\theta_j^{\star\star}})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta_j^{\star\star}}$. Finally $\bm{\Phi}:=(\bm{\theta^{\star}},\bm{\theta^{\star\star}}, \bm{\tau}, \bm{\vartheta})$ includes all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
-In addition, the conditional distribution $f(y|\bm{x};\bm{\vartheta_j})$ is assumed to belong to an exponential family of distributions and as such can be modeled in the framework of GLMs. Here, the marginal distribution of continues covariates is assumed to be of Gaussian type. Unfortunately, this last assumption is too strong for use in insurance related applications specifically in rate-making. To relax it, we develop the Generalized cluster-weighted mdoel (GCWM) that allows for non-Gaussian covariates as discussed in the next section.
+where $\bm{v}$ and $\bm{w}$ are the vectors of continues and discrete covariates respectively, the $q(y|\bm{x};\bm{\vartheta_j})$ is a conditional density of $Y|\bm{x}$, with parameter vector $\bm{\vartheta_j}$, the $p(\bm{v};\bm{\theta_j^{\star}})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta_j^{\star}}$. the $p(\bm{w};\bm{\theta_j^{\star\star}})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta_j^{\star\star}}$. Finally $\bm{\Phi}:=(\bm{\theta^{\star}},\bm{\theta^{\star\star}}, \bm{\tau}, \bm{\vartheta})$ includes all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
+In addition, the conditional distribution $q(y|\bm{x};\bm{\vartheta_j})$ is assumed to belong to an exponential family of distributions and as such can be modeled in the framework of GLMs. Here, the marginal distribution of continues covariates is assumed to be of Gaussian type. Unfortunately, this last assumption is too strong for use in insurance related applications specifically in rate-making. To relax it, we develop the Generalized cluster-weighted mdoel (GCWM) that allows for non-Gaussian covariates as discussed in the next section.
 
 \subsection{Generalized cluster-weighted model (GCWM) }
 We proceed to extend \eqref{eq2} by splitting the  continues covariates further as $\bm{V}:=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ is a set of non-Gaussian covariates, and $\bm{T}$ a set of Gaussian  covariates.  Thus (\ref{eq2}) is now recovered as 
 \begin{align}
- f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j f(y|\bm{x};\bm{\vartheta_j})f(\bm{t};\bm{\theta_j^{\star}})f(\bm{w};\bm{\theta_j^{\star\star}})f(\bm{u};\bm{\theta_j^{\star\star\star}})
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})p(\bm{t};\bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})p(\bm{u};\bm{\theta_j^{\star\star\star}})
 \label{eq3}
 \end{align}
-which we refer to as generalized cluster-weighted model (GCWM). Here $p(\bm{t};\bm{\theta_j^{\star}})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta^{\star}}$, and $f(\bm{u};\bm{\theta_j^{\star\star\star}})$ as the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta_j^{\star\star\star}} $.
+which we refer to as generalized cluster-weighted model (GCWM). Here $p(\bm{t};\bm{\theta_j^{\star}})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta^{\star}}$, and $p(\bm{u};\bm{\theta_j^{\star\star\star}})$ as the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta_j^{\star\star\star}} $.
 
 
-As it is relevant to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates. This however does not reduce the generality of our approach. Now, with our log-normal assumption for $f(\bm{u};\bm{\theta_j^{\star\star\star}})$, we have that $\bm{u}$ is defined on $\mathbb{R}^+$ with parameter vector $ \bm{\theta_j^{\star\star\star}} $, and having probability density function as
-\begin{align} f \left(  \bm{u}; \bm{\theta_j^{\star\star\star}} := ( \bm{\mu_j^\star} ,\bm{ \Sigma _j^\star } ) \right) = \frac{1}{(\prod_{i=1}^{N}u_{i})|\bm{ \Sigma_j^\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu_j}^\star)^{'}\bm{\Sigma_j^{-1}}(\ln \bm {u}-\bm{\mu_j}^\star)\right].
+As it is relevant to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates. This however does not reduce the generality of our approach. Now, with our log-normal assumption for $p(\bm{u};\bm{\theta_j^{\star\star\star}})$, we have that $\bm{u}$ is defined on $\mathbb{R}_+$ with parameter vector $ \bm{\theta_j^{\star\star\star}} $, and having probability density function as
+\begin{align} p \left(  \bm{u}; \bm{\theta_j^{\star\star\star}} := ( \bm{\mu_j^{\star\star\star}} ,\bm{ \Sigma _j^{\star\star\star }} ) \right) = \frac{1}{(\prod_{i=1}^{N}u_{i})|\bm{ \Sigma_j^{\star\star\star}} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu_j}^{\star\star\star})^{'}\bm{\Sigma_j^{{\star\star\star}_{-1}}}(\ln \bm {u}-\bm{\mu_j}^{\star\star\star})\right].
 \end{align} The derivation of the equation above can be found in the Appendix \ref{changeVarUni}.
 
 %Nik: is this a density? What range of values of x? What values can mu and sigma take? 
@@ -134,31 +135,31 @@ As it is relevant to the actuarial application in this paper, we focus on the mu
 \subsection{Zero-inflated Poisson}%Nik: not sure what this means? Specifically, what is the role of the first "-"
 
 For the zero-inflated Poisson model (ZIP) see \cite{Lambert} we can split the conditional density $p(y|\bm{x},\bm{\vartheta_j})$ into zero and non-zero densities. %Nik: I don't think "groups" is what is meant.  % Values I meant. 
-The response $y$ variable when $y= 0$  are distributed with density $f(0|\bm{x},\bm{\vartheta_{j}})$. The response $y$ values when $y > 0$ are distributed with density $f(y > 0|\bm{x}, \bm{\vartheta_{j}} )$. Given the conditional density now defined for the ZIP model, \eqref{eq3}   
+The response $y$ variable when $y= 0$  are distributed with density $q(0|\bm{x},\bm{\vartheta_{j}})$. The response $y$ values when $y > 0$ are distributed with density $q(y > 0|\bm{x}, \bm{\vartheta_{j}} )$. Given the conditional density now defined for the ZIP model, \eqref{eq3}   
 can be re-written as follows 
  \begin{align}
- f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ f(0|\bm{x};\bm{\vartheta_{j} }) +  f(y > 0|\bm{x} ; \bm{\vartheta_{j}})  ) \right]   f(\bm{t};\bm{\theta_j^{\star}})f(\bm{w};\bm{\theta_j^{\star\star}})f(\bm{u};\bm{\theta_j^{\star\star\star}}). 
+ f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(0|\bm{x};\bm{\vartheta_{j} }) +  q(y > 0|\bm{x} ; \bm{\vartheta_{j}})  ) \right]   p(\bm{t};\bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})p(\bm{u};\bm{\theta_j^{\star\star\star}}). 
 \end{align}
 
 \newcommand{\xTilda}{\bm{\tilde{x}}}
-Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ f^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is the row coefficient vector. 
+Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ q^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is the row coefficient vector. 
 Here, the link function will be modelled with log-link for the GLM:
  \begin{align*}
 \lambda_j = e^{\xTilda \bm{\beta_j}'}, && %\beta_{0j} + \beta_j^{'}x
-f^P(y|  x ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
+q^P(y|  x ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
  \end{align*}
-Next, we introduce a Bernoulli process for the conditional density. We denote the density as  $ f^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\mathbbm{1}(\cdot)$ is the indicator function and  $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function
+Next, we introduce a Bernoulli process for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\mathbbm{1}(\cdot)$ is the indicator function and  $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function
  \begin{align*}
  \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta_j}}'}}{1+ e^{\xTilda  \bm{\bar{\beta_j}}'}},  &&
- f^B(y | \bm{x} ; \bm{\bar{\beta_j}}) = \begin{cases} 
+ q^B(y | \bm{x} ; \bm{\bar{\beta_j}}) = \begin{cases} 
       \quad \psi_j, & \mathbbm{1}(y) = 0 \\
      1 -  \psi_j,  & \mathbbm{1}(y) = 1
    \end{cases}
  \end{align*}
- Now, given a combination of two preceding models, we introduce the ZIP process in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients $ \bm{\vartheta_{j}} :=  \{ \bm{\beta_{j}},  \bm{\bar{\beta_j}} \} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $p(y|\bm{x}; \bm{\vartheta_{j}}  )$ are %Nik: something missing here?, PM: Fixed.
+ Now, given a combination of two preceding models, we introduce the ZIP process in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients $ \bm{\vartheta_{j}} :=  \{ \bm{\beta_{j}},  \bm{\bar{\beta_j}} \} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta_{j}}  )$ are %Nik: something missing here?, PM: Fixed.
  \begin{align*}
- f(0 | x ; \bm{ \vartheta_{j} } ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
-f(y > 0 |  x ; \bm{ \vartheta_{j} } ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.  
+ q(0 | x ; \bm{ \vartheta_{j} } ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
+q(y > 0 |  x ; \bm{ \vartheta_{j} } ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.  
  \end{align*}
 Also, the link functions to consider are log-link for the Poisson process and logit link for the Bernoulli
  \begin{align*}
@@ -176,20 +177,20 @@ The single component ZIP model assumes that the inflated zeros emanate from both
 	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a new zero inflated GCWM (ZI-GCWM) using the previously generated Bernoulli and Poisson GCWMs. We show that the Bernoulli and Poisson GCWM accurately estimate the initialization of the EM algorithm for the zero inflated GCWM model. The work of \cite{Lambert} specifies that the MLE estimates for coefficients provide an excellent guess allowing EM to converge quickly for ZIPs. The partitioning method consists of two seperate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. Recall $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$. As discussed, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes this sample space ie. $ \Omega = \bigcup_{i=1}^G \Omega_i $.  However, contingent on a model choice each particular set $\Omega_i$ may take a different shape. 
 	 Specifically, if we introduce the Bernoulli model in a generalized form for conditional density (see \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} for specific cases), we have the sample space $\Omega^B$ and joint pdf $f^B$ to be \begin{align*} 
 \Omega^B =  \bigcup_{l =1}^G \Omega_l^B & & \text{and} &  &
-f^B(\bm x, y; \Phi)= \sum_{l=1}^{G} \tau_l f^B(y|\bm{x}; \bm{\bar{\beta_l}}) f(\bm{t};\bm{\theta_l^{\star}})f(\bm{w};\bm{\theta_l^{\star\star}})f(\bm{u};\bm{\theta_l^{\star\star\star}}). 
+f^B(\bm x, y; \Phi)= \sum_{l=1}^{G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta_l}}) p(\bm{t};\bm{\theta_l^{\star}})p(\bm{w};\bm{\theta_l^{\star\star}})p(\bm{u};\bm{\theta_l^{\star\star\star}}). 
 \end{align*} 
 Similarly if we introduce a Poisson model in a generalized form the sample space $\Omega^P$ and joint pdf $f^P$ become
 \begin{align*}
 \Omega^P =  \bigcup_{j =1}^M \Omega_j^P & & \text{and} &  &
-f^P(\bm x, y; \Phi)= \sum_{j=1}^{M} \tau_j f^P(y|\bm{x};\bm{\beta_{j}}) f(\bm{t};\bm{\theta_j^{\star}})f(\bm{w};\bm{\theta_j^{\star\star}})f(\bm{u};\bm{\theta_j^{\star\star\star}}).  
+f^P(\bm x, y; \Phi)= \sum_{j=1}^{M} \tau_j q^P(y|\bm{x};\bm{\beta_{j}}) p(\bm{t};\bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})p(\bm{u};\bm{\theta_j^{\star\star\star}}).  
 \end{align*}
 Where this sample space is partitioned up to M non-overlapping sets. 
  Now, construct a new partitioning of a sample space $\Omega$ such that 
 $$\Omega =  \Omega^Z = \bigcup_{l \in \{1 \ldots G \} , j \in \{1 \ldots M \}  } \Omega_{l,j}^Z := \bigcup_{l \in \{1 \ldots G \} , j \in \{1 \ldots M \}  }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 \ldots K \}} \Omega_k^Z $$, where $K$ can range up to $M \times G$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is of mixture of particular Bernoulli and particular Poisson
 \begin{align} 
-f^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := f^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  f^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) f^P(y|\bm{x};\bm{\beta}_k).
+q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k).
 \label{initialziGCWM}\\ 
-& = f(0|\bm{x};\bm{\vartheta_{k} }) +  f(y > 0|\bm{x} ; \bm{\vartheta_{k}})
+& = q(0|\bm{x};\bm{\vartheta_{k} }) +  q(y > 0|\bm{x} ; \bm{\vartheta_{k}})
 \label{ziGCWM} 
 \end{align}
 
@@ -209,28 +210,28 @@ then the algorithm proceeds by alternation of the E-step and M-step to update pa
 To find an optimal number of components, maximum likelihood estimation is obtained over a range of $G$, and the best model is selected based on the Bayesian information criterion (BIC).   %Nik: which one? Explain. %PM: BIC was used. 
 
 The convergence criterion of the EM algorithm is based on the Aitken acceleration. It is used to estimate the asymptotic maximum of the log-likelihood at each iteration of the EM algorithm.  when the relative increase in the log-likelihood function is no bigger than a small pre-specified tolerance value or the number of iterations reach a limit. %Nik: that is a possible stopping rule but is not a convergence criterion per se.
-In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM a model is based on the assumption that $f(y|\bm{x},\vartheta_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function relates the expected value $g(\mu_j)= \beta_{0j} + \beta_{1j} x_{1}+ \cdots+\beta_{pj} x_{p}$. We are interested in estimation of the vector $\bm \beta_j$, thus the distribution of $y|\bm{x}$ is denoted by $f(y|\bm{x}; \bm{\beta_j}, \lambda_j)$, where $\lambda_j$ denotes an additional parameter to account for when a distribution belong to a two-parameter exponential family.
+In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM a model is based on the assumption that $q(y|\bm{x},\vartheta_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function relates the expected value $g(\mu_j)= \beta_{0j} + \beta_{1j} x_{1}+ \cdots+\beta_{pj} x_{p}$. We are interested in estimation of the vector $\bm \beta_j$, thus the distribution of $y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta_j}, \lambda_j)$, where $\lambda_j$ denotes an additional parameter to account for when a distribution belong to a two-parameter exponential family.
 
-The marginal distribution $f(\bm{x}; \bm \theta_j)$ has the following components: $f(\bm{t}; \bm \theta_j^{\star})$, $f(\bm{w}; \bm \theta_j^{\star\star})$, and $f(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density $f(\bm{t}; \bm \theta_j^{\star})$ is modeled as a  Gaussian with mean $\bm {\mu_j}$ and covariance matrix $\bm \Sigma_j$ as $f(\bm t; \bm {\mu_j}, \bm \Sigma_j)$. The marginal density $f(\bm{w};\bm \theta_{j}^{\star\star})$ assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,\bm{w}^{rc_r})^{'}$ where $w^{rs}=1$ if $w_r = s$, such that $s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
+The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density $p(\bm{t}; \bm \theta_j^{\star})$ is modeled as a  Gaussian with mean $\bm {\mu_j}$ and covariance matrix $\bm \Sigma_j$ as $p(\bm t; \bm {\mu_j}, \bm \Sigma_j)$. The marginal density $p(\bm{w};\bm \theta_{j}^{\star\star})$ assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,\bm{w}^{rc_r})^{'}$ where $w^{rs}=1$ if $w_r = s$, such that $s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
 and $w^{rs}=0$ otherwise.
 %Nik: the previous sentence does not make sense to me, and the following equation seems to come out of nowhere.
 \begin{align}
-f(\bm {w}, \bm {\gamma_j})=\prod_{r=1}^{q}\prod_{s=1}^{c_r}(\gamma_{jrs} )^{w^{rs}} 
+p(\bm {w}, \bm {\gamma_j})=\prod_{r=1}^{d}\prod_{s=1}^{c_r}(\gamma_{jrs} )^{w^{rs}} 
 \label{eq31}
 \end{align}
-for $j=1, \ldots, G$, where $\bm {\gamma_j}=(\gamma_{j1}^{'}, \ldots, \gamma_{jq}^{'})^{'}$, $\bm \gamma_{jr}=(\gamma_{jr1}^{'}, \ldots, \gamma_{jrc_q}^{'})^{'}$, $\gamma_{jrs} > 0$, and  $\sum_{s=1}^{c_r}\gamma_{jrs}$, $r=1,\ldots,q$. The density $f(\bm {w}, \bm{\gamma_j})$ represents the product of $q$ conditionally independent multinomial distributions with parameters $\bm{\gamma}_{jr}$, $r=1,\ldots, q$. The last marginal density $f(\bm{u};\bm \theta_{j}^{\star\star\star})$ will be modelled as lognormal with mean vector $ \bm \mu_j^\star$, and covariance matrix $\bm \Sigma_j^\star $. 
+for $j=1, \ldots, G$, where $\bm {\gamma_j}=(\gamma_{j1}^{'}, \ldots, \gamma_{jd}^{'})^{'}$, $\bm \gamma_{jr}=(\gamma_{jr1}^{'}, \ldots, \gamma_{jrc_d}^{'})^{'}$, $\gamma_{jrs} > 0$, and  $\sum_{s=1}^{c_r}\gamma_{jrs}$, $r=1,\ldots,q$. The density $p(\bm {w}, \bm{\gamma_j})$ represents the product of $d$ conditionally independent multinomial distributions with parameters $\bm{\gamma}_{jr}$, $r=1,\ldots, d$. The last marginal density $p(\bm{u};\bm \theta_{j}^{\star\star\star})$ will be modelled as lognormal with mean vector $ \bm \mu_j^{\star\star\star}$, and covariance matrix $\bm \Sigma_j^{\star\star\star} $. 
 
 Let $(\bm x_1, y_1),\ldots, (\bm x_n, y_n)$ be a sample of $n$ independent observations drawn from model in \eqref{eq3}.
 For this sample, the complete data likelihood function, $L_c(\bm\Phi)$, is given by
 \begin{align}
-L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}f(y_i|x_i, \bm \beta_j, \lambda_{j})f(t_i, \bm\mu_j, \bm\Sigma_j) f(w_i, \gamma_j)f(u_i, \bm{\mu_j}^\star,\bm{\Sigma_j}^\star) \right]^{z_{ij}},
+L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i, \bm \beta_j, \lambda_{j})p(t_i, \bm\mu_j, \bm\Sigma_j) p(w_i, \gamma_j)p(u_i, \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}) \right]^{z_{ij}},
 \label{eq27}
 \end{align}
 where $z_{ig}$ is the latent indicator variable with value of $z_{ig}=1$ indicating that observation $(\bm{x_i}, y_i)$, originated from the $j$th mixture component and $z_{ij}=0$ otherwise.
 
 By taking the logarithm of \eqref{eq27}, the complete-data log-likelihood function $\ell_c(\bm\Phi)$ is written by
 \begin{equation*}\begin{split}
-\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[\log(\tau_{j}) + \log{f}(y_i|x_i,\bm \beta_j,\lambda_j)+ \log f(t_i, \bm\mu_j, \bm\Sigma_j) & + \log f(w_i, \gamma_j)\\& +\log {f}(u_i, \bm{\mu_j}^\star,\bm{\Sigma_j}^\star) \big].
+\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[\log(\tau_{j}) + \log{q}(y_i|x_i,\bm \beta_j,\lambda_j)+ \log p(t_i, \bm\mu_j, \bm\Sigma_j) & + \log p(w_i, \gamma_j)\\& +\log {p}(u_i, \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}) \big].
 \label{eq28}
 \end{split}\end{equation*}
 
@@ -239,15 +240,15 @@ The $E$-step does not depend on the form of density, and the latent data only re
 The posterior probability that $(\bm{x_i}, y_i)$ comes from the $j$th mixture component is calculated at the $s$th iteration of the EM algorithm as
 \begin{equation*}\begin{split}
     {\pi_{ij}}^{(s)} &= {E}[z_{ij} |(\bm{x_i}, y_i), \bm{\Phi}^{(s)}]\\
-     &= \frac{{\tau_j}^{(s)}f(y_i|x_i, \bm \beta_j^{(s)}, \lambda^{(s)}_{j})f(t_i, \bm\mu_j^{(s)}, \bm\Sigma_j^{(s)}) f(w_i, \gamma_j^{(s)})f(u_i, \bm{\mu_j}^{\star (s)},\bm{\Sigma_j}^{\star (s)})}{f(\bm{x_i}, y_i; \Phi^{(s)})
+     &= \frac{{\tau_j}^{(s)}q(y_i|x_i, \bm \beta_j^{(s)}, \lambda^{(s)}_{j})p(t_i, \bm\mu_j^{(s)}, \bm\Sigma_j^{(s)}) p(w_i, \gamma_j^{(s)})p(u_i, \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)})}{f(\bm{x_i}, y_i; \Phi^{(s)})
 \label{eq29}                       }.
 \end{split}\end{equation*}
 \subsubsection{M-Step - Partitioning} 
 It follows that at the $(s+1)$th iteration, the conditional expectation of \eqref{eq28} on the observed data and the estimates from the $s$th iteration results in
 \begin{multline}
-Q(\bm\Phi|\bm\Phi^{(s)}) = \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}} \big[\log(\tau_{j}) + \log{f}(y_i|x_i,\bm \beta_j,\lambda_j)+ \log f(t_i, \bm\mu_j, \bm\Sigma_j)  + \log f(w_i, \gamma_j) +\log {f}(u_i, \bm{\mu_j}^{\star (s)},\bm{\Sigma_j}^{\star (s)})\big] \\
-=\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log(\tau_{j}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log{f}(y_i|x_i,\bm \beta_j^{(s)},\lambda_j^{(s)}) +\sum_{i=1}^{n}\sum_{j=1}^{G} {\pi_{ij}^{(s)}}\log f(t_i, \bm\mu_j^{(s)}, \bm\Sigma_j^{(s)}) \\
-+\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log f(w_i, \gamma_j^{(s)}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log {f}(u_i, \bm{\mu_j}^{\star (s)},\bm{\Sigma_j}^{\star (s)}).\label{Qfunction}
+Q(\bm\Phi|\bm\Phi^{(s)}) = \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}} \big[\log(\tau_{j}) + \log{q}(y_i|x_i,\bm \beta_j,\lambda_j)+ \log p(t_i, \bm\mu_j, \bm\Sigma_j)  + \log p(w_i, \gamma_j) +\log {p}(u_i, \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)})\big] \\
+=\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log(\tau_{j}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log{q}(y_i|x_i,\bm \beta_j^{(s)},\lambda_j^{(s)}) +\sum_{i=1}^{n}\sum_{j=1}^{G} {\pi_{ij}^{(s)}}\log p(t_i, \bm\mu_j^{(s)}, \bm\Sigma_j^{(s)}) \\
++\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log p(w_i, \gamma_j^{(s)}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log {p}(u_i, \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)}).\label{Qfunction}
 \end{multline}
 
 
@@ -263,39 +264,39 @@ $$
 The log-normal distribution is relevant for modelling actuarial data.  Parameter estimates for the log-normal distribution follow similar suit.
 \begin{align*}
 {\hat{\tau}_j}^{(s+1)}&=\frac{1}{n} \sum_{i=1}^n \pi_{ij}^{(s)},&&
-{\hat{\bm \mu}_j}^{\star (s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\ln \bm u_i,&&
+{\hat{\bm \mu}_j}^{\star\star\star (s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\ln \bm u_i,&&
 \end{align*}
-$$ {\hat{\bm \sigma^{}}_j}^{\star(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{\star(s+1)}_j) (\ln \bm u_i-\hat{\bm \mu}^{\star(s+1)}_j)^{'}. $$
+$$ {\hat{\bm \sigma}_j}^{\star\star\star(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j) (\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j)^{'}. $$
 
 The estimates of $\bm\beta$ are computed by maximizing each of the $G$ terms
 \begin{align}
-\sum_{i=1}^{n}\pi^{(s)}_{ij} \log{f}(y_i|\bm x_i,\bm \beta_j,\lambda_j).
+\sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i,\bm \beta_j,\lambda_j).
 \label{eq30}
 \end{align}
 Maximization of \eqref{eq30} is performed by numerical optimization in R software in a similar framework the mixture of generalized linear models are implemented. For additional details about this implementation the reader is refer to \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
 For insurance applications, current TCWM model can be used for modeling frequency of claims assuming that $\bm{Y}$ belongs to Poisson or Bernoulli distributions. When modelling severity of claims, $\bm{Y}$ can be assumed accommodate Gamma or Lognormal distributions. All of these applications are based on CWM as the underlying approach. For additional information, the reader is referred to the manual of the {\tt flexCWM} package manual for ${\bf R}$ users written by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}.%Nik: use \cite
 \subsection{EM - Zero-inflated}
-The optimization of the zero-inflated model uses the EM algorithm to maximize the incomplete-data log-liklihood iteratively \citep{Lambert}. The log-likilhood for $\psi_k$ and $\lambda_k$ is expressed as 
+The optimization of the zero-inflated model \eqref{ziGCWM} uses the EM algorithm for maximizing the incomplete-data log-liklihood iteratively \citep{Lambert}. The log-likilhood for $\psi_k$ and $\lambda_k$ is expressed as 
 
 \begin{align*}
 l(\psi_k,\lambda_k; y, \bm{x}) = \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda_i \bar{\beta}_k^{'} } } + \exp{( - e^ { -\bm{ \xTilda_i \beta_k^{'} }})} \big] + \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta_k}^{'} + e^{ \xTilda_i \bm{\beta_k}^{'} } \right) - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bar{\beta_k}^{'} } \right) - \sum_{y_i > 0} \log(y_i ! )
 \end{align*}
 
-Where $y_i$, and $\xTilda_i$ referes to the ith row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term, the log-liklihood is complicated to maximize, \cite{Lambert} provides a meaningful solution. Suppose that we could observe $\bm{Z_i} = 1$ when $y_i$ is generated from the Bernoulli random variable, and $\bm{Z_i} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-liklihood would be written as
+Where $y_i$, and $\xTilda_i$ referes to the ith row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term, the log-liklihood is complicated to maximize, \cite{Lambert} provides a meaningful solution. Suppose that we could observe ${Z_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition k, and $Z_{ik} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-liklihood would be written as
 
 \begin{align}
-l_c(\psi_k,\lambda_k;y,\bm{z }) = & \sum_{i=1}^n \left( \bm{z_i\xTilda_i \bar{\beta_k }^{'}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}} \right) + \sum_{i=1}^n (1-\bm{z_i}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-\bm{z_i})\log(y_i!) \nonumber \\
-=  & \quad l_c(\psi_k;\bm{y,z}) + l_c(\lambda_k; \bm{y,z}) + \sum_{i=1}^n (1-\bm{z_i})\log(y_i!) \label{CompleteZLog}
+l_c(\psi_k,\lambda_k;y,\bm{z_k }) = & \sum_{i=1}^n \left( z_{ik}\bm{\xTilda_i \bar{\beta_k }^{'}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}} \right) + \sum_{i=1}^n (1-z_{ik}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-z_{ik})\log(y_i!) \nonumber \\
+=  & \quad l_c(\psi_k;\bm{y,z_k}) + l_c(\lambda_k; \bm{y,z_k}) + \sum_{i=1}^n (1- z_{ik})\log(y_i!) \label{CompleteZLog}
 \end{align}
 
-where $\bm{z_i}$ is a realization of $\bm{Z_i}$. \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k;\bm{y,z})$ and $l_c(\lambda_k; \bm{y,z}) $ can be maximized seperately for parameters $\lambda_k$ and $\psi_k$. With the EM algorithm, the incomplete-data log-liklihood can be maximized iteratively between estimating $Z_i$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-logliklihood (M-Step). 
+where ${z_{ik}}$ is a realization of $ Z_{ik} $. \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k;\bm{y,z_{k}})$ and $l_c(\lambda_k; \bm{y,z_k}) $ can be maximized seperately for parameters $\lambda_k$ and $\psi_k$. With the EM algorithm, the incomplete-data log-liklihood can be maximized iteratively between estimating $Z_{ik}$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-logliklihood (M-Step). 
 
 \subsubsection{E-step -  Zero-inflated}%Nik: again, why the first "-"?
- % PM: There are two EzM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density. 
+ % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density. 
 
-Using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ from the partition $ \Omega_{Z_k}$, we calculate the expected value of $Z_i$ by its posterior mean $z_i^{(s)}$ for each cluster, at iteration s
+Using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ from the partition $ \Omega_{Z_k}$, we calculate the expected value of ${Z_{ik}}$ by its posterior mean ${z_{ik}^{(s)}}$ for each cluster k, at iteration s
 \begin{align*}
-z_{i}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^{'(s)}} - e^ {\bm{\xTilda_i \beta_k^{'(s)}}} \big) } \right]^{-1}, &  y_{i} = 0 \\
+z_{ik}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^{'(s)}} - e^ {\bm{\xTilda_i \beta_k^{'(s)}}} \big) } \right]^{-1}, &  y_{i} = 0 \\
   0 \quad , & y_{i}> 0 .
 \end{cases}
 \end{align*}
@@ -304,8 +305,8 @@ z_{i}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^{
 \subsubsection{M-Step - Zero-inflated}
 The M-Step can be split into the maximization of two complete data log-likelihoods and the $\bm{z_i}$ calculated from the previous iteration $(s)$ as: 
 \begin{align} 
-l_c(\psi_k;\bm{y,z}) &=\sum_{i=1}^n \left( \bm{z_i\xTilda_i \bar{\beta_k }^{'(s)}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }}^{'(s)}} \right)  \label{eq6}   \\
- l_c(\lambda_k; \bm{y,z}) &= \sum_{i=1}^n (1-\bm{z_i}) (y_i \bm{ \xTilda_i \beta_k^{'(s)} } - e^{\bm{\xTilda_i \beta_k}^{'(s)}})\label{eq7} 
+l_c(\psi_k;\bm{y,z_k^{(s)}}) &=\sum_{i=1}^n \left( z_{ik}^{(s)} \bm{\xTilda_i \bar{\beta_k }^{'(s)}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }}^{'(s)}} \right)  \label{eq6}   \\
+ l_c(\lambda_k; \bm{y,z_k^{(s)}}) &= \sum_{i=1}^n (1- z_{ik}^{(s)}) (y_i \bm{ \xTilda_i \beta_k^{'(s)} } - e^{\bm{\xTilda_i \beta_k}^{'(s)}})\label{eq7} 
  \end{align}
 The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ \citep{McCullaghNelder1989}, yielding $\lambda_k^{(s+1)}$. 
 While the parameter for \eqref{eq7} can be maximized over a gradient \citep{Lambert} yielding $\psi_k^{(s+1)}$.
