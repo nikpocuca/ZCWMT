@@ -67,45 +67,45 @@ while executing---line 1545 of file elsart-harv.bst
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
 Warning--empty journal in misuse
-You've used 35 entries,
+You've used 36 entries,
             2821 wiz_defined-function locations,
-            877 strings with 10833 characters,
-and the built_in function-call counts, 16287 in all, are:
-= -- 1716
-> -- 730
-< -- 26
-+ -- 286
-- -- 237
-* -- 1402
-:= -- 2923
-add.period$ -- 105
-call.type$ -- 35
-change.case$ -- 250
-chr.to.int$ -- 35
-cite$ -- 38
-duplicate$ -- 613
-empty$ -- 1145
-format.name$ -- 362
-if$ -- 3282
+            883 strings with 11016 characters,
+and the built_in function-call counts, 16726 in all, are:
+= -- 1762
+> -- 749
+< -- 27
++ -- 293
+- -- 243
+* -- 1444
+:= -- 3002
+add.period$ -- 108
+call.type$ -- 36
+change.case$ -- 257
+chr.to.int$ -- 36
+cite$ -- 39
+duplicate$ -- 631
+empty$ -- 1175
+format.name$ -- 373
+if$ -- 3370
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 42
-newline$ -- 117
-num.names$ -- 140
-pop$ -- 241
+missing$ -- 43
+newline$ -- 121
+num.names$ -- 144
+pop$ -- 247
 preamble$ -- 1
-purify$ -- 219
+purify$ -- 225
 quote$ -- 0
-skip$ -- 476
+skip$ -- 488
 stack$ -- 0
-substring$ -- 942
-swap$ -- 87
+substring$ -- 959
+swap$ -- 91
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 294
+type$ -- 303
 warning$ -- 3
-while$ -- 148
+while$ -- 152
 width$ -- 0
-write$ -- 388
+write$ -- 400
 (There were 29 error messages)

@@ -1,4 +1,4 @@
-\begin{thebibliography}{35}
+\begin{thebibliography}{36}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -123,6 +123,11 @@ McNicholas, P., Murphy, T., McDaid, A., Frost, D., 2010. Serial and parallel
   models. Computational Statistics Data Analysis 54~(3), 711 -- 723, second
   Special Issue on Statistical Algorithms and Software.
 \newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0167947309000632}
+
+\bibitem[{Miljkovic and Fernández(2018)}]{risks_miljkovic}
+Miljkovic, T., Fernández, D., May 2018. On two mixture-based clustering
+  approaches used in modeling an insurance portfolio. Risks 6~(2), 57.
+\newline\urlprefix\url{http://dx.doi.org/10.3390/risks6020057}
 
 \bibitem[{Miljkovic and Gr\"un(2016)}]{Miljkovic+Grun:2016}
 Miljkovic, T., Gr\"un, B., 2016. Modeling loss data using mixtures of

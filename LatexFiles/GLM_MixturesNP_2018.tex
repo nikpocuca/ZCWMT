@@ -325,11 +325,11 @@ where $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single compon
 \section{Application}
 \subsection{Data}
 We illustrate the proposed methodology on French motor claims data set by policy. This data set is available as part of the R package {\tt CASdatasets} and it is previously used in the book {\it Computational Actuarial Science with R}  by \cite{Charpentier:2014}.
-The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. The claim count including zero claims for 413,169 motor third-party liability policies are provided with the associated risk characteristics. The loss amounts by policy ID are also provided. The amount of loss is modeled as a function of the following covariates: density, car age, driver age, exposure, gas type, car brand, and region.
+The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. The claim count including zero claims for 413,169 motor third-party liability policies are provided with the associated risk characteristics. The loss amounts by policy ID are also provided. 
 \begin{small}
 \begin{table}[!htb]
 \begin{center}
-    \caption{Description of variables of interest}%Nik: a caption must be a full sentence.
+    \caption{The description of variables in the French Motor Third-Part Liability dataset.} 
       \centering
         \begin{tabular}{ll}
 \hline
@@ -339,7 +339,7 @@ Policy ID & Unique identifier of the policy holder\\
 Claim Nb & Number of claims during exposure period  (0,1,2,3,4)\\
 Exposure & The exposure of policy in years (0--1.5) \\
 Power & Power level of car ordered categorical (12 levels )\\
-Car Age & Car age in years (5 levels) \\
+Car Age & Car age in years \\
 Driver Age & Age of a legal driver \\
 Brand & Car brands (7 types) \\
 Gas & Diesel or Regular \\
@@ -355,14 +355,49 @@ Loss Amount & Portion of claim the insurance policy pays\\
 \subsection{Analysis and Results}
 
 \subsubsection{Modelling Severity}
-In this section, we show the results from modeling French motor losses. We consider the following covariates: population density, driver age, car age, car power, and regions. %Nik: why is this list not identical to the list from a few lines above? 
+In this section, we show the results from modeling French motor losses. We consider the following covariates: density, driver age, car age, power, gas,  and region. %Nik: why is this list not identical to the list from a few lines above? 
 The model that was fitted is defined with the following equation where $\epsilon \sim \mathcal{N}(0,\sigma)$, and
-$$ \text{ AggClaims } \sim  \text{ Density + Driver Age + Region + CarAge + Power }+ \epsilon.$$%Nik: this is not an equation. Please reformulate.
+\begin{equation}
+Loss Amount =  Density + Car Age + Driver Age + Region + Power + Gas + \epsilon. \label{regressionModel}
+\end{equation}
+%Nik: this is not an equation. Please reformulate.
 
-Car age is model as categorical variable with five categories: $<5$, $5-10$, $11-20$, $21-30$, $>30$. Driver age is modelled as a continuous predictor. The  shape of the distribution for driver age indicates that Gaussian assumption is reasonable for this left-truncated data. %Nik: why not refer to the histgram in Figure 1? In my view, the Gaussian assumption is clearly not reasonable here. 
+The canonnical log-link is used for the GLM \eqref{regressionModel}. Similarly to \cite{risks_miljkovic},
+car age is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$,and $15+$. Additionaly, driver age is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. Power is modelled into three categories as in \cite{Charpentier:2014}:
+DEF, GH, and other. 
+\begin{figure}[!htb]
+\begin{center}
+\caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal transformation is applied (GL-TCWM approach).}
+\includegraphics[scale=0.40]{Density.pdf}
+\includegraphics[scale=0.40]{logDensity.pdf}
+\end{center}
+
+\label{fig:vet1}
+\end{figure}
+
+
 Beginning with the continuous covariate Density, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names  
 Figure 2 %Nik: \ref{} (left plot) clearly revels that the the density is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. A log-normal transformation improves the fit (see the right side of Figure \ref{fig:vet1}) of the density data.%Nik: ref not working.
 
+\begin{table}[!htb]
+\begin{center}
+     	\caption{Model comparisons between GL-TCWM and CWM.}
+        \begin{tabular}{ccccc}
+        		\hline\hline	
+				Model & $G$ & LL & AIC    & BIC    \\
+				\hline
+			GL-TCWM & 1& -118901 & 237869 & 238129  \\
+						& 2& -108293  & 216719 & 217231 \\
+						&3  &  \textbf{-107972 } & \textbf{216143} & \textbf{216907}\\
+						& 4 & -107822  & 215931 &  216947 \\
+				CWM &  1  & -239601 &  479298  & 79529 \\
+				& 2 & -226334 & 452921 & 453433  \\
+				& 3 & -216255  & 432710 & 433474  \\
+				& 4 & \textbf{-212452}   &\textbf{425170}&\textbf{426186}\\
+				\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
 
 \begin{table}[!htb]
 \begin{center}
@@ -642,7 +677,7 @@ In this section, we show how the proposed methodology works for different simula
 
 We define Model 1 as the base line model in which the coefficients were generated for \textbf{CASdataset} and reported in upper portion of Table 2. These coefficients were then rounded and treated as true parameters. A simulation with three GLM mixture components was then generated around these true parameters in which the third covariate $X_3$ was lognormal. Stemming from this, both CWM and  GCWM a were run. The  GCWM a treats $X_3$ as a lognormal covariate which then applies the relevant transformation.
 
-The results for Model 1 were summarized in upper portion of Table 3 based on the performance of the  GCWM a approach. The simulation was run $1000$ times. We reported the percentage of runs for each predictor and the corresponding intercept in each mixture component under the assumption of $5\%$ error. For example, predictor $X_2$ in the component 2 of Model 1 reported $90.10\%$ accuracy. This means that $90.1\%$ of the time the true parameter was estimated within $5\%$ error. In this setting, predictor $X_1$ in the second component was insignificant in the real data set. The purpose of including this parameter in Model 1 was to test the sensitivity of  GCWM a for insignificant predictors. In this case, the result of zero is underlined and it means that it has no influence on the response variable in this simulation.Further, we created Models 2, 3, 4 and 5 by altering the parameters of Model 1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$ accordingly and keeping the second covariate of the second component as an insignificant predictor form the \textbf{CASdataset} model. This was done to test the accuracy of  GCWM a to the  sensitivity of coefficients. Based on the results in Table 3, we can see that  GCWM a performs well for all simulation settings.
+The results for Model 1 were summarized in upper portion of Table 3 based on the performance of the  GCWM a approach. The simulation was run $1000$ times. We reported the percentage of runs for each predictor and the corresponding intercept in each mixture component under the assumption of $5\%$ error. For example, predictor $X_2$ in the component 2 of Model 1 reported $90.10\%$ accuracy. This means that $90.1\%$ of the time the true parameter was estimated within $5\%$ error. In this setting, predictor $X_1$ in the second component was insignificant in the real data set. The purpose of including this parameter in Model 1 was to test the sensitivity of  GCWM a for insignificant predictors. In this case, the result of zero is underlined and it means that it has no influence on the response variable in this simulation. Further, we created Models 2, 3, 4 and 5 by altering the parameters of Model 1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$ accordingly and keeping the second covariate of the second component as an insignificant predictor form the \textbf{CASdataset} model. This was done to test the accuracy of  GCWM a to the  sensitivity of coefficients. Based on the results in Table 3, we can see that  GCWM a performs well for all simulation settings.
 
 
 
