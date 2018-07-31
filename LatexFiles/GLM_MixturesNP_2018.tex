@@ -376,52 +376,37 @@ DEF, GH, and other.
 \end{figure}
 
 
-Beginning with the continuous covariate Density, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names  
-Figure 2 %Nik: \ref{} (left plot) clearly revels that the the density is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. A log-normal transformation improves the fit (see the right side of Figure \ref{fig:vet1}) of the density data.%Nik: ref not working.
+Beginning with the continuous covariate $Density$, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names  
+The left side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. With the log-normal assumption, the $Density$ is transformed which improves the fit (see the right side of Figure \ref{fig:vet1}) on the data.
 
-\begin{table}[!htb]
-\begin{center}
-     	\caption{Model comparisons between GL-TCWM and CWM.}
-        \begin{tabular}{ccccc}
-        		\hline\hline	
-				Model & $G$ & LL & AIC    & BIC    \\
-				\hline
-			GL-TCWM & 1& -118901 & 237869 & 238129  \\
-						& 2& -108293  & 216719 & 217231 \\
-						&3  &  \textbf{-107972 } & \textbf{216143} & \textbf{216907}\\
-						& 4 & -107822  & 215931 &  216947 \\
-				CWM &  1  & -239601 &  479298  & 79529 \\
-				& 2 & -226334 & 452921 & 453433  \\
-				& 3 & -216255  & 432710 & 433474  \\
-				& 4 & \textbf{-212452}   &\textbf{425170}&\textbf{426186}\\
-				\hline\hline
-\end{tabular}
-\end{center}
-\end{table}
+\begin{table}[!htbp] \centering 
+  \caption{Comparing GCWM vs CWM models.} 
+  \label{comparingCWM_models} 
+\begin{tabular}{@{\extracolsep{5pt}} cccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Model & k & AIC & BIC \\ 
+\hline \\[-1.8ex] 
+CWM & $1$ & $$$352470$ & $$$352661$ \\ 
+& $2$ & $$$314560$ & $$$314949$ \\ 
+& $3$ & $$$301223$ & $$$301812$ \\ 
+& $4$ & $$$287020$ & $$$287808$ \\ 
+& $\bm{5}$ &$$$\bm{284283}$ & $$$\bm{285268}$ \\ 
+GCWM & $1$ & $$$111129$ & $$$111320$ \\ 
+& $2$ & $$$90039$ & $$$90428$ \\ 
+& $3$ & $$$89476$ & $$$90065$ \\ 
+& $\bm{4}$ & $$$\bm{88781}$ & $$$\bm{89568}$ \\ 
+& $5$ & $$$88731$ & $$ $89717$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+ 
+The result of the transformation is a better AIC and BIC. Table \ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285268 is significantly higher than the four component GCWM with a considerably lower BIC of 89568. 
 
-\begin{table}[!htb]
-\begin{center}
-     	\caption{Model comparisons between GCWM a and CWM.}
-        \begin{tabular}{ccccc}
-        		\hline\hline	
-				Model & $G$ & LL & AIC    & BIC    \\
-				\hline
-			GCWM & 1& -118901 & 237869 & 238129  \\
-						& 2& -108293  & 216719 & 217231 \\
-						&3  &  \textbf{-107972 } & \textbf{216143} & \textbf{216907}\\
-						& 4 & -107822  & 215931 &  216947 \\
-				CWM &  1  & -239601 &  479298  & 79529 \\
-				& 2 & -226334 & 452921 & 453433  \\
-				& 3 & -216255  & 432710 & 433474  \\
-				& 4 & \textbf{-212452}   &\textbf{425170}&\textbf{426186}\\
-				\hline\hline
-\end{tabular}
-\end{center}
-\end{table}
 
 \subsubsection{Driver Analysis of Severity Model}
 
-	We now investigate the results of GCWM a in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various fields of drivers. The following model uses GCWM a to cluster different drivers in groups allowing one to assign different rates to different clusters. Again, we use the French motor claims data to create a model with claims as the dependent variable and the canonical log-link as the link function. 
+	We now investigate the results of GCWM a in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various fields of drivers. The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters. 
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[scale=0.24]{clms.png}
@@ -435,9 +420,9 @@ Figure 2 %Nik: \ref{} (left plot) clearly revels that the the density is rather 
 \caption{Size of clusters for the GCWM a model.}
 \label{table:sizeSev}
 \begin{tabular}{cccc}
-\hline\hline
+\hline\hline 
 1   & 2  &  3   & 4    \\
-7119 &1783& 2428& 4060 \\
+1683 & 5766 & 848 & 7093 \\
 Red & Green & Teal & Blue \\
 \hline\hline
 \end{tabular}

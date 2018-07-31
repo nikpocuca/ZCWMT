@@ -60,13 +60,13 @@ loadData <- function() {
 }
 
 loadDataServer <- function() {
-  return(read.csv("m24.csv")[,-1])
+  return(read.csv("m.csv")[,-1])
 }
 
 
-
-m <- loadData()
-#m24 <- loadDataServer()
+# Load data depending on where you are, you can either do it from the package, or locally. 
+#m <- loadData()
+m <- loadDataServer()
 
 set.seed(101)
 runSev <- function(dataInput) {
@@ -114,19 +114,56 @@ save(t_model, file = "t_model")
 getIC(u_model)
 getIC(t_model)
 
+u_model_table <- data.frame()
+# Extracting tables of IC. 
+for (i in 1:length(unlist(getIC(u_model)[,1]))){
+  u_model_table <- rbind(u_model_table,unlist(getIC(u_model))[i,]); 
+  
+}
+colnames(u_model_table) <- c("AIC","AICc","AICu","AIC3","AWE","BIC","CAIC","ICL")
+
+u_model_table_AIC <- u_model_table$AIC
+u_model_table_BIC <- u_model_table$BIC
+u_model_table_components <- 1:5
+u_model_table_final <- cbind(u_model_table_components,
+                             u_model_table_AIC,
+                             u_model_table_BIC)
+colnames(u_model_table_final) <- c("k","AIC","BIC")
+
+stargazer(u_model_table_final,summary = FALSE)
+
+
+
+
+t_model_table <- data.frame()
+# Extracting tables of IC. 
+for (i in 1:length(unlist(getIC(t_model)[,1]))){
+  t_model_table <- rbind(t_model_table,unlist(getIC(t_model))[i,]); 
+  
+}
+colnames(t_model_table) <- c("AIC","AICc","AICu","AIC3","AWE","BIC","CAIC","ICL")
+
+t_model_table_AIC <- t_model_table$AIC
+t_model_table_BIC <- t_model_table$BIC
+t_model_table_components <- 1:5
+t_model_table_final <- cbind(t_model_table_components,
+                             t_model_table_AIC,
+                             t_model_table_BIC)
+colnames(t_model_table_final) <- c("k","AIC","BIC")
+
+stargazer(t_model_table_final,summary = FALSE)
 
 # Some Plots for Analysis 
 # ==========================================================================================
 
 # Red and Green show to be the two highest levels of volitility, 
 # teal and blue show the two least levels of volitility.  
-plot(m$LogDensity,m$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
+plot(m$LogDensity,m$LogAggClaimAmount,col = getCluster(t_model) + 1,pch = 19,
+     main = "Claims vs. Density Transformed",
+     xlab = "Density",
+     ylab = "Claims",
+     cex = 0.5)
 
-
-# Green and Red show to be the two newest car age owners but with two different volitilities.
-plot(m$CatDriverAge,m$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
-plot(m24$powerF,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
-plot(m24$DriverAge,m24$LogAggClaimAmount,col = getCluster(Results$t) + 1,pch = 19,cex = 0.5)
 
 # ==========================================================================================
 # Extra functions for later. 

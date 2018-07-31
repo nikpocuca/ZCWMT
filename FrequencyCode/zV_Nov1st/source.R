@@ -3,8 +3,8 @@ sourceCode <- function() {
 
 #setwd("C:\\Users\\nikpo\\Downloads\\ZCWM-ZCWM-Clean_Sept21st")
 #setwd("~/net/msserv/1/share/home/pocucan/Paper/ZCWM-ZCWM-Clean_Sept25th")
+#setwd("~/GitRepos/ZCWMT/FrequencyCode/zV_Nov1st/")
 
-setwd("~/GitRepos/ZCWMT/FrequencyCode/zV_Nov1st/")
 source("zCWM.R")
 source("zeroAdjust.R")
 source("zFunctions.R")
