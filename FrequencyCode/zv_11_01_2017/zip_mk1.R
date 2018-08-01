@@ -5,7 +5,7 @@
 
 
 
-zeroinfl.control <- function(method = "BFGS", maxit = 10000, trace = FALSE, EM = FALSE, start = NULL, ...) {
+zeroinfl.control <- function(method = "CG", maxit = 10000, trace = FALSE, EM = FALSE, start = NULL, ...) {
   rval <- list(method = method, maxit = maxit, trace = trace, EM = EM, start = start)
   rval <- c(rval, list(...))
   if(!is.null(rval$fnscale)) warning("fnscale must not be modified")
