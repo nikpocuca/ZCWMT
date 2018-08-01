@@ -195,7 +195,7 @@ q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar
 \end{align}
 
 
-The expectation-maximization (EM) algorithm (see \cite{Dempster+Laird+Rubin:1977}) is then used to estimate this new mixture of up to $M \times G$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{initialziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $) where $k \in \{1 \dots K \} $. The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a modified test which is commented in section 3.6. 
+The expectation-maximization (EM) algorithm (see \cite{Dempster+Laird+Rubin:1977}) is then used to estimate this new mixture of up to $M \times G$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{initialziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $) where $k \in \{1 \dots K \} $. The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a liklihood ratio test which is commented in section 3.6. 
 
 \subsection{The EM Algorithm for Parameter Estimation}
 In most finite mixture problems, the standard method for estimating parameters of mixture models is based on the EM algorithm and further discussed by \cite{McLachlan+Peel:2000}.
@@ -406,13 +406,12 @@ The result of the transformation is a better AIC and BIC. Table \ref{comparingCW
 
 \subsubsection{Driver Analysis of Severity Model}
 
-	We now investigate the results of GCWM a in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various fields of drivers. The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters. 
+	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various fields of drivers. The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters. 
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.24]{clms.png}
-\includegraphics[scale=0.24]{dens.png}
+\includegraphics[scale=0.85]{claims_v_density.png}
 \end{center}
-\caption{Claims vs Driver Age: The left figure shows the clusters of claims with respect to driver age as the independent variable . The second figure shows the clusters of claims with respect to Density as the independent variable).}
+\caption{Showing clusters in color for Claims vs Density under lognormal assumptions.}
 \label{fig:vet1}
 \end{figure}
 \begin{table}[!htb]
@@ -423,37 +422,26 @@ The result of the transformation is a better AIC and BIC. Table \ref{comparingCW
 \hline\hline 
 1   & 2  &  3   & 4    \\
 1683 & 5766 & 848 & 7093 \\
-Red & Green & Teal & Blue \\
+Red & Green & Blue & Teal \\
 \hline\hline
 \end{tabular}
 \end{table}
 
-After fitting the model, we then take a look at the size of each cluster. The GCWM a function has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table \ref{table:sizeSev}. Attention is brought to largest quantity  of drivers that are grouped into cluster 1. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in both plots in Figure 3.3.
-From these results we can create an insurance model with the following characteristics. Cluster 1 drivers have low variability in claims, thus can be insured with a lower upper limit than the other drivers. From a risk management perspective this is the most ideal case as these drivers will claims with very  low variance. Cluster 2 drivers have the second lowest variability, thus we would increase the upper limit. The same can be done for the final two Clusters while adjusting  the limits accordingly.
+After fitting the model, we then take a look at the size of each cluster. The GCWM a function has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table \ref{table:sizeSev}. Attention is brought to largest quantity  of drivers that are grouped into cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1}.
+From the results we can create an insurance model with the following characteristics. Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 4 drivers have also low variability but a higher average cost, thus they would have a rate higher than cluster 3. Cluster 2 drivers have the next highest cost and variability of the clusters, these drivers are colored in green in Figure \ref{fig:vet1}. The final cluster colored in red has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate. 
 \begin{table}[!htb]
 \centering
-\caption{Summarized volatility information of each cluster.}
+\caption{Summarized volatility information of each cluster for Claims.}
 \label{table:volSev}
 \scalebox{0.90}{
 \begin{tabular}{llllll}
 \hline\hline
-Volatility Level - (Cluster)  $\quad$	&		Characteristic     & Minimum & Mean  & Maximum & $\sigma (0.05) $    \\
+Volatility Level - (Cluster)  $\quad$    & Minimum & Mean  & Maximum & $\sigma (0.05) $    \\
 \hline
-	V1 - (1)$\quad\quad\quad$ 	&	Aggregate Claims & 1035    & 1172  & 1340    & \textbf{52.64 }   \\
-		&	Driver Age       & 18      & 46.21 & 99      & 15.3     \\
-		&	Density          & 3       & 1839  & 27000   & 4546.906 \\
-		\hline
-	V2 - (4)$\quad\quad\quad$	&Aggregate Claims & 21 & 1823  & 7511  &\textbf{ 1047.06}  \\
-	& Driver Age       & 19 & 42.06 & 62    & 7.2      \\
-	&  Density          & 3  & 3407  & 27000 & 6618.938 \\
-	\hline
-V3 - (3)$\quad\quad\quad$	& Aggregate Claims & 2  & 3109  & 301300 & \textbf{ 13468.54} \\
- &Driver Age       & 18 & 52.72 & 99     & 12.6     \\
- & Density          & 2  & 1593  & 27000  & 4310.153\\
-\hline
-V4 - (2)$\quad\quad\quad$ &Aggregate Claims & 2  & 5043  & 2037000 & \textbf{59750.99} \\
-& Driver Age       & 18 & 25.79 & 35      & 4        \\
-& Density          & 6  & 2219  & 27000   & 4590.053\\
+V1 - (3)$\quad\quad\quad$ & 51  & 79 & 154 & \textbf{ 13.19} \\
+V2 - (4)$\quad\quad\quad$ & 1039  & 3109  &  1324 & \textbf{ 52.07} \\
+V3 - (2)$\quad\quad\quad$ & 221 & 1687  & 8841  &\textbf{ 1284.41}  \\
+V4 - (1)$\quad\quad\quad$ & 2 & 9717 & 2036833  & \textbf{ 64835.96}   \\
 \hline\hline
 \end{tabular}
 }
@@ -530,8 +518,7 @@ C5 & $4.09 \cdot 10^{-3} $& 1.00       & .            & $ 2.09 \cdot 10^{-1} $  
 
 
 
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with cluster 1, drivers have a mean age of 46 years. The age of these drivers are fairly spread with a standard deviation of 15 years. However, the one noticeable difference is that these drivers tend to have claims between 1035 to 1340, with a standard deviation of 52.64, and a mean of 1172. That means that these drivers rarely exceed costs and tend to have very low volatility. Which implies that claims tend to be the same across all ages. Moving onto to cluster 2, these drivers have the second level of volatility. Drivers in this range tend to have claims anywhere between 21 to 7511,%Nik: 21 and 7511 what? Units should be given, e.g., $, km, etc. 
-with standard deviation of 1047, and a mean of 1823. The ages of these drivers are between 19 to 62 with a mean age of 42. One can interpret this cluster as middle aged drivers. The claims of these drivers have higher volatility than the previous cluster, in this case age is very concentrated together with only a standard deviation of just 7 years, in contrast to the previous cluster's standard deviation of 15. Proceeding to the third cluster, its volatility in claims is greater. Drivers in this cluster have claims anywhere between 2 to 301300, with a mean of 3109, and a standard deviation of 13468. The drivers in this cluster are much older than the previous one with a mean age of 52 years and a standard deviation of 12.6. Finally cluster 4 denotes the level of highest volatility. Claims in this cluster of drivers reach the highest cost of 2037000, a mean of 5043, and a standard deviation of 59750.99. Their ages tend to be much younger, with a mean age of 26, and a standard deviation of just 4. This is fairly standard  for car insurance since younger drivers tend to take more risks.
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13.19, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility. Moving onto V2, these drivers have the second level of volatility. Drivers in this range tend to have claims anywhere between \$1039 to \$3109, with a standard deviation of \$ 52.07, and a mean of \$3109.  Proceeding to V3, its volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1687, and a standard deviation of \$1284.41. Finally V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$ 2036833, a mean of \$9717, and a standard deviation of \$64835.96.
 
 Coefficients of clustered results are used to calculate premiums in car insurance. Table  \ref{table:sevCoef} shows the coefficients of the fitted model. The significance codes are defined as $\approx 0$  (***), 0.001 (**), 0.01 (*), 0.05 (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value.
 pertaining to the $p$ value of the specific coefficient. In each cluster significance varies but overall the majority of coefficients are significant. An interpretation of the results is as follows. The first cluster (V1) has significant coefficients of Region (R\#),  Power (P\#), Car age (C\#), and Driver age. We see that the sign of coefficients change depending on the relative center of each cluster. The comparison between driver age in V1 and V4 is a perfect example. The coefficient of driver age is positive in V1 which shows that with larger age, claims tend to go up. Comparing that with last cluster, (V4). The driver age coefficient is negative. This is due to the fact that ages in V4 are very young (mean age of 25). Thus as age increases drivers tend to take less risks and become more responsible, which would decrease cost of claims. We see the same interpretation with Density. Clusters V2, V3, and V4  have density as a significant coefficient. However, the sign of the coefficient changes to negative in V4, while V2 and V3 have positive coefficients. Again this due to the relative centres of the cluster indicate both the magnitude and sign of the coefficient.%Nik: not sure what this means.

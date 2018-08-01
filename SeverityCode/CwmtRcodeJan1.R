@@ -165,6 +165,38 @@ plot(m$LogDensity,m$LogAggClaimAmount,col = getCluster(t_model) + 1,pch = 19,
      cex = 0.5)
 
 
+getStatistics <- function(inputData) {
+  m_stat <- mean(as.numeric(inputData))
+  sd_stat <- sd(as.numeric(inputData))
+  mx_stat <- max(as.numeric(inputData))
+  mn_stat <- min(as.numeric(inputData))
+  size_stat <- length(inputData)
+  return(list(m_t = m_stat,
+       sd_t = sd_stat,
+       mx_t = mx_stat,
+       mn_t = mn_stat,
+       sz_t = size_stat))
+}
+
+
+m$Clusters <- getCluster(t_model)
+
+m1 <- m[m$Clusters == 1,]
+m2 <- m[m$Clusters == 2,]
+m3 <- m[m$Clusters == 3,]
+m4 <- m[m$Clusters == 4,]
+  
+stat_1 <- getStatistics(m1$AggClaimAmount) # red
+stat_2 <- getStatistics(m2$AggClaimAmount) # green
+stat_3 <- getStatistics(m3$AggClaimAmount) # blue
+stat_4 <- getStatistics(m4$AggClaimAmount) # teal 
+stat_total <- stat_1$sz_t + stat_2$sz_t + stat_3$sz_t + stat_4$sz_t
+stat_perc <- c(stat_1$sz_t/stat_total,
+               stat_2$sz_t/stat_total,
+               stat_3$sz_t/stat_total,
+               stat_4$sz_t/stat_total)
+
+
 # ==========================================================================================
 # Extra functions for later. 
 #function part 1 conditional test

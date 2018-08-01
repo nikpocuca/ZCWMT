@@ -16,8 +16,8 @@ zcwm <- function(inputdata, formulaZP, np, Xnorms, ...){
   
   data_z[,dep_v_index] <- as.integer(data_z[,dep_v_index] <= 0)
     
-  cat('\n Beginning Partition using CWM','\n')
-  cat(' ==============================','\n\n')
+  cat('Beginning Partition using CWM','\n')
+  cat('==============================','\n\n')
 
   # First Partition Poisson
   
@@ -43,14 +43,85 @@ zcwm <- function(inputdata, formulaZP, np, Xnorms, ...){
   
   
   # Match Partitions. 
-  cat('\n Beginning Zero inflated CWM','\n')
-  cat(' ==============================','\n\n')
+  cat('Beginning Zero inflated CWM','\n')
+  cat('==============================','\n\n')
   
+  # Gather labels for splitting
+  c_pois <- getCluster(cwm_poisson)
+  c_bern <- getCluster(cwm_bernoulli)
+  lex <- paste(c_pois,c_bern, sep="")
+  partitions <- match(lex, unique(lex))
   
+  dataspace <- cbind(inputData,c_pois,c_bern,partitions)
   
+  # Gather Vectors
+  glm_pois <- getParGLM(cwm_poisson)
+  glm_bern <- getParGLM(cwm_bernoulli)
   
+  v_pois <- returnVectors(glm_pois)
+  v_bern <- returnVectors(glm_bern)
   
+  subSpace <- genSubspace(dataspace = dataspace,
+                          vectors_p = v_pois,
+                          vectors_b = v_bern)
   
-  return(list(poisson_model = cwm_poisson,
-              bernoulli_model = cwm_bernoulli ))
+  return(subSpace)
 }
+
+
+
+
+
+
+#| RESTRUCTURING COEFFICIENTS
+#| =============================================================================================|
+#| RETURN VECTORS FUNCTION                                                                      |
+#| Nik Pocuca July 19th - 2017                                                                  |
+#| Returns glm vectors in the form of a dataframe.                                              |
+#| =============================================================================================|
+returnVectors <- function(cwmGLM){
+  
+  # Get names
+  vNames <-  names(cwmGLM$GLMComp.1$coefficients)
+  
+  
+  # Placeholder dataframe.
+  dataPlaceholder <-  data.frame()
+  for(i in cwmGLM){
+    dataPlaceholder <- rbind(dataPlaceholder, i$coefficients)
+  }
+  
+  
+  # Set Names for dataframe
+  colnames(dataPlaceholder) <- vNames
+  
+  return(dataPlaceholder)} # END OF RETURN VECTORS FUNCTION
+#| =============================================================================================|
+
+
+
+#| GENERATING SUBSPACES FOR DATA
+#| =============================================================================================|
+#| GENERATE SUBSPACE FUNCTION                                                                   |
+#| Nik Pocuca August 1st - 2018                                                                 |
+#| Returns object with subspaces and their respective vectors.                                  |
+#| =============================================================================================|
+
+genSubspace <- function(dataspace, vectors_p, vectors_b){
+  
+  subspace <- list()
+  
+  for (i in unique(dataspace$partitions)){
+  
+    s_space <- dataspace[partitions == i,]
+    subspace[[i]] <- list(dta = s_space,
+                          p_vector = vectors_p[s_space$c_pois[1],],
+                          b_vector = vectors_b[s_space$c_bern[1],])
+    
+  }
+  
+  return(subspace)
+}
+
+
+
