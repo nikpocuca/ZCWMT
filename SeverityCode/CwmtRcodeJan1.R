@@ -197,8 +197,13 @@ stat_perc <- c(stat_1$sz_t/stat_total,
                stat_4$sz_t/stat_total)
 
 
+# ===== stargazering the summary table. ================#
+
+
+
+
 # ==========================================================================================
-# Extra functions for later. 
+# Extra functions for building the package in the future. 
 #function part 1 conditional test
 covI_check <- function(names, data_name)
 {
