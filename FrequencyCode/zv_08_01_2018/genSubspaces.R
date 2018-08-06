@@ -12,7 +12,7 @@ genSubspaces <- function(dataspace, vectors_p, vectors_b){
   
   for (i in unique(dataspace$partitions)){
     
-    s_space <- dataspace[partitions == i,]
+    s_space <- dataspace[dataspace$partitions == i,]
     subspace[[i]] <- list(dta = s_space,
                           p_vector = vectors_p[s_space$c_pois[1],],
                           b_vector = vectors_b[s_space$c_bern[1],])

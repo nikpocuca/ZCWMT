@@ -4,5 +4,6 @@ sourceCode <- function() {
   source("optimizeZero.R")
   source("genSubspaces.R")
   source("returnVectors.R")
+  source("split_formulas.R")
   m <<- read.csv("m.csv")
 }

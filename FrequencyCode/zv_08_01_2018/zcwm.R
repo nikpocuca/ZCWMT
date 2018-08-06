@@ -33,7 +33,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, ...){
   cat(' Poisson Model\n\n')
   
   attach(inputdata)
-  cwm_poisson <- cwm(formulaY = formulaP,
+  cwm_poisson <<- cwm(formulaY = formulaP,
                      data = inputdata,
                      familyY = poisson(link= "log" ), Xnorm = Xnorms, modelXnorm = "V" ,k = np, ...)
   detach(inputdata)
@@ -44,7 +44,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, ...){
   cat('Bernoulli Zero Inflation Model \n\n')
   
   attach(data_z)
-  cwm_bernoulli <- cwm(formulaY = formulaZI,
+  cwm_bernoulli <<- cwm(formulaY = formulaZI,
                      data = data_z,
                      familyY = binomial(link= "logit" ), modelXnorm = "V", Xnorm = Xnorms, k = np, ...)
   detach(data_z)
@@ -58,7 +58,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, ...){
   c_pois <- getCluster(cwm_poisson)
   c_bern <- getCluster(cwm_bernoulli)
   lex <- paste(c_pois,c_bern, sep="")
-  partitions <- match(lex, unique(lex))
+  partitions <<- match(lex, unique(lex))
   
   dataspace <- cbind(inputdata,c_pois,c_bern,partitions)
   
@@ -68,6 +68,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, ...){
   
   v_pois <- returnVectors(glm_pois)
   v_bern <- returnVectors(glm_bern)
+ 
   
   subSpaces <- genSubspaces(dataspace = dataspace,
                           vectors_p = v_pois,
@@ -75,13 +76,18 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, ...){
 
   new_zeroinflated_formula <- split_formulas(formula_P = formulaP,
                                              formula_Z = formulaZI)
-  
+ 
   # I need to parallelize this section in the future 
   count <- 1
   hold_models <- list() 
   for (sub_space in subSpaces){
+   
+   cat(paste('Optimizing Partition - ', count),'\n')  
     zero_model <- optimizeZeroInflation(subspace = sub_space,formulaZ = new_zeroinflated_formula)
     hold_models[[count]] <- zero_model
+    
+   print(summary(hold_models[[count]]))
+   
     count <- count + 1
   }
   

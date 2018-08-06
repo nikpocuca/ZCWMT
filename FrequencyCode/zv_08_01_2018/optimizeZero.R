@@ -7,18 +7,20 @@
 #| =============================================================================================|
 
 optimizeZeroInflation <- function(subspace,formulaZ){
-  
+ 
+	
   input_data <- subspace$dta
   input_vectors <- list(pVector = subspace$p_vector,
                         bVector = subspace$b_vector)
   
   zero_model <- tryCatch({
-    
-    zero_run <- z_mk1(formula = formulaZP,
-                      data = subspace$dta,
+ 
+    zero_run <- z_mk1(formula = formulaZ,
+                     data = subspace$dta,
                       dist = "poisson",
                       vectors = input_vectors)          
-    
+   
+
     return(zero_run)
   },
   error = function(cond){
