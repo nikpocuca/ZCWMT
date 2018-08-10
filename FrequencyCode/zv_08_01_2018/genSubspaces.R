@@ -23,3 +23,17 @@ genSubspaces <- function(dataspace, vectors_p, vectors_b){
 }
 
 
+genSubspacesB_P <- function(dataspace) {
+  
+  subspace <- list()
+  
+  for (i in unique(dataspace$partitions)){
+    
+    s_space <- dataspace[dataspace$partitions == i,]
+    subspace[[i]] <- list(dta = s_space)
+  }
+  
+  return(subspace)
+  
+}
+

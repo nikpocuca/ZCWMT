@@ -5,5 +5,6 @@ sourceCode <- function() {
   source("genSubspaces.R")
   source("returnVectors.R")
   source("split_formulas.R")
+  source("modified_wilsonTest.R")
   m <<- read.csv("m.csv")
 }

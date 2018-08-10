@@ -22,50 +22,54 @@ m72 <- m[m$Region == "R72",]
 
 
 # Run script. 
-runFull <- function(input_data) {
+runFull <- function(input_data,method,g) {
 
   zero_models <<-  zcwm(inputdata = input_data, 
                         formulaP = fr_p,
                         formulaZI = fr_z,
                         Xnorms = c(LogDensity),
                         runC = 1,
-                        np = 1:4)
+                        method = method, 
+                        np = g)
   
 }
 
-runZero <- function(input_data){
+runZero <- function(input_data,method,g){
 
 zero_models <<- zcwm(inputdata = input_data, 
              formulaP = fr_p,
              formulaZI = fr_z,
 	     runC = 0,
+	            method, 
              Xnorms = c(LogDensity),
-             np = 1:4)
+             np = g)
 
 }
 
 
 
-runFullR <- function(input_data) {
+runFullR <- function(input_data,method,g) {
 
   zero_models <<-  zcwm(inputdata = input_data, 
                         formulaP = fr_pr,
                         formulaZI = fr_zr,
                         Xnorms = c(LogDensity),
                         runC = 1,
-                        np = 1:4)
+                        method = method, 
+                        np = g)
 }
 
 
 
-runZeroR <- function(input_data){
+runZeroR <- function(input_data,method,g){
 
 zero_models <<- zcwm(inputdata = input_data, 
              formulaP = fr_pr,
              formulaZI = fr_zr,
-	     runC = 0,
+	           runC = 0,
              Xnorms = c(LogDensity),
-             np = 1:4)
+	           method = method, 
+             np = g)
 
 }
 

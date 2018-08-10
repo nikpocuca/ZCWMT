@@ -6,27 +6,39 @@
 #| returns zero-inflated cwm object                                                              |
 #| =============================================================================================|
 
-optimizeZeroInflation <- function(subspace,formulaZ){
+optimizeZeroInflation <- function(subspace,formulaZ,method){
  
-	
-  input_data <- subspace$dta
-  input_vectors <- list(pVector = subspace$p_vector,
-                        bVector = subspace$b_vector)
+	if (method == "BP") {
+    input_data <- subspace$dta
+    input_vectors <- list(pVector = subspace$p_vector,
+                          bVector = subspace$b_vector)
+    zero_model <- tryCatch({
+      zero_run <- z_mk1(formula = formulaZ,
+                       data = subspace$dta,
+                        dist = "poisson",
+                        vectors = input_vectors)          
+      return(zero_run)
+    },
+    error = function(cond){
+      print(cond)
+      return("Error has a occured, could not zero-inflate for this partition")  
+    })
+	}
   
-  zero_model <- tryCatch({
- 
-    zero_run <- z_mk1(formula = formulaZ,
-                     data = subspace$dta,
-                      dist = "poisson",
-                      vectors = input_vectors)          
-   
-
-    return(zero_run)
-  },
-  error = function(cond){
-    print(cond)
-    return("Error has a occured, could not zero-inflate for this partition")  
-  })
+  else {
+    input_data <- subspace$dta
+    zero_model <- tryCatch({
+      zero_run <- zeroinfl(formula = formulaZ,
+                        data = subspace$dta,
+                        dist = "poisson")          
+      return(zero_run)
+    },
+    error = function(cond){
+      print(cond)
+      return("Error has a occured, could not zero-inflate for this partition")  
+    })
+  }
+  
   return(zero_model)
 }
 

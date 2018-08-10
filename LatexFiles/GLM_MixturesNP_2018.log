@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.7.9)  6 AUG 2018 14:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.7.9)  7 AUG 2018 08:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -671,15 +671,11 @@ T1/cmr/m/n/10 )$\OT1/ptm/m/n/10 .
  []
 
 
-Overfull \hbox (31.13506pt too wide) in paragraph at lines 809--810
- [] 
+Overfull \hbox (50.27763pt too wide) in paragraph at lines 783--811
+[][] 
  []
 
-[23]
-Overfull \vbox (17.73686pt too high) has occurred while \output is active []
-
-
-[24] (./GLM_MixturesNP_2018.bbl [25]
+[23] [24] (./GLM_MixturesNP_2018.bbl [25]
 Missing character: There is no á in font ptmr7t!
  [26]
 Missing character: There is no – in font ptmr7t!
@@ -697,10 +693,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6145 strings out of 494880
- 88527 string characters out of 6179602
- 181433 words of memory out of 5000000
- 9262 multiletter control sequences out of 15000+600000
+ 6147 strings out of 494880
+ 88553 string characters out of 6179602
+ 181447 words of memory out of 5000000
+ 9264 multiletter control sequences out of 15000+600000
  43755 words of font info for 114 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  42i,23n,46p,1522b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -731,7 +727,7 @@ bols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (27 pages, 732171 bytes).
+Output written on GLM_MixturesNP_2018.pdf (27 pages, 732132 bytes).
 PDF statistics:
  353 PDF objects out of 1000 (max. 8388607)
  256 compressed objects within 3 object streams
