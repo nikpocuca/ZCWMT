@@ -5,8 +5,8 @@
 sourceCode() 
 
 # Create formula
-fr_p <- formula(ClaimNb ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge))
-fr_z <- formula(ClaimNb ~ LogDensity + factor(CatDriverAge) + powerF )
+fr_p <- formula(ClaimNb ~ LogDensity  + factor(CatDriverAge))
+fr_z <- formula(ClaimNb ~ LogDensity + factor(CatCarAge) )
 
 fr_pr <- formula(ClaimNb ~ LogDensity + Region + powerF )
 fr_zr <- formula(ClaimNb ~ LogDensity + factor(CatDriverAge) )

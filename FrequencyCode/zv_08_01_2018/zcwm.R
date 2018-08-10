@@ -133,7 +133,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
       
       count <- count + 1
     }
-    
+    return(hold_models)
   }
   
   if (method == "B"){
@@ -172,7 +172,9 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
       
       count <- count + 1
     }
-    
+
+
+    return(hold_models)
   }
   }
 }
