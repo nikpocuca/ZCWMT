@@ -13,7 +13,7 @@ library(pscl)
 
 zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
   
-  if (runC == 1){
+
   # Create zero space. 
   data_z <- inputdata
   
@@ -26,7 +26,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
     
   if (method == "BP") {
   
-  
+  if (runC == 1){
   cat('Beginning Partition using CWM','\n')
   cat('==============================','\n\n')
 
@@ -51,7 +51,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
                      data = data_z,
                      familyY = binomial(link= "logit" ), modelXnorm = "V", Xnorm = Xnorms, k = np, ...)
   detach(data_z)
-  
+  }
   
   # Match Partitions. 
   cat('Beginning Zero inflated CWM','\n')
@@ -89,8 +89,6 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
     zero_model <- optimizeZeroInflation(subspace = sub_space,formulaZ = new_zeroinflated_formula)
     hold_models[[count]] <- zero_model
     
-   print(summary(hold_models[[count]]))
-   
     count <- count + 1
   }
   
@@ -98,7 +96,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
   }
   
   if (method == "P"){
-    
+    if (runC == 1){
     cat('Beginning Partition using CWM','\n')
     cat('==============================','\n\n')
     
@@ -112,7 +110,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
                         data = inputdata,
                         familyY = poisson(link= "log" ), Xnorm = Xnorms, modelXnorm = "V" ,k = np, ...)
     detach(inputdata)
-    
+    }
     partitions <<- getCluster(cwm_poisson)
     
     new_zeroinflated_formula <- split_formulas(formula_P = formulaP,
@@ -129,7 +127,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
       zero_model <- optimizeZeroInflation(subspace = sub_space,formulaZ = new_zeroinflated_formula,method = method)
       hold_models[[count]] <- zero_model
       
-      print(summary(hold_models[[count]]))
+  
       
       count <- count + 1
     }
@@ -137,11 +135,11 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
   }
   
   if (method == "B"){
-    
+    if (runC == 1){   
     cat('Beginning Partition using CWM','\n')
     cat('==============================','\n\n')
     
-    # First Partition Poisson
+ 
     
     cat('\n')
     cat('Bernoulli Zero Inflation Model \n\n')
@@ -153,7 +151,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
     detach(data_z)
     
     partitions <<- getCluster(cwm_poisson)
-    
+    }
     new_zeroinflated_formula <- split_formulas(formula_P = formulaP,
                                                formula_Z = formulaZI)
     
@@ -167,8 +165,7 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
       cat(paste('Optimizing Partition - ', count),'\n')  
       zero_model <- optimizeZeroInflation(subspace = sub_space,formulaZ = new_zeroinflated_formula,method = method)
       hold_models[[count]] <- zero_model
-      
-      print(summary(hold_models[[count]]))
+  
       
       count <- count + 1
     }
@@ -176,6 +173,6 @@ zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
 
     return(hold_models)
   }
-  }
+
 }
 

@@ -12,12 +12,17 @@ modified_wilson <- function(zero_model,input_data,formula_P,formula_Z){
                    familyY = poisson(link="log"),
                    k = 1)
   
+  #glm_single <<- glm(formula = formula_P, data = input_data,
+                 #Xnorm = input_Xnorms,
+   #              familyY = poisson(link="log"))
+  
+  
   detach(input_data)
   
   hold_best <- getBestModel(cwm_model_single)
   cwm_logLik <- unlist(hold_best$models)$logLik
-  cwm_df <- unlist(getBestModel(cwm_model_single))$df
-  
+  cwm_df <- unlist(getBestModel(cwm_model_single)$models)$df
+    
   zcwm_logLik <- zero_model$loglik
   
   #Calculate Test Statistic
@@ -28,8 +33,11 @@ modified_wilson <- function(zero_model,input_data,formula_P,formula_Z){
   splitted_tilda <- unlist(splitted_pluses)[-1]
   zero_df <- (zero_model$n - zero_model$df.residual)
   
+  diff_df = zero_df - cwm_df
+  print(zero_df)
+  print(diff_df)
   #Theoritcal ChiSquare 
-  chi_test_theo <- qchisq(p = 0.90, df = zero_df)
+  chi_test_theo <- qchisq(p = 0.90, df = diff_df)
   
   # BIC Calculation 
   cwmpBIC <- -1*getIC(hold_best)[6]

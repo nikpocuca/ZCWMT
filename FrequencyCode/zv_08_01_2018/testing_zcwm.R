@@ -5,8 +5,8 @@
 sourceCode() 
 
 # Create formula
-fr_p <- formula(ClaimNb ~ LogDensity  + powerF)
-fr_z <- formula(ClaimNb ~ LogDensity + factor(CatCarrAge))
+fr_p <- formula(ClaimNb ~ LogDensity + EXPOSURE + powerF)
+fr_z <- formula(ClaimNb ~  factor(CatCarAge))
 
 fr_pr <- formula(ClaimNb ~ LogDensity + Region + powerF)
 fr_zr <- formula(ClaimNb ~ LogDensity + factor(CatDriverAge))
@@ -82,19 +82,18 @@ zero_models <<- zcwm(inputdata = input_data,
 
 
 # Toy Example Takes 5 minutes to run. 
+in_data = m11
 
-runFull(m11,method = "P",g = 1:3)
-
-
+runFull(in_data,method = "P",g = 1:3)
 # Note that BIC's are very close, the LR test shows a 
 space <- 1
-modified_wilson(zero_model = zero_models[[space]], input_data = m11[partitions == space,],
+modified_wilson(zero_model = zero_models[[space]], input_data = in_data[partitions == space,],
                 formula_P = fr_p,
                 formula_Z = fr_z)
 
 
 space <- 2
-modified_wilson(zero_model = zero_models[[space]], input_data = m11[partitions == space,],
+modified_wilson(zero_model = zero_models[[space]], input_data = in_data[partitions == space,],
                 formula_P = fr_p,
                 formula_Z = fr_z)
 
