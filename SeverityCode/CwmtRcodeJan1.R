@@ -72,22 +72,22 @@ set.seed(101)
 runSev <- function(dataInput) {
   
   attach(dataInput)
-   fitLognormal <-  cwm(formulaY= LogAggClaimAmount ~ Density + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF + Gas,
-                        k=1:5, data=dataInput,
-                        familyY=gaussian(link="identity"),
-                        Xnorm = cbind(Density),
-                        iter.max = 500,
-                        modelXnorm = 'V'
-                        )
+  fitLognormal <-  cwm(formulaY= LogAggClaimAmount ~ Density + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF + Gas,
+                       k=1:5, data=dataInput,
+                       familyY=gaussian(link="identity"),
+                       Xnorm = cbind(Density),
+                       iter.max = 500,
+                       modelXnorm = 'V'
+  )
   
- 
+  
   fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF + Gas,
                        k=1:5, data=dataInput,
                        familyY=gaussian(link="identity"),
                        Xnorm = cbind(LogDensity),
                        iter.max = 500,
                        modelXnorm = 'V'
-                       )
+  )
   
   detach(dataInput)
   
@@ -159,9 +159,9 @@ stargazer(t_model_table_final,summary = FALSE)
 # Red and Green show to be the two highest levels of volitility, 
 # teal and blue show the two least levels of volitility.  
 plot(m$LogDensity,m$LogAggClaimAmount,col = getCluster(t_model) + 1,pch = 19,
-     main = "Claims vs. Density Transformed",
+     #main = "Claims vs. Density Transformed",
      xlab = "Density",
-     ylab = "Claims",
+     ylab = "Loss Amount",
      cex = 0.5)
 
 

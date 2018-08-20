@@ -397,15 +397,12 @@ GCWM & $1$ & $$$111,129$ & $$$111,320$ \\
 
 The result of the transformation is a better AIC and BIC. Table \ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
 
-
-\subsubsection{Driver Analysis of Severity Model}
-
 	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various fields of drivers. The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters.
 \begin{figure}[!htb]
-\caption{Showing clusters in color for Claims vs Density on a log scale.}
+\caption{Showing clusters in color for Loss Amount vs Density on a log scale.}
 \label{fig:vet1}
 \begin{center}
-\includegraphics[scale=0.83]{claims_v_density.png}
+\includegraphics[scale=0.83]{SeverityPlot}
 \end{center}
 \end{figure}
 \begin{table}[!htb]
@@ -636,12 +633,16 @@ In summary, our simulation results showed good performance of  GCWM a approach i
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
 In this section we show how the Bernoulli-Poisson partitioning (BP) method  behaves under different conditions. The components were genereated under similar coefficients taken from the \textbf{CASDatasets} package. The coefficients were rounded and treated as true parameters to which data was generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM a model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
-The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates and the following GLM model
-$$ \text{SimClaims} \sim \text{SimDriverAge + SimLogDensity + SimCarAge} . $$
- Here the GCWM a model is fitted to the simulated data and used to classify into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation is based on the generated dataset are presented in Table \ref{table:driverFreq}. The total misclassification rate  is $1.8 \% $ and the majority of misclassified components are between components two and three.
+The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates and 
+\begin{equation}
+SimClaimsNb = SimDriverAge + SimDensity + SimCarAge 
+\end{equation}
+as the GLM. The covariates $SimDriverAge$,$SimDensity$,and $SimCarAge$ are considered for both the Poisson and Bernoulli models. 
+ Here the GCWM is fitted to the simulated data and used to classify into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation is based on the generated dataset are presented in Table \ref{misclassTable}. The total misclassification rate  is $1.8 \% $ and the majority of misclassified components are between components two and three.
 \begin{table}[!htb]
 \begin{center}
 \caption{Misclassfication rate and label comparison of generated data.}
+\label{misclassTable}
 \begin{tabular}{c c c c c c}
 \hline\hline
     True Labels       &  \multicolumn{3}{c}{ Classified }   & Misclassification Rate (\%) &  \\ \cmidrule{2-4}

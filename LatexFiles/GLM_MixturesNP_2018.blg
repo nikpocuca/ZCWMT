@@ -1,4 +1,6 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: GLM_MixturesNP_2018.aux
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: GLM_MixturesNP_2018.aux
 The style file: elsart-harv.bst
 Database file #1: GLM_Mixtures_2018.bib
 I was expecting a `,' or a `}'---line 154 of file GLM_Mixtures_2018.bib
@@ -6,10 +8,6 @@ I was expecting a `,' or a `}'---line 154 of file GLM_Mixtures_2018.bib
  :   pages =  {627--647},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Too many commas in name 1 of "Frees, E.W., Derrig, R.A. and Meyers, G. eds." for entry Frees+Derrig+Meyer:2014
-while executing---line 1456 of file elsart-harv.bst
-Too many commas in name 1 of "Frees, E.W., Derrig, R.A. and Meyers, G. eds." for entry Frees+Derrig+Meyer:2014
-while executing---line 1456 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Punzo, A., Vittadini, G. and Minotti, S.C." for entry Ingrassia+Punzo+Vittadini+Minotti:2015
 while executing---line 1456 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Punzo, A., Vittadini, G. and Minotti, S.C." for entry Ingrassia+Punzo+Vittadini+Minotti:2015
@@ -34,10 +32,6 @@ Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." fo
 while executing---line 1456 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." for entry Ingrassia+Minotti+Vittadini:2012
 while executing---line 1456 of file elsart-harv.bst
-Too many commas in name 1 of "Frees, E.W., Derrig, R.A. and Meyers, G. eds." for entry Frees+Derrig+Meyer:2014
-while executing---line 1545 of file elsart-harv.bst
-Too many commas in name 1 of "Frees, E.W., Derrig, R.A. and Meyers, G. eds." for entry Frees+Derrig+Meyer:2014
-while executing---line 1545 of file elsart-harv.bst
 Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E., 1999." for entry Gershenfeld:Schoner+Metois:1999
 while executing---line 1545 of file elsart-harv.bst
 Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E., 1999." for entry Gershenfeld:Schoner+Metois:1999
@@ -65,4 +59,45 @@ while executing---line 1545 of file elsart-harv.bst
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
 Warning--empty journal in misuse
-(There were 29 error messages)
+You've used 34 entries,
+            2821 wiz_defined-function locations,
+            875 strings with 10797 characters,
+and the built_in function-call counts, 15472 in all, are:
+= -- 1643
+> -- 646
+< -- 30
++ -- 257
+- -- 207
+* -- 1320
+:= -- 2761
+add.period$ -- 102
+call.type$ -- 34
+change.case$ -- 234
+chr.to.int$ -- 34
+cite$ -- 37
+duplicate$ -- 595
+empty$ -- 1111
+format.name$ -- 333
+if$ -- 3128
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 40
+newline$ -- 117
+num.names$ -- 136
+pop$ -- 227
+preamble$ -- 1
+purify$ -- 205
+quote$ -- 0
+skip$ -- 462
+stack$ -- 0
+substring$ -- 910
+swap$ -- 88
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 285
+warning$ -- 3
+while$ -- 143
+width$ -- 0
+write$ -- 379
+(There were 25 error messages)
