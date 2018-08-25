@@ -146,15 +146,15 @@ Here, the link function will be modelled with log-link for the GLM:
 \lambda_j = e^{\xTilda \bm{\beta_j}'}, && %\beta_{0j} + \beta_j^{'}x
 q^P(y|  x ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
  \end{align*}
-Next, we introduce a Bernoulli process for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\mathbbm{1}(\cdot)$ is the indicator function and  $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function
+Next, we introduce a Bernoulli process for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function
  \begin{align*}
  \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta_j}}'}}{1+ e^{\xTilda  \bm{\bar{\beta_j}}'}},  &&
  q^B(y | \bm{x} ; \bm{\bar{\beta_j}}) = \begin{cases}
-      \quad \psi_j, & \mathbbm{1}(y) = 0 \\
-     1 -  \psi_j,  & \mathbbm{1}(y) = 1
+      \quad \psi_j, & y = 0\\
+     1 -  \psi_j,  & y = 1
    \end{cases}
  \end{align*}
- Now, given a combination of two preceding models, we introduce the ZIP process in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients $ \bm{\vartheta_{j}} :=  \{ \bm{\beta_{j}},  \bm{\bar{\beta_j}} \} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta_{j}}  )$ are %Nik: something missing here?, PM: Fixed.
+ Now, given a combination of two preceding models, we introduce the zero inflated poisson model in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients $ \bm{\vartheta_{j}} :=  \{ \bm{\beta_{j}},  \bm{\bar{\beta_j}} \} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta_{j}}  )$ are %Nik: something missing here?, PM: Fixed.
  \begin{align*}
  q(0 | x ; \bm{ \vartheta_{j} } ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
 q(y > 0 |  x ; \bm{ \vartheta_{j} } ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.
@@ -165,7 +165,7 @@ Also, the link functions to consider are log-link for the Poisson model and logi
 \lambda_j  = e^{\xTilda \bm{\beta_j}'}.
  \end{align*}
 
-Let paramater $\psi_j$ denote the probability that the zero comes from the Bernoulli distribution of $j$th component, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. This allows for a more nuanced approach to handling the inflation of zeros similarly as in \cite{Bermudez+Karlis:2012}.
+Let paramater $\psi_j$ denote the probability that the zero comes from the Bernoulli distribution of $j$th component, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. This allows for a more nuanced approach to handling the inflation of zeros for automobile insurance (see \cite{Bermudez+Karlis:2012} ).
 \section{Introducing Bernoulli-Poisson Partitioning}
 
 The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros (see  \citep{Bermudez+Karlis:2012}). In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM when means of covariates are very close together (see  \cite{LimHwa}). However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}.
@@ -281,7 +281,7 @@ l(\psi_k,\lambda_k; y, \bm{x}) = \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda_i \b
 Where $y_i$, and $\xTilda_i$ referes to the ith row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term, the log-liklihood is complicated to maximize, \cite{Lambert} provides a meaningful solution. Suppose that we could observe ${Z_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition k, and $Z_{ik} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-liklihood would be written as
 
 \begin{align}
-l_c(\psi_k,\lambda_k;y,\bm{z_k }) = & \sum_{i=1}^n \left( z_{ik}\bm{\xTilda_i \bar{\beta_k }^{'}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}} \right) + \sum_{i=1}^n (1-z_{ik}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-z_{ik})\log(y_i!) \nonumber \\
+l_c(\psi_k,\lambda_k;y,\bm{z_k }) = & \sum_{i=1}^n \left( z_{ik}\bm{\xTilda_i \bar{\beta_k }^{'}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}}) \right) + \sum_{i=1}^n (1-z_{ik}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-z_{ik})\log(y_i!) \nonumber \\
 =  & \quad l_c(\psi_k;\bm{y,z_k}) + l_c(\lambda_k; \bm{y,z_k}) + \sum_{i=1}^n (1- z_{ik})\log(y_i!) \label{CompleteZLog}
 \end{align}
 
@@ -305,7 +305,7 @@ l_c(\psi_k;\bm{y,z_k^{(s)}}) &=\sum_{i=1}^n \left( z_{ik}^{(s)} \bm{\xTilda_i \b
  l_c(\lambda_k; \bm{y,z_k^{(s)}}) &= \sum_{i=1}^n (1- z_{ik}^{(s)}) (y_i \bm{ \xTilda_i \beta_k^{'(s)} } - e^{\bm{\xTilda_i \beta_k}^{'(s)}})\label{eq7}
  \end{align}
 The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ \citep{McCullaghNelder1989}, yielding $\lambda_k^{(s+1)}$.
-While the parameter for \eqref{eq7} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ \citep{Lambert}.
+While the parameter for \eqref{eq6} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ \citep{Lambert}.
 
 \subsection{Comparing zero-inflated Models}
 
@@ -317,7 +317,7 @@ Until recently the usual test for comparing zero-inflated to non-zero inflated m
 \varphi = -2 \bigg[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\bigg]
 \label{LRTest}
 \end{align}
-where $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the kth parition. The test statistic $\varphi$ is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and $\alpha = 0.10$ \citep{newIntuitive}.
+where $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the kth parition. The test statistic $\varphi$ is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and $\alpha = 0.10$ \citep{newIntuitive}. For a more nuanced approach we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on said $\Omega_k$. 
 
 \section{Application}
 \subsection{Data}
@@ -376,7 +376,7 @@ The left side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is 
 \begin{table}[!htbp] \centering
   \caption{Comparing AIC and BIC for CWM verses GCWM models.}
   \label{comparingCWM_models}
-\begin{tabular}{@{\extracolsep{5pt}} cccc}
+\begin{tabular}{@{\extracolsep{5pt}} rrrr}
 \\[-1.8ex]\hline
 \hline \\[-1.8ex]
 Model & k & AIC & BIC \\
@@ -409,7 +409,7 @@ The result of the transformation is a better AIC and BIC. Table \ref{comparingCW
 \centering
 \caption{Size of clusters for the GCWM a model.}
 \label{table:sizeSev}
-\begin{tabular}{cccc}
+\begin{tabular}{rrrr}
 \hline\hline
 1   & 2  &  3   & 4    \\
 1,683 & 5,766 & 848 & 7,093 \\
@@ -418,21 +418,21 @@ Red & Green & Blue & Teal \\
 \end{tabular}
 \end{table}
 
-After fitting the model, we then take a look at the size of each cluster. The GCWM a function has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table \ref{table:sizeSev}. Attention is brought to largest quantity  of drivers that are grouped into cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1}.
+After fitting the model, we then take a look at the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table \ref{table:sizeSev}. Attention is brought to largest quantity  of drivers that are grouped into cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1}.
 From the results we can create an insurance model with the following characteristics. Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 4 drivers have also low variability but a higher average cost, thus they would have a rate higher than cluster 3. Cluster 2 drivers have the next highest cost and variability of the clusters, these drivers are colored in green in Figure \ref{fig:vet1}. The final cluster colored in red has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
 \begin{table}[!htb]
 \centering
 \caption{Summarized volatility information of each cluster for Claims.}
 \label{table:volSev}
 \scalebox{0.90}{
-\begin{tabular}{llllll}
+\begin{tabular}{rrrrrr}
 \hline\hline
 Volatility Level - (Cluster)  $\quad$    & Minimum & Mean  & Maximum & $\sigma (0.05) $    \\
 \hline
-V1 - (3)$\quad\quad\quad$ & 51  & 79 & 154 & \textbf{ 13.19} \\
-V2 - (4)$\quad\quad\quad$ & 1039  & 3109  &  1324 & \textbf{ 52.07} \\
-V3 - (2)$\quad\quad\quad$ & 221 & 1687  & 8841  &\textbf{ 1284.41}  \\
-V4 - (1)$\quad\quad\quad$ & 2 & 9717 & 2036833  & \textbf{ 64835.96}   \\
+V1 - (3)$\quad\quad\quad$ & 51  & 79 & 154 & \textbf{ 13} \\
+V2 - (4)$\quad\quad\quad$ & 1039  & 3109  &  1324 & \textbf{ 52} \\
+V3 - (2)$\quad\quad\quad$ & 221 & 1687  & 8841  &\textbf{ 1284}  \\
+V4 - (1)$\quad\quad\quad$ & 2 & 9717 & 2036833  & \textbf{ 64835}   \\
 \hline\hline
 \end{tabular}
 }
@@ -440,12 +440,12 @@ V4 - (1)$\quad\quad\quad$ & 2 & 9717 & 2036833  & \textbf{ 64835.96}   \\
 
 
 
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13.19, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility. Moving onto V2, these drivers have the second level of volatility. Drivers in this range tend to have claims anywhere between \$1039 to \$3109, with a standard deviation of \$ 52.07, and a mean of \$3109.  Proceeding to V3, its volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1687, and a standard deviation of \$1284.41. Finally V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$ 2036833, a mean of \$9717, and a standard deviation of \$64835.96.
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility. Moving onto V2, these drivers have the second level of volatility. Drivers in this range tend to have claims anywhere between \$1039 to \$3109, with a standard deviation of \$ 52, and a mean of \$3109.  Proceeding to V3, its volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1687, and a standard deviation of \$1284. Finally V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$ 2036833, a mean of \$9717, and a standard deviation of \$64835.
 
 Coefficients of clustered results are used to calculate premiums in car insurance. Table \ref{severity_coef_table} shows the coefficients of the fitted model. The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*), $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value.
 pertaining to the $P$ value of the specific coefficient. In each cluster significance varies but overall the majority of coefficients are significant.
 
-To summarize, the drivers have been clustered into four categories with distinct characteristics outlined in Table~\ref{table:volSev}. We have seen how using the results from GCWM, one can create an insurance model based on clustering algorithms with various levels of risk represented in each cluster. GCWM found a group that was the clear majority of drivers, in which the volatility of their claims was extremely low regardless of $Density$ or $DriverAge$ This finding shows that GCWM may potentially find unique clusters that are otherwise hidden within the data.
+To summarize, the drivers have been clustered into four categories with distinct characteristics outlined in Table~\ref{table:volSev}. We have seen how using the results from GCWM, one can create an insurance model based on clustering algorithms with various levels of risk represented in each cluster. GCWM found a group that was the clear majority of drivers, in which the volatility of their claims was extremely low regardless of $Density$ or $DriverAge$ The results show that GCWM may potentially find unique clusters that are otherwise hidden within the data.
 
 
  \subsubsection{Modeling Claims Frequency}
@@ -464,7 +464,7 @@ After fitting the model, GCWM has found two zero-inflated components and one Poi
 \centering
 \caption{Size of clusters for the GCWM a model.}
 \label{table:sizeFreq}
-\begin{tabular}{cccc}
+\begin{tabular}{rrrr}
 \hline\hline
 1   & 2  &  3   \\
 100492 & 163503 & 149174 \\
@@ -486,8 +486,8 @@ Similarly to modelling severity, the GCWM finds clusters with unique characateri
 
  \begin{table}[!htb]
  \begin{center}
- \caption{Summary of each cluster with log-normal assumptions for the Density covariate.} \label{summarycovariates}
-\begin{tabular}{lcccc}
+ \caption{Summary of each cluster with log-normal assumptions for the Density covariate (log scale).} \label{summarycovariates}
+\begin{tabular}{rrrrr}
 \hline
 \hline
 Cluster - Color & Minimum (km) & Mean (km) & Maximum (km) & $\sigma$ (km) \\
@@ -626,9 +626,9 @@ Model & Component & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)&
 
 
 Table 6 provides the summary of Mean Squared Errors (MSE) of each parameter of the models in Table 4 estimated via 1000 simulation runs.
-In contrary to the results reported in Table 5, these results in Table 6 are significantly different. We can observe that the MSEs for most of the Models and their corresponding components are not generated at all and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian.
+In contrary to the results reported in Table 5, these results in Table 6 are significantly different. We can observe that the MSEs for most of the Models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian.
 
-In summary, our simulation results showed good performance of  GCWM a approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
+In summary, our simulation results showed good performance of the GCWM approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
 
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
@@ -643,16 +643,17 @@ as the GLM. The covariates $SimDriverAge$,$SimDensity$,and $SimCarAge$ are consi
 \begin{center}
 \caption{Misclassfication rate and label comparison of generated data.}
 \label{misclassTable}
-\begin{tabular}{c c c c c c}
+\begin{tabular}{r r r r r r}
 \hline\hline
-    True Labels       &  \multicolumn{3}{c}{ Classified }   & Misclassification Rate (\%) &  \\ \cmidrule{2-4}
+    True Labels       &  \multicolumn{3}{r}{ Classified }   & Misclassification Rate  &  \\ \cmidrule{2-4}
    & 1                              & 2   & 3   &                            &  \\ \hline
-1              & 992                            & 3   & 5   & 0.80                      &  \\
-2              & 0                              & 990 & 10  & 1.00                       &  \\
-3              & 15                             & 20  & 965 & 3.50                      &  \\  \hline
-                \multicolumn{4}{l}{Overall Misclassification Rate}        & 1.80 \%                     & \\
-        		\multicolumn{4}{l}{Average Purity} & 98.23 \%  \\
-                \multicolumn{4}{l}{Adjusted Rand Index} & 0.9479 &  \\
+1              & 992                            & 3   & 5   & 0.80 \%                                      &  \\
+2              & 0                              & 990 & 10  & 1.00 \%                                       &  \\
+3              & 15                             & 20  & 965 & 3.50 \%                                      &  \\  \hline
+                \multicolumn{4}{r}{Overall Misclassification Rate}        & 1.80 \%                  & \\
+        		\multicolumn{4}{r}{Average Purity} & 98.23 \%  
+        		\\ \hline
+                \multicolumn{4}{r}{Adjusted Rand Index} & 0.9479 &  \\
     \hline\hline
 \end{tabular}
 \end{center}
@@ -668,16 +669,16 @@ The experiment is expanded further to show how Bernoulli-Poisson partitioning be
 \begin{center}
 \caption{Experiment 2: mean and standard deviations for each statistic comparing each method.}
 \label{table:exper2}
-\begin{tabular}{lllll}
+\begin{tabular}{rrrrrrrr}
 \hline\hline
-Type   & Condition & Poisson  ($\sigma $) & Bernoulli  ($ \sigma $) & BP-Method ($ \sigma $) \\
+Type   & Condition & Poisson & ($\sigma $) & Bernoulli & ($ \sigma $) & BP-Method & ($ \sigma $) \\
 \hline
-Misclassification Rate& N         & 1.70\%  (6.00)       & 1.60\% (6.00)         & 1.10\% (0.02)         \\
-       & C         & 5.00\%  (7.00)       & 6.00\% (2.00)         & 7.00\% (4.00)         \\
-Average Purity & N         & 98.87\% (2.00)    & 98.91\% (2.25)      & 99.18\% (0.81)     \\
-       & C         & 95.38\% (4.00)    & 94.55\% (1.00)      & 96.95\% (0.48)      \\
-Adjusted Rand Index  & N         & 0.9662 (0.07)    & 0.9677  ( 0.07)     & 0.9729 (0.0217)      \\
-       & C         & 0.8706 (0.08)    & 0.8366 (0.04)      & 0.8538 ( 0.0453) \\
+Misclassification Rate& N         & 1.70\% & (6.00)       & 1.60\%  & (6.00)         & 1.10\% & (0.02)         \\
+       & C         & 5.00\% & (7.00)       & 6.00\% & (2.00)         & 7.00\% & (4.00)         \\
+Average Purity & N         & 98.87\% & (2.00)    & 98.91\% & (2.25)      & 99.18\% & (0.81)     \\
+       & C         & 95.38\% & (4.00)    & 94.55\% & (1.00)      & 96.95\% & (0.48)      \\
+Adjusted Rand Index  & N         & 0.9662 & (0.07)    & 0.9677  & ( 0.07)     & 0.9729 & (0.0217)      \\
+       & C         & 0.8706 & (0.08)    & 0.8366 & (0.04)      & 0.8538 & ( 0.0453) \\
        \hline\hline
 \end{tabular}
 \end{center}
@@ -726,7 +727,7 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
 \begin{sidewaystable}
 \caption{Summary of coefficients for severity clusters.}
 \label{severity_coef_table}
-\begin{tabular}{|l|ccc|ccc|ccc|ccc|}
+\begin{tabular}{|l|rrc|rrc|rrc|rrc|}
 \hline\hline
          & V1         & (Red)     &    & V2         & (Green)   &    & V3          & (Blue)     &    & V4          & (Teal)     &    \\
 Coef      & Estimate   & Error     & P   & Estimate   & Error     & P   & Estimate    & Error      & P   & Estimate    & Error      & P   \\ \hline
@@ -759,7 +760,7 @@ GR        & -0.095 & 0.031 & **  & -0.029 & 0.014 & *   & 0.005   & 0.002 & .   
 \begin{sidewaystable}
 \caption{Summary of coefficients for frequency clusters.}
 \label{frequencySummary}
-\begin{tabular}{|l|ccc|ccc|ccc|}
+\begin{tabular}{|l|rrc|rrc|rrc|}
 \hline\hline
           & Cluster 1 & (Red) &   & Cluster 2 & (Green) &  & Cluster 3 & (Blue) &   \\
 Coef        & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
