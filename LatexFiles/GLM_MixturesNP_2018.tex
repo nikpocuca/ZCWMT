@@ -272,7 +272,7 @@ The estimates of $\bm\beta$ are computed by maximizing each of the $G$ terms
 Maximization of \eqref{eq30} is performed by numerical optimization in R software in a similar framework the mixture of generalized linear models are implemented. For additional details about this implementation the reader is refer to \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
 For insurance applications, current TCWM model can be used for modeling frequency of claims assuming that $\bm{Y}$ belongs to Poisson or Bernoulli distributions. When modelling severity of claims, $\bm{Y}$ can be assumed accommodate Gamma or Lognormal distributions. All of these applications are based on CWM as the underlying approach. For additional information, the reader is referred to the manual of the {\tt flexCWM} package manual for ${\bf R}$ users written by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}.%Nik: use \cite
 \subsection{EM - Zero-inflated}
-The optimization of the zero-inflated model \eqref{ziGCWM} uses the EM algorithm for maximizing the incomplete-data log-liklihood iteratively \citep{Lambert}. The log-likilhood for $\psi_k$ and $\lambda_k$ is expressed as
+The optimization of the zero-inflated model \eqref{ziGCWM} uses the EM algorithm for maximizing the incomplete-data log-liklihood iteratively (see \cite{Lambert}). The log-liklihood for $\psi_k$ and $\lambda_k$ is expressed as
 
 \begin{align*}
 l(\psi_k,\lambda_k; y, \bm{x}) = \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda_i \bar{\beta}_k^{'} } } + \exp{( - e^ { -\bm{ \xTilda_i \beta_k^{'} }})} \big] + \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta_k}^{'} + e^{ \xTilda_i \bm{\beta_k}^{'} } \right) - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bar{\beta_k}^{'} } \right) - \sum_{y_i > 0} \log(y_i ! )
@@ -304,8 +304,8 @@ The M-Step can be split into the maximization of two complete data log-likelihoo
 l_c(\psi_k;\bm{y,z_k^{(s)}}) &=\sum_{i=1}^n \left( z_{ik}^{(s)} \bm{\xTilda_i \bar{\beta_k }^{'(s)}} - \log(1+ e^{\bm{ \xTilda_i \bar{\beta_k }}^{'(s)}} \right)  \label{eq6}   \\
  l_c(\lambda_k; \bm{y,z_k^{(s)}}) &= \sum_{i=1}^n (1- z_{ik}^{(s)}) (y_i \bm{ \xTilda_i \beta_k^{'(s)} } - e^{\bm{\xTilda_i \beta_k}^{'(s)}})\label{eq7}
  \end{align}
-The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ \citep{McCullaghNelder1989}, yielding $\lambda_k^{(s+1)}$.
-While the parameter for \eqref{eq6} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ \citep{Lambert}.
+The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ (see \cite{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
+While the parameter for \eqref{eq6} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ (see \cite{Lambert}).
 
 \subsection{Comparing zero-inflated Models}
 
@@ -317,7 +317,7 @@ Until recently the usual test for comparing zero-inflated to non-zero inflated m
 \varphi = -2 \bigg[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\bigg]
 \label{LRTest}
 \end{align}
-where $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the kth parition. The test statistic $\varphi$ is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and $\alpha = 0.10$ \citep{newIntuitive}. For a more nuanced approach we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on said $\Omega_k$. 
+where $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the kth parition. The test statistic $\varphi$ is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and $\alpha = 0.10$ (see \cite{newIntuitive}). For a more nuanced approach we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on said $\Omega_k$. This approach quickly determines if there is zero-inflation on partition $\Omega_k$, then when evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
 
 \section{Application}
 \subsection{Data}
