@@ -182,7 +182,7 @@ f^P(\bm x, y; \Phi)= \sum_{j=1}^{M} \tau_j q^P(y|\bm{x};\bm{\beta_{j}}) p(\bm{t}
 \end{align*}
 Where this sample space is partitioned up to M non-overlapping sets.
  Now, construct a new partitioning of a sample space $\Omega$ such that
-$$\Omega =  \Omega^Z = \bigcup_{l \in \{1 \ldots G \} , j \in \{1 \ldots M \}  } \Omega_{l,j}^Z := \bigcup_{l \in \{1 \ldots G \} , j \in \{1 \ldots M \}  }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 \ldots K \}} \Omega_k^Z $$, where $K$ can range up to $M \times G$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is of mixture of particular Bernoulli and particular Poisson
+$$\Omega =  \Omega^Z = \bigcup_{l \in \{1 ,\ldots, G \} , j \in \{1 ,\ldots, M \}  } \Omega_{l,j}^Z := \bigcup_{l \in \{1 ,\ldots, G \} , j \in \{1 ,\ldots, M \}  }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 ,\ldots, K \}} \Omega_k^Z $$, where $K$ can range up to $M \times G$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is of mixture of particular Bernoulli and particular Poisson
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k).
 \label{initialziGCWM}\\
