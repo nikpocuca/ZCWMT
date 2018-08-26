@@ -99,7 +99,7 @@ This paper is organized as follows. Section 2 presents the proposed model for mi
 
 \subsection{Background}
 
-Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this set is defined on some space $\Omega$ that takes values in appropriate Euclidian subspace. Now, assume that there exists $G$ partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$.  \cite{Gershenfeld:1997} characterized the Cluster weighted models as a finite mixture of GLMs hence, the joint distribution $f(\bm x, y)$ of $(\bm{X^{'}}, Y )^{'}$  is expressed as follows
+Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this set is defined on some space $\Omega$ that takes values in appropriate Euclidian subspace. Now, assume that there exists $G$ partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$.  \cite{Gershenfeld:1997} characterized the cluster-weighted models as a finite mixture of GLMs hence, the joint distribution $f(\bm x, y)$ of $(\bm{X^{'}}, Y )^{'}$  is expressed as follows
  \begin{align}
  f(\bm x, y)= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\Omega_j)p(\bm{x};\Omega_j).
 \label{eq1}
@@ -111,7 +111,7 @@ The pair $q(y|\bm{x};\Omega_j)$ and $p(\bm{x};\Omega_j)$ are conditional and mar
  f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})p(\bm{x};\bm{\theta_j})=\sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta_j})p(\bm{v}; \bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})
 \label{eq2}
 \end{align}
-where $\bm{v}$ and $\bm{w}$ are the vectors of continues and discrete covariates respectively, the $q(y|\bm{x};\bm{\vartheta_j})$ is a conditional density of $Y|\bm{x}$, with parameter vector $\bm{\vartheta_j}$, the $p(\bm{v};\bm{\theta_j^{\star}})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta_j^{\star}}$. the $p(\bm{w};\bm{\theta_j^{\star\star}})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta_j^{\star\star}}$. Finally $\bm{\Phi}:=(\bm{\theta^{\star}},\bm{\theta^{\star\star}}, \bm{\tau}, \bm{\vartheta})$ includes all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
+where $\bm{v}$ and $\bm{w}$ are the vectors of continues and discrete covariates respectively, the $q(y|\bm{x};\bm{\vartheta_j})$ is a conditional density of $Y|\bm{x}$, with parameter vector $\bm{\vartheta_j}$, the $p(\bm{v};\bm{\theta_j^{\star}})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta_j^{\star}}$. the $p(\bm{w};\bm{\theta_j^{\star\star}})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta_j^{\star\star}}$. Finally, $\bm{\Phi}:=(\bm{\theta^{\star}},\bm{\theta^{\star\star}}, \bm{\tau}, \bm{\vartheta})$ includes all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
 In addition, the conditional distribution $q(y|\bm{x};\bm{\vartheta_j})$ is assumed to belong to an exponential family of distributions and as such can be modeled in the framework of GLMs. Here, the marginal distribution of continues covariates is assumed to be of Gaussian type. Unfortunately, this last assumption is too strong for use in insurance related applications specifically in rate-making. To relax it, we develop the Generalized cluster-weighted mdoel (GCWM) that allows for non-Gaussian covariates as discussed in the next section.
 
 \subsection{Generalized cluster-weighted model (GCWM) }
@@ -123,7 +123,7 @@ We proceed to extend \eqref{eq2} by splitting the  continues covariates further 
 which we refer to as generalized cluster-weighted model (GCWM). Here $p(\bm{t};\bm{\theta_j^{\star}})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta^{\star}}$, and $p(\bm{u};\bm{\theta_j^{\star\star\star}})$ as the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta_j^{\star\star\star}} $.
 
 
-As it is relevant to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates. This however does not reduce the generality of our approach. Now, with our log-normal assumption for $p(\bm{u};\bm{\theta_j^{\star\star\star}})$, we have that $\bm{u}$ is defined on $\mathbb{R}_+$ with parameter vector $ \bm{\theta_j^{\star\star\star}} $, and having probability density function as
+As it is relevant to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates. This however does not reduce the generality of our approach. With log-normal assumption for $p(\bm{u};\bm{\theta_j^{\star\star\star}})$ we have that $\bm{u}$ is defined on $\mathbb{R}_+$ with parameter vector $ \bm{\theta_j^{\star\star\star}} $ having probability density function as
 \begin{align} p \left(  \bm{u}; \bm{\theta_j^{\star\star\star}} := ( \bm{\mu_j^{\star\star\star}} ,\bm{ \Sigma _j^{\star\star\star }} ) \right) = \frac{1}{(\prod_{i=1}^{N}u_{i})|\bm{ \Sigma_j^{\star\star\star}} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu_j}^{\star\star\star})^{'}\bm{\Sigma_j^{{\star\star\star}_{-1}}}(\ln \bm {u}-\bm{\mu_j}^{\star\star\star})\right].
 \end{align} The derivation of the equation above can be found in the Appendix \ref{changeVarUni}.
 
@@ -132,23 +132,23 @@ As it is relevant to the actuarial application in this paper, we focus on the mu
 
 \subsection{Zero-inflated Poisson}%Nik: not sure what this means? Specifically, what is the role of the first "-"
 
-For the zero-inflated Poisson model (ZIP) see \cite{Lambert} we can split the conditional density $p(y|\bm{x},\bm{\vartheta_j})$ into zero and non-zero densities. %Nik: I don't think "groups" is what is meant.  % Values I meant.
-The response $y$ variable when $y= 0$  are distributed with density $q(0|\bm{x},\bm{\vartheta_{j}})$. The response $y$ values when $y > 0$ are distributed with density $q(y > 0|\bm{x}, \bm{\vartheta_{j}} )$. Given the conditional density now defined for the ZIP model, \eqref{eq3}
+In the zero-inflated Poisson model (ZIP) (see \cite{Lambert}) we can split the conditional density $p(y|\bm{x},\bm{\vartheta_j})$ of the response variable $y$, into zero and non-zero densities. %Nik: I don't think "groups" is what is meant.  % Values I meant.
+When $y = 0$ the response variable $y$ is distributed with density $q(y = 0|\bm{x},\bm{\vartheta_{j}})$. When $y > 0$ the response variable $y$ is distributed with density $q(y > 0|\bm{x}, \bm{\vartheta_{j}} )$. Given the conditional density now defined for the ZIP model \eqref{eq3}
 can be re-written as follows
  \begin{align}
- f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(0|\bm{x};\bm{\vartheta_{j} }) +  q(y > 0|\bm{x} ; \bm{\vartheta_{j}})  ) \right]   p(\bm{t};\bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})p(\bm{u};\bm{\theta_j^{\star\star\star}}).
+ f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(y = 0|\bm{x};\bm{\vartheta_{j} }) +  q(y > 0|\bm{x} ; \bm{\vartheta_{j}}  ) \right]   p(\bm{t};\bm{\theta_j^{\star}})p(\bm{w};\bm{\theta_j^{\star\star}})p(\bm{u};\bm{\theta_j^{\star\star\star}}).
 \end{align}
 
 \newcommand{\xTilda}{\bm{\tilde{x}}}
 Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ q^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is the row coefficient vector.
-Here, the link function will be modelled with log-link for the GLM:
+Here, the link function will be modelled with log-link for the GLM such that
  \begin{align*}
-\lambda_j = e^{\xTilda \bm{\beta_j}'}, && %\beta_{0j} + \beta_j^{'}x
+\lambda_j = e^{\xTilda \bm{\beta_j}'} && \text{and} & & %\beta_{0j} + \beta_j^{'}x
 q^P(y|  x ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
  \end{align*}
-Next, we introduce a Bernoulli process for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function
+Next, we introduce a Bernoulli model for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function such that
  \begin{align*}
- \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta_j}}'}}{1+ e^{\xTilda  \bm{\bar{\beta_j}}'}},  &&
+ \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta_j}}'}}{1+ e^{\xTilda  \bm{\bar{\beta_j}}'}},  && \text{and} && 
  q^B(y | \bm{x} ; \bm{\bar{\beta_j}}) = \begin{cases}
       \quad \psi_j, & y = 0\\
      1 -  \psi_j,  & y = 1
