@@ -140,15 +140,15 @@ can be re-written as follows
 \end{align}
 
 \newcommand{\xTilda}{\bm{\tilde{x}}}
-Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ q^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is the row coefficient vector.
+Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ q^P(y|\bm{x}; \bm{\beta_j}) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta_j}$ is a row coefficient vector.
 Here, the link function will be modelled with log-link for the GLM such that
  \begin{align*}
 \lambda_j = e^{\xTilda \bm{\beta_j}'} && \text{and} & & %\beta_{0j} + \beta_j^{'}x
 q^P(y|  x ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
  \end{align*}
-Next, we introduce a Bernoulli model for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\bm{\bar{\beta_j}}$ is the coefficient vector.  Here, the GLM will be modeled with the associated logit link function such that
+Next, we introduce a Bernoulli model for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta_j}}) $, where $\bm{\bar{\beta_j}}$ is a row coefficient vector.  Here, the GLM will be modeled with the associated logit link function such that
  \begin{align*}
- \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta_j}}'}}{1+ e^{\xTilda  \bm{\bar{\beta_j}}'}},  && \text{and} && 
+ \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta_j}}'}}{1+ e^{\xTilda  \bm{\bar{\beta_j}}'}}  && \text{and} && 
  q^B(y | \bm{x} ; \bm{\bar{\beta_j}}) = \begin{cases}
       \quad \psi_j, & y = 0\\
      1 -  \psi_j,  & y = 1
@@ -156,7 +156,7 @@ Next, we introduce a Bernoulli model for the conditional density. We denote the 
  \end{align*}
  Now, given a combination of two preceding models, we introduce the zero inflated poisson model in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients $ \bm{\vartheta_{j}} :=  \{ \bm{\beta_{j}},  \bm{\bar{\beta_j}} \} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta_{j}}  )$ are %Nik: something missing here?, PM: Fixed.
  \begin{align*}
- q(0 | x ; \bm{ \vartheta_{j} } ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
+ q( y = 0| x ; \bm{ \vartheta_{j} } ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
 q(y > 0 |  x ; \bm{ \vartheta_{j} } ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.
  \end{align*}
 Also, the link functions to consider are log-link for the Poisson model and logit link for the Bernoulli
@@ -165,7 +165,7 @@ Also, the link functions to consider are log-link for the Poisson model and logi
 \lambda_j  = e^{\xTilda \bm{\beta_j}'}.
  \end{align*}
 
-Let paramater $\psi_j$ denote the probability that the zero comes from the Bernoulli distribution of $j$th component, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. This allows for a more nuanced approach to handling the inflation of zeros for automobile insurance (see \cite{Bermudez+Karlis:2012} ).
+Let paramater $\psi_j$ denote the probability that the zero comes from the Bernoulli distribution of $j$th component, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. This allows for a more nuanced approach to handling the inflation of zeros for automobile insurance see \cite{Bermudez+Karlis:2012}.
 \section{Introducing Bernoulli-Poisson Partitioning}
 
 The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros (see  \citep{Bermudez+Karlis:2012}). In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM when means of covariates are very close together (see  \cite{LimHwa}). However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}.
@@ -186,7 +186,7 @@ $$\Omega =  \Omega^Z = \bigcup_{l \in \{1 ,\ldots, G \} , j \in \{1 ,\ldots, M \
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k).
 \label{initialziGCWM}\\
-& = q(0|\bm{x};\bm{\vartheta_{k} }) +  q(y > 0|\bm{x} ; \bm{\vartheta_{k}})
+& = q(y = 0|\bm{x};\bm{\vartheta_{k} }) +  q(y > 0|\bm{x} ; \bm{\vartheta_{k}})
 \label{ziGCWM}
 \end{align}
 
