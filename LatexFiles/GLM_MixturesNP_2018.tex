@@ -208,7 +208,7 @@ The convergence criterion of the EM algorithm is based on the Aitken acceleratio
 
 In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM a model is based on the assumption that $q(y|\bm{x},\vartheta_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function relates the expected value $g(\mu_j)= \beta_{0j} + \beta_{1j} x_{1}+ \cdots+\beta_{pj} x_{p}$. We are interested in estimation of the vector $\bm \beta_j$, thus the distribution of $y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta_j}, \lambda_j)$, where $\lambda_j$ denotes an additional parameter to account for when a distribution belong to a two-parameter exponential family.
 
-The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density $p(\bm{t}; \bm \theta_j^{\star})$ is modeled as a  Gaussian distribution with mean $\bm {\mu_j}$ and covariance matrix $\bm \Sigma_j$ hence $p(\bm t; \bm {\mu_j}, \bm \Sigma_j)$. The second marginal density $p(\bm{w};\bm \theta_{j}^{\star\star})$ we assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,\bm{w}^{rc_r})^{'}$ where $w^{rs}=1$ if $w_r = s$, such that $s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
+The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density $p(\bm{t}; \bm \theta_j^{\star})$ is modeled as a  Gaussian distribution with mean $\bm {\mu_j}^{\star}$ and covariance matrix $\bm \Sigma_j^{\star}$ hence $p(\bm t; \bm {\mu_j}^{\star}, \bm \Sigma_j^{\star})$. The second marginal density $p(\bm{w};\bm \theta_{j}^{\star\star})$ we assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,\bm{w}^{rc_r})^{'}$ where $w^{rs}=1$ if $w_r = s$, such that $s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
 and $w^{rs}=0$ otherwise.
 %Nik: the previous sentence does not make sense to me, and the following equation seems to come out of nowhere.
 \begin{align}
@@ -220,31 +220,32 @@ for $j=1, \ldots, G$, where $\bm {\gamma_j}=(\gamma_{j1}^{'}, \ldots, \gamma_{jd
 Let $(\bm x_1, y_1),\ldots, (\bm x_n, y_n)$ be a sample of $n$ independent observations drawn from model in \eqref{eq3}.
 For this sample, the complete data likelihood function, $L_c(\bm\Phi)$, is given by
 \begin{align}
-L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i, \bm \beta_j, \lambda_{j})p(t_i, \bm\mu_j, \bm\Sigma_j) p(w_i, \gamma_j)p(u_i, \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}) \right]^{z_{ij}},
+L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i; \bm \beta_j, \lambda_{j})p(t_i; \bm\mu_j^{\star}, \bm\Sigma_j^{\star}) p(w_i; \gamma_j)p(u_i; \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}) \right]^{z_{ij}},
 \label{eq27}
 \end{align}
 where $z_{ij}$ is the latent indicator variable with value of $z_{ij}=1$ indicating that observation $(\bm{x_i}, y_i)$, originated from the $j$th mixture component and $z_{ij}=0$ otherwise.
 
 By taking the logarithm of \eqref{eq27}, the complete-data log-likelihood function $\ell_c(\bm\Phi)$ is written by
-\begin{equation*}\begin{split}
-\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[\log(\tau_{j}) + \log{q}(y_i|x_i,\bm \beta_j,\lambda_j)+& \\ \log p(t_i, \bm\mu_j, \bm\Sigma_j) & + \log p(w_i, \gamma_j) +\log {p}(u_i, \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}) \big].
-\label{eq28}
-\end{split}\end{equation*}
+\begin{equation}\begin{split}
+\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[\log(\tau_{j}) + \log{q}(y_i|x_i; \bm \beta_j,\lambda_j)+& \\ \log p(t_i; \bm\mu_j^{\star}, \bm\Sigma_j^{\star}) & + \log p(w_i; \bm \gamma_j) +\log {p}(u_i; \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}) \big].
+\label{CompleteLiklihood}
+\end{split}\end{equation}
 
 \subsubsection{E-Step - Partitioning}
-The $E$-step does not depend on the form of density, and the latent data only relate to $\bm z$. %Nik: please reword
-The posterior probability that $(\bm{x_i}, y_i)$ comes from the $j$th mixture component is calculated at the $s$th iteration of the EM algorithm as
+The $E$-step on the $(s+1)$th iteration requires calculation of the conditional expectation of $\ell_c(\bm\Phi)$. Since  $\ell_c(\bm\Phi)$ is linear with respect to  $z_{ij}$, we simplify the calculation to the current expectation of $Z_{ij}$, where $Z_{ij}$ is the random variable corresponding to $z_{ij}$. Given the previous paramters $\bm\Phi^{(s)}$ and the observed data,  we calculate the current conditional expectation of $Z_{ij}$ as
+
 \begin{equation*}\begin{split}
-    {\pi_{ij}}^{(s)} &= {E}[z_{ij} |(\bm{x_i}, y_i), \bm{\Phi}^{(s)}]\\
-     &= \frac{{\tau_j}^{(s)}q(y_i|x_i, \bm \beta_j^{(s)}, \lambda^{(s)}_{j})p(t_i, \bm\mu_j^{(s)}, \bm\Sigma_j^{(s)}) p(w_i, \gamma_j^{(s)})p(u_i, \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)})}{f(\bm{x_i}, y_i; \Phi^{(s)})
+    {\pi_{ij}}^{(s)} &= {E}[Z_{ij} |(\bm{x_i}, y_i); \bm{\Phi}^{(s)}]\\
+     &= \frac{{\tau_j}^{(s)}q(y_i|x_i; \bm \beta_j^{(s)}, \lambda^{(s)}_{j})p(t_i; \bm\mu_j^{{\star}(s)}, \bm\Sigma_j^{{\star}(s)}) p(w_i; \bm \gamma_j^{(s)})p(u_i; \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)})}{f(\bm{x_i}; y_i; \Phi^{(s)})
 \label{eq29}                       }.
 \end{split}\end{equation*}
 \subsubsection{M-Step - Partitioning}
-It follows that at the $(s+1)$th iteration, the conditional expectation of \eqref{eq28} on the observed data and the estimates from the $s$th iteration results in
+In the M-Step on the $(s+1)$th iteration the conditional expectation of $\ell_c(\bm\Phi)$ is maximized with respect to $\bm\Phi$. Let $Q(\Phi|\Phi^{(s)})$ be an itermediate maximization function on the $(s+1)$th iteration. The values of $z_{ij}$ in \eqref{CompleteLiklihood} are replaced by their current expectations $\pi_{ij}$ yielding 
+
 \begin{multline}
-Q(\bm\Phi|\bm\Phi^{(s)}) = \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}} \big[\log(\tau_{j}) + \log{q}(y_i|x_i,\bm \beta_j,\lambda_j)+ \log p(t_i, \bm\mu_j, \bm\Sigma_j)  + \log p(w_i, \gamma_j) +\log {p}(u_i, \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)})\big] \\
-=\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log(\tau_{j}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log{q}(y_i|x_i,\bm \beta_j^{(s)},\lambda_j^{(s)}) +\sum_{i=1}^{n}\sum_{j=1}^{G} {\pi_{ij}^{(s)}}\log p(t_i, \bm\mu_j^{(s)}, \bm\Sigma_j^{(s)}) \\
-+\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log p(w_i, \gamma_j^{(s)}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log {p}(u_i, \bm{\mu_j}^{\star\star\star (s)},\bm{\Sigma_j}^{\star\star\star (s)}).\label{Qfunction}
+Q(\bm\Phi|\bm\Phi^{(s)}) = \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}} \big[\log(\tau_{j}) + \log{q}(y_i|x_i;\bm \beta_j,\lambda_j)+ \log p(t_i; \bm\mu_j^{\star}, \bm\Sigma_j^{\star})  + \log p(w_i; \bm{\gamma_j}) +\log {p}(u_i; \bm{\mu_j}^{\star\star\star },\bm{\Sigma_j}^{\star\star\star })\big] \\
+=\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)} \log(\tau_{j}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log{q}(y_i|x_i;\bm \beta_j},\lambda_j) +\sum_{i=1}^{n}\sum_{j=1}^{G} {\pi_{ij}^{(s)}}\log p(t_i; \bm\mu_j, \bm\Sigma_j) \\
++\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log p(w_i; \bm \gamma_j) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log {p}(u_i; \bm{\mu_j}^{\star\star\star},\bm{\Sigma_j}^{\star\star\star}).\label{Qfunction}
 \end{multline}
 
 
@@ -254,17 +255,17 @@ As a result, the parameter updates $\hat{\tau}_j$, $\hat{\bm \mu^{}}_j$, $\hat{\
 {\hat{\tau}_j}^{(s+1)}&=\frac{1}{n} \sum_{i=1}^n \pi_{ij}^{(s)}, && && {\hat{\bm \mu^{}}_j}^{(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\bm t_i, &&  && {\hat{\bm \gamma}^{(s+1)}_{jr}} =\frac{\sum_{i=1}^n \pi_{ij}^{(s)} \omega^{rs}_i} {\sum_{i=1}^n \pi_{ij}^{(s)}},
 \end{align*}
 $$
- {\hat{\bm \sigma^{}}_j}^{(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\bm t_i-\hat{\bm \mu}^{(s+1)}_j) (\bm t_i-\hat{\bm \mu}^{(s+1)}_j)^{'}  ,
+ {\hat{\bm \Sigma^{}}_j}^{(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\bm t_i-\hat{\bm \mu}^{(s+1)}_j) (\bm t_i-\hat{\bm \mu}^{(s+1)}_j)^{'}  ,
 $$
   Parameter estimates for the log-normal distribution follow similar suit.
 \begin{align*}
 {\hat{\bm \mu}_j}^{\star\star\star (s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\ln \bm u_i, &&
-{\hat{\bm \sigma}_j}^{\star\star\star(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j) (\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j)^{'}. 
+{\hat{\bm \Sigma}_j}^{\star\star\star(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j) (\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j)^{'}. 
 \end{align*}
 
 The estimates $\bm\beta$ are computed by maximizing each of the $G$ terms
 \begin{align}
-\sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i,\bm \beta_j,\lambda_j).
+\sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i;\bm \beta_j,\lambda_j).
 \label{eq30}
 \end{align}
 Maximization of \eqref{eq30} is performed by numerical optimization in R software in a similar framework the mixture of generalized linear models are implemented. For additional details about this implementation the reader is refer to \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
@@ -279,21 +280,21 @@ l(\psi_k,\lambda_k; y, \bm{x}) = \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda_i \b
 
 Where $y_i$, and $\xTilda_i$ referes to the ith row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term the log-liklihood function is rather complicated to maximize. However, \cite{Lambert} gives a meaningful solution. 
 
-Suppose that we could observe ${Z_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition k, and $Z_{ik} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-liklihood would be written as
+Suppose that we could observe ${\mathcal{O}_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition k, and $\mathcal{O}_{ik} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-liklihood would be written as
 
 \begin{align}
-l_c(\psi_k,\lambda_k;y,\bm{z_k }) = & \sum_{i=1}^n \left( z_{ik}\bm{\xTilda_i \bar{\beta_k }^{'}} - \log\left(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}}\right) \right) + \sum_{i=1}^n (1-z_{ik}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-z_{ik})\log(y_i!) \nonumber \\
-=  & \quad l_c(\psi_k;\bm{y,z_k}) + l_c(\lambda_k; \bm{y,z_k}) + \sum_{i=1}^n (1- z_{ik})\log(y_i!) \label{CompleteZLog}
+l_c(\psi_k,\lambda_k;y,\bm{o_k }) = & \sum_{i=1}^n \left( o_{ik}\bm{\xTilda_i \bar{\beta_k }^{'}} - \log\left(1+ e^{\bm{ \xTilda_i \bar{\beta_k }^{'}}}\right) \right) + \sum_{i=1}^n (1-o_{ik}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k^{'}}}) + \sum_{i=1}^n (1-o_{ik})\log(y_i!) \nonumber \\
+=  & \quad l_c(\psi_k;\bm{y,z_k}) + l_c(\lambda_k; \bm{y,z_k}) + \sum_{i=1}^n (1- o_{ik})\log(y_i!) \label{CompleteZLog}
 \end{align}
 
-where ${z_{ik}}$ is a realization of $ Z_{ik} $. \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k;\bm{y,z_{k}})$ and $l_c(\lambda_k; \bm{y,z_k}) $ can be maximized seperately for parameters $\lambda_k$ and $\psi_k$. With the EM algorithm, the incomplete-data log-liklihood can be maximized iteratively between estimating $Z_{ik}$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-logliklihood (M-Step).
+where ${o_{ik}}$ is a realization of $ \mathcal{O}_{ik} $. \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k;\bm{y,z_{k}})$ and $l_c(\lambda_k; \bm{y,z_k}) $ can be maximized seperately for parameters $\lambda_k$ and $\psi_k$. With the EM algorithm, the incomplete-data log-liklihood can be maximized iteratively between estimating $\mathcal{O}_{ik}$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-logliklihood (M-Step).
 
 \subsubsection{E-step -  Zero-inflated}%Nik: again, why the first "-"?
  % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density.
 
 Using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ from the partition $ \Omega_{Z_k}$, we calculate the expected value of ${Z_{ik}}$ by its posterior mean ${z_{ik}^{(s)}}$ for each cluster k, at iteration s
 \begin{align*}
-z_{ik}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^{'(s)}} - e^ {\bm{\xTilda_i \beta_k^{'(s)}}} \big) } \right]^{-1}, &  y_{i} = 0 \\
+o_{ik}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^{'(s)}} - e^ {\bm{\xTilda_i \beta_k^{'(s)}}} \big) } \right]^{-1}, &  y_{i} = 0 \\
   0 \quad , & y_{i}> 0 .
 \end{cases}
 \end{align*}
@@ -302,10 +303,10 @@ z_{ik}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\bm{\xTilda_i \bar{\beta_k}^
 \subsubsection{M-Step - Zero-inflated}
 The M-Step can be split into the maximization of two complete data log-likelihoods and the $\bm{z_i}$ calculated from the previous iteration $(s)$ as:
 \begin{align}
-l_c(\psi_k;\bm{y,z_k^{(s)}}) &=\sum_{i=1}^n \left( z_{ik}^{(s)} \bm{\xTilda_i \bar{\beta_k }^{'(s)}} - \log \left(1+ e^{\bm{ \xTilda_i \bar{\beta_k }}^{'(s)}} \right) \right)  \label{eq6}   \\
- l_c(\lambda_k; \bm{y,z_k^{(s)}}) &= \sum_{i=1}^n (1- z_{ik}^{(s)}) (y_i \bm{ \xTilda_i \beta_k^{'(s)} } - e^{\bm{\xTilda_i \beta_k}^{'(s)}})\label{eq7}
+l_c(\psi_k;\bm{y,o_k^{(s)}}) &=\sum_{i=1}^n \left( o_{ik}^{(s)} \bm{\xTilda_i \bar{\beta_k }^{'}} - \log \left(1+ e^{\bm{ \xTilda_i \bar{\beta_k }}^{'}} \right) \right)  \label{eq6}   \\
+ l_c(\lambda_k; \bm{y,o_k^{(s)}}) &= \sum_{i=1}^n (1- o_{ik}^{(s)}) (y_i \bm{ \xTilda_i \beta_k^{'} } - e^{\bm{\xTilda_i \beta_k}^{'}})\label{eq7}
  \end{align}
-The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - z_{ik}^{(s)}$ (see \cite{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
+The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be found by using a weighted, log-linear Poisson regression with weights $1 - o_{ik}^{(s)}$ (see \cite{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
 While the parameter for \eqref{eq6} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ (see \cite{Lambert}).
 
 \subsection{Comparing zero-inflated Models}
@@ -319,7 +320,7 @@ The test statistic $\varphi$ defined as
 \varphi = -2 \bigg[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\bigg].
 \label{LRTest}
 \end{align}
-Is shown to have is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and confidence level $\alpha = 0.10$ (see \cite{newIntuitive}).
+is shown to have is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and confidence level $\alpha = 0.10$ (see \cite{newIntuitive}).
 $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-liklihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the kth parition. The test statistic $\varphi$ is shown to be distributed Chi-square with m degrees of freedom ($\chi^2_m $) and $\alpha = 0.10$ (see \cite{newIntuitive}). For a more nuanced approach we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on said $\Omega_k$. This approach quickly determines if there is zero-inflation on partition $\Omega_k$, then when evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
 
 \section{Numerical Application}
