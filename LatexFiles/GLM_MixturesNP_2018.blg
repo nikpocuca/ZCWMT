@@ -8,9 +8,9 @@ I was expecting a `,' or a `}'---line 154 of file GLM_Mixtures_2018.bib
  :   pages =  {627--647},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E., 1999." for entry Gershenfeld:Schoner+Metois:1999
+Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E." for entry Gershenfeld:Schoner+Metois:1999
 while executing---line 1456 of file elsart-harv.bst
-Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E., 1999." for entry Gershenfeld:Schoner+Metois:1999
+Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E." for entry Gershenfeld:Schoner+Metois:1999
 while executing---line 1456 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Punzo, A." for entry Ingrassia+Minotti+Punzo:2014
 while executing---line 1456 of file elsart-harv.bst
@@ -20,9 +20,9 @@ Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." fo
 while executing---line 1456 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." for entry Ingrassia+Minotti+Vittadini:2012
 while executing---line 1456 of file elsart-harv.bst
-Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E., 1999." for entry Gershenfeld:Schoner+Metois:1999
+Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E." for entry Gershenfeld:Schoner+Metois:1999
 while executing---line 1545 of file elsart-harv.bst
-Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E., 1999." for entry Gershenfeld:Schoner+Metois:1999
+Too many commas in name 1 of "Gershenfeld, N., Schoner, B. and Metois, E." for entry Gershenfeld:Schoner+Metois:1999
 while executing---line 1545 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Punzo, A." for entry Ingrassia+Minotti+Punzo:2014
 while executing---line 1545 of file elsart-harv.bst
@@ -32,25 +32,26 @@ Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." fo
 while executing---line 1545 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." for entry Ingrassia+Minotti+Vittadini:2012
 while executing---line 1545 of file elsart-harv.bst
+Warning--empty year in johnson1995continuous; set to ????
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
 Warning--empty journal in misuse
 You've used 34 entries,
             2821 wiz_defined-function locations,
-            876 strings with 10879 characters,
-and the built_in function-call counts, 15562 in all, are:
+            868 strings with 10492 characters,
+and the built_in function-call counts, 15542 in all, are:
 = -- 1647
 > -- 662
 < -- 29
 + -- 261
 - -- 213
-* -- 1337
+* -- 1323
 := -- 2780
 add.period$ -- 102
 call.type$ -- 34
 change.case$ -- 236
 chr.to.int$ -- 34
-cite$ -- 37
+cite$ -- 38
 duplicate$ -- 595
 empty$ -- 1112
 format.name$ -- 337
@@ -58,13 +59,13 @@ if$ -- 3142
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 40
-newline$ -- 118
+newline$ -- 110
 num.names$ -- 136
-pop$ -- 229
+pop$ -- 232
 preamble$ -- 1
 purify$ -- 207
 quote$ -- 0
-skip$ -- 459
+skip$ -- 464
 stack$ -- 0
 substring$ -- 911
 swap$ -- 88
@@ -72,8 +73,8 @@ text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 285
-warning$ -- 3
+warning$ -- 4
 while$ -- 143
 width$ -- 0
-write$ -- 380
+write$ -- 372
 (There were 13 error messages)
