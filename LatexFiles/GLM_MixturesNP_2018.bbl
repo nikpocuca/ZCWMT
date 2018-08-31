@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -64,11 +64,10 @@ Ingrassia, S., Punzo, A., Vittadini, G., Minotti, S.~C., Jul 2015. Erratum to:
   The generalized linear mixed cluster-weighted model. Journal of
   Classification 32~(2), 327--355.
 
-\bibitem[{Johnson et~al.(????)Johnson, Kotz, and
+\bibitem[{Johnson et~al.(1994)Johnson, Kotz, and
   Balakrishnan}]{johnson1995continuous}
-Johnson, N., Kotz, S., Balakrishnan, N., ???? Continuous univariate
-  distributions. No. v. 2 in Wiley series in probability and mathematical
-  statistics: Applied probability and statistics. Wiley \& Sons.
+Johnson, N., Kotz, S., Balakrishnan, N., 1994. Continuous Univariate
+  Probability Distributions,(Vol. 1). John Wiley \& Sons Inc., NY.
 
 \bibitem[{Lambert(1992)}]{Lambert}
 Lambert, D., 02 1992. Zero-inflated poisson regression, with an application to
@@ -153,9 +152,5 @@ Wilson, P., 02 2015. The misuse of the vuong test for non-nested models to test
 \bibitem[{Wilson and Einbeck(2018)}]{newIntuitive}
 Wilson, P., Einbeck, J., 2018. A new and intuitive test for zero modification.
   Statistical Modelling.
-
-\bibitem[{Zhang and Miljkovic(2018)}]{Zhang+Miljkovic:2018}
-Zhang, J., Miljkovic, T., 2018. Ratemaking for a new territory: Enhancing glm
-  pricing model with a bayesian analysis. E-Forum 2~(6), 1--33.
 
 \end{thebibliography}

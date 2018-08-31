@@ -32,49 +32,48 @@ Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." fo
 while executing---line 1545 of file elsart-harv.bst
 Too many commas in name 1 of "Ingrassia, S., Minotti, S.C. and Vittadini, G." for entry Ingrassia+Minotti+Vittadini:2012
 while executing---line 1545 of file elsart-harv.bst
-Warning--empty year in johnson1995continuous; set to ????
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
 Warning--empty journal in misuse
-You've used 34 entries,
+You've used 33 entries,
             2821 wiz_defined-function locations,
-            868 strings with 10492 characters,
-and the built_in function-call counts, 15542 in all, are:
-= -- 1647
-> -- 662
-< -- 29
-+ -- 261
-- -- 213
-* -- 1323
-:= -- 2780
-add.period$ -- 102
-call.type$ -- 34
-change.case$ -- 236
-chr.to.int$ -- 34
-cite$ -- 38
-duplicate$ -- 595
-empty$ -- 1112
-format.name$ -- 337
-if$ -- 3142
+            860 strings with 10232 characters,
+and the built_in function-call counts, 15049 in all, are:
+= -- 1591
+> -- 643
+< -- 27
++ -- 254
+- -- 207
+* -- 1273
+:= -- 2696
+add.period$ -- 98
+call.type$ -- 33
+change.case$ -- 227
+chr.to.int$ -- 33
+cite$ -- 36
+duplicate$ -- 577
+empty$ -- 1080
+format.name$ -- 326
+if$ -- 3043
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 40
-newline$ -- 110
-num.names$ -- 136
-pop$ -- 232
+missing$ -- 39
+newline$ -- 107
+num.names$ -- 132
+pop$ -- 225
 preamble$ -- 1
-purify$ -- 207
+purify$ -- 201
 quote$ -- 0
-skip$ -- 464
+skip$ -- 453
 stack$ -- 0
-substring$ -- 911
-swap$ -- 88
-text.length$ -- 2
+substring$ -- 884
+swap$ -- 83
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 285
-warning$ -- 4
-while$ -- 143
+type$ -- 276
+warning$ -- 3
+while$ -- 138
 width$ -- 0
-write$ -- 372
+write$ -- 360
 (There were 13 error messages)

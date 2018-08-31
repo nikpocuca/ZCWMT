@@ -326,7 +326,7 @@ $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component G
 
 \section{Numerical Application}
 \subsection{Dataset}
-We illustrate the proposed methodology on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\bf R} package {\tt CASdatasets} developed by \citep{Dutang+Charpentier:2016} and previously used in the book {\it Computational Actuarial Science with R} by \cite{Charpentier:2014}. The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. \cite{risks_miljkovic} used the same datasets to review two mixture-based clustering approaches for modeling unobserved heterogeneity in Region 24 of this insurance portfolio. \cite{Zhang+Miljkovic:2018} introduced a Bayesian approach in ratemaking for a new territory considering also policies in French Region 24. French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following text all monetary units are considered to be of dollar denomination.
+We illustrate the proposed methodology on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\bf R} package {\tt CASdatasets} developed by \citep{Dutang+Charpentier:2016} and previously used in the book {\it Computational Actuarial Science with R} by \cite{Charpentier:2014}. The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following text all monetary units are considered to be of dollar denomination.
 \begin{small}
 \begin{table}[!htb]
 \begin{center}
@@ -361,7 +361,7 @@ Loss Amount =  Density + Car Age + Driver Age + Region + Power + Gas + \epsilon,
 \end{equation}
 %Nik: this is not an equation. Please reformulate.
 Here error term $\epsilon$ is distributed normally with mean $0$ and variance $\sigma^2$ .
-The canonnical log-link is used for the GLM in \eqref{regressionModel}. Similarly to \cite{risks_miljkovic},
+The canonnical log-link is used for the GLM in \eqref{regressionModel}. The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
 DEF, GH, and other.
 \begin{figure}[!htb]
@@ -705,7 +705,7 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
  | \det J_{\ln} (\bm{u}) | & = \prod_{i=1}^p u_i^{-1}, \; \text{and} \; \\
    f^U(\bm{u}; \bm{\mu},\bm{\Sigma})  & =  f^X(\ln \bm{u}; \bm{\mu},\bm{\Sigma})  | \det J_{\ln} (u) | \\
   & = f^X(\ln \bm{u}; \bm{\mu},\bm{\Sigma})\prod_{i=1}^p u_i^{-1} \\
-  & =  \frac{1}{(\prod_{i=1}^{p}u_{i})| \bm{\Sigma} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln \bm{u} -\bm{\mu})^{'}  \bm{\Sigma^{-1}}(\ln \bm{u} -\bm{\mu})\right].
+  & =  \frac{1}{(\prod_{i=1}^{p}u_{i})| \bm{\Sigma} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln \bm{u} -\bm{\mu})^{'}  \bm{\Sigma}^{-1}(\ln \bm{u} -\bm{\mu})\right].
   \end{align*}
 \end{proof}
 
