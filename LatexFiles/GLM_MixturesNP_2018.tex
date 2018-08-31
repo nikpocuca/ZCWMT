@@ -697,7 +697,7 @@ $$p_U(u) = p_X(\ln u )\frac{\partial}{\partial u} \ln u  =  p_X(\ln u ) \frac{1}
 \begin{lemma}
 Let the random variable $\bm{X}$ have multivariate normal distribution ie. $\bm{X} \sim \mathcal{MVN}(\bm{x}, \bm{\mu},\bm{\Sigma}) $, then $\bm{U} := \exp(\bm{X} ) \sim  f^U(\bm{u}; \bm{\mu } , \bm{\Sigma} )$. Here
 have $\bm{u} \in \mathbb{R}_{+}^p $ and the probability density function $f^U$ is
-$$ f^U(\bm{u}; \bm{\mu } , \bm{\Sigma} )= \frac{1}{(\prod_{i=1}^{p}u_{i})| \bm{\Sigma} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln \bm{u} -\bm{\mu})^{'}  \bm{\Sigma^{-1}}(\ln \bm{u} -\bm{\mu})\right].  $$
+$$ f^U(\bm{u}; \bm{\mu } , \bm{\Sigma} )= \frac{1}{(\prod_{i=1}^{p}u_{i})| \bm{\Sigma} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln \bm{u} -\bm{\mu})^{'}  \bm{\Sigma}^{-1}(\ln \bm{u} -\bm{\mu})\right].  $$
 \end{lemma}
 \begin{proof}
 Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ be the probability density functions of $\bm{U}$ and $\bm{X}$ respectively. By the multivariate change of variables theorem (see \cite{murphy2012machine} section 2.6.2.1), we derive the log-normal distribution, where $ | \det J_{\ln} (u) | $ is the absolute value of the determinant for the Jacobian of the multivariate transformation $\ln(\bm{U}) = \bm{X} $. Hence,
