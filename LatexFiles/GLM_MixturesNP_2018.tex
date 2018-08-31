@@ -693,7 +693,7 @@ $$\mathcal{LN}(u; \mu, \sigma) = \frac{1}{u\sigma\sqrt{2\pi}}\exp\left[-\frac{(\
 \text{Further, if random variable }$X$\text{ is normally distributed i.e. }$ X \sim \mathcal{N}(x; \mu, \sigma) $, then $U := \exp{(X)}\sim \mathcal{LN}(u; \mu, \sigma) $.
 To see this, let $p_U(u)$, and $ p_X(x) $ be the probability density functions of $U$ and $X$ respectively. By the change of variables theorem (see \cite{murphy2012machine} section 2.6.2.1) the density $p_U(u)$ is derived as
 $$p_U(u) = p_X(\ln u )\frac{\partial}{\partial u} \ln u  =  p_X(\ln u ) \frac{1}{u} =  \frac{1}{u\sigma\sqrt{2\pi}}\exp\left[-\frac{(\ln u - \mu)^2}{2\sigma^2}	\right].$$\newline
- We extend to a log-normal multivariate case where the random variable $\bm{U} $ is parameterized by $ \bm{\mu} \in \mathbb{R}^p$ and $\bm{\Sigma} \in  \mathbb{R_{+}}^p \label{changeVarUni} $.
+ We extend to a log-normal multivariate case where the random variable $\bm{U} $ is parameterized by $ \bm{\mu} \in \mathbb{R}^p$ and $\bm{\Sigma} \in  \mathbb{R}_{+}^{p \times p} \label{changeVarUni} $.
 \begin{lemma}
 Let the random variable $\bm{X}$ have multivariate normal distribution ie. $\bm{X} \sim \mathcal{MVN}(\bm{x}, \bm{\mu},\bm{\Sigma}) $, then $\bm{U} := \exp(\bm{X} ) \sim  f^U(\bm{u}; \bm{\mu } , \bm{\Sigma} )$. Here
 have $\bm{u} \in \mathbb{R}_{+}^p $ and the probability density function $f^U$ is
