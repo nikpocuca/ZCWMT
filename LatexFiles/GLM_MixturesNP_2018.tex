@@ -71,7 +71,7 @@
 \begin{document}
 \title{\bf Modeling  Frequency and Severity of Claims with the Generalized  Cluster-Weighted Model}
 
-\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c, Paul McNicholas  }%Nik: need to add names here.
+\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c and Paul McNicholas  }%Nik: need to add names here.
 
 \maketitle
 \doublespacing
@@ -670,7 +670,7 @@ Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & ( 0.07)     
 \end{tabular}
 \end{center}
 \end{table}
-Several findings are concluded from Table \ref{table:exper2}. Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Further findings show that when close condition is imposed then Bernoulli has better performance in terms of accuracy. The Adjusted Rand Index\footnote{Having $n_{ij}$ to be a matrix entry, $a_i$ to be the $i$th row sum, and also $b_j$ to be the $j$th column sum  from the classification matrix of Table \ref{misclassTable} the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } (ARI) shows good measurements overall, but in particular the BP partitioning method under normal scenario has a very good ARI with a small standard deviation. The Average Purity \footnote{ The Average Purtiy is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) of the BP partitioning method is the best out of all other methods, which is relevant to estimating coefficients accurately for optimization.
+Several findings are concluded from Table \ref{table:exper2}. Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Further findings show that when close condition is imposed then Bernoulli has better performance in terms of accuracy. The Adjusted Rand Index\footnote{Having $n_{ij}$ to be a matrix entry, $a_i$ to be the $i$th row sum, and $b_j$ to be the $j$th column sum  from the classification matrix of Table \ref{misclassTable}, the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } (ARI) shows good measurements overall, but in particular the BP partitioning method under normal scenario has a very good ARI with a small standard deviation. The Average Purity \footnote{ The Average Purtiy is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) of the BP partitioning method is the best out of all other methods, which is relevant to estimating coefficients accurately for optimization.
 
 \section{Conclusion}
 
@@ -712,12 +712,13 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
 
 \begin{center}
 \begin{sidewaystable}
-\caption{Summary of coefficients for severity clusters.}
+\caption{ Summary of coefficients for severity clusters.}
 \label{severity_coef_table}
 \begin{tabular}{|l|rrc|rrc|rrc|rrc|}
 \hline\hline
          & V1         & (Red)     &    & V2         & (Green)   &    & V3          & (Blue)     &    & V4          & (Teal)     &    \\
-Coef      & Estimate   & Error     & P   & Estimate   & Error     & P   & Estimate    & Error      & P   & Estimate    & Error      & P   \\ \hline
+Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
+pertaining to the $P$ value of the specific coefficient.}      & Estimate   & Error     & P   & Estimate   & Error     & P   & Estimate    & Error      & P   & Estimate    & Error      & P   \\ \hline
 Intercept & 7.876  & 0.137 & *** & 7.180  & 0.061 & *** & 4.673   & 0.014 & *** & 7.077  & 0.003 & *** \\
 Density   & -0.031 & 0.009 & *** & 0.005  & 0.004 &     & -0.011 & 0.001 & *** & 0.002  & 0.002 &     \\
 C2        & -0.172 & 0.080 & *   & 0.064  & 0.034 & .   & 0.020 & 0.001 & **  & 0.008  & 0.002 & *** \\
@@ -742,8 +743,6 @@ P-Other   & 0.131  & 0.045 & **  & 0.075   & 0.020 & *** & 0.012  & 0.003 & **  
 GR        & -0.095 & 0.031 & **  & -0.029 & 0.014 & *   & 0.005   & 0.002 & .   & -0.005 & 0.001 & *** \\
 \hline\hline
 \end{tabular}
-\footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
-pertaining to the $P$ value of the specific coefficient.}
 \end{sidewaystable}
 
 \begin{sidewaystable}
@@ -752,7 +751,8 @@ pertaining to the $P$ value of the specific coefficient.}
 \begin{tabular}{|l|rrc|rrc|rrc|}
 \hline\hline
           & Cluster 1 & (Red) &   & Cluster 2 & (Green) &  & Cluster 3 & (Blue) &   \\
-Coef        & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
+Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
+pertaining to the $P$ value of the specific coefficient.}             & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
  \hline
 (Intercept) & -10.199   & 0.109 & *** & -7.217    & 0.216   & *** & -13.694   & 0.099  & *** \\
 Density     & 1.860     & 0.027 & *** & 0.442     & 0.013   & *** & 1.771     & 0.013  & *** \\
@@ -768,8 +768,6 @@ C4          &          &      &    & -1.265    & 0.225   & *** & 10.805    & 72.
 C5          &          &      &    & -0.808    & 0.266   & **  & -6.355    & 30.867 &   \\
 \hline\hline
 \end{tabular}
-\footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
-pertaining to the $P$ value of the specific coefficient.}
 \end{sidewaystable}
 \end{center}
 
