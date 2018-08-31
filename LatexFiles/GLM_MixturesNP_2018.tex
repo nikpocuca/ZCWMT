@@ -193,7 +193,7 @@ q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar
 The expectation-maximization (EM) algorithm (see \cite{Dempster+Laird+Rubin:1977}) is then used to estimate this new mixture of up to $M \times G$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is commented in section 3.6.
 
 \section{Estimation Methodology}
-The common approach for estimating parameters in finite mixture problems is based on the EM algorithm (see \cite{McLachlan+Peel:2000}).
+The common approach for estimating parameters in finite mixture models is based on the EM algorithm (see \cite{McLachlan+Peel:2000}).
 The estimation of the developed Bernoulli-Poisson partitioning method is split into two EM algorithms. The first EM algorithm partitions the sample space, while the second EM algorithm optimizes the zero inflated portion.
  %Nik: this is incorrect. The EM algorithm does not estimate the optimal number of components.  PM: Removed.
  \subsection{The EM Algorithm for Partitioning of Sample Space}
@@ -204,9 +204,9 @@ The initial values of the parameter estimates can be generated from a variety of
  The algorithm proceeds by alternation of the E-step and M-step to update parameter estimates. %Nik: again, need to be much more careful.
 To find an optimal number of components, maximum likelihood estimation is obtained over a range of $G$ groups, and the best model is selected based on the Bayesian information criterion (BIC).   %Nik: which one? Explain. %PM: BIC was used.
 
-The convergence criterion of the EM algorithm is based on the Aitken acceleration. It is used to estimate the asymptotic maximum of the log-likelihood at each iteration of the EM algorithm.  when the relative increase in the log-likelihood function is no bigger than a small pre-specified tolerance value or the number of iterations reach a limit. %Nik: that is a possible stopping rule but is not a convergence criterion per se.
+The convergence criterion of the EM algorithm is based on the Aitken acceleration. It is used to estimate the asymptotic maximum of the log-likelihood at each iteration of the EM algorithm when the relative increase in the log-likelihood function is no bigger than a small pre-specified tolerance value or the number of iterations reach a limit. %Nik: that is a possible stopping rule but is not a convergence criterion per se.
 
-In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM  is based on the assumption that $q(y|\bm{x},\bm{\vartheta}_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function defines the relationship between the linear predictor and the expected value of the distribution function as $g(\bm{\mu}_j)= \xTilda \bm{\beta}^{'}$, where $g(\bm{\mu}_j)$ is the link function. We are interested in the estimation of the vector $\bm {\beta}_j$, thus the distribution of $y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta}_j, \lambda_j)$, where $\lambda_j$ denotes an additional parameter to account for when a distribution belongs to a two-parameter exponential family.
+In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM  is based on the assumption that $q(y|\bm{x},\bm{\vartheta}_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function defines the relationship between the linear predictor and the expected value of the distribution function as $g(\bm{\mu}_j)= \xTilda \bm{\beta}^{'}$, where $g(\bm{\mu}_j)$ is the link function. We are interested in the estimation of the vector $\bm {\beta}_j$, thus the distribution of $y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta}_j, \lambda_j)$, where $\lambda_j$ signifies an additional parameter to account for when a distribution belongs to a two-parameter exponential family.
 
 The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density $p(\bm{t}; \bm \theta_j^{\star})$ is modeled as a  Gaussian distribution with mean $\bm {\mu}_j^{\star}$ and covariance matrix $\bm{\Sigma}_j^{\star}$ hence $p(\bm t; \bm {\mu}_j^{\star}, \bm{\Sigma}_j^{\star})$. When it comes to the second marginal density $p(\bm{w};\bm{\theta}_{j}^{\star\star})$, we assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,\bm{w}^{rc_r})^{'}$ where $w^{rs}=1$ if $w_r = s$, such that $s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
 and $w^{rs}=0$ otherwise.
@@ -226,7 +226,7 @@ L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i; \bm \beta_j,
 \end{align}
 where $z_{ij}$ is the latent indicator variable with value of $z_{ij}=1$ indicating that observation $(\bm{x_i}, y_i)$, originated from the $j$th mixture component and $z_{ij}=0$ otherwise.
 
-By taking the logarithm of \eqref{eq27}, the complete-data log-likelihood function $\ell_c(\bm\Phi)$ is written by
+By taking the logarithm of \eqref{eq27}, the complete-data log-likelihood function $\ell_c(\bm\Phi)$ is 
 \begin{equation}\begin{split}
 \ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[\log(\tau_{j}) + \log{q}(y_i|x_i; \bm{\beta}_j,\lambda_j)+& \\ \log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) & + \log p(w_i; \bm{\gamma}_j) +\log {p}(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}) \big].
 \label{CompleteLiklihood}
@@ -269,7 +269,7 @@ The estimates of vector $\bm\beta$ are computed by maximizing each of the $G$ te
 \sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i;\bm \beta_j,\lambda_j).
 \label{eq30}
 \end{align}
-Maximization of \eqref{eq30} is performed by numerical optimization in R software. A similar framework the mixture of generalized linear models are implemented. For additional details about this implementation the reader is refer to \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
+Maximization of \eqref{eq30} is performed numerical optimization as discussed in \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
 
 For insurance applications, current GCWM model can be used for modeling frequency of claims assuming that $\bm{Y}$ belongs to Poisson or Bernoulli distributions. When modelling severity of claims, $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. All of these applications are based on CWM as the underlying approach. For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package manual for ${\bf R}$ users written by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}.%Nik: use \cite
 \subsection{EM Algorithm for Zero-inflated Model} 
@@ -279,7 +279,7 @@ The optimization of the zero-inflated Poisson model given in \eqref{ziGCWM}, use
 l(\psi_k,\lambda_k; y, \bm{x}) = \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda}_i \bm{\bar{\beta}}_k^{'}  } + \exp{( - e^ { -\bm{\xTilda}_i \bm{\beta}_k^{'} })} \big] + \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta}_k^{'} + e^{ \xTilda_i \bm{\beta}_k^{'} } \right) - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bm{\bar{\beta}}_k^{'} } \right) - \sum_{y_i > 0} \log(y_i ! )
 \end{align*}
 
-Where $y_i$, and $\xTilda_i$ referes to the ith row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term the log-likelihood function is rather complicated to maximize. However, \cite{Lambert} gives a meaningful solution. 
+Where $y_i$, and $\xTilda_i$ referes to the $i$th row of the response variable $y$ and covariate matrix $\xTilda$. Due to the first term the log-likelihood function is rather complicated to maximize. However, \cite{Lambert} gives a meaningful solution. 
 
 Suppose that we could observe ${\mathcal{O}_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition $k$, and $\mathcal{O}_{ik} = 0$ when $y_i$ is generated from the Poisson random variable. Then the complete-data log-likelihood would be written as
 
@@ -288,7 +288,7 @@ l_c(\psi_k,\lambda_k;y,\bm{x},\bm{o}_k ) = & \sum_{i=1}^n \left( o_{ik}\xTilda_i
 =  & \quad l_c(\psi_k;y,\bm{x},\bm{o}_k) + l_c(\lambda_k; y,\bm{x},\bm{o}_k) + \sum_{i=1}^n (1- o_{ik})\log(y_i!) \label{CompleteZLog}
 \end{align}
 
-where $\bm{o_{k}}$ is a realization of $ \mathcal{O}_{k} $. \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k; y,\bm{x},\bm{o}_k) $ and $l_c(\lambda_k; y,\bm{x},\bm{o}_k) $ can be maximized seperately for parameters $\psi_k$ and $\lambda$. With the EM algorithm, the incomplete-data log-likelihood can be maximized iteratively between estimating $\mathcal{O}_{ik}$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-loglikelihood (M-Step).
+where $\bm{o_{k}}$ is a realization of $ \mathcal{O}_{k} $. The equation \eqref{CompleteZLog} is easier to maximize since $l_c(\psi_k; y,\bm{x},\bm{o}_k) $ and $l_c(\lambda_k; y,\bm{x},\bm{o}_k) $ can be maximized seperately for parameters $\psi_k$ and $\lambda_k$. With the EM algorithm, the incomplete-data log-likelihood can be maximized iteratively between estimating $\mathcal{O}_{ik}$ with its expectation under current parameters $\lambda_k$ and $\psi_k$ (E-Step) and then maximizing the complete data-loglikelihood (M-Step).
 
 \subsubsection{E-step -  Zero-inflated Model}%Nik: again, why the first "-"?
  % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density.
@@ -316,7 +316,7 @@ Until recently the usual test for comparing zero-inflated to non-zero inflated m
 \begin{align*}
 & & H_0: \quad \psi_k = 0 \quad\quad vs. \quad\quad H_a: \quad \psi_k \neq 0 . & &
 \end{align*}
-The test statistic $\varphi$ defined as 
+The test statistic $\varphi$ is defined as 
 \begin{align}
 \varphi = -2 \bigg[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\bigg].
 \label{LRTest}
@@ -326,7 +326,7 @@ $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component G
 
 \section{Numerical Application}
 \subsection{Dataset}
-We illustrate the proposed methodology on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\bf R} package {\tt CASdatasets} developed by \citep{Dutang+Charpentier:2016} and previously used in the book {\it Computational Actuarial Science with R} by \cite{Charpentier:2014}. The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. \cite{risks_miljkovic} used the same datasets to review two mixture-based clustering approaches for modeling unobserved heterogeneity in Region 24 of this insurance portfolio. \cite{Zhang+Miljkovic:2018} introduced a Bayesian approach in ratemaking for a new territory considering also policies in French Region 24. French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided.
+We illustrate the proposed methodology on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\bf R} package {\tt CASdatasets} developed by \citep{Dutang+Charpentier:2016} and previously used in the book {\it Computational Actuarial Science with R} by \cite{Charpentier:2014}. The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. \cite{risks_miljkovic} used the same datasets to review two mixture-based clustering approaches for modeling unobserved heterogeneity in Region 24 of this insurance portfolio. \cite{Zhang+Miljkovic:2018} introduced a Bayesian approach in ratemaking for a new territory considering also policies in French Region 24. French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following text all monetary units are considered to be of dollar denomination.
 \begin{small}
 \begin{table}[!htb]
 \begin{center}
@@ -436,17 +436,18 @@ After fitting the model, we then inspect the size of each cluster. The GCWM appr
 Volatility Level - (Cluster)  $\quad$    & Minimum & Mean  & Maximum & $\sigma$    \\
 \hline
 V1 - (3)$\quad\quad\quad$ & 51  & 79 & 154 & \textbf{ 13} \\
-V2 - (4)$\quad\quad\quad$ & 1039  & 3109  &  1324 & \textbf{ 52} \\
-V3 - (2)$\quad\quad\quad$ & 221 & 1687  & 8841  &\textbf{ 1284}  \\
-V4 - (1)$\quad\quad\quad$ & 2 & 9717 & 2036833  & \textbf{ 64835}   \\
+V2 - (4)$\quad\quad\quad$ & 1,039  & 1,109  &  1,324 & \textbf{ 52} \\
+V3 - (2)$\quad\quad\quad$ & 221 & 1,687  & 8,841  &\textbf{ 1,284}  \\
+V4 - (1)$\quad\quad\quad$ & 2 & 9,717 & 2,036,833  & \textbf{ 64,835}   \\
 \hline\hline
 \end{tabular}
 }
 \end{table}
 
 
-
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between \$1,039 to \$3,109, with a standard deviation of \$52, and a mean of \$3,109.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1,687, and a standard deviation of \$1284. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$2,036,833, a mean of \$97,17, and a standard deviation of \$64,835.
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between $51$ to $154$, with a standard deviation of $13$, and a mean of $79$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between $1,039$ to $1,324$, with a standard deviation of $52$, and a mean of $1,109$.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between $221$ to $8841$, with a mean of $1,687$, and a standard deviation of $1284$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of $2,036,833$, a mean of $97,17$, and a standard deviation of $64,835$.
+%Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between \$1,039 to \$3,109, with a standard deviation of \$52, and a mean of \$3,109.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1,687, and a standard deviation of \$1284. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$2,036,833, a mean of \$97,17, and a standard deviation of \$64,835.
+% Paul: I do not know the monetary units of the prices, they are either in dollars or euros. 
 
 Coefficients of clustered results are used to calculate premiums in car insurance. Table \ref{severity_coef_table} shows the coefficients of the fitted model. In each cluster statistical significance varies but overall the majority of coefficients are statistically significant.
 
@@ -557,7 +558,8 @@ Model & Component & Intercept & $X_1$ &$X_2$ & $X_3$& Intercept & $X_1$ &$X_2$ &
 % Table 4 provides the summary of the results when CWM was used in the analysis of the same models considered in Table 3. Commented sentanced 
 In line with expectations we note that barely any of the simulation runs are estimated correctlly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
 
-Table \ref{mseTable} provides the summary of Mean Squared Errors\footnote{The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest, while $\hat{\beta}$ accounts for its estimate} (MSE) of each parameter of the models for the same simulated runs in Table \ref{gcwmAccuracy}.
+Table \ref{mseTable} provides the summary of Mean Squared Errors\footnote{The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate.} (MSE) of each parameter of the models for the same simulated runs in Table \ref{gcwmAccuracy}. The MSEs related to the predictor variables for all models and their corresponding components are about zero indicating that  GCWM a approach performs well. This is also a result of having a small size coefficients.
+
 \begin{table}[h!]
 \centering
 \caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table \ref{gcwmAccuracy}.}
@@ -585,8 +587,6 @@ Model & Component & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)&
 \end{tabular}
 
 \end{table}
-
-The MSEs related to the predictor variables for all models and their corresponding components are about zero indicating that  GCWM a approach performs well. This is also a result of having a small size coefficients.
 
 \begin{table}[!htb]
 \centering
@@ -650,7 +650,7 @@ as the GLM. The covariates $SimDriverAge$, $SimDensity$, and $SimCarAge$ are con
 \end{center}
 \end{table}
 
-The experiment is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations are taken as given by the estimated  ZIP components from the \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario ``close" as the covariate means are manipulated so that they are closer to each other within some degree. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. Experiment 2 tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set . Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
+The experiment is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations are taken as given by the estimated  ZIP components from the \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario ``close" as the covariate means are manipulated so that they are closer to each other within some degree. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. Experiment 2 tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
 
 \begin{table}[!htb]
 \begin{center}
@@ -670,7 +670,7 @@ Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & ( 0.07)     
 \end{tabular}
 \end{center}
 \end{table}
-Several findings are concluded from Table \ref{table:exper2}. Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Further findings show that when close condition is imposed then Bernoulli has better performance in terms of accuracy. The Adjusted Rand Index\footnote{The adjusted rand index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$ } (ARI) shows good measurements overall, but in particular the BP partitioning method under normal scenario has a very good ARI with a small standard deviation. The Average Purity \footnote{ $AP = \frac{1}{N} \sum_i  n_{ij\, }$, \\ where $n_{ij} = \text{ across diagonal },\, a_i = \text{ row sums },\,b_j = \text { column sums }$ are of the classification matrix in Table \ref{misclassTable}.} (AP) of the BP partitioning method is the best out of all other methods, which is relevant to estimating coefficients accurately for optimization.
+Several findings are concluded from Table \ref{table:exper2}. Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Further findings show that when close condition is imposed then Bernoulli has better performance in terms of accuracy. The Adjusted Rand Index\footnote{Having $n_{ij} = \text{ matrix entries },\, a_i = \text{$i$th row sums },\,b_j = \text { $j$th column sums}$ from the classification matrix of Table \ref{misclassTable} the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } (ARI) shows good measurements overall, but in particular the BP partitioning method under normal scenario has a very good ARI with a small standard deviation. The Average Purity \footnote{ The Average Purtiy is calculated as $AP = \frac{1}{N} \sum_i  n_{i i\, }$} (AP) of the BP partitioning method is the best out of all other methods, which is relevant to estimating coefficients accurately for optimization.
 
 \section{Conclusion}
 
