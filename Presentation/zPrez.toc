@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Introduction to Mixture Models}{3}{0}{1}
+\beamer@sectionintoc {2}{Second Section}{7}{0}{2}
