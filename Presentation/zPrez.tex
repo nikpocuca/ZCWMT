@@ -152,9 +152,10 @@ Gershenfeld (1997) characterized the cluster-weighted models as a finite mixture
 \\~\\
 \end{frame}
 
+%------------------------------------------------
 \begin{frame}
 \frametitle{Extending CWM}
-(Ingrassia, Punzo et. al. 2015) proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continues and discrete as $ \bm{X}=(\bm{V^{'}},  \bm{W^{'}})^{'}$.
+(Ingrassia, Punzo et. al. 2015) proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continuous and discrete as $ \bm{X}=(\bm{V^{'}},  \bm{W^{'}})^{'}$.
 
 \begin{align*}
  f(\bm{x}, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\theta}_j)\\ 
@@ -163,6 +164,48 @@ Gershenfeld (1997) characterized the cluster-weighted models as a finite mixture
 \end{frame}
 
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{Generalizing CWM}
+We proceed to extend CWM by splitting the  continuous covariates further as $\bm{V}:=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ is a set of non-Gaussian covariates, and $\bm{T}$ a set of Gaussian  covariates.  Thus CWM is now recovered as
+\begin{align*}
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star})
+\end{align*}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Non-Gaussian Covariate}
+With a log-normal assumption for $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ we have that $\bm{u}$ is defined on $\mathbb{R}^p_+,\quad p \in \mathcal{N}$ with parameter vector $ \bm{\theta}_j^{\star\star\star} $ having probability density function as
+\begin{small}
+$$ 
+p \left(  \bm{u}; \bm{\theta}_j^{\star\star\star} := ( \bm{\mu}_j^{\star\star\star} ,\bm{ \Sigma}_j^{\star\star\star } ) \right)
+$$
+$$ 
+= \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_j^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_j^{\star\star\star})^{'}\bm{\Sigma}_j^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_j^{\star\star\star})\right].
+$$
+\end{small}
+\end{frame}
+%------------------------------------------------
+
+
+
+
+
+
+%------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 \begin{frame}
 \frametitle{Bullet Points}
 \begin{itemize}
