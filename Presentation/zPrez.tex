@@ -16,6 +16,9 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass{beamer}
+\usepackage{amsmath, amssymb}
+
+\usepackage{bm}
 
 \mode<presentation> {
 
@@ -110,17 +113,98 @@ McMaster University \\ % Your institution for the title page
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{Introduction to Mixture Models} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Heterogeneity of Risk} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+\frametitle{Introduction to Risk}
+Sub-grouping of insurance policies based on risk classification is a standard practice in insurance. The heterogenous nature of insurance data allows for explorations of many different techniques for sub-grouping risk. As a result, there is a growing number of papers in the area of mixture modeling of univariate and multivariate insurance data to account for heterogeneity of risk. 
+\\~\\
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Examples in Insurance}
+\begin{block}{Automotive}
+Drivers of various levels of competency are mixed in with large groups rates and are often difficult to track within a cohort. 
+\end{block}
+\begin{block}{Health/Life}
+The variance among people's lifestyles tend to dictate their life expectancy as well as healthcare coverage. Again how do you define a ``lifestyle" in a quantitative sense?
+\end{block}
+\begin{block}{Maritime}
+Maritime Surveillance Radar data is often used to price maritime insurance which have had  success being modelled as a mixture of distributions. 
+\end{block}
 \end{frame}
 
 %------------------------------------------------
+
+\section{Cluster Weighted Models}
+
+
+\begin{frame}
+\frametitle{Cluster Weighted Models}
+Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this set is defined on some sample space $\Omega$ that takes values in an appropriate Euclidian subspace. Furthermore, assume that there exists $G$ partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$. \newline
+
+Gershenfeld (1997) characterized the cluster-weighted models as a finite mixture of GLMs hence, the joint distribution $f(\bm x, y)$ of $(\bm{X^{'}}, Y )^{'}$  is expressed as follows
+ \begin{align}
+ f(\bm x, y)= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\Omega_j)p(\bm{x};\Omega_j).
+\label{eq1}
+\end{align}
+\\~\\
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Extending CWM}
+(Ingrassia, Punzo et. al. 2015) proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continuous and discrete as $ \bm{X}=(\bm{V^{'}},  \bm{W^{'}})^{'}$.
+
+\begin{align*}
+ f(\bm{x}, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\theta}_j)\\ 
+= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{v}; \bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})
+ \end{align*}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Generalizing CWM}
+We proceed to extend CWM by splitting the  continuous covariates further as $\bm{V}:=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ is a set of non-Gaussian covariates, and $\bm{T}$ a set of Gaussian  covariates.  Thus CWM is now recovered as
+\begin{align*}
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star})
+\end{align*}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Non-Gaussian Covariate}
+With a log-normal assumption for $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ we have that $\bm{u}$ is defined on $\mathbb{R}^p_+,\quad p \in \mathcal{N}$ with parameter vector $ \bm{\theta}_j^{\star\star\star} $ having probability density function as
+\begin{small}
+$$ 
+p \left(  \bm{u}; \bm{\theta}_j^{\star\star\star} := ( \bm{\mu}_j^{\star\star\star} ,\bm{ \Sigma}_j^{\star\star\star } ) \right)
+$$
+$$ 
+= \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_j^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_j^{\star\star\star})^{'}\bm{\Sigma}_j^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_j^{\star\star\star})\right].
+$$
+\end{small}
+\end{frame}
+%------------------------------------------------
+
+
+
+
+
+
+%------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 \begin{frame}
 \frametitle{Bullet Points}
