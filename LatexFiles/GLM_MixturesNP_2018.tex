@@ -152,7 +152,7 @@ Next, we introduce a Bernoulli model for the conditional density. We denote the 
  \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda  \bm{\bar{\beta}}_j'}}  && \text{and} && 
  q^B(y | \bm{x} ; {\psi}_j) = \begin{cases}
       \quad \psi_j, & y = 0\\
-     1 -  \psi_j,  & y = 1
+     1 -  \psi_j,  & y > 0
    \end{cases}
  \end{align*}
  Now, given a combination of two preceding models, we introduce the zero inflated Poisson model in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients pair $  \{ \bm{\beta}_{j},  \bm{\bar{\beta}}_j \} := \bm{\vartheta}_{j} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{j}  )$ are %Nik: something missing here?, PM: Fixed.

@@ -165,6 +165,7 @@ Gershenfeld (1997) characterized the cluster-weighted models as a finite mixture
 
 %------------------------------------------------
 
+\section{Generalizing CWM}
 \begin{frame}
 \frametitle{Generalizing CWM}
 We proceed to extend CWM by splitting the  continuous covariates further as $\bm{V}:=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ is a set of non-Gaussian covariates, and $\bm{T}$ a set of Gaussian  covariates.  Thus CWM is now recovered as
@@ -203,13 +204,14 @@ Made famous by Lambert (1992), the zero -inflated Poisson model accounts for the
 \end{small}
 \end{frame} 
 %------------------------------------------------
-
+\section{Zero - Inflated Poisson}
 \newcommand{\xTilda}{\bm{\tilde{x}}}
 \begin{frame}
 \frametitle{Zero - Inflated Poisson}
 $$ 
  q( y = 0| \bm{x} ; \bm{ \vartheta}_{j}  ) = \psi_j + (1 - \psi_j)e^{-\lambda_j},
 $$
+
 $$ 
 q(y > 0 |  \bm{x} ; \bm{ \vartheta}_{j}  ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.
  $$
@@ -221,12 +223,20 @@ $$
 
 %------------------------------------------------
 \begin{frame}
+\frametitle{Bernoulli-Poisson Partitioning Method}
 \begin{small}
 
  \begin{align*}
 \Omega^B =  \bigcup_{l =1}^G \Omega_l^B & & &  &
 f^B(\bm x, y; \Phi)= \sum_{l=1}^{G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
 \end{align*}
+$$
+ \psi_l =  \frac{e^{\xTilda \bm{\bar{\beta}}_l'}}{1+ e^{\xTilda  \bm{\bar{\beta}}_l'}}  \quad \quad \quad
+ q^B(y | \bm{x} ;  \bm{\bar{\beta}}_l) = \begin{cases}
+      \quad \psi_l, & y = 0\\
+     1 -  \psi_l,  & y > 0
+   \end{cases} 
+$$
 \begin{align*}
 \Omega^P =  \bigcup_{j =1}^M \Omega_j^P & &  &  &
 f^P(\bm x, y; \Phi)= \sum_{j=1}^{M} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
@@ -238,6 +248,140 @@ q^P(y|\bm{ x} ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
 \end{small}
 \end{frame}
 %------------------------------------------------
+\section{EM Algorithm for Estimation}
+\begin{frame}
+\frametitle{Bernoulli-Poisson Partitioning Method}
+$$\Omega =  \Omega^Z = \bigcup_{ \substack {l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}}  } \Omega_{l,j}^Z := \bigcup_{\substack{ l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}  } }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 ,\ldots, K\leq M \times G \}} \Omega_k^Z, $$
+\begin{small}
+$$q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) $$
+ $$ = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{1 ,\ldots, K \}. $$
+ 
+\end{small}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{EM  Algorithm for CWM (Ingrassia et al, 2016)}
+\underline{E-Step}
+\begin{tiny}
+\begin{equation*}\begin{split}
+    {\pi_{ij}}^{(s)} &= {E}[Z_{ij} |(\bm{x_i}, y_i); \bm{\Phi}^{(s)}]\\
+     &= \frac{{\tau_j}^{(s)}q(y_i|x_i; \bm \beta_j^{(s)}, \lambda^{(s)}_{j})p(t_i; \bm\mu_j^{{\star}(s)}, \bm\Sigma_j^{{\star}(s)}) p(w_i; \bm \gamma_j^{(s)})p(u_i; \bm{\mu}_j^{\star\star\star (s)},\bm{\Sigma}_j^{\star\star\star (s)})}{f(\bm{x}_i, y_i; \bm{\Phi}^{(s)})
+\label{eq29}                       }.
+\end{split}\end{equation*}
+\end{tiny}
+\underline{M-Step}
+\begin{tiny}
+\begin{align*}
+{\hat{\tau}_j}^{(s+1)}&=\frac{1}{n} \sum_{i=1}^n \pi_{ij}^{(s)}, && && {\hat{\bm{\mu}}_j}^{\star (s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\bm t_i, &&  && {\hat{\bm \gamma}^{(s+1)}_{jr}} =\frac{\sum_{i=1}^n \pi_{ij}^{(s)} \omega^{rs}_i} {\sum_{i=1}^n \pi_{ij}^{(s)}},
+\end{align*}
+$$
+ {\widehat{\bm \Sigma^{}}_j}^{\star(s+1)}=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\bm t_i-\hat{\bm \mu}^{(s+1)}_j) (\bm t_i-\hat{\bm \mu}^{(s+1)}_j)^{'}  ,
+$$
+\end{tiny}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{M-Step for Log-normal}
+\begin{small}
+\begin{align*}
+{\hat{\bm \mu}_j}^{\star\star\star (s+1)} &=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\ln \bm u_i, \\
+{\widehat{\bm \Sigma}_j}^{\star\star\star(s+1)} & =\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j) (\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j)^{'}. 
+\end{align*}
+\end{small}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{EM  Algorithm for Zero-Inflated (Lambert, 1992)}
+\begin{center}
+\underline{E - Step}
+\end{center}
+\begin{small}
+\begin{align*}
+o_{ik}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\xTilda_i \bar{\bm{\beta}_k}^{'(s)} - e^ {\bm{\xTilda_i} \bm{\beta}_k^{'(s)}} \big) } \right]^{-1}, &  y_{i} = 0 \\
+  0 \quad , & y_{i}> 0 .
+\end{cases}
+\end{align*}
+\end{small}
+
+\begin{center}
+\underline{M - Step}
+\end{center}
+\begin{small}
+\begin{align}
+ l_c(\lambda_k; y,\bm{x},\bm{o}_k^{(s)}) &= \sum_{i=1}^n (1- o_{ik}^{(s)}) (y_i \xTilda_i \bm{\beta}_k^{'}  - e^{\xTilda_i \bm{\beta}_k^{'}})\label{eq7}.\\
+l_c(\psi_k;y,\bm{x},\bm{o}_k^{(s)}) &=\sum_{i=1}^n \left( o_{ik}^{(s)} \xTilda_i \bar{\bm{\beta}_k }^{'} - \log \left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}} \right) \right), \label{eq6}   
+ \end{align}
+\end{small}
+\end{frame}
+%------------------------------------------------
+\section{Comparison of Models}
+\begin{frame}
+\frametitle{Comparison of Models}
+How do we know which model is the best, the zero-inflated or standard Poisson? (Wilson, 2016) demostrates the misuse of the Vuong non-nested t-test (Vuong, 1984). Wilson instead defines a replacement in the form of a LR test. 
+\begin{align*}
+& & H_0: \quad \psi_k = 0 \quad\quad vs. \quad\quad H_a: \quad \psi_k \neq 0 . & &
+\end{align*}
+\begin{center}The test statistic $\varphi$ is defined as \end{center}
+\begin{align}
+\varphi = -2 \bigg[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\bigg].
+\end{align}
+\end{frame}
+
+\section{Application}
+\begin{frame}
+\frametitle{Application - French Motor Policy}
+A collection of insurance policy information pertaining to motorists in all 24 regions of France. The dataset is loaded from the CASDatasets package (Dutang, 2014). 
+\begin{small}
+\begin{table}[!htb]
+\begin{center}
+      \centering
+        \begin{tabular}{ll}
+\hline
+Attribute & Description \\
+\hline
+Policy ID & Unique identifier of the policy holder\\
+Claim Nb & Number of claims during exposure period  (0,1,2,3,4)\\
+Exposure & The exposure of policy in years (0--1.5) \\
+Power & Power level of car ordered categorical (12 levels )\\
+Car Age & Car age in years \\
+Driver Age & Age of a legal driver \\
+Brand & Car brands (7 types) \\
+Gas & Diesel or Regular \\
+Region & Regions in France (10 classifications)\\
+Density & Number of inhabitants per km$^2$ \\
+Loss Amount & Portion of claim the insurance policy pays\\
+\hline
+		\end{tabular}
+\end{center}
+\end{table}
+\end{small}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Modelling Severity}
+$$ Loss Amount =  Density + Car Age + Driver Age + Region + Power + Gas + \epsilon, \quad $$
+$$ 
+\epsilon \sim \mathcal{N}(0,\sigma^2). 
+$$ \newline
+The canonnical log-link is used for the GLM. The
+$CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in (Charpentier ,2014).
+
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Modelling Severity}
+\begin{figure}[!htb]
+\label{fig:vet1}
+\begin{center}
+\includegraphics[scale=0.83]{SeverityPlot}
+\end{center}
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusions}
 
 \begin{frame}
 \frametitle{Bullet Points}
@@ -248,87 +392,6 @@ q^P(y|\bm{ x} ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
 \item Nam cursus est eget velit posuere pellentesque
 \item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
 \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
 \end{frame}
 
 %------------------------------------------------
