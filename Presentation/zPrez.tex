@@ -186,25 +186,58 @@ $$
 $$ 
 = \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_j^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_j^{\star\star\star})^{'}\bm{\Sigma}_j^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_j^{\star\star\star})\right].
 $$
+\begin{itemize}
+\item Extreme Weather Events
+\item Population Density
+\end{itemize}
 \end{small}
 \end{frame}
 %------------------------------------------------
-
-
-
-
-
-
+\begin{frame}
+\frametitle{Zero - Inflated Poisson}
+\begin{small}
+Made famous by Lambert (1992), the zero -inflated Poisson model accounts for the presence of excess zeros in data. 
+ \begin{align*}
+ f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(y = 0|\bm{x};\bm{\vartheta}_{j} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{j}  ) \right]   p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}). \\
+\end{align*}
+\end{small}
+\end{frame} 
 %------------------------------------------------
 
+\newcommand{\xTilda}{\bm{\tilde{x}}}
+\begin{frame}
+\frametitle{Zero - Inflated Poisson}
+$$ 
+ q( y = 0| \bm{x} ; \bm{ \vartheta}_{j}  ) = \psi_j + (1 - \psi_j)e^{-\lambda_j},
+$$
+$$ 
+q(y > 0 |  \bm{x} ; \bm{ \vartheta}_{j}  ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.
+ $$
+$$
+ \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda \bm{\bar{\beta}}_j'}}   \quad \quad \quad
+\lambda_j  = e^{\xTilda \bm{\beta}_j'}. 
+$$
+\end{frame} 
 
+%------------------------------------------------
+\begin{frame}
+\begin{small}
 
-
-
-
-
-
-
+ \begin{align*}
+\Omega^B =  \bigcup_{l =1}^G \Omega_l^B & & &  &
+f^B(\bm x, y; \Phi)= \sum_{l=1}^{G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
+\end{align*}
+\begin{align*}
+\Omega^P =  \bigcup_{j =1}^M \Omega_j^P & &  &  &
+f^P(\bm x, y; \Phi)= \sum_{j=1}^{M} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
+\end{align*}
+ \begin{align*}
+\lambda_j = e^{\xTilda \bm{\beta}_j'}, & & & & %\beta_{0j} + \beta_j^{'}x
+q^P(y|\bm{ x} ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
+ \end{align*}
+\end{small}
+\end{frame}
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{Bullet Points}
