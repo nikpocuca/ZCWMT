@@ -369,6 +369,29 @@ $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[
 
 \end{frame}
 %------------------------------------------------
+\begin{frame}
+\frametitle{Comparison of GCWM to CWM}
+\begin{center}
+\begin{tabular}{@{\extracolsep{5pt}} rrrr}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Model & k & AIC & BIC \\
+\hline \\[-1.8ex]
+CWM & $1$ & $$$352,470$ & $$$352,661$ \\
+& $2$ & $$$314,560$ & $$$314,949$ \\
+& $3$ & $$$301,223$ & $$$301,812$ \\
+& $4$ & $$$287,020$ & $$$287,808$ \\
+& $\bm{5}$ &$$$\bm{284,283}$ & $$$\bm{285,268}$ \\
+GCWM & $1$ & $$$111,129$ & $$$111,320$ \\
+& $2$ & $$$90,039$ & $$$90,428$ \\
+& $3$ & $$$89,476$ & $$$90,065$ \\
+& $\bm{4}$ & $$$\bm{88,781}$ & $$$\bm{89,568}$ \\
+& $5$ & $$$88,731$ & $$ $89,717$ \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{center}
+\end{frame}
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{Modelling Severity}
@@ -437,11 +460,9 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \begin{frame}
 \frametitle{Conclusions}
 \begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+\item GCWM allows for modelling of heterogeneous risk within a set of insurance policies. 
+\item Extension of CWM to GCWM shows improved  AIC and BIC. 
+\item Zero-inflated models can also be estimated within the GCWM paradigm. 
 \end{itemize}
 \end{frame}
 
@@ -449,9 +470,30 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \frametitle{References}
 \footnotesize{
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
+\bibitem[Dutang, 2014]{p1} Christophe Dutang (2014)
+\newblock CAS Datasets 
+
+\bibitem[Gerschen, 1997]{p1} Neil Gershenfeld 
+\newblock Nonlinear Inference and Cluster‐Weighted Modeling
+
+
+\bibitem[Ingrassia, 2015]{p1} Ingrassia, Punzo, et  al. 
+\newblock The Generalized Linear Mixed Cluster-Weighted Model
+\newblock Journal of Classification
+
+
+\bibitem[Lambert,1992]{p1} Diane Lambert (1992) 
+\newblock Zero-Inflated Poisson Regression, with an Application to Defects in Manufacturing 
+\newblock Technometrics 
+
+\bibitem[Storm, 2018]{p1} NCDC Storm Events (2018)
+\newblock NCDC Storm Events
+
+
+\bibitem[Kaggle, 2015]{p1} Golden Oak Research Group (2017)
+\newblock US Household Income
+
+
 \end{thebibliography}
 }
 \end{frame}
