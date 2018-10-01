@@ -1,11 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  30 SEP 2018 17:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.8)  1 OCT 2018 10:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **GLM_MixturesNP_2018.tex
 (./GLM_MixturesNP_2018.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2018-04-01> patch level 5
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
@@ -24,7 +23,7 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/03/24 v5.7 Page Geometry
+Package: geometry 2018/04/16 v5.8 Page Geometry
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -244,14 +243,14 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count104
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
+Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
 \captionmargin=\dimen125
 \captionmargin@=\dimen126
 \captionwidth=\dimen127
@@ -274,10 +273,10 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+Package: colortbl 2018/05/02 v1.0c Color table columns (DPC)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \col@sep=\dimen132
 \ar@mcellbox=\box31
 \extrarowheight=\dimen133
@@ -356,7 +355,7 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@affil=\count118
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
 \multirow@colwidth=\skip61
 \multirow@cntb=\count119
 \multirow@dima=\skip62
@@ -383,7 +382,7 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \@thisrulewidth=\dimen148
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
+Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \c@tracingmulticols=\count124
 \mult@box=\box37
 \multicol@leftmargin=\dimen149
@@ -640,12 +639,12 @@ File: frequency.png Graphic file (type png)
 Package pdftex.def Info: frequency.png  used on input line 487.
 (pdftex.def)             Requested size: 340.2717pt x 210.18552pt.
 [15] [16 <./frequency.png (PNG copy)>] [17]
-Overfull \hbox (17.77016pt too wide) in paragraph at lines 534--555
+Overfull \hbox (17.77016pt too wide) in paragraph at lines 535--556
 [][] 
  []
 
 
-Overfull \hbox (22.97748pt too wide) in paragraph at lines 568--589
+Overfull \hbox (22.97748pt too wide) in paragraph at lines 569--590
  [][] 
  []
 
@@ -653,17 +652,17 @@ Overfull \hbox (22.97748pt too wide) in paragraph at lines 568--589
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (22.97748pt too wide) in paragraph at lines 596--617
+Overfull \hbox (22.97748pt too wide) in paragraph at lines 597--618
  [][] 
  []
 
 [18] [19] [20]
-Overfull \hbox (0.98257pt too wide) in paragraph at lines 660--672
+Overfull \hbox (0.98257pt too wide) in paragraph at lines 661--673
  [] 
  []
 
 [21] [22]
-Overfull \hbox (3.98006pt too wide) in paragraph at lines 693--696
+Overfull \hbox (3.98006pt too wide) in paragraph at lines 694--697
 []$\OML/cmm/m/it/10 X$[]$X \OMS/cmsy/m/n/10 ^^X N\OT1/cmr/m/n/10 (\OML/cmm/m/it
 /10 x\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ^^V; ^^[\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/
 10 , then $\OML/cmm/m/it/10 U \OT1/cmr/m/n/10 := [] [] \OMS/cmsy/m/n/10 ^^X []\
@@ -684,10 +683,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6127 strings out of 492649
- 88387 string characters out of 6129622
- 195812 words of memory out of 5000000
- 9810 multiletter control sequences out of 15000+600000
+ 6159 strings out of 492642
+ 88978 string characters out of 6129385
+ 196631 words of memory out of 5000000
+ 9846 multiletter control sequences out of 15000+600000
  46199 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,40p,1597b,521s stack positions out of 5000i,500n,10000p,200000b,80000s
