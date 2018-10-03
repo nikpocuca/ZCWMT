@@ -69,10 +69,12 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 
-\begin{document}
-\title{\bf Modeling  Frequency and Severity of Claims with the Generalized  Cluster-Weighted Model}
+\newcommand{\xTilda}{\tilde{\bm{x}}}
 
-\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c and Paul D. McNicholas  }%Nik: need to add names here.
+\begin{document}
+\title{Modeling  Frequency and Severity of Claims with the Generalized  Cluster-Weighted Model}
+
+\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c and Paul D. McNicholas}
 
 \maketitle
 \doublespacing
@@ -89,101 +91,102 @@ In this paper, we propose a generalized cluster-weighted model (GCWM) that allow
 \section{Introduction}\label{sec:introduction}
 A significant number of clustering methods have been proposed for sub-grouping the data in the area of computer science, biology, social science, statistics, marketing, etc. \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a cluster-weighted model (CWM) framework as a flexible family of mixture models for fitting the joint distribution of a random vector composed of a response variable and a set of mixed-type covariates with the assumption that continuous covariates come from Gaussian distribution. CWMs with Gaussian assumptions have been proposed by \cite{Gershenfeld:1997}, \cite{Gershenfeld:Schoner+Metois:1999}, and \cite{Gershenfeld:1999} in a context of media technology. Some extensions of this class of models have been considered by \cite{Punzo+Ingrassia:2015}, \cite{Ingrassia+Minotti+Punzo:2014}, \cite{Ingrassia+Minotti+Vittadini:2012}, \cite{subedi13,subedi15}, and \cite{punzo17}. These clustering methods are somewhat lacking for modelling insurance data, e.g., high excess zeros for claim count, heavy-tail loss distribution, deductible, or limits.
 
-Sub-grouping of insurance policies based on risk classification is a standard practice in insurance. The heterogenous nature of insurance data allows for explorations of many different techniques for sub-grouping risk. As a result, there is a growing number of papers in the area of mixture modeling of univariate and multivariate insurance data to account for heterogeneity of risk. \cite{Lee+Lin:2010}, \cite{Verbelen+Gong+Antonio+Badescu+Lin:2015}, and \cite{Miljkovic+Grun:2016} proposed mixture models for univariate loss data, and mixture modeling of univariate insurance data has been extended to the multivariate context. A finite mixture of bivariate Poisson regression models with an application to insurance ratemaking was studied by \cite{Bermudez+Karlis:2012}. A Poisson mixture model for count data was considered by \cite{Brown+Buckley:2015} with application in managing a Group Life insurance portfolio. \cite{risks_miljkovic} reviewed two complementary mixture-based clustering approaches (cluster-weighted model and mixture-based clustering for an ordered stereotype model) for modeling unobserved heterogeneity in an automobile insurance portfolio, depending on the data structure under consideration. Mixture models with the applications in financial mathematics have been explored in several contexts, including the work by \cite{durham2007sv} and \cite{miljkovic2018new}.
+Sub-grouping of insurance policies based on risk classification is a standard practice in insurance. The heterogenous nature of insurance data allows for explorations of many different techniques for sub-grouping risk. As a result, there is a growing number of papers in the area of mixture modeling of univariate and multivariate insurance data to account for heterogeneity of risk. \cite{Lee+Lin:2010}, \cite{Verbelen+Gong+Antonio+Badescu+Lin:2015}, and \cite{Miljkovic+Grun:2016} proposed mixture models for univariate loss data, and mixture modeling of univariate insurance data has been extended to the multivariate context. A finite mixture of bivariate Poisson regression models with an application to insurance ratemaking was studied by \cite{Bermudez+Karlis:2012}. A Poisson mixture model for count data was considered by \cite{Brown+Buckley:2015} with application in managing a Group Life insurance portfolio. \cite{risks_miljkovic} reviewed two complementary mixture-based clustering approaches (CWMs and mixture-based clustering for an ordered stereotype model) for modeling unobserved heterogeneity in an automobile insurance portfolio, depending on the data structure under consideration. Mixture models with the applications in financial mathematics have been explored in several contexts, including the work by \cite{durham2007sv} and \cite{miljkovic2018new}.
 
-In this paper, we extend the CWM family proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} to allow for modeling of non-Gaussian continues covariates and a zero-inflated Poisson (ZIP) claims data with excess zeros, which are commonly seen in the insurance applications. We consider a generalized cluster-weighted model (GCWM) as well as a zero-inflated GCWM (ZI-GCWM). Two partitioning methods are considered with two separate expectation-maximization (EM) algorithms \citep{Dempster+Laird+Rubin:1977}. The first EM algorithm is for parameter estimation for the GCWM models, while the second EM is for parameter estimation for the ZI-GCWM. We show that the Bernoulli and Poisson GCWM accurately estimate the initialization of the EM algorithm for the ZI-GCWM model. These models utilize individual policy and claims data and should be useful in the areas of ratemaking and risk management.
+In this paper, we extend the CWM family proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} to allow for modeling of non-Gaussian continuous covariates and a zero-inflated Poisson (ZIP) claims data with excess zeros, which are commonly seen in the insurance applications. We consider a generalized cluster-weighted model (GCWM) as well as a zero-inflated GCWM (ZI-GCWM). Two partitioning methods are considered with two separate expectation-maximization (EM) algorithms \citep{Dempster+Laird+Rubin:1977}. The first EM algorithm is for parameter estimation for the GCWM models, while the second EM is for parameter estimation for the ZI-GCWM. We show that the Bernoulli and Poisson GCWM accurately estimate the initialization of the EM algorithm for the ZI-GCWM model. These models utilize individual policy and claims data and should be useful in the areas of ratemaking and risk management.
 
 This paper is organized as follows. The GCWM and GCWM approaches are discussed in Section~\ref{sec:model}, and parameter estimation is discussed in Section~\ref{sec:estmeth}. Then, our methodology is applied to real data on French automobile claims and an extensive simulation study is conducted (Section~\ref{sec:numapp}). This paper concludes with a discussion and some suggestions for future work (Section~\ref{sec:sim}).
 
 
-\section{Model}\label{sec:model}
+\section{Methodology}\label{sec:model}
 
 \subsection{Background}
 
-Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this set is defined on some sample space $\Omega$ that takes values in an appropriate Euclidian subspace. Now, assume that there exists $G$ partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$.  \cite{Gershenfeld:1997} characterized the cluster-weighted models as a finite mixture of GLMs hence, the joint distribution $f(\bm x, y)$ of $(\bm{X^{'}}, Y )^{'}$  is expressed as follows
+Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this set \textcolor{red}{[What set?]} is defined on some sample space $\Omega$ that takes values in an appropriate Euclidian subspace. Now, assume that there exists $G$ partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$.  \cite{Gershenfeld:1997} characterized CWMs as a finite mixture of GLMs; hence, the joint distribution $(\bm{X^{'}}, Y )^{'}$ has the form
  \begin{align}
- f(\bm x, y)= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\Omega_j)p(\bm{x};\Omega_j).
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\vartheta}_j),
 \label{eq1}
 \end{align}
-
-The pair $q(y|\bm{x};\Omega_j)$ and $p(\bm{x};\Omega_j)$ are conditional and marginal distributions of $(\bm{X^{'}}, Y)^{'}$ respectively, while $\tau_j$ represents the weight of the $j$th component such that $\sum_{j=1}^{G}\tau_j=1$, $\tau_j>0$.
-\cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continues and discrete as $ \bm{X}=(\bm{V^{'}},  \bm{W^{'}})^{'}$. This assumption of independence between continues and discrete covariates allows us to multiply their corresponding marginal distributions. Thus, for this setting the model in \eqref{eq1} is reformulated as follows
+where $\bm{\Phi}$ denotes the model parameters.
+%
+The pair $q(y|\bm{x};\bm{\vartheta}_j)$ and $p(\bm{x};\bm{\vartheta}_j)$ are conditional and marginal distributions of $(\bm{X^{'}}, Y)^{'}$, respectively, while $\tau_j$ is the $j$th mixing proportion such that $\sum_{j=1}^{G}\tau_j=1$, $\tau_j>0$.
+\cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continuous and discrete, i.e., $ \bm{X}=(\bm{V}',  \bm{W}')'$. The assumption of independence between continuous and discrete covariates allows us to multiply their corresponding marginal distributions. Thus, for this setting the model in \eqref{eq1} is reformulated as follows
 \begin{align}
  f(\bm{x}, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\theta}_j)=\sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{v}; \bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})
 \label{eq2}
 \end{align}
-where $\bm{v}$ and $\bm{w}$ are the vectors of continues and discrete covariates respectively, the $q(y|\bm{x};\bm{\vartheta}_j)$ is the conditional density of $Y|\bm{x}$, with parameter vector $\bm{\vartheta}_j$, the $p(\bm{v};\bm{\theta}_j^{\star})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta}_j^{\star}$. the $p(\bm{w};\bm{\theta}_j^{\star\star})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta}_j^{\star\star}$. Finally, $\bm{\Phi}:=(\bm{\theta}^{\star},\bm{\theta}^{\star\star}, \bm{\tau}, \bm{\vartheta})$ includes all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
-In addition, the conditional distribution $q(y|\bm{x};\bm{\vartheta}_j)$ is assumed to belong to an exponential family of distributions and as such can be modeled in the framework of GLMs. Here, the marginal distribution of continues covariates is assumed to be of Gaussian type. Unfortunately, this last assumption is too strong for use in insurance related applications specifically in rate-making. To relax it, we develop the Generalized cluster-weighted mdoel (GCWM) that allows for non-Gaussian covariates as discussed in the next section.
+where $\bm{v}$ and $\bm{w}$ are the vectors of continuous and discrete covariates, respectively, $q(y|\bm{x};\bm{\vartheta}_j)$ is the conditional density of $Y|\bm{x}$ with parameter vector $\bm{\vartheta}_j$, $p(\bm{v};\bm{\theta}_j^{\star})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta}_j^{\star}$, and $p(\bm{w};\bm{\theta}_j^{\star\star})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta}_j^{\star\star}$. As before, $\bm{\Phi}$ denotes the model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
+Note that the conditional distribution $q(y|\bm{x};\bm{\vartheta}_j)$ is assumed to belong to an exponential family of distributions and as such can be modeled in the GLM framework. Here, the marginal distribution of continuous covariates is assumed to be Gaussian. Unfortunately, this last assumption is too strong for use in insurance related applications, specifically in rate-making. To relax it, we develop the GCWM, which allows for non-Gaussian covariates as discussed in the next section.
 
 \subsection{Generalized cluster-weighted model (GCWM) }
-We proceed to extend \eqref{eq2} by splitting the  continues covariates further as $\bm{V}:=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ is a set of non-Gaussian covariates, and $\bm{T}$ a set of Gaussian  covariates.  Thus (\ref{eq2}) is now recovered as
+We proceed to extend \eqref{eq2} by splitting the continuous covariates $\bm{V}$ via $\bm{V}=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ contains the non-Gaussian covariates and $\bm{T}$ contains the Gaussian covariates. Thus \eqref{eq2} becomes
 \begin{align}
- f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star})
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}),
 \label{eq3}
 \end{align}
-which we refer to as generalized cluster-weighted model (GCWM). Here $p(\bm{t};\bm{\theta}_j^{\star})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta}^{\star}$, and $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ as the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta}_j^{\star\star\star} $.
+which we refer to as the GCWM. Here, $p(\bm{t};\bm{\theta}_j^{\star})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta}^{\star}$, and $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ is the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta}_j^{\star\star\star} $.
 
 
-As it is relevant to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates. This however does not reduce the generality of our approach. With log-normal assumption for $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ we have that $\bm{u}$ is defined on $\mathbb{R}^p_+,\quad p \in \mathcal{N}$ with parameter vector $ \bm{\theta}_j^{\star\star\star} $ having probability density function as
-\begin{align*} p \left(  \bm{u}; \bm{\theta}_j^{\star\star\star} := ( \bm{\mu}_j^{\star\star\star} ,\bm{ \Sigma}_j^{\star\star\star } ) \right) = \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_j^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_j^{\star\star\star})^{'}\bm{\Sigma}_j^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_j^{\star\star\star})\right].
-\end{align*} The derivation of the equation above can be found in the Appendix \ref{changeVarUni}.
+Because of its relevance to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates --- this, however, does not reduce the generality of our general framework. With the log-normal assumption for $p(\bm{u};\bm{\theta}_j^{\star\star\star})$, we have that $\bm{u}$ is defined on $\mathbb{R}^p_+$ with parameter vector $\bm{\theta}_j^{\star\star\star}= (\bm{\mu}_j^{\star\star\star} ,\bm{\Sigma}_j^{\star\star\star})$ and probability density function
+\begin{equation}\label{eqn:logn} 
+p \left(  \bm{u}; \bm{\theta}_j^{\star\star\star} \right) = \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_j^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_j^{\star\star\star})^{'}\bm{\Sigma}_j^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_j^{\star\star\star})\right].
+\end{equation} The derivation of \eqref{eqn:logn} can be found in the Appendix \ref{changeVarUni}.
 
 %Nik: is this a density? What range of values of x? What values can mu and sigma take?
 % PM: Is this more clear?
 
 \subsection{Zero-inflated Poisson Model}%Nik: not sure what this means? Specifically, what is the role of the first "-"
 
-In the zero-inflated Poisson model (ZIP) (see \cite{Lambert}) we can split the conditional density $p(y|\bm{x},\bm{\vartheta}_j)$ of the response variable $y$, into zero and non-zero densities. %Nik: I don't think "groups" is what is meant.  % Values I meant. 
-The conditional probability mass associated with the event $y=0$ is characterized with function $q(y = 0|\bm{x},\bm{\vartheta}_{j})$. For situations when $y > 0$ the response variable $y$ is conditionally distributed with density $q(y > 0|\bm{x}, \bm{\vartheta}_{j} )$. Given the conditional density now defined for the ZIP model \eqref{eq3}
-can be re-written as follows
+In the zero-inflated Poisson (ZIP) model \citep[see][]{Lambert}, we can split the conditional density of the response variable $Y$, i.e., $p(y|\bm{x},\bm{\vartheta}_j)$, into zero and non-zero densities. The conditional probability mass associated with the event $y=0$ is characterized by $q(y = 0|\bm{x},\bm{\vartheta}_{j})$. For situations when $y > 0$, the response variable $Y$ is conditionally distributed with density $q(y > 0|\bm{x}, \bm{\vartheta}_{j} )$. Given the conditional density for the ZIP model, \eqref{eq3} can be re-written as
  \begin{align}
  f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(y = 0|\bm{x};\bm{\vartheta}_{j} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{j}  ) \right]   p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
 \end{align}
 
-\newcommand{\xTilda}{\bm{\tilde{x}}}
-Let $ \xTilda := [\bm{1},\bm{x}]$, where $\xTilda $ is a matrix of covariates with the addition of a placeholder for the intercept in the GLM. We denote the Poisson conditional density  as $ q^P(y|\bm{x}; \lambda_j) $, where $y \in \{0,1,\dots\}$, and  $\bm{\beta}_j$ is a row coefficient vector.
-Here, the link function will be modelled with log-link for the GLM such that
+Define $\xTilda = [\bm{1},\bm{x}]$, which contains the covariates together with a placeholder for the intercept in the GLM. Denote the Poisson conditional density  as $ q^P(y|\bm{x}; \lambda_j) $, where $y \in \{0,1,\dots\}$, and let $\bm{\beta}_j$ be a row coefficient vector.
+The link function will be modelled with log-link for the GLM such that
  \begin{align*}
 \lambda_j = e^{\xTilda \bm{\beta}_j'} && \text{and} & & %\beta_{0j} + \beta_j^{'}x
 q^P(y|\bm{ x} ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
  \end{align*}
-Next, we introduce a Bernoulli model for the conditional density. We denote the density as  $ q^{B}(y|\bm{x}; \bm{\bar{\beta}}_j) $, where $\bm{\bar{\beta_j}}$ is a row coefficient vector.  Here, the GLM will be modeled with the associated logit link function such that
+Now, we use a Bernoulli model for the conditional density. We denote the density as $ q^{B}(y|\bm{x}; \bm{\bar{\beta}}_j) $, where $\bar{\bm{\beta}_j}$ is a row coefficient vector.  Here, the GLM will be modelled with the associated logit link function so that
  \begin{align*}
  \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda  \bm{\bar{\beta}}_j'}}  && \text{and} && 
  q^B(y | \bm{x} ; {\psi}_j) = \begin{cases}
-      \quad \psi_j, & y = 0\\
-     1 -  \psi_j,  & y > 0
+      \quad \psi_j, & y = 0,\\
+     1 -  \psi_j,  & y > 0.
    \end{cases}
  \end{align*}
- Now, given a combination of two preceding models, we introduce the zero inflated Poisson model in which zero counts come from two random variables. One comes from Bernoulli random variable which generates structural zeros, and the other comes from the Poisson random variable. The coefficients pair $  \{ \bm{\beta}_{j},  \bm{\bar{\beta}}_j \} := \bm{\vartheta}_{j} $ correspond to the two above introduced conditional densities where the coefficients are estimated using a generalized linear model as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{j}  )$ are %Nik: something missing here?, PM: Fixed.
+ Now, given a combination of two preceding models, we introduce the ZIP model in which zero counts come from two random variables. One is the Bernoulli random variable, which generates structural zeros, and the other is the Poisson random variable. The coefficients $\bm{\vartheta}_{j}=\{ \bm{\beta}_{j},  \bm{\bar{\beta}}_j \}$ correspond to the two above introduced conditional densities where the coefficients are estimated using a GLM as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{j}  )$ are %Nik: something missing here?, PM: Fixed.
  \begin{align*}
  q( y = 0| \bm{x} ; \bm{ \vartheta}_{j}  ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
 q(y > 0 |  \bm{x} ; \bm{ \vartheta}_{j}  ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.
  \end{align*}
-Also, the link functions to consider are log-link for the Poisson and logit link for the Bernoulli model such that
+Also, the link functions we consider are log-link for the Poisson and logit link for the Bernoulli model so that
  \begin{align*}
  \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda \bm{\bar{\beta}}_j'}}  & & \text{and} & &
 \lambda_j  = e^{\xTilda \bm{\beta}_j'}.
  \end{align*}
 
-Let paramater $\psi_j$ denote the probability that the zero comes from the Bernoulli distribution of $j$th component, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. This allows for a more nuanced approach to handling the inflation of zeros for automobile insurance (see \cite{Bermudez+Karlis:2012}).
+Let parameter $\psi_j$ denote the probability that the zero comes from the Bernoulli distribution of $j$th component, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. \textcolor{red}{[The previous sentence does not seem to make sense. Why``let''?]} This allows for a more nuanced approach to handling the inflation of zeros for automobile insurance  \citep[see][]{Bermudez+Karlis:2012}.
+
 \subsection{Bernoulli-Poisson Sample Space Partitioning}
 
-The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros (see  \cite{Bermudez+Karlis:2012}). In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM when means of covariates are very close together (see  \cite{LimHwa}). However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}.
+The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros \citep[see][]{Bermudez+Karlis:2012}. In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM algorithm when means of covariates are very close together \cite[see][]{LimHwa}. However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}. \textcolor{red}{[Is this the paper we mean to cite?]}
 
-	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a new zero inflated GCWM (ZI-GCWM) using the previously generated Bernoulli and Poisson GCWMs. We show that the Bernoulli and Poisson GCWM accurately estimate the initialization of the EM algorithm for the zero inflated GCWM model. The work of \cite{Lambert} specifies that the MLE estimates for coefficients provide an excellent guess allowing EM to converge quickly for ZIPs. The partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. Recall $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$. As discussed, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes this sample space ie. $ \Omega = \bigcup_{i=1}^G \Omega_i $.  However, contingent on a model choice each particular set $\Omega_i$ may take a different shape.
-	 Specifically, if we introduce the Bernoulli model in a generalized form for conditional density (see \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} for specific cases), we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
+	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. We show that the Bernoulli and Poisson GCWMs accurately estimate the initialization of the EM algorithm for the zero inflated GCWM model. The work of \cite{Lambert} specifies that the MLE estimates for coefficients provide an excellent guess allowing EM to converge quickly for ZIPs. \textcolor{red}{[The previous sentence confuses me. The purpose of the EM is to find MLEs and so it seems impossible to start there?]} The partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. Recall $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$. As discussed, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes this sample space ie. $ \Omega = \bigcup_{i=1}^G \Omega_i $. \textcolor{red}{[I do not think this has been discussed. I am not sure it is helpful?]} However, contingent on a model choice each particular set $\Omega_i$ may take a different shape. \textcolor{red}{[In what precise sense does a set have a shape?]}
+	
+	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][for specific cases]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
 \Omega^B =  \bigcup_{l =1}^G \Omega_l^B & & \text{and} &  &
 f^B(\bm x, y; \Phi)= \sum_{l=1}^{G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
 \end{align*}
-Similarly if we introduce a Poisson model in a generalized form the sample space $\Omega^P$ and joint probability density function $f^P$ become
+Similarly, if we introduce a Poisson model in a generalized form the sample space $\Omega^P$ and joint probability density function $f^P$ become
 \begin{align*}
 \Omega^P =  \bigcup_{j =1}^M \Omega_j^P & & \text{and} &  &
 f^P(\bm x, y; \Phi)= \sum_{j=1}^{M} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
 \end{align*}
 Where this sample space is partitioned up to $M$ non-overlapping sets.
  Now, construct a new partitioning of a sample space $\Omega$ such that
-$$\Omega =  \Omega^Z = \bigcup_{ \substack {l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}}  } \Omega_{l,j}^Z := \bigcup_{\substack{ l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}  } }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 ,\ldots, K\leq M \times G \}} \Omega_k^Z, $$ where $K$ can range up to $M \times G$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
+$$\Omega =  \Omega^Z = \bigcup_{ \substack {l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}}  } \Omega_{l,j}^Z := \bigcup_{\substack{ l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}  } }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 ,\ldots, K\leq M \times G \}} \Omega_k^Z, $$ where $K$ can range up to $MG$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
 & = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{1 ,\ldots, K \}.
@@ -191,7 +194,7 @@ q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar
 \end{align}
 
 
-The EM algorithm is then used to estimate this new mixture of up to $M \times G$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is commented in section 3.6.
+The EM algorithm is then used to estimate this new mixture of up to $MG$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section 3.6. \textcolor{red}{[(i) There is no Section~3.6. (ii) In \LaTeX, section should be referenced via nicknames and not hard numbers.]}
 
 \section{Estimation Methodology}\label{sec:estmeth}
 The common approach for estimating parameters in finite mixture models is based on the EM algorithm (see \cite{McLachlan+Peel:2000}).
@@ -686,7 +689,7 @@ Our approach is relevant to the actuarial pricing and risk management when curre
 
 
 
-\newpage
+\appendix
 \section{Appendix}
 
 \subsection{Derivation of the Log-normal Distribution }
