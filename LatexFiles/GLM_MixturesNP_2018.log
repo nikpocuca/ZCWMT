@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 OCT 2018 14:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 OCT 2018 16:03
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -558,91 +558,61 @@ LaTeX Font Info:    Try loading font information for U+rsfs on input line 105.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [2] [3]
-[4] [5] [6] [7]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 239.
+[4] [5] [6] [7] [8]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 280.
 
-Overfull \hbox (30.80554pt too wide) detected at line 254
- []$[]  \OML/cmm/m/it/10 Q\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 ^^H\OMS/cmsy/m/n/10
- j\OT1/cmr/bx/n/10 ^^H[]\OT1/cmr/m/n/10 ) = [] [] [][] [](\OML/cmm/m/it/10 ^^\[
-]\OT1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 q\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y[]
-\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ; \OML/cmm/b/it/10 ^^L[]\
-OML/cmm/m/it/10 ; ^^U[]\OT1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10
- (\OML/cmm/m/it/10 t[]\OT1/cmr/m/n/10 ; \OML/cmm/b/it/10 ^^V[]\OML/cmm/m/it/10 
-; \OT1/cmr/bx/n/10 ^^F[]\OT1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/1
-0 (\OML/cmm/m/it/10 w[]\OT1/cmr/m/n/10 ; \OML/cmm/b/it/10 ^^M[]\OT1/cmr/m/n/10 
-) + [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 u[]\OT1/cmr/m/n/10 ;
- \OML/cmm/b/it/10 ^^V[]\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 ^^F[]\OT1/cmr/m/n/10
- )[]$ 
- []
-
-[8]
-Overfull \hbox (26.01227pt too wide) in paragraph at lines 269--269
-[] 
- []
-
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 278.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (36.14296pt too wide) in paragraph at lines 284--284
-[] 
- []
-
-[9]
-Overfull \hbox (30.88304pt too wide) in paragraph at lines 293--293
-[] 
- []
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 280.
 
 
-Overfull \hbox (1.4672pt too wide) in paragraph at lines 295--296
-\OML/cmm/m/it/10 l[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 ; \O
-ML/cmm/m/it/10 y; \OML/cmm/b/it/10 x\OML/cmm/m/it/10 ; \OML/cmm/b/it/10 o[]\OT1
-/cmr/m/n/10 )$ \OT1/ptm/m/n/10 can be max-i-mized seper-ately for pa-ram-e-ters
- $\OML/cmm/m/it/10  []$ \OT1/ptm/m/n/10 and $\OML/cmm/m/it/10 ^^U[]$\OT1/ptm/m/
-n/10 . With the EM al-go-rithm, the incomplete-
- []
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+) [9] [10]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 359.
 
-[10] [11] <Density.pdf, id=58, 505.89pt x 505.89pt>
+[11] <Density.pdf, id=60, 505.89pt x 505.89pt>
 File: Density.pdf Graphic file (type pdf)
  <use Density.pdf>
-Package pdftex.def Info: Density.pdf used on input line 374.
+Package pdftex.def Info: Density.pdf used on input line 373.
 (pdftex.def)             Requested size: 202.3524pt x 202.3524pt.
 
-<logDensity.pdf, id=59, 505.89pt x 505.89pt>
+<logDensity.pdf, id=61, 505.89pt x 505.89pt>
 File: logDensity.pdf Graphic file (type pdf)
  <use logDensity.pdf>
-Package pdftex.def Info: logDensity.pdf used on input line 375.
+Package pdftex.def Info: logDensity.pdf used on input line 374.
 (pdftex.def)             Requested size: 202.3524pt x 202.3524pt.
 
-<SeverityPlot.png, id=60, 429.10312pt x 241.65282pt>
+<SeverityPlot.png, id=62, 429.10312pt x 241.65282pt>
 File: SeverityPlot.png Graphic file (type png)
  <use SeverityPlot.png>
-Package pdftex.def Info: SeverityPlot.png used on input line 414.
+Package pdftex.def Info: SeverityPlot.png used on input line 413.
 (pdftex.def)             Requested size: 356.15549pt x 200.57178pt.
 
 [12] [13 <./Density.pdf> <./logDensity.pdf>] [14 <./SeverityPlot.png (PNG copy)
 >]
-Overfull \hbox (10.97794pt too wide) in paragraph at lines 463--465
+Overfull \hbox (10.97794pt too wide) in paragraph at lines 462--464
 \OT1/ptm/m/n/10 In this sec-tion, we model fre-quency of the French mo-tor clai
 ms. We con-sider the co-vari-ates $\OML/cmm/m/it/10 Density$\OT1/ptm/m/n/10 , $
 \OML/cmm/m/it/10 DriverAge$\OT1/ptm/m/n/10 ,
  []
 
-<frequency.png, id=213, 425.33907pt x 262.73157pt>
+<frequency.png, id=215, 425.33907pt x 262.73157pt>
 File: frequency.png Graphic file (type png)
  <use frequency.png>
-Package pdftex.def Info: frequency.png used on input line 490.
+Package pdftex.def Info: frequency.png used on input line 489.
 (pdftex.def)             Requested size: 340.2717pt x 210.18552pt.
  [15]
 [16 <./frequency.png (PNG copy)>] [17]
-Overfull \hbox (17.77016pt too wide) in paragraph at lines 538--559
+Overfull \hbox (17.77016pt too wide) in paragraph at lines 537--558
 [][] 
  []
 
 
-Overfull \hbox (22.97748pt too wide) in paragraph at lines 572--593
+Overfull \hbox (22.97748pt too wide) in paragraph at lines 571--592
  [][] 
  []
 
@@ -650,17 +620,17 @@ Overfull \hbox (22.97748pt too wide) in paragraph at lines 572--593
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (22.97748pt too wide) in paragraph at lines 600--621
+Overfull \hbox (22.97748pt too wide) in paragraph at lines 599--620
  [][] 
  []
 
 [18] [19] [20]
-Overfull \hbox (0.98257pt too wide) in paragraph at lines 664--676
+Overfull \hbox (0.98257pt too wide) in paragraph at lines 663--675
  [] 
  []
 
 [21]
-Overfull \hbox (3.98006pt too wide) in paragraph at lines 697--700
+Overfull \hbox (3.98006pt too wide) in paragraph at lines 696--699
 []$\OML/cmm/m/it/10 X$[]$X \OMS/cmsy/m/n/10 ^^X N\OT1/cmr/m/n/10 (\OML/cmm/m/it
 /10 x\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ^^V; ^^[\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/
 10 , then $\OML/cmm/m/it/10 U \OT1/cmr/m/n/10 := [] [] \OMS/cmsy/m/n/10 ^^X []\
@@ -681,11 +651,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6095 strings out of 493089
- 87819 string characters out of 6134842
- 191630 words of memory out of 5000000
- 9382 multiletter control sequences out of 15000+600000
- 45651 words of font info for 110 fonts, out of 8000000 for 9000
+ 6157 strings out of 493089
+ 88632 string characters out of 6134842
+ 191695 words of memory out of 5000000
+ 9436 multiletter control sequences out of 15000+600000
+ 49527 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,40p,1597b,524s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -710,19 +680,21 @@ live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (28 pages, 729931 bytes).
+xmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/time
+s/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on GLM_MixturesNP_2018.pdf (28 pages, 740003 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 262 compressed objects within 3 object streams
+ 369 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

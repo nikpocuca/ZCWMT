@@ -16,8 +16,8 @@ Biernacki, C., Celeux, G., Govaert, G., Jul 2000. Assessing a mixture model for
   Pattern Analysis and Machine Intelligence 22~(7), 719--725.
 
 \bibitem[{Brown and Buckley(2015)}]{Brown+Buckley:2015}
-Brown, G., Buckley, W., 2015. Experience rating with poisson mixtures. Annals
-  of Actuarial Science 9~(02), 304--321.
+Brown, G.~O., Buckley, W.~S., 2015. Experience rating with poisson mixtures.
+  Annals of Actuarial Science 9~(02), 304--321.
 
 \bibitem[{Charpentier(2014)}]{Charpentier:2014}
 Charpentier, A., 2014. Computational Actuarial Science with R. CRC press.
@@ -40,23 +40,26 @@ Dutang, C., Charpentier, A., 2016. {CASdatasets}. {R} package version 1.0-6.
 Gershenfeld, N., 1997. Nonlinear inference and cluster-weighted modeling.
   Annals of the New York Academy of Sciences 808~(1), 18--24.
 
-\bibitem[{Gershenfeld(1999)}]{Gershenfeld:1999}
-Gershenfeld, N., 1999. The nature of mathematical modeling. Cambridge
-  university press.
-
-\bibitem[{Gershenfeld and Metois(1999)}]{Gershenfeld:Schoner+Metois:1999}
-Gershenfeld, N., S.~B., Metois, E., 1999. Cluster-weighted modelling for
+\bibitem[{Gershenfeld et~al.(1999)Gershenfeld, Schoner, and
+  Metois}]{Gershenfeld:Schoner+Metois:1999}
+Gershenfeld, N., Schoner, B., Metois, E., 1999. Cluster-weighted modelling for
   time-series analysis. Nature 397~(67171), 329--332.
 
-\bibitem[{Ingrassia and Punzo(2014)}]{Ingrassia+Minotti+Punzo:2014}
-Ingrassia, S., M.~S., Punzo, A., 2014. Model-based clustering via linear
-  cluster-weighted models. Computational Statistics \& Data Analysis 71,
-  159--182.
+\bibitem[{Gershenfeld(1999)}]{Gershenfeld:1999}
+Gershenfeld, N.~A., 1999. The nature of mathematical modeling. Cambridge
+  university press.
 
-\bibitem[{Ingrassia and Vittadini(2014)}]{Ingrassia+Minotti+Vittadini:2012}
-Ingrassia, S., M.~S., Vittadini, G., 2014. Local statistical modeling via a
-  cluster-weighted approach with elliptical distributions. Journal of
-  classification 29~(3), 363--401.
+\bibitem[{Ingrassia et~al.(2014{\natexlab{a}})Ingrassia, Minotti, and
+  Punzo}]{Ingrassia+Minotti+Punzo:2014}
+Ingrassia, S., Minotti, S.~C., Punzo, A., 2014{\natexlab{a}}. Model-based
+  clustering via linear cluster-weighted models. Computational Statistics \&
+  Data Analysis 71, 159--182.
+
+\bibitem[{Ingrassia et~al.(2014{\natexlab{b}})Ingrassia, Minotti, and
+  Vittadini}]{Ingrassia+Minotti+Vittadini:2012}
+Ingrassia, S., Minotti, S.~C., Vittadini, G., 2014{\natexlab{b}}. Local
+  statistical modeling via a cluster-weighted approach with elliptical
+  distributions. Journal of classification 29~(3), 363--401.
 
 \bibitem[{Ingrassia et~al.(2015)Ingrassia, Punzo, Vittadini, and
   Minotti}]{Ingrassia+Punzo+Vittadini+Minotti:2015}
@@ -66,7 +69,7 @@ Ingrassia, S., Punzo, A., Vittadini, G., Minotti, S.~C., Jul 2015. Erratum to:
 
 \bibitem[{Johnson et~al.(1994)Johnson, Kotz, and
   Balakrishnan}]{johnson1995continuous}
-Johnson, N., Kotz, S., Balakrishnan, N., 1994. Continuous Univariate
+Johnson, N.~L., Kotz, S., Balakrishnan, N., 1994. Continuous Univariate
   Probability Distributions,(Vol. 1). John Wiley \& Sons Inc., NY.
 
 \bibitem[{Lambert(1992)}]{Lambert}
@@ -83,18 +86,19 @@ Lim, H., Li, W., Yu, P., 03 2014. Zero-inflated poisson regression mixture
   model 71, 151?158.
 
 \bibitem[{McCullagh and Nelder(1989)}]{McCullaghNelder1989}
-McCullagh, P., Nelder, J., 1989. Generalized linear models. Vol.~37. CRC press.
+McCullagh, P., Nelder, J.~A., 1989. Generalized linear models. Vol.~37. CRC
+  press.
 
-\bibitem[{McLachlan and Peel(2000)}]{McLachlan+Peel:2000}
-McLachlan, S., Peel, D., 2000. Finite Mixture Models. John Wiley \& Sons,
-  Hobuken, NJ.
+\bibitem[{McNicholas(2016)}]{mcnicholas16a}
+McNicholas, P.~D., 2016. Mixture Model-Based Classification. Chapman \&
+  Hall/CRC Press, Boca Raton.
 
 \bibitem[{McNicholas et~al.(2010)McNicholas, Murphy, McDaid, and
   Frost}]{McNicholas:2010}
-McNicholas, P., Murphy, T., McDaid, A., Frost, D., 2010. Serial and parallel
-  implementations of model-based clustering via parsimonious gaussian mixture
-  models. Computational Statistics Data Analysis 54~(3), 711 -- 723, second
-  Special Issue on Statistical Algorithms and Software.
+McNicholas, P.~D., Murphy, T.~B., McDaid, A.~F., Frost, D., 2010. Serial and
+  parallel implementations of model-based clustering via parsimonious gaussian
+  mixture models. Computational Statistics Data Analysis 54~(3), 711 -- 723,
+  second Special Issue on Statistical Algorithms and Software.
 
 \bibitem[{Miljkovic and Barabanov(2015)}]{miljkovic2015}
 Miljkovic, T., Barabanov, N., 2015. Modeling veterans’ health benefit grants
@@ -120,7 +124,7 @@ Miljkovic, T., SenGupta, I., 2018. A new analysis of vix using mixture of
   market. High Frequency 1~(1), 53--65.
 
 \bibitem[{Murphy and Bach(2012)}]{murphy2012machine}
-Murphy, K., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
+Murphy, K.~P., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
   Adaptive Computation and Machi. MIT Press.
 
 \bibitem[{Punzo and Ingrassia(2014)}]{Punzo+Ingrassia:2015}
