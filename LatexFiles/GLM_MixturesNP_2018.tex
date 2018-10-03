@@ -1,4 +1,4 @@
-\UseRawInputEncoding
+%\UseRawInputEncoding
 \documentclass[11pt,letterpaper]{article}
 \usepackage[margin=1.2in]{geometry}
 \usepackage{amsmath, amssymb}
@@ -72,7 +72,7 @@
 \begin{document}
 \title{\bf Modeling  Frequency and Severity of Claims with the Generalized  Cluster-Weighted Model}
 
-\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c and Paul McNicholas  }%Nik: need to add names here.
+\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c and Paul D. McNicholas  }%Nik: need to add names here.
 
 \maketitle
 \doublespacing
@@ -87,7 +87,7 @@ In this paper, we propose a generalized cluster-weighted model (GCWM) that allow
 \textsc{JEL Classification:}  C02, C40, C60.\\
 % C02-Mathematical Methods, C40-General mathematical and statistical methods: special topics, c60-General mathematical methods, programming models, mathematical and simulation modeling%
 \section{Introduction}\label{sec:introduction}
-A significant number of clustering methods have been proposed for sub-grouping the data in the area of computer science, biology, social science, statistics, marketing, etc. \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a cluster-weighted models (CWMs) as a flexible family of mixture models for fitting the joint distribution of a random vector composed of a response variable and a set of mixed-type covariates with the assumption that continues covariates come from Gaussian distribution. The CWM models with Gaussian assumptions have been proposed by \cite{Gershenfeld:1997}, \cite{Gershenfeld:Schoner+Metois:1999}, and \cite{Gershenfeld:1999} in a context of media technology. Some extensions of this class of models have been considered by \cite{Punzo+Ingrassia:2015}, \cite{Ingrassia+Minotti+Punzo:2014}, and \cite{Ingrassia+Minotti+Vittadini:2012}. These clustering methods lack some capabilities in order to be able to accommodate modeling insurance data (e.g. high excess zeros for claim count, heavy-tail loss distribution, deductible, or limits).
+A significant number of clustering methods have been proposed for sub-grouping the data in the area of computer science, biology, social science, statistics, marketing, etc. \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a cluster-weighted model (CWM) framework as a flexible family of mixture models for fitting the joint distribution of a random vector composed of a response variable and a set of mixed-type covariates with the assumption that continuous covariates come from Gaussian distribution. CWMs with Gaussian assumptions have been proposed by \cite{Gershenfeld:1997}, \cite{Gershenfeld:Schoner+Metois:1999}, and \cite{Gershenfeld:1999} in a context of media technology. Some extensions of this class of models have been considered by \cite{Punzo+Ingrassia:2015}, \cite{Ingrassia+Minotti+Punzo:2014}, and \cite{Ingrassia+Minotti+Vittadini:2012}. These clustering methods lack some capabilities in order to be able to accommodate modeling insurance data (e.g. high excess zeros for claim count, heavy-tail loss distribution, deductible, or limits).
 
 Sub-grouping of insurance policies based on risk classification is a standard practice in insurance. The heterogenous nature of insurance data allows for explorations of many different techniques for sub-grouping risk. As a result, there is a growing number of papers in the area of mixture modeling of univariate and multivariate insurance data to account for heterogeneity of risk. \cite{Lee+Lin:2010}, \cite{Verbelen+Gong+Antonio+Badescu+Lin:2015}, and \cite{Miljkovic+Grun:2016} proposed mixture models for univariate loss data. The idea of mixture modeling of univariate insurance data has been extended to a multivariate classification. A finite mixture of bivariate Poisson regression models with an application to insurance ratemaking was studied by \cite{Bermudez+Karlis:2012}. A Poisson mixture model for count data was considered by \cite{Brown+Buckley:2015} with application in managing Group Life insurance portfolio. \cite{risks_miljkovic} reviewed two complementary mixture-based clustering approaches (cluster-weighted model and mixture-based clustering for an ordered stereotype model) for modeling unobserved heterogeneity in an automobile insurance portfolio, depending on the data structure under consideration. Mixture models with the applications is financial mathematics have been explored by \cite{durham2007sv}, \cite{miljkovic2018new}, and many others.
 
