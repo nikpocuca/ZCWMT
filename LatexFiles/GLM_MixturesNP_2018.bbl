@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{36}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -126,6 +126,23 @@ Murphy, K., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
 \bibitem[{Punzo and Ingrassia(2014)}]{Punzo+Ingrassia:2015}
 Punzo, A., Ingrassia, S., ., 2014. Parsimonious generalized linear Gaussian
   cluster-weighted models. Springer International Publishing.
+
+\bibitem[{Punzo and McNicholas(2017)}]{punzo17}
+Punzo, A., McNicholas, P.~D., 2017. Robust clustering in regression analysis
+  via the contaminated gaussian cluster-weighted model. Journal of
+  Classification 34~(2), 249--293.
+
+\bibitem[{Subedi et~al.(2013)Subedi, Punzo, Ingrassia, and
+  McNicholas}]{subedi13}
+Subedi, S., Punzo, A., Ingrassia, S., McNicholas, P.~D., 2013. Clustering and
+  classification via cluster-weighted factor analyzers. Advances in Data
+  Analysis and Classification 7~(1), 5--40.
+
+\bibitem[{Subedi et~al.(2015)Subedi, Punzo, Ingrassia, and
+  McNicholas}]{subedi15}
+Subedi, S., Punzo, A., Ingrassia, S., McNicholas, P.~D., 2015. Cluster-weighted
+  t-factor analyzers for robust model-based clustering and dimension reduction.
+  Statistical Methods and Applications 24~(4), 623--649.
 
 \bibitem[{Verbelen et~al.(2015)Verbelen, Gong, Antonio, Badescu, and
   Lin}]{Verbelen+Gong+Antonio+Badescu+Lin:2015}
