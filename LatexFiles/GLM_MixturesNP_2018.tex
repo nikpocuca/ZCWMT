@@ -176,9 +176,8 @@ The single component ZIP model assumes that the inflated zeros emanate from both
 	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. 
 \textcolor{blue}{By using the EM algorithm, we estimate parameters pertaining to the GCWM under the assumption of a Poisson model and separately, we repeat the same process under the assumption of a Bernoulli model. Using the obtained parameter estimates from the two separate applications of the EM algorithm, we set the initialization parameters for the EM algorithm pertaining to estimating the ZI-GCWM. The work of \cite{Lambert} specifies that the MLE estimates for the separate Poisson and Bernoulli models provide an excellent initial guess, allowing EM to converge quickly for ZIPs.} \textcolor{red}{[The previous sentence confuses me. The purpose of the EM is to find MLEs and so it seems impossible to start there?]} The Bernoulli-Poisson sample space partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. Recall $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$.  Also by assumption, this sample space is partitioned into $K$ non-overlapping sets such that their union constitutes it ie. $ \Omega = \bigcup_{i=1}^K \Omega_i $. \textcolor{red}{[I do not think this has been discussed. I am not sure it is helpful?]}  \textcolor{red}{[In what precise sense does a set have a shape?]} 
 \textcolor{blue}{
-For each particular set $\Omega_i$, a particular choice of Bernoulli and Poisson model for ZIP distribution for $ith$ group will further partition $\Omega_i$ such that $\Omega_i = \Omega^{B}_i \cup \Omega^{P}_i $ = $ \Omega^{B}_i \cup \Omega^{P_{Z}}_i \cup  \Omega^{P_{NZ}}_i..  $ }
-	å
-	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density \footnote{ \citep[see][for specific cases]{Ingrassia+Punzo+Vittadini+Minotti:2015}}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
+For each particular set $\Omega_i$, a particular choice of Bernoulli and Poisson model is made pertaining to the ZIP distribution. The choice on the $ith$ group will further partition $\Omega_i$ such that $\Omega_i = \Omega^{B}_i \cup \Omega^{P}_i $ = $ \Omega^{B}_i \cup \Omega^{PZ}_i \cup  \Omega^{PNZ}_i.  $, where $\Omega^{B}_i$ is the sample space of excess zeros emanating from a Bernoulli model, $\Omega^{PZ}_i$ is the sample space of zeros that emanate from a Poisson model, and $\Omega^{PNZ}$ is the sample space of non-zeros emanating from the same Poisson model.   }
+	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density\footnote{ \citep[see][for specific cases]{Ingrassia+Punzo+Vittadini+Minotti:2015}}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
 \Omega^B =  \bigcup_{l =1}^{M \leq G}  \Omega_l^B & & \text{and} &  &
 f^B(\bm x, y; \Phi)= \sum_{l=1}^{M \leq G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
 \end{align*}
@@ -189,7 +188,7 @@ f^P(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t}
 \end{align*}
 Where this sample space is partitioned up to $M$ non-overlapping sets.
  Now, construct a new partitioning of a sample space $\Omega$ such that
-$$\Omega =  \Omega^Z = \bigcup_{ \substack {l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, M \}}  } \Omega_{l,j}^Z := \bigcup_{\substack{ l \in \{1 ,\ldots, G \} \\ j \in \{1 ,\ldots, G \}  } }  \Omega_l^B \cap \Omega_j^P =: \bigcup_{k \in \{1 ,\ldots, K\leq M \times G \}} \Omega_k^Z, $$ where $K$ can range up to $MG$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
+$$\Omega =  \Omega^Z = \bigcup_{ \substack {l \in \{1 ,\ldots, M \} \\ j \in \{1 ,\ldots, G \}}  } \Omega_{l,j}^Z := \bigcup_{\substack{ l \in \{1 ,\ldots, M \} \\ j \in \{1 ,\ldots, G \}  } }  \Omega_l^B \cap \Omega_j^P =: \left(   \bigcup_{ k \in \{1,...K\} } \Omega^P_k \right)  \bigcup \left(  \bigcup_{\substack{ l \in \{1 ,\ldots, M \} \\ j \in \{1 ,\ldots, G \}  } }  \Omega_l^B \cap \Omega_j^P \right),  $$ where $K$ can range up to $MG$ unique partitions. Therefore the new conditional density  is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
 & = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{1 ,\ldots, K \}.
@@ -197,7 +196,7 @@ q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar
 \end{align}
 
 
-The EM algorithm is then used to estimate this new mixture of up to $MG$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section 3.6. \textcolor{red}{[(i) There is no Section~3.6. (ii) In \LaTeX, section should be referenced via nicknames and not hard numbers.]}
+The EM algorithm is then used to estimate this new mixture of up to $MG$ specific GCWMs. The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in section \ref{subsec:: compareZero}.   \textcolor{red}{[(i) There is no Section~3.6. (ii) In \LaTeX, section should be referenced via nicknames and not hard numbers.]}
 
 \section{Parameter Estimation}\label{sec:estmeth}
 
@@ -217,10 +216,10 @@ To find an optimal number of components, maximum likelihood estimation is obtain
 
 In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM  is based on the assumption that $q(y|\bm{x},\bm{\vartheta}_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function defines the relationship between the linear predictor and the expected value of the distribution function as $g(\bm{\mu}_j)= \xTilda \bm{\beta}^{'}$, where $g(\bm{\mu}_j)$ is the link function. We are interested in the estimation of the vector $\bm {\beta}_j$, thus the distribution of $Y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta}_j, \lambda_j)$, where $\lambda_j$ signifies an additional parameter to account for when a distribution belongs to a two-parameter exponential family.
 
-The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density \textcolor{blue}{ $p(\bm{t}; \bm \theta_j^{\star}:=( \bm {\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) )$} is modeled as a  Gaussian distribution with mean $\bm {\mu}_j^{\star}$ and covariance matrix $\bm{\Sigma}_j^{\star}$ \textcolor{red}{[No sure what this means: ``hence''?]}. When it comes to the second marginal density $p(\bm{w};\bm{\theta}_{j}^{\star\star})$, we assume that each finite discrete covariate $W$ is represented as a vector $\bm{w}^r=(w^{r1},\ldots,w^{rc_r})^{'}$, where $w^{rs}=1$ if $w_r = s\in\{1, \ldots, c_r\}$ %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
+The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density \textcolor{blue}{ $p(\bm{t}; \bm \theta_j^{\star}:=( \bm {\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) )$} is modeled as a  Gaussian distribution with mean $\bm {\mu}_j^{\star}$ and covariance matrix $\bm{\Sigma}_j^{\star}$ \textcolor{red}{[No sure what this means: ``hence''?]}. 
+ The marginal density of discrete covaraites $p(\bm{w};\bm{\theta}_{j}^{\star\star})$ is assumed to have for each finite discrete covariate in $\bm{W}$, a representative binary vector $\bm{w}^r=(w^{r1},\ldots,w^{rc_r})^{'}$, where $w^{rs}=1$ if $w_r = s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
 and $w^{rs}=0$ otherwise.
-%Nik: the previous sentence does not make sense to me, and the following equation seems to come out of nowhere.
-% PM: Is this more clear?
+\textcolor{blue}{I am unsure what you mean Paul, this is the order of how Ingrassia defined the density of discrete covariates Section 2.2? }
 \textcolor{red}{[As mentioned before, the following equation seems to come out of nowhere.]}
 \begin{align}
 p(\bm {w}; \bm {\gamma_j})=\prod_{r=1}^{d}\prod_{s=1}^{c_r}(\gamma_{jrs} )^{w^{rs}}
@@ -228,13 +227,17 @@ p(\bm {w}; \bm {\gamma_j})=\prod_{r=1}^{d}\prod_{s=1}^{c_r}(\gamma_{jrs} )^{w^{r
 \end{align}
 for $j=1, \ldots, G$, where $\bm {\gamma}_j=(\gamma_{j1}^{'}, \ldots, \gamma_{jd}^{'})^{'}$, $\bm \gamma_{jr}=(\gamma_{jr1}^{'}, \ldots, \gamma_{jrc_d}^{'})^{'}$, $\gamma_{jrs} > 0$, and  $\sum_{s=1}^{c_r}\gamma_{jrs}$, $r=1,\ldots,q$. The density $p(\bm {w}, \bm{\gamma}_j)$ represents the product of $d$ conditionally independent multinomial distributions with parameters $\bm{\gamma}_{jr}$, $r=1,\ldots, d$. Finally, the third marginal density $p(\bm{u};\bm{\theta}_{j}^{\star\star\star})$ will be modelled with a multivariate log-normal distribution having a location parameter vector $ \bm{\mu}_j^{\star\star\star}$ and scale parameter matrix $\bm{\Sigma}_j^{\star\star\star} $.
 
-Let $(\bm x_1, y_1),\ldots, (\bm x_n, y_n)$ be a sample of $n$ independent observations drawn from model in \eqref{eq3}.
-For this sample, the complete-data \textcolor{red}{[Need to explain complete-data earlier.]} likelihood function $L_c(\bm\Phi)$ is given by
+Let $(\bm x_1, y_1),\ldots, (\bm x_n, y_n)$ be a sample of $n$ independent observations drawn from model in \eqref{eq3}. Consider a latent random variable $Z_{ij}$.  The realization $z_{ij}$ of the latent indicator variable takes the value of $z_{ij}=1$ indicating that observation $(\bm{x_i}, y_i)$ originated from the $j$th mixture component and $z_{ij}=0$ otherwise.
+\textcolor{blue}{Where earlier?, you can't explain complete data liklihood without defining the densities above} 
+
+ \textcolor{red}{[Need to explain complete-data earlier.]} 
+
+ Given the sample, the complete-data likelihood function $L_c(\bm\Phi)$ is given by
 \begin{align}
 L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i; \bm \beta_j, \lambda_{j})p(t_i; \bm\mu_j^{\star}, \bm\Sigma_j^{\star}) p(w_i; \gamma_j)p(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}) \right]^{z_{ij}},
 \label{eq27}
 \end{align}
-where $z_{ij}$ is the latent indicator variable with value of $z_{ij}=1$ indicating that observation $(\bm{x_i}, y_i)$ originated from the $j$th mixture component and $z_{ij}=0$ otherwise.
+
 %
 Taking the logarithm of \eqref{eq27}, the complete-data log-likelihood is 
 \begin{equation}\begin{split}
@@ -314,7 +317,7 @@ l_c(\psi_k;y,\bm{x},\bm{o}_k^{(s)}) &=\sum_{i=1}^n \left( o_{ik}^{(s)} \xTilda_i
 The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be carried out using a weighted log-linear Poisson regression with weights $1 - o_{ik}^{(s)}$ \citep[see][]{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
 While the parameter for \eqref{eq6} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ \citep[see][]{Lambert}. \textcolor{red}{[What is ``the parameter''?]}
 
-\subsection{Comparing zero-inflated Models}
+\subsection{Comparing zero-inflated Models}\label{subsec:: compareZero}
 
 Until recently, the usual test for comparing zero-inflated to non-zero inflated models has been the Vuong Test for non-nested models \citep{vuongTest}. However, recent work has shown the misuse of this test for zero inflation \citep[see][]{misuse}. \textcolor{red}{[We need more detail about the ``misuse".]} \cite{newIntuitive} show that it is sufficient to test for zero-modificiation in the form of a likelihood ratio test, where the hypotheses are
 \begin{align*}
