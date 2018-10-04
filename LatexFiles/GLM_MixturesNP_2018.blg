@@ -6,45 +6,45 @@ Database file #1: GLM_Mixtures_2018.bib
 Warning--empty journal in Lambert
 Warning--empty journal in LimHwa
 Warning--empty journal in misuse
-You've used 36 entries,
+You've used 35 entries,
             2821 wiz_defined-function locations,
-            874 strings with 10715 characters,
-and the built_in function-call counts, 16697 in all, are:
-= -- 1755
-> -- 747
-< -- 25
-+ -- 294
-- -- 243
-* -- 1435
-:= -- 3002
-add.period$ -- 107
-call.type$ -- 36
-change.case$ -- 254
-chr.to.int$ -- 35
-cite$ -- 39
-duplicate$ -- 629
-empty$ -- 1182
-format.name$ -- 363
-if$ -- 3363
+            866 strings with 10490 characters,
+and the built_in function-call counts, 16115 in all, are:
+= -- 1689
+> -- 728
+< -- 24
++ -- 285
+- -- 237
+* -- 1380
+:= -- 2906
+add.period$ -- 104
+call.type$ -- 35
+change.case$ -- 246
+chr.to.int$ -- 34
+cite$ -- 38
+duplicate$ -- 611
+empty$ -- 1137
+format.name$ -- 352
+if$ -- 3243
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 42
-newline$ -- 116
-num.names$ -- 144
-pop$ -- 247
+missing$ -- 40
+newline$ -- 113
+num.names$ -- 140
+pop$ -- 242
 preamble$ -- 1
-purify$ -- 225
+purify$ -- 219
 quote$ -- 0
-skip$ -- 487
+skip$ -- 472
 stack$ -- 0
-substring$ -- 983
-swap$ -- 87
+substring$ -- 926
+swap$ -- 84
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 303
+type$ -- 294
 warning$ -- 3
-while$ -- 153
+while$ -- 146
 width$ -- 0
-write$ -- 393
+write$ -- 382
 (There were 3 warnings)

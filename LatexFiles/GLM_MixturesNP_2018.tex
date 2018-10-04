@@ -281,7 +281,7 @@ The updates for $\bm\beta$ are computed by maximizing each of the $G$ terms \tex
 \end{align}
 which are maximized via numerical optimization as discussed in \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
 
-For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$. \textcolor{red}{[Need a citation for {\sf R}?]}
+For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
 
 \subsection{EM Algorithm for Zero-inflated Model} 
 The optimization of the zero-inflated Poisson model given in \eqref{ziGCWM}, uses the EM algorithm for maximizing the incomplete-data log-likelihood iteratively (see \cite{Lambert}). \textcolor{blue}{It is the introductory sentence for the section} \textcolor{green}{[But what is its purpose? What new information, if any, is the reader supposed to get here? What would be lost if it were just deleted?]} \textcolor{red}{[What is the purpose of the previous sentence? What does it add?]} The log-likelihood function of $\psi_k$ and $\lambda_k$ is expressed as
@@ -331,7 +331,7 @@ $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component G
 
 \section{Numerical Application}\label{sec:numapp}
 \subsection{Dataset}
-We illustrate the proposed methodology on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\bf R} package {\tt CASdatasets} developed by \citep{Dutang+Charpentier:2016} and previously used in the book {\it Computational Actuarial Science with R} by \cite{Charpentier:2014}. The book demonstrated various GLM modeling approaches for fitting frequency and severity of this data. French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following text all monetary units are considered to be of dollar denomination.
+The proposed methodology is illustrated on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\sf R} package {\tt CASdatasets} \citep{Dutang+Charpentier:2016} and they were previously used by \cite{Charpentier:2014} who demonstrated various GLM modeling approaches for fitting frequency and severity. The French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following text all monetary units are considered to be of dollar denomination. \textcolor{red}{[What is ``the following text"? Table~1 is not referenced in the text. Each table and each figure must be referenced within the text.]}
 \begin{small}
 \begin{table}[!htb]
 \begin{center}
@@ -357,6 +357,7 @@ Loss Amount & Portion of claim the insurance policy pays\\
 \end{center}
 \end{table}
 \end{small}
+
 \subsection{Discussion and Results}
 \subsubsection{Modelling Severity}
 In this section, we show the results from modeling French motor losses. We consider the following covariates: density, driver age, car age, power, gas,  and region. %Nik: why is this list not identical to the list from a few lines above?
@@ -364,156 +365,149 @@ The model that was fitted is defined with the following equation
 \begin{equation}
 Loss Amount =  Density + Car Age + Driver Age + Region + Power + Gas + \epsilon, \quad \epsilon \sim \mathcal{N}(0,\sigma^2). \label{regressionModel}
 \end{equation}
+\textcolor{red}{[I do not like this way of expressing the model. It seems very informal. I think covariates written like $X_{\tiny \text{Region}}$, with $\beta_j$ coefficients, would be better.]}
 %Nik: this is not an equation. Please reformulate.
-Here error term $\epsilon$ is distributed normally with mean $0$ and variance $\sigma^2$ .
+Here error term $\epsilon$ is distributed normally with mean $0$ and variance $\sigma^2$. \textcolor{red}{[You already said this in math, don't repeat.]} 
 The canonnical log-link is used for the GLM in \eqref{regressionModel}. The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
 DEF, GH, and other.
+
+Beginning with the continuous covariate $Density$, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names , Paul: Like this? I am not sure what you mean by teletype, like telegraph type? or Mathematical type?
+The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
 \begin{figure}[!htb]
 \begin{center}
-\caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal assumption is applied (GCWM approach).}
 \includegraphics[scale=0.40]{Density.pdf}
 \includegraphics[scale=0.40]{logDensity.pdf}
 \end{center}
-
+\vspace{-0.2in}
+\caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal assumption is applied (GCWM approach).}
 \label{fig:vet1}
 \end{figure}
 
-
-Beginning with the continuous covariate $Density$, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names , Paul: Like this? I am not sure what you mean by teletype, like telegraph type? or Mathematical type?
-The left side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. With the log-normal assumption, the $Density$ is transformed which improves the fit (see the right side of Figure \ref{fig:vet1}) on the data.
-
+The result of the transformation is a better AIC and BIC. \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
 \begin{table}[!htbp] \centering
-  \caption{Comparison of AIC and BIC for CWM versus GCWM models.}
-  \label{comparingCWM_models}
+  \caption{Comparison of AIC and BIC for CWM versus GCWM models. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
 \begin{tabular}{@{\extracolsep{5pt}} rrrr}
-\\[-1.8ex]\hline
-\hline \\[-1.8ex]
+\hline
 Model & k & AIC & BIC \\
-\hline \\[-1.8ex]
+\hline
 CWM & $1$ & $$$352,470$ & $$$352,661$ \\
 & $2$ & $$$314,560$ & $$$314,949$ \\
 & $3$ & $$$301,223$ & $$$301,812$ \\
 & $4$ & $$$287,020$ & $$$287,808$ \\
 & $\bm{5}$ &$$$\bm{284,283}$ & $$$\bm{285,268}$ \\
+\hline
 GCWM & $1$ & $$$111,129$ & $$$111,320$ \\
 & $2$ & $$$90,039$ & $$$90,428$ \\
 & $3$ & $$$89,476$ & $$$90,065$ \\
 & $\bm{4}$ & $$$\bm{88,781}$ & $$$\bm{89,568}$ \\
 & $5$ & $$$88,731$ & $$ $89,717$ \\
-\hline \\[-1.8ex]
+\hline
 \end{tabular}
 \end{table}
 
-The result of the transformation is a better AIC and BIC. Table \ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
+	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various groups of drivers. \textcolor{red}{[The previous sentence seems to me to contain the key point. I think this should be highlighted in the introduction and, insofar as possible, expanded upon here and maybe in the conclusions.]} The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters. \textcolor{red}{[What following GCWM?]}
 
-	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various groups of drivers. The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters.
-\begin{figure}[!htb]
-\caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale.}
-\label{fig:vet1}
-\begin{center}
-\includegraphics[scale=0.83]{SeverityPlot}
-\end{center}
-\end{figure}
+After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeSev}. Attention is brought to largest quantity of drivers that are grouped into Cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1a}. From the results we can create an insurance model with the distinct characteristics.
 \begin{table}[!htb]
 \centering
 \caption{Size of clusters for the GCWM a model.}
 \label{table:sizeSev}
 \begin{tabular}{rrrr}
-\hline\hline
+\hline
 Cluster 1   & Cluster 2  & Cluster 3   & Cluster 4    \\
+\hline
 1,683 & 5,766 & 848 & 7,093 \\
 Red & Green & Blue & Teal \\
-\hline\hline
+\hline
 \end{tabular}
 \end{table}
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[scale=0.8]{SeverityPlot}
+\end{center}
+\vspace{-0.2in}
+\caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
+\label{fig:vet1a}
+\end{figure}
 
-After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table \ref{table:sizeSev}. Attention is brought to largest quantity  of drivers that are grouped into Cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1}. From the results we can create an insurance model with the distinct characteristics.
 
- The Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 4 drivers have also low variability but a higher average cost, thus they would have a rate higher than Cluster 3. Cluster 2 drivers have the next highest cost and variability of the clusters, these drivers are colored in green in Figure \ref{fig:vet1}. The final cluster colored in red has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
+The Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 4 drivers have also low variability but a higher average cost, thus they would have a rate higher than Cluster 3. Cluster 2 drivers have the next highest cost and variability of the clusters, these drivers are colored in green in Figure \ref{fig:vet1}. The final cluster colored in red has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
+
+
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between $51$ to $154$, with a standard deviation of $13$, and a mean of $79$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between $1,039$ to $1,324$, with a standard deviation of $52$, and a mean of $1,109$.  Proceeding to V3, \textcolor{red}{its} volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between $221$ to $8841$, with a mean of $1,687$, and a standard deviation of $1284$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of $2,036,833$, a mean of $97,17$, and a standard deviation of $64,835$. \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
+%Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between \$1,039 to \$3,109, with a standard deviation of \$52, and a mean of \$3,109.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1,687, and a standard deviation of \$1284. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$2,036,833, a mean of \$97,17, and a standard deviation of \$64,835.
+% Paul: I do not know the monetary units of the prices, they are either in dollars or euros. 
 \begin{table}[!htb]
 \centering
 \caption{Summarized volatility information of each cluster for Claims.}
 \label{table:volSev}
-\scalebox{0.90}{
-\begin{tabular}{rrrrrr}
-\hline\hline
-Volatility Level - (Cluster)  $\quad$    & Minimum & Mean  & Maximum & $\sigma$    \\
+\begin{tabular}{lrrrr}
 \hline
-V1 - (3)$\quad\quad\quad$ & 51  & 79 & 154 & \textbf{ 13} \\
-V2 - (4)$\quad\quad\quad$ & 1,039  & 1,109  &  1,324 & \textbf{ 52} \\
-V3 - (2)$\quad\quad\quad$ & 221 & 1,687  & 8,841  &\textbf{ 1,284}  \\
-V4 - (1)$\quad\quad\quad$ & 2 & 9,717 & 2,036,833  & \textbf{ 64,835}   \\
-\hline\hline
+Volatility Level (Cluster)     & Minimum & Mean  & Maximum & $\sigma$    \\
+\hline
+V1 (3) & 51  & 79 & 154 & \textbf{ 13} \\
+V2 (4) & 1,039  & 1,109  &  1,324 & \textbf{ 52} \\
+V3 (2) & 221 & 1,687  & 8,841  &\textbf{ 1,284}  \\
+V4 (1) & 2 & 9,717 & 2,036,833  & \textbf{ 64,835}\\
+\hline
 \end{tabular}
-}
 \end{table}
 
 
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between $51$ to $154$, with a standard deviation of $13$, and a mean of $79$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between $1,039$ to $1,324$, with a standard deviation of $52$, and a mean of $1,109$.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between $221$ to $8841$, with a mean of $1,687$, and a standard deviation of $1284$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of $2,036,833$, a mean of $97,17$, and a standard deviation of $64,835$.
-%Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between \$1,039 to \$3,109, with a standard deviation of \$52, and a mean of \$3,109.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1,687, and a standard deviation of \$1284. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$2,036,833, a mean of \$97,17, and a standard deviation of \$64,835.
-% Paul: I do not know the monetary units of the prices, they are either in dollars or euros. 
+Coefficients of clustered results are used to calculate premiums in car insurance. Table~\ref{severity_coef_table} (Appendix~\ref{app:tables}) shows the coefficients of the fitted model. In each cluster, statistical significance varies but overall the majority of coefficients are statistically significant.
 
-Coefficients of clustered results are used to calculate premiums in car insurance. Table \ref{severity_coef_table} shows the coefficients of the fitted model. In each cluster statistical significance varies but overall the majority of coefficients are statistically significant.
-
-In summary, the drivers have been clustered into four categories with distinct characteristics outlined in Table~\ref{table:volSev}. We have seen how using the results from GCWM, one can create an insurance model based on clustering algorithms with various levels of risk represented in each cluster. GCWM found a group that was the clear majority of drivers, in which the volatility of their claims was extremely low regardless of $Density$ or $DriverAge$ The results show that GCWM may potentially find unique clusters that are otherwise hidden within the data.
+In summary, the drivers have been clustered into four categories with distinct characteristics outlined in Table~\ref{table:volSev}. We have seen how using the results from GCWM, one can create an insurance model based on clustering algorithms with various levels of risk represented in each cluster. GCWM found a group that contains a clear majority of drivers, in which the volatility of their claims was extremely low regardless of $Density$ or $DriverAge$. The results show that GCWM may potentially find unique clusters that are otherwise hidden within the data.
 
 
  \subsubsection{Modeling Claims Frequency}
 
 In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$,$Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
 The GCWM is modelled with the linear formula
-
 \begin{equation}
-Claim Nb = Density + Exposure + Power \quad|\quad Exposure + Car Age
+Claim Nb = Density + Exposure + Power \quad|\quad Exposure + Car Age,
 \end{equation}
-
+\textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate.
-After fitting the model, GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq}. We note a fairly even spread of the size across the three clusters.
-
- \begin{table}[!htb]
+After fitting the model, GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the three clusters.
+\begin{table}[!htb]
 \centering
-\caption{Size of clusters for the GCWM a model.}
+\caption{Size of clusters for the GCWM a model. \textcolor{red}{[There is clearly something other than sizes in this table, i.e., the colours.]}}
 \label{table:sizeFreq}
 \begin{tabular}{rrrr}
-\hline\hline
+\hline
 Cluster 1   & Cluster 2  & Cluster 3   \\
 100492 & 163503 & 149174 \\
 Red & Green & Blue  \\
-\hline\hline
+\hline
 \end{tabular}
 \end{table}
 
+Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the least dense cities with a mean of 7.86 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.23 km and 3.38 km, respectively.
 \begin{figure}[!ht]
 \begin{center}
-\caption{Showing clusters in color for Frequency vs Density under log-normal assumptions.}
-\label{frequencyGraph}
 \includegraphics[scale=0.80]{frequency.png}
 \end{center}
+\vspace{-0.2in}\caption{Showing clusters in color for Frequency vs Density under log-normal assumptions.}
+\label{frequencyGraph}
 \end{figure}
-
-
-
-Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot in Figure \ref{frequencyGraph}. We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the least dense cities with a mean of 7.86 km on the log scale. Followed by Clusters 3 and 1 with a mean of 5.23 km and 3.38 km respectively.
-
- \begin{table}[!htb]
+\begin{table}[!htb]
  \begin{center}
  \caption{Summary of each cluster with log-normal assumptions for the $Density$ covariate measured in km on a log scale.} \label{summarycovariates}
-\begin{tabular}{rrrrrr}
-\hline
+\begin{tabular}{lrrrrr}
 \hline
 Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \hline
 1 &   Red         & 0.69    & 3.38 & 5.60    & 0.60  \\
 2 &  Green       & 6.29    & 7.86 & 10.20   & 1.03  \\
 3 &  Blue        & 4.13    & 5.23 & 9.66    & 0.65 \\
-\hline\hline
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
-Table \ref{frequencySummary} shows a summary of the coefficients for the zero-inflated model. The
-significance codes are the same as of Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are signficant particularly in the zero-count model for Bernoulli. Cluster 1 was selected to be strictly a Poisson model by the likelihood ratio test defined in \eqref{LRTest}. In summary we see that the GCWM can account for zero-inflated data in pricing.
+Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
+significance codes are the same as for Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant, particularly in the zero-count model for the Bernoulli. Cluster~1 was selected to be strictly a Poisson model by the likelihood ratio test defined in \eqref{LRTest}. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -521,111 +515,118 @@ significance codes are the same as of Table \ref{severity_coef_table}. In each c
 Two simulation studies are conducted to determine the validity of the log-normal assumption and the effectiveness of the Bernoulli-Poisson partitioning method. The first section outlines the need for a non-Gaussian assumption for the covariates. The second section shows the classification accuracy and other relevant analysis for the Bernoulli-Poisson method.
 
 
-\subsection{Simulation Study - GCWM}
+\subsection{Simulation Study for GCWM}
 
 
-In this section, we show how the proposed methodology works for different simulation settings. The simulation study was generated based on the regression coefficients of the \textbf{CASdataset} used in the previous section. The aim of the simulation study was to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This was designed to test both functions in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this was aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
+In this section, we show how the proposed methodology works for different simulation settings. The simulation study was generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This was designed to test both functions in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this was aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
 
-We define Model 1 as the base line model in which the coefficients were generated for \textbf{CASdataset} and reported in upper portion of Table 2. These coefficients were then rounded and treated as true parameters. A simulation with three GLM mixture components was then generated around these true parameters in which the third covariate $X_3$ was log-normal. Stemming from this, both CWM and  GCWM a were run. The  GCWM a treats $X_3$ as a log-normal covariate. 
+We define Model 1 as the baseline model in which the coefficients were generated for \textbf{CASdataset} and reported in upper portion of Table 2. \textcolor{red}{[Some problems with the previous sentence: (1) I think we mean ``Model~1 is the baseline model, where the coefficients\ldots''; (2) I don't fully understand the reference to Table~2; and (3) Table~2, as with all other tables and figures, should be referenced in \LaTeX\ via a nickname. I won't repeat the latter comment but please make sure all tables and figures are referenced using nicknames.]} These coefficients were then rounded and treated as true parameters. \textcolor{red}{[Why rounded?]} A simulation with three GLM mixture components was then generated around these true parameters in which the third covariate $X_3$ was log-normal. Stemming from this, both CWM and  GCWM are run. The  GCWM a treats $X_3$ as a log-normal covariate. \textcolor{red}{[Please read the last three sentences carefully.]}
 
-The results for Model 1 were summarized in upper portion of Table 3 based on the performance of the  GCWM a approach. The simulation was run $1000$ times. We reported the percentage of runs for each predictor and the corresponding intercept in each mixture component under the assumption of $5\%$ error. For example, predictor $X_2$ in the component 2 of Model 1 reported $90.10\%$ accuracy. This means that $90.1\%$ of the time the true parameter was estimated within $5\%$ error. In this setting, predictor $X_1$ in the second component was insignificant in the real data set. The purpose of including this parameter in Model 1 was to test the sensitivity of  GCWM a for insignificant predictors. In this case, the result of zero is underlined and it means that it has no influence on the response variable in this simulation. Further, we created Models 2, 3, 4 and 5 by altering the parameters of Model 1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$ accordingly and keeping the second covariate of the second component as an insignificant predictor form the \textbf{CASdataset} model. This was done to test the accuracy of  GCWM a to the  sensitivity of coefficients. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
-
-
-\begin{center}
+\textcolor{red}{[Do not use past tense anywhere but the conclusions section. I have made some edits but I am sure I missed some others.]} The results for Model 1 are summarized in upper portion of Table 3 based on the performance of the  GCWM a approach. The simulation is run $1000$ times. We report the percentage of runs for each predictor and the corresponding intercept in each mixture component under the assumption of $5\%$ error. For example, predictor $X_2$ in the component 2 of Model 1 reports $90.10\%$ accuracy. \textcolor{red}{[How does a predictor report?]} This means that $90.1\%$ of the time the true parameter is estimated within $5\%$ error. In this setting, predictor $X_1$ in the second component is insignificant in the real data set. The purpose of including this parameter in Model~1 is to test the sensitivity of  GCWM a for insignificant predictors. In this case, the result of zero is underlined and means that it \textcolor{red}{[what?]} has no influence on the response variable in this simulation. Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor form the CASdataset model. This is done to test the accuracy of  GCWM \textcolor{red}{a} to the  sensitivity of coefficients. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
 \begin{table}[!htb]
+\centering
 \caption{GCWM a vs CWM Accuracy: covariate $X_3$ is treated as log-normally distributed, while the rest of covariates are of the Gaussian type.}
 \label{gcwmAccuracy}
-\begin{adjustwidth}{-1cm}{}
-\begin{tabular}{|rrrrrr|rrrr|}
-\hline\hline
-Model & Component & Intercept & $X_1$ &$X_2$ & $X_3$& Intercept & $X_1$ &$X_2$ & $X_3$  \\
+\begin{tabular}{ll|rrrr|rrrrr}
+\hline
+Mod. & $G$ & Int. & $X_1$ &$X_2$ & $X_3$& Int. & $X_1$ &$X_2$ & $X_3$  \\
 \hline
 1     & 1         & 93.00\%   & 90.10\%  & 93.00\%  & 93.10\% & 0.00\% & 0.00\% & 0.00\% & 0.00\%   \\
       & 2         & 90.10\%   & \underline{0.00\%}   & 90.10\%  & 90.10\% & 0.00\% & 0.00\% & 0.00\% & 0.00\%  \\
       & 3         & 99.20\%   & 99.10\%  & 99.20\%  & 99.20\% & 0.00\% & 0.00\% & 0.00\% & 0.00\%  \\
+      \hline
 2     & 1         & 89.80\%   & 89.20\%  & 89.80\%  & 89.80\% & 0.00\% & 0.00\% & 4.60\% & 0.00\%  \\
       & 2         & 89.20\%   &\underline{0.00\%}   & 89.20\%  & 89.20\% & 0.00\% & \underline{0.00\%} & 0.00\% & 0.00\%   \\
       & 3         & 99.20\%   & 99.20\%  & 99.20\%  & 99.20\% & 0.00\% & 0.20\% & 1.70\% & 0.00\%  \\
+      \hline
 3     & 1         & 100.00\%  & 100.00\% & 100.00\% & 100.00\%  & 0.00\% & 0.00\% & 0.00\% & 0.00\% \\
       & 2         & 100.00\%  & \underline{0.00\%}   & 100.00\% & 100.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% \\
       & 3         & 99.20\%   & 99.20\%  & 99.20\%  & 99.20\%  & 0.00\% & 0.00\% & 0.00\% & 0.00\%\\
+      \hline
       4 & 1 & 88.60\% & 86.80\% & 88.60\% & 87.00\%  & 0.00\% & 0.00\% & 0.00\%  & 0.00\%  \\
   & 2 & 86.90\% &\underline{ 0.00\%}  & 86.90\% & 86.90\% & 0.00\% & \underline{0.00\%} & 0.00\%  & 0.00\%  \\
   & 3 & 99.20\% & 99.20\% & 99.20\% & 99.20\% & 0.00\% & 0.00\% & 0.00\%  & 0.00\% \\
+      \hline
 5 & 1 & 85.90\% & 84.90\% & 85.60\% & 85.90\% & 0.00\% & 0.00\% & 0.00\%  & 0.00\% \\
   & 2 & 85.00\% &\underline{ 0.00\%}  & 84.90\% & 84.90\% & 0.00\% & \underline{0.00\%} & 0.00\%  & 0.00\%  \\
   & 3 & 99.20\% & 99.20\% & 99.20\% & 99.20\% & 0.00\% & 0.20\% & 10.90\% & 0.00\% \\
-      \hline\hline
+      \hline
 \end{tabular}
-\end{adjustwidth}
 \end{table}
-\end{center}
 
 % Table 4 provides the summary of the results when CWM was used in the analysis of the same models considered in Table 3. Commented sentanced 
 In line with expectations we note that barely any of the simulation runs are estimated correctlly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
 
-Table \ref{mseTable} provides the summary of Mean Squared Errors\footnote{The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate.} (MSE) of each parameter of the models for the same simulated runs in Table \ref{gcwmAccuracy}. The MSEs related to the predictor variables for all models and their corresponding components are about zero indicating that  GCWM a approach performs well. This is also a result of having a small size coefficients.
-
+Table \ref{mseTable} provides the summary of mean squared errors\footnote{The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate.} (MSEs) of each parameter of the models for the same simulated runs in Table~\ref{gcwmAccuracy}. \textcolor{red}{[Try to avoid footnotes.]} The MSEs related to the predictor variables for all models and their corresponding components are about zero indicating that  GCWM a approach performs well. This is also a result of having a small size coefficients.
 \begin{table}[h!]
 \centering
-\caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table \ref{gcwmAccuracy}.}
+\caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table~\ref{gcwmAccuracy}.}
 \label{mseTable}
-\begin{tabular}{rrrrrrrrrr}
-\hline\hline
-Model & Component & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta_2$ &MSE($\beta_2$)   & $\beta_3$ &  MSE($\beta_3$)  \\
+\begin{tabular}{ll|rrrrrrrr}
+\hline
+Mod. & $G$ & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta_2$ &MSE($\beta_2$)   & $\beta_3$ &  MSE($\beta_3$)  \\
 \hline
 1     & 1         & 1028& (11.353)   & 0.03& (0.00)  & 3.5& (0.00)    & -380& (0.09)   \\
       & 2         & 1600& (0.000)     & -0.01&(0.00) & 1.5&(0.00)    & -250&(0.00)   \\
       & 3         & 40000&(0.035)    & -6.00&(0.00) & -305&(0.00) & 1100&(0.47)   \\
+\hline
 2     & 1         & 1350&(0.167)     & 0.04&(0.00)  & 4.5&(0.00)    & -500&(0.03)   \\
       & 2         & 2080& (0.001)     & 0.04&(0.00)  & 2.0&(0.00)    & -325&(0.00)   \\
       & 3         & 52000& (0.012)    & -8.00&(0.00) & 450&(0.00)  & 14300&(0.01)  \\
+\hline
 3     & 1         & 720& (0.001)      & 0.02&(0.00)  & 2.5&(0.00)   & -266&(0.00)   \\
       & 2         & 1100& (0.008)     & 0.00&(0.00)  & 1.1&(0.00)    & -17511&(0.00) \\
       & 3         & 28000& (0.002)    & -4.20&(0.00) & 245&(0.00)  & 7700.&(0.00) \\
+\hline
 4     & 1         & 1650&(13.056)   & 0.05&(0.00)  & 5.3&(0.00)    & -570&(0.00)   \\
       & 2         & 2400& (0.000)     & -0.01&(0.00) & 2.3&(0.00)    & -375&(0.00)   \\
       & 3         & 60000& (0.051)    & -9.00&(0.00) & -457&(0.00) & 16500&(0.00)  \\
+\hline
 5     & 1         & 500& (1.115)     & 0.02&(0.00)  & 2.0&(0.00)    & -190&(0.05)   \\
       & 2         & 800& (0.003)      & 0.00&(0.00)  & 0.8&(0.00)    & -120&(0.00)   \\
       & 3         & 20000& (0.000)    & -3.00&(0.00) & -150&(0.00) & 5500&(0.00)  \\
-      \hline\hline
+      \hline
 \end{tabular}
-
 \end{table}
-
 \begin{table}[!htb]
 \centering
-\caption{CWM results: the summary of MSE for all parameters used in five models. All three covariates are treated as Gaussian. These results correspond to same simulated runs as those in Table \ref{gcwmAccuracy}.}
+\caption{CWM results: the summary of MSE for all parameters used in five models. All three covariates are treated as Gaussian. These results correspond to same simulated runs as those in Table~\ref{gcwmAccuracy}.}
 \label{my-label}
-\begin{tabular}{rrrrrrrrrrrr}
-\hline\hline
-Model & Component & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta_2$ &MSE($\beta_2$)   & $\beta_3$ &  MSE($\beta_3$)  \\
+\begin{tabular}{ll|rrrrrrrr}
+\hline
+Mod. & $G$ & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta_2$ &MSE($\beta_2$)   & $\beta_3$ &  MSE($\beta_3$)  \\
 \hline
 1     & 1         & 1028& ($\cdot$)   & 0.03&  ($\cdot$)   & 3.5&  ($\cdot$)    & -380&  ($\cdot$)    \\
       & 2         & 1600&  ($\cdot$)      & -0.01& ($\cdot$)  & 1.5& ($\cdot$)     & -250& ($\cdot$)  \\
       & 3         & 40000& ($\cdot$)     & -6.00& ($\cdot$)  & -305& ($\cdot$)  & 1100& ($\cdot$)    \\
+\hline
 2     & 1         & 1350& ($\cdot$)     & 0.04& ($\cdot$) & 4.5& ($\cdot$)    & -500& ($\cdot$)  \\
       & 2         & 2080&  ($\cdot$)    & 0.04& ($\cdot$)   & 2.0& ($\cdot$)     & -325& ($\cdot$)   \\
       & 3         & 52000&  ($\cdot$)     & -8.00& (0.006)  & 450& (44.1)   & 14300& ($\cdot$)  \\
+\hline
 3     & 1         & 720&  ($\cdot$)     & 0.02& ($\cdot$)   & 2.5& ($\cdot$)    & -266& ($\cdot$)    \\
       & 2         & 1100&  (65.814)     & 0.00& ($\cdot$)   & 1.1& ($\cdot$)     & -17511& ($\cdot$)  \\
       & 3         & 28000& ($\cdot$)   & -4.20& ($\cdot$)  & 245& ($\cdot$)   & 7700.& ($\cdot$)  \\
+\hline
 4     & 1         & 1650& ($\cdot$)    & 0.05& ($\cdot$)  & 5.3& ($\cdot$)    & -570& ($\cdot$)  \\
       & 2         & 2400&  ($\cdot$)     & -0.01& ($\cdot$)  & 2.3& ($\cdot$)    & -375& ($\cdot$)    \\
       & 3         & 60000&  ($\cdot$)     & -9.00& ($\cdot$)  & -457& ($\cdot$)  & 16500& ($\cdot$)   \\
+\hline
 5     & 1         & 500&  ($\cdot$)     & 0.02& ($\cdot$)   & 2.0& ($\cdot$)   & -190& ($\cdot$)  \\
       & 2         & 800&  ($\cdot$)      & 0.00& ($\cdot$)   & 0.8& ($\cdot$)    & -120& ($\cdot$)  \\
       & 3         & 20000&  ($\cdot$)     & -3.00& (0.003)  & -150& (4.7) & 5500& ($\cdot$) \\
-      \hline\hline
+\hline
 \end{tabular}
 \end{table}
 
 
 
-In contrary to the results reported in Table 5, these results in Table 6 are significantly different. We can observe that the MSEs for most of the Models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian.
+In contrary to the results reported in Table 5, these results in Table 6 are significantly different. We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
 
 In summary, our simulation results showed good performance of the GCWM approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
+
+\clearpage\textcolor{red}{[I have stopped here. Please make similar edits I have suggested thus far to the remainder of the paper.]}
+
 
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
@@ -691,9 +692,7 @@ Our approach is relevant to the actuarial pricing and risk management when curre
 
 
 \appendix
-\section{Appendix}
-
-\subsection{Derivation of the Log-normal Distribution }
+\section{Derivation of the Log-normal Distribution }
 Consider a random variable $U$ having univariate log-normal distribution with parameters $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}_+ $. Have $u \in \mathbb{R}_+$, then the probability density function of random variable $U$ is defined as \footnote{For full definition see \cite{johnson1995continuous}}
 $$\mathcal{LN}(u; \mu, \sigma) = \frac{1}{u\sigma\sqrt{2\pi}}\exp\left[-\frac{(\ln u - \mu)^2}{2\sigma^2}	\right].$$
 \text{Further, if random variable }$X$\text{ is normally distributed i.e. }$ X \sim \mathcal{N}(x; \mu, \sigma) $, then $U := \exp{(X)}\sim \mathcal{LN}(u; \mu, \sigma) $.
@@ -715,6 +714,7 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
   \end{align*}
 \end{proof}
 
+\section{Tables}\label{app:tables}
 
 \begin{center}
 \begin{sidewaystable}

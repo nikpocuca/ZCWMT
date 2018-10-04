@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{35}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -27,10 +27,6 @@ Charpentier, A., 2014. Computational Actuarial Science with R. CRC press.
 Dempster, A.~P., Laird, N.~M., Rubin, D.~B., 1977. Maximum likelihood from
   incomplete data via the {EM}-algorithm. Journal of the Royal Statistical
   Society B 39, 1--38.
-
-\bibitem[{Durham(2007)}]{durham2007sv}
-Durham, G., 2007. Sv mixture models with application to s\&p 500 index returns.
-  Journal of Financial Economics 85~(3), 822--856.
 
 \bibitem[{Dutang and Charpentier(2016)}]{Dutang+Charpentier:2016}
 Dutang, C., Charpentier, A., 2016. {CASdatasets}. {R} package version 1.0-6.
@@ -118,11 +114,6 @@ Miljkovic, T., Orr, M., 2017. An evaluation of the reconstructed coefficient of
   determination and potential adjustments. Communications in
   Statistics-Simulation and Computation 46~(9), 6705--6718.
 
-\bibitem[{Miljkovic and SenGupta(2018)}]{miljkovic2018new}
-Miljkovic, T., SenGupta, I., 2018. A new analysis of vix using mixture of
-  regressions: Examination and short-term forecasting for the s \& p 500
-  market. High Frequency 1~(1), 53--65.
-
 \bibitem[{Murphy and Bach(2012)}]{murphy2012machine}
 Murphy, K.~P., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
   Adaptive Computation and Machi. MIT Press.
@@ -135,6 +126,10 @@ Punzo, A., Ingrassia, S., ., 2014. Parsimonious generalized linear Gaussian
 Punzo, A., McNicholas, P.~D., 2017. Robust clustering in regression analysis
   via the contaminated gaussian cluster-weighted model. Journal of
   Classification 34~(2), 249--293.
+
+\bibitem[{{R Core Team}(2018)}]{R18}
+{R Core Team}, 2018. R: A Language and Environment for Statistical Computing. R
+  Foundation for Statistical Computing, Vienna, Austria.
 
 \bibitem[{Subedi et~al.(2013)Subedi, Punzo, Ingrassia, and
   McNicholas}]{subedi13}
