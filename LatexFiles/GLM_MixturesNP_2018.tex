@@ -184,17 +184,17 @@ f^B(\bm x, y; \Phi)= \sum_{l=1}^{M \leq G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}
 \end{align*}
 Similarly, if we introduce a Poisson model in a generalized form the sample space $\Omega^P$ and joint probability density function $f^P$ become
 \begin{align*}
-\Omega^P =  \bigcup_{j =1}^G \Omega_j^P & & \text{and} &  &
-f^P(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
+\Omega^P =  \bigcup_{j =1}^{H \leq G} \Omega_j^P & & \text{and} &  &
+f^P(\bm x, y; \Phi)= \sum_{j=1}^{H \leq G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
 \end{align*}
 Where this sample space is partitioned up to $M$ non-overlapping sets.
  Now, construct a new partitioning of a sample space $\Omega$ such that
-$$\Omega = \left(\bigcup^G_{j=1} \Omega^P_j \right) \bigcup \left( \bigcup^{M \leq G}_{l=1} \Omega^B_l  \right) = \left( \bigcup_{k=1}^{M \leq G}  \Omega^P_k \cap \Omega^B_k \right) \bigcup \left( \bigcup_{j > M}^G \Omega^P_j \right) $$ 
-$$:= \left(  \bigcup_{k=1}^{M \leq G} \Omega_k^Z \right) ]\bigcup \left( \bigcup_{j > M}^G \Omega^P_j \right)  $$
-where $\Omega^Z_k$ is the $k$th partition related to the zero-inflated Poisson model, and $\Omega^P_j$ is the  $j$th partition related to the pure Poisson model.   Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
+$$\Omega = \left(\bigcup^H_{j=1} \Omega^P_j \right) \bigcup \left( \bigcup^{M \leq H}_{l=1} \Omega^B_l  \right) = \left( \bigcup_{\substack{j \in \{1, \dots , H \} \\ l \in \{1, \dots , M \} }  }^{M \times H \leq G}  \Omega^P_j \cap \Omega^B_l \right) \bigcup \left( \Omega^P  \setminus \Omega^B \right) $$ 
+$$:= \left(  \bigcup_{k=1}^{M \times H \leq G} \Omega_k^Z \right) ]\bigcup \left( \Omega^P  \setminus \Omega^B \right)  $$
+where $\Omega^Z_k$ is the $k$th partition related to the zero-inflated Poisson model, and $\Omega^P \setminus \Omega^B$ is the sample space of pure Poisson models.   Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
-& = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{1 ,\ldots, K \}.
+& = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{1 ,\ldots, M \times H \leq G \}.
 \label{ziGCWM}
 \end{align}
 
