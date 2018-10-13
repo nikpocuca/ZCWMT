@@ -177,10 +177,17 @@ The single component ZIP model assumes that the inflated zeros emanate from both
 }
 	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. By using the EM algorithm, we estimate parameters pertaining to the GCWM under the assumption of a Poisson model and, separately, we carry out the same process under the assumption of a Bernoulli model. Using the obtained parameter estimates from the two separate applications of the EM algorithm, we set the initialization parameters for the EM algorithm for parameter estimation for the ZI-GCWM. The work of \cite{Lambert} specifies that the MLE estimates for the separate Poisson and Bernoulli models provide an excellent initial guess, allowing EM to converge quickly for ZIPs. The Bernoulli-Poisson sample space partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. 
 	
-	Recall, $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$.   By assumption, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes it ie. $ \Omega = \bigcup_{k=1}^G \Omega^Z_i $. \textcolor{red}{[I do not think this has been discussed. I am not sure it is helpful?]}  \textcolor{red}{[In what precise sense does a set have a shape?]} 
+	Recall, $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$.   By assumption, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes it ie. $ \Omega = \bigcup_{k=1}^G \Omega_k $. \textcolor{red}{[I do not think this has been discussed. I am not sure it is helpful?]}  \textcolor{red}{[In what precise sense does a set have a shape?]} 
+	
+	
 \textcolor{blue}{
-For each particular set $\Omega^Z_k$, a pure Poisson or a zero-inflated Poisson model exists. In the case of a Poisson model for group $k$, it's sample space $\Omega^P_k$, coincides with the sample space $\Omega^Z_i$ such that  $\Omega^Z_k = \Omega^P_k$.  
-For the case of a zero-inflated Poisson model for group $i$,  it's sample space will coincide with the sample space $\Omega^Z_k$ such that $\Omega^Z_k = \Omega^{B}_k \cup \Omega^{P}_k $, where $\Omega^{B}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. This allows for the construction of both Poisson models, and zero-inflated Poisson models to exist on sample space $\Omega$.   }
+For each particular set $\Omega_k$, a Poisson or a zero-inflated Poisson model exists. In the case of a Poisson model for group $k$, it's sample space $\Omega^P_k$, coincides with the sample space $\Omega_k$ such that  $\Omega_k = \Omega^P_k$.  
+For the case of a zero-inflated Poisson model for group $k$,let $\Omega_k^{B}$ be the sample space of the Bernoulli  model on $\Omega_k$, we decompose $\Omega_k^{B}$ into the space of excess zeros $\Omega_k^{BZ}$, and the space of non-excess zeros $\Omega^{NZ}$ as $\Omega_k^B = \Omega_k^{BZ} \cup \Omega_k^{NZ} $   By definition non-excess zeros must emanate from a Poisson model thus $\Omega_k^{NZ} $ will coincide with the sample space of $\Omega^P_k$ such that $\Omega_k = \Omega^{BZ}_k \cup \Omega^{P}_k $, where $\Omega^{BZ}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. This allows for the construction of both Poisson models, and zero-inflated Poisson models to exist on sample space $\Omega$.   }
+
+
+
+
+
 	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][for specific cases]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
 \Omega^B =  \bigcup_{l =1}^{M \leq G}  \Omega_l^B & & \text{and} &  &
 f^B(\bm x, y; \Phi)= \sum_{l=1}^{M \leq G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
@@ -338,7 +345,7 @@ $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component G
 
 \section{Numerical Application}\label{sec:numapp}
 \subsection{Dataset}
-The proposed methodology is illustrated on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\sf R} package {\tt CASdatasets} \citep{Dutang+Charpentier:2016} and they were previously used by \cite{Charpentier:2014} who demonstrated various GLM modeling approaches for fitting frequency and severity. The French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following text all monetary units are considered to be of dollar denomination. \textcolor{red}{[What is ``the following text"? Table~1 is not referenced in the text. Each table and each figure must be referenced within the text.]}
+The proposed methodology is illustrated on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\sf R} package {\tt CASdatasets} \citep{Dutang+Charpentier:2016} and they were previously used by \cite{Charpentier:2014} who demonstrated various GLM modeling approaches for fitting frequency and severity. The French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. In the following section all monetary units are considered to be of dollar denomination. \textcolor{red}{[What is ``the following text"? Table~1 is not referenced in the text. Each table and each figure must be referenced within the text.]}
 \begin{small}
 \begin{table}[!htb]
 \begin{center}
@@ -367,14 +374,14 @@ Loss Amount & Portion of claim the insurance policy pays\\
 
 \subsection{Discussion and Results}
 \subsubsection{Modelling Severity}
-In this section, we show the results from modeling French motor losses. We consider the following covariates: density, driver age, car age, power, gas,  and region. %Nik: why is this list not identical to the list from a few lines above?
+\textcolor{blue}{In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk} We consider the following covariates: density, driver age, car age, power, gas,  and region. %Nik: why is this list not identical to the list from a few lines above?
 The model that was fitted is defined with the following equation
-\begin{equation}
-Loss Amount =  Density + Car Age + Driver Age + Region + Power + Gas + \epsilon, \quad \epsilon \sim \mathcal{N}(0,\sigma^2). \label{regressionModel}
-\end{equation}
+\begin{align}
+Y_{Loss Amount} = & \beta_{jInt} +  X_{Density}\beta_{jDensity} + X_{Car Age}\beta_{jCar Age} + X_{Driver Age} \beta_{jDriver Age} + \nonumber \\ &  X_{Region}\beta_{jRegion} + X_{Power}\beta_{jPower} + X_{Gas}\beta_{jGas} + \epsilon, \quad \epsilon \sim \mathcal{N}(0,\sigma^2). \label{regressionModel}
+\end{align}
 \textcolor{red}{[I do not like this way of expressing the model. It seems very informal. I think covariates written like $X_{\tiny \text{Region}}$, with $\beta_j$ coefficients, would be better.]}
 %Nik: this is not an equation. Please reformulate.
-Here error term $\epsilon$ is distributed normally with mean $0$ and variance $\sigma^2$. \textcolor{red}{[You already said this in math, don't repeat.]} 
+ \textcolor{red}{[You already said this in math, don't repeat.]} 
 The canonnical log-link is used for the GLM in \eqref{regressionModel}. The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
 DEF, GH, and other.
@@ -391,9 +398,9 @@ The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density
 \label{fig:vet1}
 \end{figure}
 
-The result of the transformation is a better AIC and BIC. \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
+\textcolor{blue}{Given the log-normal assumption, the result of the transformation is a better AIC and BIC for GCWM over CWM.} \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
 \begin{table}[!htbp] \centering
-  \caption{Comparison of AIC and BIC for CWM versus GCWM models. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
+  \caption{Comparison of AIC and BIC for CWM versus GCWM models for k number of groups. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
 \begin{tabular}{@{\extracolsep{5pt}} rrrr}
 \hline
 Model & k & AIC & BIC \\
@@ -413,12 +420,12 @@ GCWM & $1$ & $$$111,129$ & $$$111,320$ \\
 \end{tabular}
 \end{table}
 
-	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various groups of drivers. \textcolor{red}{[The previous sentence seems to me to contain the key point. I think this should be highlighted in the introduction and, insofar as possible, expanded upon here and maybe in the conclusions.]} The following GCWM allows to cluster different drivers in groups allowing one to assign different rates to different clusters. \textcolor{red}{[What following GCWM?]}
+	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various groups of drivers. \textcolor{red}{[The previous sentence seems to me to contain the key point. I think this should be highlighted in the introduction and, insofar as possible, expanded upon here and maybe in the conclusions.]} \textcolor{blue}{The results of the GCWM allows for the classification of drivers into various groups allowing one to assign different rates. } \textcolor{red}{[What following GCWM?]}
 
 After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeSev}. Attention is brought to largest quantity of drivers that are grouped into Cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1a}. From the results we can create an insurance model with the distinct characteristics.
 \begin{table}[!htb]
 \centering
-\caption{Size of clusters for the GCWM a model.}
+\caption{Size and colours of clusters for the GCWM a model.}
 \label{table:sizeSev}
 \begin{tabular}{rrrr}
 \hline
@@ -431,7 +438,7 @@ Red & Green & Blue & Teal \\
 \end{table}
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.8]{SeverityPlot}
+\includegraphics[scale=0.90]{SeverityPlot}
 \end{center}
 \vspace{-0.2in}
 \caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
