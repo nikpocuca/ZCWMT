@@ -336,7 +336,7 @@ While the parameter \textcolor{blue}{ $\psi_k$ }for \eqref{eq6} can be maximized
 
 \subsection{Comparing zero-inflated Models}\label{subsec:: compareZero}
 
-Until recently, the usual test for comparing zero-inflated to non-zero inflated models has been the Vuong Test for non-nested models \citep{vuongTest}. \textcolor{blue}{However, recent work has shown the misuse of this test for zero inflation where it is pointed out that the ZIP model is falsely defined as a non-nested model . Furthermore, the Vuong Test fails to identify evidence of zero-deflation leading to inconsistencies in the hypothesis test \citep[see][]{misuse}.}  \textcolor{red}{[We need more detail about the ``misuse".]} To rectify this, \cite{newIntuitive} show that it is sufficient to test for zero-modificiation in the form of a likelihood ratio test, where the hypotheses are
+Until recently, the usual test for comparing zero-inflated to non-zero inflated models has been the Vuong Test for non-nested models \citep{vuongTest}. \textcolor{blue}{However, recent work by \cite[see][]{misuse} has shown the misuse of this test for zero inflation where it is pointed out that the ZIP model is falsely defined as a non-nested model. Furthermore, the Vuong Test fails to identify evidence of zero-deflation leading to inconsistencies in the hypothesis test \citep[see][]{misuse}.}  \textcolor{red}{[We need more detail about the ``misuse".]} To rectify this, \cite{newIntuitive} show that it is sufficient to test for zero-modificiation in the form of a likelihood ratio test, where the hypotheses are
 \begin{align*}
 & & H_0: \psi_k = 0 \quad \text{vs.} \quad H_1: \psi_k \neq 0, & &
 \end{align*}
@@ -379,10 +379,11 @@ Loss Amount & Portion of claim the insurance policy pays\\
 
 \subsection{Discussion and Results}
 \subsubsection{Modelling Severity}
-\textcolor{blue}{In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk} We consider the following covariates: density, driver age, car age, power, gas,  and region. %Nik: why is this list not identical to the list from a few lines above?
+\textcolor{blue}{In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk.} We consider the following covariates: population density ($Density$), driver age ($DriverAge$), car age ($CarAge$), car power level ($Power$), gas ($Gas$),  and geographical region in France ($Region$). %Nik: why is this list not identical to the list from a few lines above?
 The model that was fitted is defined with the following equation
 \begin{align}
-Y_{Loss Amount} = & \beta_{jInt} +  X_{Density}\beta_{jDensity} + X_{Car Age}\beta_{jCar Age} + X_{Driver Age} \beta_{jDriver Age} + \nonumber \\ &  X_{Region}\beta_{jRegion} + X_{Power}\beta_{jPower} + X_{Gas}\beta_{jGas} + \epsilon, \quad \epsilon \sim \mathcal{N}(0,\sigma^2). \label{regressionModel}
+g(\mathbb{E}\left[Y_{LossAmount}|\bm{X}\right]) = 
+ & \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Car Age} X_{Car Age}+ \beta_{Driver Age} X_{Driver Age} + \nonumber \\ &  \beta_{Region}X_{Region} + \beta_{Power}X_{Power} + \beta_{Gas} X_{Gas}+ \epsilon, \quad \epsilon \sim \mathcal{N}(0,\sigma^2). \label{regressionModel}
 \end{align}
 \textcolor{red}{[I do not like this way of expressing the model. It seems very informal. I think covariates written like $X_{\tiny \text{Region}}$, with $\beta_j$ coefficients, would be better.]}
 %Nik: this is not an equation. Please reformulate.
@@ -405,10 +406,10 @@ The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density
 
 \textcolor{blue}{Given the log-normal assumption, the result of the transformation is a better AIC and BIC for GCWM over CWM.} \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
 \begin{table}[!htbp] \centering
-  \caption{Comparison of AIC and BIC for CWM versus GCWM models for k number of groups. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
+  \caption{Comparison of AIC and BIC for CWM versus GCWM for $k$ number of groups. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
 \begin{tabular}{@{\extracolsep{5pt}} rrrr}
 \hline
-Model & k & AIC & BIC \\
+Model & $k$ & AIC & BIC \\
 \hline
 CWM & $1$ & $$$352,470$ & $$$352,661$ \\
 & $2$ & $$$314,560$ & $$$314,949$ \\
@@ -496,6 +497,7 @@ After fitting the model, GCWM has found two zero-inflated components and one Poi
 \begin{tabular}{rrrr}
 \hline
 Cluster 1   & Cluster 2  & Cluster 3   \\
+\hline
 100492 & 163503 & 149174 \\
 Red & Green & Blue  \\
 \hline
