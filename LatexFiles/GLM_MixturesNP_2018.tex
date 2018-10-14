@@ -201,13 +201,13 @@ f^P(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t}
 Where the sample space $\Omega^P$ is partitioned into  $G$ non-overlapping sets.
  Now, we can see a partitioning of a sample space $\Omega$ as
  \begin{align*}
-  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup_{k \leq G} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \leq G} \Omega_k^Z,
+  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup_{k \in \{ 1, ..., G  \}} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \in \{ 1, ..., G  \} } \Omega_k^Z,
  \end{align*}
 there, the joint probability density function $f^Z$ becomes
  $$f^Z(\bm{x},y,\Phi) = \sum_{k=1}^{G} \tau_k q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
-& = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \leq G.
+& = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{ 1, ..., G  \}.
 \label{ziGCWM}
 \end{align}
 The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes the ZI-GCWM. The ZI-GCWM is compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
@@ -310,7 +310,9 @@ where $y_i$, and $\xTilda_i$ refers to the $i$th row of the response variable $y
 l_c(\psi_k,\lambda_k|y,\bm{x},{\bm{\zz}_k}) &= \sum_{i=1}^n \left( \zz_{ik}\xTilda_i \bar{\bm{\beta}_k }^{'} - \log\left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}}\right) \right)  \\ \qquad\qquad\qquad\qquad\qquad\qquad& + \sum_{i=1}^n (1-\zz_{ik}) (y_i \xTilda_i \bm{\beta}_k^{'}  - e^{\xTilda_i \bm{\beta}_k^{'}})+ \sum_{i=1}^n (1-\zz_{ik})\log(y_i!)\\
 &= \quad l_c(\psi_k;y,\bm{x},{{\bm{\zz}_k}}) + l_c(\lambda_k; y,\bm{x},{{\bm{\zz}_k}}) + \sum_{i=1}^n (1- \zz_{ik})\log(y_i!), %\label{CompleteZLog}
 \end{split}\end{equation*}
-where $\bm{\zz}_k := \left[\zz_{1k}, ..., \zz_{nk} \right]$ is a realization of $\bm{\zZ}_k  := \left[\zZ_{1k}, ..., \zZ_{nk} \right]$. Note that $l_c(\psi_k,\lambda_k|y,\bm{x},\bm{\zz}_k)$  \textcolor{blue}{separates nicely allowing one} \textcolor{red}{[Easier than what?]} to maximize  $l_c(\psi_k; y,\bm{x},\bm{\zz}_k) $ and $l_c(\lambda_k; y,\bm{x},\bm{\zz}_k) $ separately for parameters $\psi_k$ and $\lambda_k$. \textcolor{blue}{With the EM algorithm, maximization of parameters are done iteratively between estimating $\zZ_{ik}$ with its expectation under current estimates for $\lambda_k$ and $\psi_k$ (E-Step), and then maximizing the conditional expectation of the complete-data log-likelihood (M-Step). } \textcolor{red}{[I don't know what this last sentence means.]}
+where $\bm{\zz}_k := \left[\zz_{1k}, ..., \zz_{nk} \right]$ is a realization of $\bm{\zZ}_k  := \left[\zZ_{1k}, ..., \zZ_{nk} \right]$.
+ 
+ Note that $l_c(\psi_k,\lambda_k|y,\bm{x},\bm{\zz}_k)$  \textcolor{blue}{separates allowing the maximization of} \textcolor{red}{[Easier than what?]}   $l_c(\psi_k; y,\bm{x},\bm{\zz}_k) $ and $l_c(\lambda_k; y,\bm{x},\bm{\zz}_k) $ separately for parameters $\psi_k$ and $\lambda_k$. \textcolor{blue}{With the EM algorithm, maximization of parameters are done iteratively between estimating $\zZ_{ik}$ with its expectation under current estimates for $\lambda_k$ and $\psi_k$ (E-Step), and then maximizing the conditional expectation of the complete-data log-likelihood (M-Step). } \textcolor{red}{[I don't know what this last sentence means.]}
 
 %\subsubsection{E-step -  Zero-inflated Model}%Nik: again, why the first "-"?
  % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density.
@@ -329,7 +331,7 @@ The M-Step can be split into the maximization of two complete data log-likelihoo
 l_c(\psi_k;y,\bm{x}|\hat{\bm{\zz}}_k^{(s)}) &=\sum_{i=1}^n \left( \hat{\zz}_{ik}^{(s)} \xTilda_i \bar{\bm{\beta}_k }^{'} - \log \left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}} \right) \right). \label{eq6}   
  \end{align}
 \textcolor{red}{[In the E-step, the expected value of the complete-data log-likelihood is computed. This leaves me wondering about why the M-step is being framed in terms of the complete-data log-likelihood.]}
-The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be carried out using a weighted log-linear Poisson regression with weights $1 - o_{ik}^{(s)}$ \citep[see][]{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
+The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be carried out using a weighted log-linear Poisson regression with weights $1 - \hat{\zz}_{ik}^{(s)}$ \citep[see][]{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
 While the parameter \textcolor{blue}{ $\psi_k$ }for \eqref{eq6} can be maximized over a gradient yielding $\psi_k^{(s+1)}$ \citep[see][]{Lambert}. \textcolor{red}{[What is ``the parameter''?]}
 
 \subsection{Comparing zero-inflated Models}\label{subsec:: compareZero}
