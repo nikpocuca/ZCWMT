@@ -203,11 +203,11 @@ Where the sample space $\Omega^P$ is partitioned into  $G$ non-overlapping sets.
  \begin{align*}
   \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup_{k \leq G} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \leq G} \Omega_k^Z,
  \end{align*}
- where the joint probability density function $f^Z$ becomes
+there, the joint probability density function $f^Z$ becomes
  $$f^Z(\bm{x},y,\Phi) = \sum_{k=1}^{G} \tau_k q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
 \begin{align}
 q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
-& = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{1 ,\ldots, G \}.
+& = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \leq G.
 \label{ziGCWM}
 \end{align}
 The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes \eqref{ziGCWM}. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
