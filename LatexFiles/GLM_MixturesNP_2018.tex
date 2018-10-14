@@ -201,7 +201,7 @@ f^P(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t}
 Where the sample space $\Omega^P$ is partitioned into  $G$ non-overlapping sets.
  Now, we can see a partitioning of a sample space $\Omega$ as
  \begin{align*}
-  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup_{k \in \{ 1, ..., G  \}} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \in \{ 1, ..., G  \} } \Omega_k^Z,
+  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup^G_{k = 1} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \in \{ 1, ..., G  \} } \Omega_k^Z,
  \end{align*}
 there, the joint probability density function $f^Z$ becomes
  $$f^Z(\bm{x},y,\Phi) = \sum_{k=1}^{G} \tau_k q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
@@ -380,17 +380,17 @@ Loss Amount & Portion of claim the insurance policy pays\\
 \subsection{Discussion and Results}
 \subsubsection{Modelling Severity}
 \textcolor{blue}{In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk.} We consider the following covariates: population density ($Density$), driver age ($DriverAge$), car age ($CarAge$), car power level ($Power$), gas ($Gas$),  and geographical region in France ($Region$). %Nik: why is this list not identical to the list from a few lines above?
-The model that was fitted is defined with the following equation
-\begin{align}
-g(\mathbb{E}\left[Y_{LossAmount}|\bm{X}\right]) = 
- & \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Car Age} X_{Car Age}+ \beta_{Driver Age} X_{Driver Age} + \nonumber \\ &  \beta_{Region}X_{Region} + \beta_{Power}X_{Power} + \beta_{Gas} X_{Gas}+ \epsilon, \quad \epsilon \sim \mathcal{N}(0,\sigma^2). \label{regressionModel}
-\end{align}
 \textcolor{red}{[I do not like this way of expressing the model. It seems very informal. I think covariates written like $X_{\tiny \text{Region}}$, with $\beta_j$ coefficients, would be better.]}
 %Nik: this is not an equation. Please reformulate.
  \textcolor{red}{[You already said this in math, don't repeat.]} 
-The canonnical log-link is used for the GLM in \eqref{regressionModel}. The
+The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
-DEF, GH, and other.
+DEF, GH, and other. The model that was fitted is defined with the following equation
+\begin{align}
+g(\mathbb{E}\left[Y_{LossAmount}|\bm{X}\right]) = 
+ & \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Car Age} X_{Car Age}+ \beta_{Driver Age} X_{Driver Age} + \nonumber \\ &  \beta_{Region}X_{Region} + \beta_{Power}X_{Power} + \beta_{Gas} X_{Gas}. \label{regressionModel}
+\end{align}
+The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
 Beginning with the continuous covariate $Density$, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names , Paul: Like this? I am not sure what you mean by teletype, like telegraph type? or Mathematical type?
 The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
