@@ -64,6 +64,12 @@
 \usepackage[nodisplayskipstretch]{setspace}
 \usepackage{rotating}
 
+\usepackage{eurosym}
+\usepackage{textcomp}
+
+
+
+
 \usepackage{bbm}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -455,9 +461,10 @@ Red & Green & Blue & Teal \\
 The Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 4 drivers have also low variability but a higher average cost, thus they would have a rate higher than Cluster 3. Cluster 2 drivers have the next highest cost and variability of the clusters, these drivers are colored in green in Figure \ref{fig:vet1}. The final cluster colored in red has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
 
 
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between $\$ 51$ to $\$ 154$, with a standard deviation of $\$ 13$, and a mean of $\$ 79$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between $\$ 1,039$ to $\$ 1,324$, with a standard deviation of $\$ 52$, and a mean of $\$ 1,109$.  Proceeding to V3, \textcolor{red}{its} volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between $\$ 221$ to $\$ 8,841$, with a mean of $\$ 1,687$, and a standard deviation of $\$1,284$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of $\$ 2,036,833$, a mean of $\$ 9,717$, and a standard deviation of $\$ 64,835$. \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
-%Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \$51 to \$154, with a standard deviation of \$13, and a mean of \$79. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between \$1,039 to \$3,109, with a standard deviation of \$52, and a mean of \$3,109.  Proceeding to V3, it's volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between \$221 to \$8841, with a mean of \$1,687, and a standard deviation of \$1284. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of \$2,036,833, a mean of \$97,17, and a standard deviation of \$64,835.
-% Paul: I do not know the monetary units of the prices, they are either in dollars or euros. 
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \euro$51$ to  \euro$ 154$, with a standard deviation of  \euro$13$, and a mean of  \euro$79$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between  \euro$1,039$ to  \euro$1,324$, with a standard deviation of  \euro$52$, and a mean of  \euro$1,109$.  Proceeding to V3, \textcolor{red}{its} volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between  \euro$221$ to  \euro$8,841$, with a mean of  \euro$1,687$, and a standard deviation of  \euro$1,284$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of  \euro$2,036,833$, a mean of  \euro$9,717$, and a standard deviation of  \euro$64,835$. \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
+
+ \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
+ 
 \begin{table}[!htb]
 \centering
 \caption{Summarized volatility information of each cluster for Claims.}
