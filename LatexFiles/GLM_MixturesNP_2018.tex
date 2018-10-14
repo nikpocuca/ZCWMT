@@ -210,7 +210,7 @@ q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar
 & = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \leq G.
 \label{ziGCWM}
 \end{align}
-The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes the ZI-GCWM. The ZI-GCWM is then compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
+The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes the ZI-GCWM. The ZI-GCWM is compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
 
 \section{Parameter Estimation}\label{sec:estmeth}
 
@@ -288,14 +288,16 @@ Parameter updates for the log-normal distribution are as follows
 {\hat{\bm \mu}_j}^{\star\star\star (s+1)}&=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}\ln \bm u_i,\\
 {\widehat{\bm \Sigma}_j}^{\star\star\star(s+1)}&=\frac{1}{\sum_{i=1}^n \pi_{ij}^{(s)}} \sum_{i=1}^n \pi_{ij}^{(s)}(\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j) (\ln \bm u_i-\hat{\bm \mu}^{\star\star\star(s+1)}_j)^{'}. 
 \end{split}\end{equation*}
-\textcolor{blue} {The updates for $\bm\beta$ are computed by maximizing the $G$ conditional density terms of the form  } \textcolor{red}{[Note sure what the previous sen.\ means?]}
+\textcolor{blue} {The updates for $\bm{\beta}_j$ are computed by maximizing the $G$ conditional density terms of the form  } \textcolor{red}{[Note sure what the previous sen.\ means?]}
 \begin{align}
 \sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i;\bm \beta_j,\lambda_j).
 \label{eq30}
 \end{align}
-\textcolor{blue}{The numerical optimization for each term is discussed in \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.}
+\textcolor{blue}{The numerical optimization for each term is discussed in \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
+For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
+}
 
-For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
+%For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
 
 \subsection{EM Algorithm for Zero-inflated Model} 
 \textcolor{blue}{For a zero-inflated model, the EM-algorithm follows a similar procedure to optimize the conditional density in \eqref{ziGCWM} }  \textcolor{green}{[But what is its purpose? What new information, if any, is the reader supposed to get here? What would be lost if it were just deleted?]} \textcolor{red}{[What is the purpose of the previous sentence? What does it add?]} The log-likelihood function of $\psi_k$ and $\lambda_k$ is expressed as
@@ -439,7 +441,7 @@ Red & Green & Blue & Teal \\
 \end{table}
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.90]{SeverityPlot}
+\includegraphics[scale=0.70]{SeverityPlot}
 \end{center}
 \vspace{-0.2in}
 \caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
