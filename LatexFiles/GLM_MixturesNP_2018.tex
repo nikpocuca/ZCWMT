@@ -182,25 +182,26 @@ The single component ZIP model assumes that the inflated zeros emanate from both
 	
 \textcolor{blue}{
 For each set $\Omega_k$, a Poisson or a zero-inflated Poisson model exists. In the case of a Poisson model for group $k$, it's sample space $\Omega^P_k$, coincides with the sample space $\Omega_k$ such that  $\Omega_k = \Omega^P_k$.  
-For the case of a zero-inflated Poisson model for group $k$, let $\Omega_k^{B}$ be the sample space of the Bernoulli  model on $\Omega_k$. We decompose $\Omega_k^{B}$ into the space of excess zeros $\Omega_k^{BZ}$, and the space of non-excess zeros $\Omega^{NZ}$ as $\Omega_k^B = \Omega_k^{BZ} \cup \Omega_k^{NZ} $.   By definition non-excess zeros must emanate from a Poisson model thus $\Omega_k^{NZ} $ will coincide with the sample space of $\Omega^P_k$ such that $ \Omega_k^{NZ} =  \Omega^P_k$, then $\Omega_k = \Omega^{BZ}_k \cup \Omega^{P}_k $, where $\Omega^{BZ}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. This allows for the construction of both Poisson models, and zero-inflated Poisson models to exist on sample space $\Omega$.   }
+For the case of a zero-inflated Poisson model for group $k$, let $\Omega_k^{B}$ be the sample space of the Bernoulli  model on $\Omega_k$. We decompose $\Omega_k^{B}$ into the space of excess zeros $\Omega_k^{BZ}$, and the space of non-excess zeros $\Omega^{NZ}$ as $\Omega_k^B = \Omega_k^{BZ} \cup \Omega_k^{NZ} $.   By definition non-excess zeros must emanate from a Poisson model thus $\Omega_k^{NZ} $ will coincide with the sample space of $\Omega^P_k$ such that $ \Omega_k^{NZ} =  \Omega^P_k$. Thus the  $\Omega_k = \Omega^{BZ}_k \cup \Omega^{P}_k $, where $\Omega^{BZ}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. Thus this construction allows both Poisson models, and zero-inflated Poisson models to exist on the same sample space $\Omega$.   }
 
 
 
 
 
-	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][for specific cases]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
+	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
 \Omega^B =  \bigcup_{l =1}^{M \leq G}  \Omega_l^B & & \text{and} &  &
 f^B(\bm x, y; \Phi)= \sum_{l=1}^{M \leq G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
 \end{align*}
-Similarly, if we introduce a Poisson model in a generalized form the sample space $\Omega^P$ and joint probability density function $f^P$ become
+Where the sample space $\Omega^B$ is partitioned up to $M \leq G$ non-overlapping sets.
+Similarly, if we introduce a Poisson model in a generalized form, the sample space $\Omega^P$ and joint probability density function $f^P$ become
 \begin{align*}
 \Omega^P =  \bigcup_{j =1}^{G} \Omega_j^P & & \text{and} &  &
 f^P(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
 \end{align*}
-Where this sample space is partitioned up to $M$ non-overlapping sets.
- Now, construct a new partitioning of a sample space $\Omega$ such that
+Where the sample space $\Omega^P$ is partitioned into  $G$ non-overlapping sets.
+ Now, we can see a partitioning of a sample space $\Omega$ as
  \begin{align*}
-  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right)  =  \bigcup_{k=1} ^G \Omega_k^Z,
+  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup_{k \leq G} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \leq G} \Omega_k^Z,
  \end{align*}
  where the joint probability density function $f^Z$ becomes
  $$f^Z(\bm{x},y,\Phi) = \sum_{k=1}^{G} \tau_k q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
