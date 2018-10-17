@@ -1,7 +1,7 @@
 #sinstall.packages("CASdatasets")
 #install.packages("dplyr")
 #install.packages("GGally")
-
+setwd("~/GitRepos/ZCWMT/SeverityCode/")
 
 loadData <- function() {
   
@@ -254,4 +254,16 @@ cwmt <-function(formulaY = NULL, familyY = gaussian, Xnorm = NULL, Xbin = NULL, 
   cwm (formulaY = formulaY, familyY = familyY, Xnorm = Xnorm, Xbin = Xbin, Xpois = Xpois, Xmult = Xmult, modelXnorm = modelXnorm, Xbtrials = Xbtrials, k = k, initialization = initialization, start.z = start.z, seed = seed, maxR = maxR, iter.max = iter.max, threshold = threshold, eps = eps, parallel = parallel , data=changed_data)
   
 }
+
+m$Density <- LogDensity
+attach(m)
+holdModel <-  cwm(formulaY= LogAggClaimAmount ~ LogDensity + CatCarAge + CatDriverAge + Region + powerF + Gas,
+                     k=1, data=m,
+                     familyY=gaussian(link="identity"),
+                     Xnorm = cbind(Density),
+                     iter.max = 500,
+                     modelXnorm = 'V')
+
+
+
 
