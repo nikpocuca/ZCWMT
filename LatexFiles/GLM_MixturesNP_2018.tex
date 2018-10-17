@@ -402,8 +402,8 @@ Beginning with the continuous covariate $Density$, we want to inspect the shape 
 The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.40]{Density.pdf}
-\includegraphics[scale=0.40]{logDensity.pdf}
+\includegraphics[scale=0.27]{probDensity}
+\includegraphics[scale=0.27]{probDensitytrans}
 \end{center}
 \vspace{-0.2in}
 \caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal assumption is applied (GCWM approach).}
@@ -412,7 +412,7 @@ The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density
 
 \textcolor{blue}{Given the log-normal assumption, the result of the transformation is a better AIC and BIC for GCWM over CWM.} \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
 \begin{table}[!htbp] \centering
-  \caption{Comparison of AIC and BIC for CWM versus GCWM for $k$ number of groups. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
+  \caption{Comparison of AIC and BIC for CWM versus GCWM for $k$ number of clusters estimated. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
 \begin{tabular}{@{\extracolsep{5pt}} rrrr}
 \hline
 Model & $k$ & AIC & BIC \\
@@ -450,7 +450,7 @@ Red & Green & Blue & Teal \\
 \end{table}
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.70]{SeverityPlot}
+\includegraphics[scale=0.50]{lossDensity_v1}
 \end{center}
 \vspace{-0.2in}
 \caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
@@ -491,11 +491,13 @@ In summary, the drivers have been clustered into four categories with distinct c
 
 In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$,$Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
 The GCWM is modelled with the linear formula
-\begin{equation}
-Y_{ClaimNb} = X_{Density}\beta_{jDensity} + X_{Exposure}\beta_{jExposure} + X_{Power} \quad|\quad X_{Exposure} + X_{Car Age},
-\end{equation}
+\begin{align}
+g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right]) & = 
+  \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Exposure} X_{Exposure}+ \beta_{Power} X_{Power}  \label{poissonReg} \\
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right])& = \beta_0 + \beta_{Exposure} X_{Exposure} +  \beta_{CarAge} X_{CarAge} \label{zeroReg}
+\end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
-where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate.
+where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
 After fitting the model, GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the three clusters.
 \begin{table}[!htb]
 \centering
@@ -535,7 +537,7 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \end{table}
 
 Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
-significance codes are the same as for Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant, particularly in the zero-count model for the Bernoulli. Cluster~1 was selected to be strictly a Poisson model by the likelihood ratio test defined in \eqref{LRTest}. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
+significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models.  Furthermore, Cluster~1 had no evidence of zero-inflation by using the likelihood ratio test defined in \eqref{LRTest}, thus only a Poisson model was estimated. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
 
 
 \section{Simulation Study}\label{sec:sim}
