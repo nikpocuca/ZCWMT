@@ -537,7 +537,7 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \end{table}
 
 Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
-significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models.  Furthermore, Cluster~1 had no evidence of zero-inflation by using the likelihood ratio test defined in \eqref{LRTest}, thus only a Poisson model was estimated. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
+significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models.  Furthermore, by using the likelihood ratio test defined in \eqref{LRTest}, Cluster~1 has no evidence of zero-inflation. Thus, only a Poisson model was estimated for Cluster~1. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -654,7 +654,7 @@ Mod. & $G$ & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta
 \end{table}
 
 
-We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
+We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table \ref{gcwmAccuracy} shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
 
 In summary, our simulation results showed good performance of the GCWM approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
 
@@ -663,38 +663,44 @@ In summary, our simulation results showed good performance of the GCWM approach 
 
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
-In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components were genereated under similar coefficients taken from the \textbf{CASDatasets} package. The coefficients were rounded and treated as true parameters to which data was generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
-The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates and 
-\begin{equation}
-SimClaimsNb = SimDriverAge + SimDensity + SimCarAge 
-\end{equation}
-as the GLM. The covariates $SimDriverAge$, $SimDensity$, and $SimCarAge$ are considered for both the Poisson and Bernoulli models. 
- Here the GCWM is fitted to the simulated data and used to classify into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation is based on the generated dataset are presented in Table \ref{misclassTable}. The total misclassification rate  is $1.8 \% $ and the majority of misclassified components are between components two and three.
+In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components are genereated under similar coefficients estimated from the \textbf{CASDatasets} package. Again for easy of interpretation, coefficients are rounded and treated as true parameters from which the simulated data is generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
+The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates with 
+\begin{align}
+g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
+  \beta_{0} +  \beta_{SimDensity} X_{SimDensity} +  \beta_{SimDriverAge} X_{SimDriverAge} \nonumber  \\ & + 
+   \beta_{SimCarAge} X_{SimCarAge},  \label{poissonRegSim} \\
+g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
+  \beta_{0} +  \beta_{SimDensity} X_{SimDensity} +  \beta_{SimDriverAge} X_{SimDriverAge} \nonumber \\ & + 
+   \beta_{SimCarAge} X_{SimCarAge}.  \label{zeroRegSim}
+\end{align}
+
+as their respective linear models.  The covariates $X_{SimDensity}$, $X_{SimDriverAge}$, and $X_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
+ Here, the GCWM classifies drivers based on simulated data into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation are aggregated in Table \ref{misclassTable}. We observe the total misclassification rate of $1.8 \% $, where the majority of misclassified components are between components two and three.
 \begin{table}[!htb]
 \begin{center}
 \caption{Misclassfication rate and label comparison of generated data.}
 \label{misclassTable}
-\begin{tabular}{r r r r r r}
-\hline\hline
-    True Labels       &  \multicolumn{3}{r}{ Classified }   & Misclassification Rate  &  \\ \cmidrule{2-4}
+\begin{tabular}{r| r r r| r r}
+\hline
+    True Labels       &  \multicolumn{3}{r}{ Classified }  \vline & Misclassification Rate  &  \\ \hline
    & 1                              & 2   & 3   &                            &  \\ \hline
-1              & 992                            & 3   & 5   & 0.80 \%                                      &  \\
-2              & 0                              & 990 & 10  & 1.00 \%                                       &  \\
-3              & 15                             & 20  & 965 & 3.50 \%                                      &  \\  \hline
+ 1              & 992                            & 3   & 5   & 0.80 \%                                      &  \\
+ 2              & 0                              & 990 & 10  & 1.00 \%                                       &  \\
+ 3              & 15                             & 20  & 965 & 3.50 \%                                      &  \\  \hline
                 \multicolumn{4}{r}{Overall Misclassification Rate}        & 1.80 \%                  & \\
         		\multicolumn{4}{r}{Average Purity} & 98.23 \%  
         		\\ \hline
                 \multicolumn{4}{r}{Adjusted Rand Index} & 0.9479 &  \\
-    \hline\hline
+    \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-The experiment is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations are taken as given by the estimated  ZIP components from the \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario ``close" as the covariate means are manipulated so that they are closer to each other within some degree. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. Experiment 2 tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
+The simulation is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations of covariates are taken directly from sample statistics of \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario defined as ``close", the covariate means are manipulated so that they are closer to each other within some degree. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. The expansion of the simulation to $1000$ runs tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The results of this expansion are aggregated in Table \ref{table:exper2}.  The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
 
 \begin{table}[!htb]
 \begin{center}
-\caption{Experiment 2: mean and standard deviations for each statistic compared across methods.}
+\caption{Aggregated results for the $1000$ run simulation, mean and standard deviations for each statistic are compared across three methods.}
 \label{table:exper2}
 \begin{tabular}{rrrrrrrr}
 \hline\hline
@@ -710,7 +716,12 @@ Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & ( 0.07)     
 \end{tabular}
 \end{center}
 \end{table}
-Several findings are concluded from Table \ref{table:exper2}. Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Further findings show that when close condition is imposed then Bernoulli has better performance in terms of accuracy. The Adjusted Rand Index\footnote{Having $n_{ij}$ to be a matrix entry, $a_i$ to be the $i$th row sum, and $b_j$ to be the $j$th column sum  from the classification matrix of Table \ref{misclassTable}, the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } (ARI) shows good measurements overall, but in particular the BP partitioning method under normal scenario has a very good ARI with a small standard deviation. The Average Purity \footnote{ The Average Purtiy is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) of the BP partitioning method is the best out of all other methods, which is relevant to estimating coefficients accurately for optimization.
+
+ Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Furthermore, when the close condition is imposed, the partitioning using only the Bernoulli method has better performance in terms of accuracy. The Adjusted Rand Index (ARI) is defined as the corrected for chance of the number of object pairs that are either in the same group or in different groups across all partitions divided by the total number of object pairs.
+ %\footnote{Having $n_{ij}$ to be a matrix entry, $a_i$ to be the $i$th row sum, and $b_j$ to be the $j$th column sum  from the classification matrix of Table \ref{misclassTable}, the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } 
+ The ARI measurements across all methods are promising. In particular the BP partitioning method under the normal condition has a very good ARI with a small standard deviation. The Average Purity (AP) is calculated as the average of the diagonal classification entries. 
+ %  \footnote{ The Average Purity is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) 
+The AP for the BP partitioning method is the best out of all other methods, therefore the BP method is the most relevant for classification.
 
 \section{Conclusion}
 
