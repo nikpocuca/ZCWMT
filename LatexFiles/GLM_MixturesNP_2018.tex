@@ -351,7 +351,7 @@ and the test statistic $\varphi$ is given by
 \varphi = -2 \big[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\big].
 \label{LRTest}
 \end{equation}
-\textcolor{red}{I presume there are words missing here? Perhaps: The test statistic \eqref{LRTest}} \textcolor{blue}{The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution with $m$ degrees of freedom ($\chi^2_m $) and confidence level $\alpha = 0.10$, where $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{\citep[see Liklihood Ratio Tests in ][]{newIntuitive}} } \textcolor{red}{[When we write ``see'' a reference, it should be clear what one will find there. In some cases, including the preceding sentence, it is not clear to me.]} The function 
+\textcolor{red}{I presume there are words missing here? Perhaps: The test statistic \eqref{LRTest}} \textcolor{blue}{The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution with $m$ degrees of freedom ($\chi^2_m $) and confidence level $\alpha = 0.10$, where $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{See Liklihood Ratio Tests in  \cite{newIntuitive}}. } \textcolor{red}{[When we write ``see'' a reference, it should be clear what one will find there. In some cases, including the preceding sentence, it is not clear to me.]} The function 
 $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the $k$th parition.  \textcolor{red}{[What is the purpose of this qualifier?]} In our approach, we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on $\Omega_k$. This approach quickly determines if there is zero-inflation on partition $\Omega_k$.  When evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
 
 \section{Numerical Application}\label{sec:numapp}
@@ -394,8 +394,7 @@ $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[
 DEF, GH, and other. The fitted model is defined with the following expression
 \begin{align}
 g(\mathbb{E}\left[Y_{LossAmount}|\bm{x}\right]) = 
- & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} + \beta_{jGas} x_{Gas}. \label{regressionModel} \\
- := & \quad \bm{\xTilda} \bm{\beta}_j^{'}
+ & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} + \beta_{jGas} x_{Gas} \label{regressionModel}  =: \bm{\xTilda} \bm{\beta}_j^{'}.
 \end{align}
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
@@ -494,10 +493,8 @@ In this section, we model frequency of the French motor claims. We consider the 
 The GCWM is fitted with the following expression
 \begin{align}
 g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right]) & = 
-  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jExposure}  x_{Exposure}+ \beta_{jPower}x_{Power} \label{poissonReg}\\
- & =: \bm{\xTilda} \bm{\beta}_j^{'},  \nonumber  \\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} + \bar{\beta}_{jExposure} x_{Exposure} +  \bar{\beta}_{jCarAge} x_{CarAge} \label{zeroReg} \\
- & =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'}, \nonumber
+  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jExposure}  x_{Exposure}+ \beta_{jPower}x_{Power}  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} + \bar{\beta}_{jExposure} x_{Exposure} +  \bar{\beta}_{jCarAge} x_{CarAge} =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).

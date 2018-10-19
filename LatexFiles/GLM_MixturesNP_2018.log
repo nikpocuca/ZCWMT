@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 OCT 2018 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 OCT 2018 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -672,7 +672,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 LaTeX Font Warning: Command \tiny invalid in math mode on input line 389.
 
 [12] [13] [14]
-Overfull \hbox (10.97794pt too wide) in paragraph at lines 493--495
+Overfull \hbox (10.97794pt too wide) in paragraph at lines 492--494
 \OT1/ptm/m/n/10 In this sec-tion, we model fre-quency of the French mo-tor clai
 ms. We con-sider the co-vari-ates $\OML/cmm/m/it/10 Density$\OT1/ptm/m/n/10 , $
 \OML/cmm/m/it/10 DriverAge$\OT1/ptm/m/n/10 ,
@@ -685,12 +685,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [18] [19] [20] [21
 
 ]
-Overfull \hbox (0.98257pt too wide) in paragraph at lines 708--720
+Overfull \hbox (0.98257pt too wide) in paragraph at lines 705--717
  [] 
  []
 
 [22] [23]
-Overfull \hbox (3.98006pt too wide) in paragraph at lines 744--747
+Overfull \hbox (3.98006pt too wide) in paragraph at lines 741--744
 []$\OML/cmm/m/it/10 X$[]$X \OMS/cmsy/m/n/10 ^^X N\OT1/cmr/m/n/10 (\OML/cmm/m/it
 /10 x\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ^^V; ^^[\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/
 10 , then $\OML/cmm/m/it/10 U \OT1/cmr/m/n/10 := [] [] \OMS/cmsy/m/n/10 ^^X []\
@@ -744,7 +744,7 @@ ocal/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (29 pages, 365650 bytes).
+Output written on GLM_MixturesNP_2018.pdf (29 pages, 365570 bytes).
 PDF statistics:
  215 PDF objects out of 1000 (max. 8388607)
  153 compressed objects within 2 object streams
