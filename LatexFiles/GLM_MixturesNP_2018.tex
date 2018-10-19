@@ -394,7 +394,8 @@ $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[
 DEF, GH, and other. The fitted model is defined with the following expression
 \begin{align}
 g(\mathbb{E}\left[Y_{LossAmount}|\bm{x}\right]) = 
- & \beta_{j0} +  \beta_{jDensity}\bm{x}_{Density}+ \beta_{jCar Age} \bm{x}_{Car Age}+ \beta_{jDriver Age} \bm{x}_{Driver Age} + \nonumber \\ &  \beta_{jRegion}\bm{x}_{Region} + \beta_{jPower}\bm{x}_{Power} + \beta_{jGas} \bm{x}_{Gas}. \label{regressionModel}
+ & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} + \beta_{jGas} x_{Gas}. \label{regressionModel} \\
+ := & \quad \bm{\xTilda} \bm{\beta}_j^{'}
 \end{align}
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
@@ -492,9 +493,11 @@ In summary, the drivers have been clustered into four categories with distinct c
 In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, $Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
 The GCWM is fitted with the following expression
 \begin{align}
-g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right]) & = 
-  \beta_{0} +  \beta_{Density}\bm{x}_{Density}+ \beta_{Exposure} \bm{x}_{Exposure}+ \beta_{Power}\bm{x}_{Power}, \label{poissonReg} \\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right])& = \bar{\beta}_0 + \bar{\beta}_{Exposure} \bm{x}_{Exposure} +  \bar{\beta}_{CarAge} \bm{x}_{CarAge}, \label{zeroReg}
+g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right]) & = 
+  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jExposure}  x_{Exposure}+ \beta_{jPower}x_{Power} \label{poissonReg}\\
+ & =: \bm{\xTilda} \bm{\beta}_j^{'},  \nonumber  \\
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} + \bar{\beta}_{jExposure} x_{Exposure} +  \bar{\beta}_{jCarAge} x_{CarAge} \label{zeroReg} \\
+ & =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'}, \nonumber
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
