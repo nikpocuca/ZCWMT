@@ -402,8 +402,8 @@ Beginning with the continuous covariate $Density$, we want to inspect the shape 
 The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.27]{probDensity}
-\includegraphics[scale=0.27]{probDensitytrans}
+%\includegraphics[scale=0.27]{probDensity}
+%\includegraphics[scale=0.27]{probDensitytrans}
 \end{center}
 \vspace{-0.2in}
 \caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal assumption is applied (GCWM approach).}
@@ -450,7 +450,7 @@ Red & Green & Blue & Teal \\
 \end{table}
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.60]{epsVersiondens.eps}
+%\includegraphics[scale=0.60]{epsVersiondens.eps}
 \end{center}
 \vspace{-0.2in}
 \caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
@@ -516,7 +516,7 @@ Red & Green & Blue  \\
 Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the least dense cities with a mean of 7.86 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.23 km and 3.38 km, respectively.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.60]{epsFreqZero.eps}
+%\includegraphics[scale=0.60]{epsFreqZero.eps}
 \end{center}
 \vspace{-0.2in}\caption{Showing clusters in color for Frequency vs Density under log-normal assumptions.}
 \label{frequencyGraph}
@@ -548,13 +548,15 @@ Two simulation studies are conducted to determine the validity of the log-normal
 \subsection{Simulation Study for GCWM}
 
 
-In this section, we show how the proposed methodology works for different simulation settings. The simulation study was generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This was designed to test both functions in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this was aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
+In this section, we show how the proposed methodology works for different simulation settings. The simulation study is generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This design specifically tests both models in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this simulation is aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
+\textcolor{blue}{
+We define Model 1 as the baseline model, where the coefficients are selected to be reminiscent of those estimated from \textbf{CASdataset} and reported in upper portion of Table \ref{severity_coef_table}. The intercept for each component is increased to make sure simulated loss is positive. For ease of interpretation, these coefficients are then rounded and treated as true parameters for the simulation study.  A simulation with a 3 group mixture model is generated from the aforementioned true parameters however, the third covariate ($X_3$) is generated from a log-normal distribution.  In addition, the covariate $X_2$ for the second component is made insignificant and has no effect on the response. 
+}
+. \textcolor{red}{[Some problems with the previous sentence: (1) I think we mean ``Model~1 is the baseline model, where the coefficients\ldots''; (2) I don't fully understand the reference to Table~2; and (3) Table~2, as with all other tables and figures, should be referenced in \LaTeX\ via a nickname. I won't repeat the latter comment but please make sure all tables and figures are referenced using nicknames.]} \textcolor{red}{[Please read the last three sentences carefully.]}
 
-We define Model 1 as the baseline model in which the coefficients were generated for \textbf{CASdataset} and reported in upper portion of Table 
-
-. \textcolor{red}{[Some problems with the previous sentence: (1) I think we mean ``Model~1 is the baseline model, where the coefficients\ldots''; (2) I don't fully understand the reference to Table~2; and (3) Table~2, as with all other tables and figures, should be referenced in \LaTeX\ via a nickname. I won't repeat the latter comment but please make sure all tables and figures are referenced using nicknames.]} These coefficients were then rounded and treated as true parameters. \textcolor{red}{[Why rounded?]} A simulation with three GLM mixture components was then generated around these true parameters in which the third covariate $X_3$ was log-normal. Stemming from this, both CWM and  GCWM are run. The  GCWM a treats $X_3$ as a log-normal covariate. \textcolor{red}{[Please read the last three sentences carefully.]}
-
-\textcolor{red}{[Do not use past tense anywhere but the conclusions section. I have made some edits but I am sure I missed some others.]} The results for Model 1 are summarized in upper portion of Table 3 based on the performance of the  GCWM a approach. The simulation is run $1000$ times. We report the percentage of runs for each predictor and the corresponding intercept in each mixture component under the assumption of $5\%$ error. For example, predictor $X_2$ in the component 2 of Model 1 reports $90.10\%$ accuracy. \textcolor{red}{[How does a predictor report?]} This means that $90.1\%$ of the time the true parameter is estimated within $5\%$ error. In this setting, predictor $X_1$ in the second component is insignificant in the real data set. The purpose of including this parameter in Model~1 is to test the sensitivity of  GCWM a for insignificant predictors. In this case, the result of zero is underlined and means that it \textcolor{red}{[what?]} has no influence on the response variable in this simulation. Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor form the CASdataset model. This is done to test the accuracy of  GCWM \textcolor{red}{a} to the  sensitivity of coefficients. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
+\textcolor{red}{[Do not use past tense anywhere but the conclusions section. I have made some edits but I am sure I missed some others.]} 
+\textcolor{blue}{Results aggregated from $1000$ runs are summarized in Table \ref{gcwmAccuracy} and Table \ref{mseTable} . Given a Gaussian assumption of for the residual error, we record the percentage of runs in which the error fall between a two-tailed $\% 5$ confidence interval in Table \ref{gcwmAccuracy}. For example, we report $90.10\%$ accuracy for predictor $X_2$ in the component 2. This means that $90.1\%$ of the time the true parameter is estimated within a $95\%$ confidence interval. }
+Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor form the CASdataset model. This is done to test the accuracy of the GCWM and its sensitivity to changes in coefficient sizes. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
 \begin{table}[!htb]
 \centering
 \caption{GCWM a vs CWM Accuracy: covariate $X_3$ is treated as log-normally distributed, while the rest of covariates are of the Gaussian type.}
@@ -589,7 +591,7 @@ Mod. & $G$ & Int. & $X_1$ &$X_2$ & $X_3$& Int. & $X_1$ &$X_2$ & $X_3$  \\
 % Table 4 provides the summary of the results when CWM was used in the analysis of the same models considered in Table 3. Commented sentanced 
 In line with expectations we note that barely any of the simulation runs are estimated correctlly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
 
-Table \ref{mseTable} provides the summary of mean squared errors\footnote{The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate.} (MSEs) of each parameter of the models for the same simulated runs in Table~\ref{gcwmAccuracy}. \textcolor{red}{[Try to avoid footnotes.]} The MSEs related to the predictor variables for all models and their corresponding components are about zero indicating that  GCWM a approach performs well. This is also a result of having a small size coefficients.
+Table \ref{mseTable} provides the summary of mean squared errors (MSEs). \textcolor{blue}{ The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate. The MSE for each parameter pertaining to each model are aggregated in Table~\ref{gcwmAccuracy}. }\textcolor{red}{[Try to avoid footnotes.]}  Overall GCWM outperforms CWM in both accuracy and MSE. 
 \begin{table}[h!]
 \centering
 \caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table~\ref{gcwmAccuracy}.}
@@ -652,8 +654,7 @@ Mod. & $G$ & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta
 \end{table}
 
 
-
-In contrary to the results reported in Table 5, these results in Table 6 are significantly different. We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
+We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
 
 In summary, our simulation results showed good performance of the GCWM approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
 
