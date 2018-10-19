@@ -391,10 +391,10 @@ Loss Amount & Portion of claim the insurance policy pays\\
  \textcolor{red}{[You already said this in math, don't repeat.]} 
 The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
-DEF, GH, and other. The model that was fitted is defined with the following equation
+DEF, GH, and other. The fitted model is defined with the following expression
 \begin{align}
-g(\mathbb{E}\left[Y_{LossAmount}|\bm{X}\right]) = 
- & \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Car Age} X_{Car Age}+ \beta_{Driver Age} X_{Driver Age} + \nonumber \\ &  \beta_{Region}X_{Region} + \beta_{Power}X_{Power} + \beta_{Gas} X_{Gas}. \label{regressionModel}
+g(\mathbb{E}\left[Y_{LossAmount}|\bm{x}\right]) = 
+ & \beta_{j0} +  \beta_{jDensity}\bm{x}_{Density}+ \beta_{jCar Age} \bm{x}_{Car Age}+ \beta_{jDriver Age} \bm{x}_{Driver Age} + \nonumber \\ &  \beta_{jRegion}\bm{x}_{Region} + \beta_{jPower}\bm{x}_{Power} + \beta_{jGas} \bm{x}_{Gas}. \label{regressionModel}
 \end{align}
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
@@ -489,12 +489,12 @@ In summary, the drivers have been clustered into four categories with distinct c
 
  \subsubsection{Modeling Claims Frequency}
 
-In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$,$Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
-The GCWM is modelled with the linear formula
+In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, $Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
+The GCWM is fitted with the following expression
 \begin{align}
 g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right]) & = 
-  \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Exposure} X_{Exposure}+ \beta_{Power} X_{Power}  \label{poissonReg} \\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right])& = \beta_0 + \beta_{Exposure} X_{Exposure} +  \beta_{CarAge} X_{CarAge} \label{zeroReg}
+  \beta_{0} +  \beta_{Density}\bm{x}_{Density}+ \beta_{Exposure} \bm{x}_{Exposure}+ \beta_{Power}\bm{x}_{Power}, \label{poissonReg} \\
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right])& = \bar{\beta}_0 + \bar{\beta}_{Exposure} \bm{x}_{Exposure} +  \bar{\beta}_{CarAge} \bm{x}_{CarAge}, \label{zeroReg}
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
@@ -591,7 +591,7 @@ Mod. & $G$ & Int. & $X_1$ &$X_2$ & $X_3$& Int. & $X_1$ &$X_2$ & $X_3$  \\
 % Table 4 provides the summary of the results when CWM was used in the analysis of the same models considered in Table 3. Commented sentanced 
 In line with expectations we note that barely any of the simulation runs are estimated correctlly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
 
-Table \ref{mseTable} provides the summary of mean squared errors (MSEs). \textcolor{blue}{ The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate. The MSE for each parameter pertaining to each model are aggregated in Table~\ref{gcwmAccuracy}. }\textcolor{red}{[Try to avoid footnotes.]}  Overall GCWM outperforms CWM in both accuracy and MSE. 
+Table \ref{mseTable} provides the summary of mean squared errors (MSEs). \textcolor{blue}{ The MSE is computed using the following formula, MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate. The MSE for each parameter pertaining to each model are aggregated in Table~\ref{gcwmAccuracy}. }\textcolor{red}{[Try to avoid footnotes.]}  Overall GCWM outperforms CWM in both accuracy and MSE. 
 \begin{table}[h!]
 \centering
 \caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table~\ref{gcwmAccuracy}.}
@@ -670,8 +670,8 @@ g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & =
   \beta_{0} +  \beta_{SimDensity} X_{SimDensity} +  \beta_{SimDriverAge} X_{SimDriverAge} \nonumber  \\ & + 
    \beta_{SimCarAge} X_{SimCarAge},  \label{poissonRegSim} \\
 g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
-  \beta_{0} +  \beta_{SimDensity} X_{SimDensity} +  \beta_{SimDriverAge} X_{SimDriverAge} \nonumber \\ & + 
-   \beta_{SimCarAge} X_{SimCarAge}.  \label{zeroRegSim}
+  \bar{\beta_{0}} +  \bar{\beta}_{SimDensity} X_{SimDensity} +  \bar{\beta}_{SimDriverAge} X_{SimDriverAge} \nonumber \\ & + 
+  \bar{ \beta}_{SimCarAge} X_{SimCarAge}.  \label{zeroRegSim}
 \end{align}
 
 as their respective linear models.  The covariates $X_{SimDensity}$, $X_{SimDriverAge}$, and $X_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
@@ -758,10 +758,11 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
   \end{align*}
 \end{proof}
 
-\section{Tables}\label{app:tables}
-
 \begin{center}
 \begin{sidewaystable}
+
+\section{Tables}\label{app:tables}
+
 \caption{ Summary of coefficients for severity clusters.}
 \label{severity_coef_table}
 \begin{tabular}{|l|rrc|rrc|rrc|rrc|}
@@ -821,6 +822,7 @@ C5          &          &      &    & -0.808    & 0.266   & **  & -6.355    & 30.
 \end{sidewaystable}
 \end{center}
 
+\newpage
 \bibliographystyle{elsart-harv}
 \bibliography{GLM_Mixtures_2018}
 

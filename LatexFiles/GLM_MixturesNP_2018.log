@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 OCT 2018 10:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  19 OCT 2018 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -698,7 +698,7 @@ OT1/cmr/m/n/10 (\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ^^V; ^^[\O
 T1/cmr/m/n/10 )$\OT1/ptm/m/n/10 .
  []
 
-[24] (./GLM_MixturesNP_2018.bbl [25] [26] [27]
+[24] [25] [26] (./GLM_MixturesNP_2018.bbl [27]
 Missing character: There is no ’ in font ptmr7t!
  [28])
 
@@ -709,11 +709,11 @@ See the caption package documentation for explanation.
 Here is how much of TeX's memory you used:
  6710 strings out of 492649
  96984 string characters out of 6129622
- 195840 words of memory out of 5000000
+ 198840 words of memory out of 5000000
  10377 multiletter control sequences out of 15000+600000
  49644 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,21n,40p,1713b,525s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,21n,40p,1713b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc
 /dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
 nts/cmextra/cmbsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
@@ -744,7 +744,7 @@ ocal/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (29 pages, 364102 bytes).
+Output written on GLM_MixturesNP_2018.pdf (29 pages, 364202 bytes).
 PDF statistics:
  215 PDF objects out of 1000 (max. 8388607)
  153 compressed objects within 2 object streams
