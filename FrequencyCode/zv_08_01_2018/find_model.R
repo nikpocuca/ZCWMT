@@ -1,12 +1,12 @@
 
-fr_p_v1  <- formula(ClaimNb ~ LogDensity + EXPOSURE + powerF)
-fr_p_v2  <- formula(ClaimNb ~ LogDensity + EXPOSURE + powerF + Gas)
-fr_p_v3  <- formula(ClaimNb ~ LogDensity + EXPOSURE + powerF + brandF )
+fr_p_v1  <- formula(ClaimNb ~ LogDensity + offset(EXPOSURE) + powerF)
+fr_p_v2  <- formula(ClaimNb ~ LogDensity + offset(EXPOSURE) + powerF + Gas)
+fr_p_v3  <- formula(ClaimNb ~ LogDensity + offset(EXPOSURE) + powerF + brandF )
 
 
 fr_z_v1 <- formula(ClaimNb ~  factor(CatCarAge))
 fr_z_v2 <- formula(ClaimNb ~  factor(CatDriverAge))
-fr_z_v3 <- formula(ClaimNb ~  EXPOSURE + factor(CatCarAge))
+fr_z_v3 <- formula(ClaimNb ~  offset(EXPOSURE) + factor(CatCarAge))
 
 fr_p <- list(fr_p_v1,fr_p_v2,fr_p_v3)
 fr_z <- list(fr_z_v1, fr_z_v2,fr_z_v3)
@@ -30,7 +30,7 @@ for (p_form in fr_p) {
                               formulaP = p_form,
                               formulaZI = z_form,
                               runC = 1,
-                              "P", 
+                              "BP", 
                               Xnorms = c(LogDensity),
                               np = 1:3)
          print((lapply(zero_models, summary)))

@@ -11,7 +11,7 @@ library(pscl)
 #| Returns a zero-inflated cwm object                                                           |
 #| =============================================================================================|
 
-zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method,  ...){
+zcwm <- function(inputdata, formulaP, formulaZI,runC, np, Xnorms, method, offset_in,  ...){
   
 
   # Create zero space. 

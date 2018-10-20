@@ -67,22 +67,25 @@ loadDataServer <- function() {
 # Load data depending on where you are, you can either do it from the package, or locally. 
 #m <- loadData()
 m <- loadDataServer()
+m$Severity <- m$AggClaimAmount/m$ClaimNb
+m$LogSeverity <- log(m$Severity)
+library(flexCWM)
 
 set.seed(101)
 runSev <- function(dataInput) {
   
   attach(dataInput)
-  fitLognormal <-  cwm(formulaY= LogAggClaimAmount ~ Density + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF + Gas,
-                       k=1:5, data=dataInput,
-                       familyY=gaussian(link="identity"),
-                       Xnorm = cbind(Density),
-                       iter.max = 500,
-                       modelXnorm = 'V'
-  )
+  #fitLognormal <-  cwm(formulaY= LogSeverity ~ Density + factor(CatCarAge) + factor(CatDriverAge), #+ Region + powerF + Gas,
+  #                     k=4:5, data=dataInput,
+  #                     familyY=gaussian(link="identity"),
+  #                     Xnorm = cbind(Density),
+  #                     iter.max = 500,
+  #                     modelXnorm = 'V'
+  #)
   
   
-  fitLognormalt <- cwm(formulaY= LogAggClaimAmount ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge), # + Region + powerF + Gas,
-                       k=1:5, data=dataInput,
+  fitLognormalt <- cwm(formulaY= LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge), # + Region + powerF + Gas,
+                       k=4:7, data=dataInput,
                        familyY=gaussian(link="identity"),
                        Xnorm = cbind(LogDensity),
                        iter.max = 500,
@@ -91,20 +94,37 @@ runSev <- function(dataInput) {
   
   detach(dataInput)
   
-  return(list(u = fitLognormal,
+  return(list(#u = fitLognormal,
               t = fitLognormalt))
 }
 
 # 
-
-# Run the above function. 
 Results <- runSev(m)
+m24 <- m[m$Region == "R24",]
+# Run the above function. 
+Results <- runSev(m24)
 
 # save the results. 
 u_model <- Results$u
 t_model <- Results$t
 save(u_model,file = "u_model")
 save(t_model, file = "t_model")
+
+
+plotClusters <- function(data_input) {
+  data_input$clusters <- getCluster(t_model) + 1
+  data_input[data_input$clusters == 7,]$clusters <- 8
+  plot(data_input$LogDensity,data_input$LogSeverity,col = data_input$clusters,#getCluster(t_model) ,
+       pch = 19,
+       #main = "Claims vs. Density Transformed",
+       xlab = "Density",
+       ylab = "Severity",
+       cex = 0.5)
+}
+# 2 is red, 3 is green, 4 is blue, 5 is teal, 6 is purple, 7 is yellow
+plotClusters(m24)
+
+
 
 # Uncomment this code so you dont have to run above again. 
 #load("u_model")
@@ -158,7 +178,7 @@ stargazer(t_model_table_final,summary = FALSE)
 
 # Red and Green show to be the two highest levels of volitility, 
 # teal and blue show the two least levels of volitility.  
-plot(m$LogDensity,m$LogAggClaimAmount,col = getCluster(t_model) + 1,pch = 19,
+plot(m24$LogDensity,m24$LogSeverity,col = getCluster(t_model) + 1,pch = 19,
      #main = "Claims vs. Density Transformed",
      xlab = "Density",
      ylab = "Loss Amount",

@@ -6,7 +6,7 @@
 #| returns zero-inflated cwm object                                                              |
 #| =============================================================================================|
 
-optimizeZeroInflation <- function(subspace,formulaZ,method){
+optimizeZeroInflation <- function(subspace,formulaZ,method,offset_zeroin){
  
 	if (method == "BP") {
     input_data <- subspace$dta
