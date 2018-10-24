@@ -179,7 +179,7 @@ Noe that, here, the parameter $\psi_j$ denotes the mean of the Bernoulli distrib
 
 \subsection{Bernoulli-Poisson Sample Space Partitioning}
 
-The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros \citep[see][]{Bermudez+Karlis:2012}. In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM algorithm when means of covariates are very close together \cite[see][]{LimHwa}. However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}. \textcolor{red}{[Is this the paper we mean to cite?]} \textcolor{blue}{In your paper with  TB Murphy found here: https://pdfs.semanticscholar.org/6e54/f621ff1c43c3bac0ba989953e7253b5fa4c0.pdf
+The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros \citep[see][]{Bermudez+Karlis:2012}. In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM algorithm when means of covariates are very close together \cite[see][]{LimHwa}. However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}. \textcolor{red}{[Is this the paper we mean to cite?]} \textcolor{blue}{[In your paper with  TB Murphy found here: https://pdfs.semanticscholar.org/6e54/f621ff1c43c3bac0ba989953e7253b5fa4c0.pdf, now fixed]
 }
 	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. In the first EM algorithm we estimate parameters pertaining to the GCWM under the assumption of a Poisson model and, separately, we carry out the same process under the assumption of a Bernoulli model. Using the obtained parameter estimates from the two separate applications of the EM algorithm, we set the initialization parameters for the second EM algorithm pertaining to parameter estimation of the ZI-GCWM. The work of \cite{Lambert} specifies that the MLE estimates for the separate Poisson and Bernoulli models provide an excellent initial guess, allowing EM to converge quickly for ZIPs. The Bernoulli-Poisson sample space partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. 
 	
@@ -351,7 +351,7 @@ and the test statistic $\varphi$ is given by
 \varphi = -2 \big[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\big].
 \label{LRTest}
 \end{equation}
-\textcolor{red}{I presume there are words missing here? Perhaps: The test statistic \eqref{LRTest}} \textcolor{blue}{The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution with $m$ degrees of freedom ($\chi^2_m $) and confidence level $\alpha = 0.10$, where $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{\citep[see Liklihood Ratio Tests in ][]{newIntuitive}} } \textcolor{red}{[When we write ``see'' a reference, it should be clear what one will find there. In some cases, including the preceding sentence, it is not clear to me.]} The function 
+\textcolor{red}{I presume there are words missing here? Perhaps: The test statistic \eqref{LRTest}} \textcolor{blue}{The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution with $m$ degrees of freedom ($\chi^2_m $) and confidence level $\alpha = 0.10$, where $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{See Liklihood Ratio Tests in  \cite{newIntuitive}}. } \textcolor{red}{[When we write ``see'' a reference, it should be clear what one will find there. In some cases, including the preceding sentence, it is not clear to me.]} The function 
 $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parameterized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation paramater of the $k$th parition.  \textcolor{red}{[What is the purpose of this qualifier?]} In our approach, we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on $\Omega_k$. This approach quickly determines if there is zero-inflation on partition $\Omega_k$.  When evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
 
 \section{Numerical Application}\label{sec:numapp}
@@ -391,10 +391,10 @@ Loss Amount & Portion of claim the insurance policy pays\\
  \textcolor{red}{[You already said this in math, don't repeat.]} 
 The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
-DEF, GH, and other. The model that was fitted is defined with the following equation
+DEF, GH, and other. The fitted model is defined with the following expression
 \begin{align}
-g(\mathbb{E}\left[Y_{LossAmount}|\bm{X}\right]) = 
- & \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Car Age} X_{Car Age}+ \beta_{Driver Age} X_{Driver Age} + \nonumber \\ &  \beta_{Region}X_{Region} + \beta_{Power}X_{Power} + \beta_{Gas} X_{Gas}. \label{regressionModel}
+g(\mathbb{E}\left[Y_{LossAmount}|\bm{x}\right]) = 
+ & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} + \beta_{jGas} x_{Gas} \label{regressionModel}  =: \bm{\xTilda} \bm{\beta}_j^{'}.
 \end{align}
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
@@ -402,8 +402,8 @@ Beginning with the continuous covariate $Density$, we want to inspect the shape 
 The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.27]{probDensity}
-\includegraphics[scale=0.27]{probDensitytrans}
+%\includegraphics[scale=0.27]{probDensity}
+%\includegraphics[scale=0.27]{probDensitytrans}
 \end{center}
 \vspace{-0.2in}
 \caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal assumption is applied (GCWM approach).}
@@ -450,7 +450,7 @@ Red & Green & Blue & Teal \\
 \end{table}
 \begin{figure}[!htb]
 \begin{center}
-\includegraphics[scale=0.60]{epsVersiondens.eps}
+%\includegraphics[scale=0.60]{epsVersiondens.eps}
 \end{center}
 \vspace{-0.2in}
 \caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
@@ -489,12 +489,12 @@ In summary, the drivers have been clustered into four categories with distinct c
 
  \subsubsection{Modeling Claims Frequency}
 
-In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$,$Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
-The GCWM is modelled with the linear formula
+In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, $Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
+The GCWM is fitted with the following expression
 \begin{align}
-g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right]) & = 
-  \beta_{0} +  \beta_{Density} X_{Density}+ \beta_{Exposure} X_{Exposure}+ \beta_{Power} X_{Power}  \label{poissonReg} \\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{X}\right])& = \beta_0 + \beta_{Exposure} X_{Exposure} +  \beta_{CarAge} X_{CarAge} \label{zeroReg}
+g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right]) & = 
+  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jExposure}  x_{Exposure}+ \beta_{jPower}x_{Power}  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} + \bar{\beta}_{jExposure} x_{Exposure} +  \bar{\beta}_{jCarAge} x_{CarAge} =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
@@ -516,7 +516,7 @@ Red & Green & Blue  \\
 Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the least dense cities with a mean of 7.86 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.23 km and 3.38 km, respectively.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.60]{epsFreqZero.eps}
+%\includegraphics[scale=0.60]{epsFreqZero.eps}
 \end{center}
 \vspace{-0.2in}\caption{Showing clusters in color for Frequency vs Density under log-normal assumptions.}
 \label{frequencyGraph}
@@ -537,7 +537,7 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \end{table}
 
 Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
-significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models.  Furthermore, Cluster~1 had no evidence of zero-inflation by using the likelihood ratio test defined in \eqref{LRTest}, thus only a Poisson model was estimated. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
+significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models.  Furthermore, by using the likelihood ratio test defined in \eqref{LRTest}, Cluster~1 has no evidence of zero-inflation. Thus, only a Poisson model was estimated for Cluster~1. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -548,13 +548,15 @@ Two simulation studies are conducted to determine the validity of the log-normal
 \subsection{Simulation Study for GCWM}
 
 
-In this section, we show how the proposed methodology works for different simulation settings. The simulation study was generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This was designed to test both functions in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this was aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
+In this section, we show how the proposed methodology works for different simulation settings. The simulation study is generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This design specifically tests both models in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this simulation is aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
+\textcolor{blue}{
+We define Model 1 as the baseline model, where the coefficients are selected to be reminiscent of those estimated from \textbf{CASdataset} and reported in upper portion of Table \ref{severity_coef_table}. The intercept for each component is increased to make sure simulated loss is positive. For ease of interpretation, these coefficients are then rounded and treated as true parameters for the simulation study.  A simulation with a 3 group mixture model is generated from the aforementioned true parameters however, the third covariate ($X_3$) is generated from a log-normal distribution.  In addition, the covariate $X_2$ for the second component is made insignificant and has no effect on the response. 
+}
+. \textcolor{red}{[Some problems with the previous sentence: (1) I think we mean ``Model~1 is the baseline model, where the coefficients\ldots''; (2) I don't fully understand the reference to Table~2; and (3) Table~2, as with all other tables and figures, should be referenced in \LaTeX\ via a nickname. I won't repeat the latter comment but please make sure all tables and figures are referenced using nicknames.]} \textcolor{red}{[Please read the last three sentences carefully.]}
 
-We define Model 1 as the baseline model in which the coefficients were generated for \textbf{CASdataset} and reported in upper portion of Table 
-
-. \textcolor{red}{[Some problems with the previous sentence: (1) I think we mean ``Model~1 is the baseline model, where the coefficients\ldots''; (2) I don't fully understand the reference to Table~2; and (3) Table~2, as with all other tables and figures, should be referenced in \LaTeX\ via a nickname. I won't repeat the latter comment but please make sure all tables and figures are referenced using nicknames.]} These coefficients were then rounded and treated as true parameters. \textcolor{red}{[Why rounded?]} A simulation with three GLM mixture components was then generated around these true parameters in which the third covariate $X_3$ was log-normal. Stemming from this, both CWM and  GCWM are run. The  GCWM a treats $X_3$ as a log-normal covariate. \textcolor{red}{[Please read the last three sentences carefully.]}
-
-\textcolor{red}{[Do not use past tense anywhere but the conclusions section. I have made some edits but I am sure I missed some others.]} The results for Model 1 are summarized in upper portion of Table 3 based on the performance of the  GCWM a approach. The simulation is run $1000$ times. We report the percentage of runs for each predictor and the corresponding intercept in each mixture component under the assumption of $5\%$ error. For example, predictor $X_2$ in the component 2 of Model 1 reports $90.10\%$ accuracy. \textcolor{red}{[How does a predictor report?]} This means that $90.1\%$ of the time the true parameter is estimated within $5\%$ error. In this setting, predictor $X_1$ in the second component is insignificant in the real data set. The purpose of including this parameter in Model~1 is to test the sensitivity of  GCWM a for insignificant predictors. In this case, the result of zero is underlined and means that it \textcolor{red}{[what?]} has no influence on the response variable in this simulation. Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor form the CASdataset model. This is done to test the accuracy of  GCWM \textcolor{red}{a} to the  sensitivity of coefficients. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
+\textcolor{red}{[Do not use past tense anywhere but the conclusions section. I have made some edits but I am sure I missed some others.]} 
+\textcolor{blue}{Results aggregated from $1000$ runs are summarized in Table \ref{gcwmAccuracy} and Table \ref{mseTable} . Given a Gaussian assumption of for the residual error, we record the percentage of runs in which the error fall between a two-tailed $\% 5$ confidence interval in Table \ref{gcwmAccuracy}. For example, we report $90.10\%$ accuracy for predictor $X_2$ in the component 2. This means that $90.1\%$ of the time the true parameter is estimated within a $95\%$ confidence interval. }
+Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor form the CASdataset model. This is done to test the accuracy of the GCWM and its sensitivity to changes in coefficient sizes. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
 \begin{table}[!htb]
 \centering
 \caption{GCWM a vs CWM Accuracy: covariate $X_3$ is treated as log-normally distributed, while the rest of covariates are of the Gaussian type.}
@@ -589,7 +591,7 @@ Mod. & $G$ & Int. & $X_1$ &$X_2$ & $X_3$& Int. & $X_1$ &$X_2$ & $X_3$  \\
 % Table 4 provides the summary of the results when CWM was used in the analysis of the same models considered in Table 3. Commented sentanced 
 In line with expectations we note that barely any of the simulation runs are estimated correctlly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
 
-Table \ref{mseTable} provides the summary of mean squared errors\footnote{The MSE is computed using the following formula MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate.} (MSEs) of each parameter of the models for the same simulated runs in Table~\ref{gcwmAccuracy}. \textcolor{red}{[Try to avoid footnotes.]} The MSEs related to the predictor variables for all models and their corresponding components are about zero indicating that  GCWM a approach performs well. This is also a result of having a small size coefficients.
+Table \ref{mseTable} provides the summary of mean squared errors (MSEs). \textcolor{blue}{ The MSE is computed using the following formula, MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate. The MSE for each parameter pertaining to each model are aggregated in Table~\ref{gcwmAccuracy}. }\textcolor{red}{[Try to avoid footnotes.]}  Overall GCWM outperforms CWM in both accuracy and MSE. 
 \begin{table}[h!]
 \centering
 \caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table~\ref{gcwmAccuracy}.}
@@ -652,8 +654,7 @@ Mod. & $G$ & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta
 \end{table}
 
 
-
-In contrary to the results reported in Table 5, these results in Table 6 are significantly different. We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table 4 shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
+We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table \ref{gcwmAccuracy} shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. \textcolor{red}{[Why are we talking about Tables 4, 5 and 6 here? Again, nicknames should be used.]}
 
 In summary, our simulation results showed good performance of the GCWM approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
 
@@ -662,38 +663,44 @@ In summary, our simulation results showed good performance of the GCWM approach 
 
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
-In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components were genereated under similar coefficients taken from the \textbf{CASDatasets} package. The coefficients were rounded and treated as true parameters to which data was generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
-The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates and 
-\begin{equation}
-SimClaimsNb = SimDriverAge + SimDensity + SimCarAge 
-\end{equation}
-as the GLM. The covariates $SimDriverAge$, $SimDensity$, and $SimCarAge$ are considered for both the Poisson and Bernoulli models. 
- Here the GCWM is fitted to the simulated data and used to classify into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation is based on the generated dataset are presented in Table \ref{misclassTable}. The total misclassification rate  is $1.8 \% $ and the majority of misclassified components are between components two and three.
+In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components are genereated under similar coefficients estimated from the \textbf{CASDatasets} package. Again for easy of interpretation, coefficients are rounded and treated as true parameters from which the simulated data is generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
+The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates with 
+\begin{align}
+g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
+  \beta_{0} +  \beta_{SimDensity} X_{SimDensity} +  \beta_{SimDriverAge} X_{SimDriverAge} \nonumber  \\ & + 
+   \beta_{SimCarAge} X_{SimCarAge},  \label{poissonRegSim} \\
+g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
+  \bar{\beta_{0}} +  \bar{\beta}_{SimDensity} X_{SimDensity} +  \bar{\beta}_{SimDriverAge} X_{SimDriverAge} \nonumber \\ & + 
+  \bar{ \beta}_{SimCarAge} X_{SimCarAge}.  \label{zeroRegSim}
+\end{align}
+
+as their respective linear models.  The covariates $X_{SimDensity}$, $X_{SimDriverAge}$, and $X_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
+ Here, the GCWM classifies drivers based on simulated data into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation are aggregated in Table \ref{misclassTable}. We observe the total misclassification rate of $1.8 \% $, where the majority of misclassified components are between components two and three.
 \begin{table}[!htb]
 \begin{center}
 \caption{Misclassfication rate and label comparison of generated data.}
 \label{misclassTable}
-\begin{tabular}{r r r r r r}
-\hline\hline
-    True Labels       &  \multicolumn{3}{r}{ Classified }   & Misclassification Rate  &  \\ \cmidrule{2-4}
+\begin{tabular}{r| r r r| r r}
+\hline
+    True Labels       &  \multicolumn{3}{r}{ Classified }  \vline & Misclassification Rate  &  \\ \hline
    & 1                              & 2   & 3   &                            &  \\ \hline
-1              & 992                            & 3   & 5   & 0.80 \%                                      &  \\
-2              & 0                              & 990 & 10  & 1.00 \%                                       &  \\
-3              & 15                             & 20  & 965 & 3.50 \%                                      &  \\  \hline
+ 1              & 992                            & 3   & 5   & 0.80 \%                                      &  \\
+ 2              & 0                              & 990 & 10  & 1.00 \%                                       &  \\
+ 3              & 15                             & 20  & 965 & 3.50 \%                                      &  \\  \hline
                 \multicolumn{4}{r}{Overall Misclassification Rate}        & 1.80 \%                  & \\
         		\multicolumn{4}{r}{Average Purity} & 98.23 \%  
         		\\ \hline
                 \multicolumn{4}{r}{Adjusted Rand Index} & 0.9479 &  \\
-    \hline\hline
+    \hline
 \end{tabular}
 \end{center}
 \end{table}
 
-The experiment is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations are taken as given by the estimated  ZIP components from the \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario ``close" as the covariate means are manipulated so that they are closer to each other within some degree. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. Experiment 2 tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
+The simulation is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations of covariates are taken directly from sample statistics of \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario defined as ``close", the covariate means are manipulated so that they are closer to each other within some degree. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. The expansion of the simulation to $1000$ runs tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The results of this expansion are aggregated in Table \ref{table:exper2}.  The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
 
 \begin{table}[!htb]
 \begin{center}
-\caption{Experiment 2: mean and standard deviations for each statistic compared across methods.}
+\caption{Aggregated results for the $1000$ run simulation, mean and standard deviations for each statistic are compared across three methods.}
 \label{table:exper2}
 \begin{tabular}{rrrrrrrr}
 \hline\hline
@@ -709,7 +716,12 @@ Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & ( 0.07)     
 \end{tabular}
 \end{center}
 \end{table}
-Several findings are concluded from Table \ref{table:exper2}. Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Further findings show that when close condition is imposed then Bernoulli has better performance in terms of accuracy. The Adjusted Rand Index\footnote{Having $n_{ij}$ to be a matrix entry, $a_i$ to be the $i$th row sum, and $b_j$ to be the $j$th column sum  from the classification matrix of Table \ref{misclassTable}, the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } (ARI) shows good measurements overall, but in particular the BP partitioning method under normal scenario has a very good ARI with a small standard deviation. The Average Purity \footnote{ The Average Purtiy is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) of the BP partitioning method is the best out of all other methods, which is relevant to estimating coefficients accurately for optimization.
+
+ Under condition normal, the BP method shows better performance in error and is found to be less sensitive than other methods with an error rate of $ 1.10 \% $ and a standard deviation of $ 0.02 \% $.  Furthermore, when the close condition is imposed, the partitioning using only the Bernoulli method has better performance in terms of accuracy. The Adjusted Rand Index (ARI) is defined as the corrected for chance of the number of object pairs that are either in the same group or in different groups across all partitions divided by the total number of object pairs.
+ %\footnote{Having $n_{ij}$ to be a matrix entry, $a_i$ to be the $i$th row sum, and $b_j$ to be the $j$th column sum  from the classification matrix of Table \ref{misclassTable}, the Adjusted Rand Index is calculated as  $ARI = \frac{ \sum_{ij} \binom{n_{ij}}{2} - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }{ \frac{1}{2} [\sum_i \binom{a_i}{2} + \sum_j \binom{b_j}{2}] - [\sum_i \binom{a_i}{2} \sum_j \binom{b_j}{2}] / \binom{n}{2} }$. } 
+ The ARI measurements across all methods are promising. In particular the BP partitioning method under the normal condition has a very good ARI with a small standard deviation. The Average Purity (AP) is calculated as the average of the diagonal classification entries. 
+ %  \footnote{ The Average Purity is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) 
+The AP for the BP partitioning method is the best out of all other methods, therefore the BP method is the most relevant for classification.
 
 \section{Conclusion}
 
@@ -746,10 +758,11 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
   \end{align*}
 \end{proof}
 
-\section{Tables}\label{app:tables}
-
 \begin{center}
 \begin{sidewaystable}
+
+\section{Tables}\label{app:tables}
+
 \caption{ Summary of coefficients for severity clusters.}
 \label{severity_coef_table}
 \begin{tabular}{|l|rrc|rrc|rrc|rrc|}
@@ -809,6 +822,7 @@ C5          &          &      &    & -0.808    & 0.266   & **  & -6.355    & 30.
 \end{sidewaystable}
 \end{center}
 
+\newpage
 \bibliographystyle{elsart-harv}
 \bibliography{GLM_Mixtures_2018}
 

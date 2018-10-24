@@ -1,50 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: GLM_MixturesNP_2018.aux
 The style file: elsart-harv.bst
 Database file #1: GLM_Mixtures_2018.bib
-Warning--empty journal in Lambert
-Warning--empty journal in LimHwa
-Warning--empty journal in misuse
 You've used 35 entries,
             2821 wiz_defined-function locations,
-            866 strings with 10490 characters,
-and the built_in function-call counts, 16115 in all, are:
-= -- 1689
-> -- 728
-< -- 24
-+ -- 285
-- -- 237
-* -- 1380
-:= -- 2906
-add.period$ -- 104
+            867 strings with 10344 characters,
+and the built_in function-call counts, 16034 in all, are:
+= -- 1693
+> -- 712
+< -- 25
++ -- 279
+- -- 231
+* -- 1363
+:= -- 2892
+add.period$ -- 107
 call.type$ -- 35
-change.case$ -- 246
+change.case$ -- 243
 chr.to.int$ -- 34
-cite$ -- 38
-duplicate$ -- 611
-empty$ -- 1137
-format.name$ -- 352
-if$ -- 3243
+cite$ -- 35
+duplicate$ -- 610
+empty$ -- 1135
+format.name$ -- 348
+if$ -- 3233
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 40
-newline$ -- 113
+newline$ -- 114
 num.names$ -- 140
-pop$ -- 242
+pop$ -- 238
 preamble$ -- 1
-purify$ -- 219
+purify$ -- 217
 quote$ -- 0
-skip$ -- 472
+skip$ -- 471
 stack$ -- 0
-substring$ -- 926
-swap$ -- 84
+substring$ -- 922
+swap$ -- 86
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 294
-warning$ -- 3
-while$ -- 146
+warning$ -- 0
+while$ -- 147
 width$ -- 0
-write$ -- 382
-(There were 3 warnings)
+write$ -- 385

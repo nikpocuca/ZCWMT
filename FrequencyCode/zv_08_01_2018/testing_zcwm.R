@@ -1,15 +1,15 @@
 # Testing script for ZCWM. 
-
+setwd("~/GitRepos/ZCWMT/FrequencyCode/zv_08_01_2018/")
 
 # Load files and dataset. 
 sourceCode() 
 
 # Create formula
-fr_p <- formula(ClaimNb ~ LogDensity + EXPOSURE + powerF)
-fr_z <- formula(ClaimNb ~  factor(CatCarAge))
+fr_p <- formula(ClaimNb ~ LogDensity + offset(EXPOSURE) + powerF)
+fr_z <- formula(ClaimNb ~  factor(CatCarAge) + offset(EXPOSURE))
 
-fr_pr <- formula(ClaimNb ~ LogDensity + Region + powerF)
-fr_zr <- formula(ClaimNb ~ LogDensity + factor(CatDriverAge))
+fr_pr <- formula(ClaimNb ~ LogDensity + Region + powerF + offset(EXPOSURE))
+fr_zr <- formula(ClaimNb ~ LogDensity + factor(CatDriverAge) + offset(EXPOSURE))
 
 
 # Regional Data
@@ -73,7 +73,7 @@ print(fr_zr)
 zero_models <<- zcwm(inputdata = input_data, 
              formulaP = fr_pr,
              formulaZI = fr_zr,
-	           runC = 0,
+	           runC = 1,
              Xnorms = c(LogDensity),
 	           method = method, 
              np = g)
@@ -82,9 +82,9 @@ zero_models <<- zcwm(inputdata = input_data,
 
 
 # Toy Example Takes 5 minutes to run. 
-in_data = m11
+in_data = m
 
-runFull(in_data,method = "P",g = 1:3)
+runFull(in_data,method = "BP",g = 1:6)
 # Note that BIC's are very close, the LR test shows a 
 space <- 1
 modified_wilson(zero_model = zero_models[[space]], input_data = in_data[partitions == space,],
