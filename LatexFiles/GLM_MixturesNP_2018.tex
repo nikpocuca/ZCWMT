@@ -460,11 +460,11 @@ Red & Green & Blue & Orange \\
 \begin{figure}[!htb]
 \begin{center}
 %\includegraphics[scale=0.60]{epsVersiondens.eps}
-\includegraphics[scale=0.40]{sevClusterPlot.png}
-%\includegraphics[scale=0.60]{sevClusterPlot.wps}
+\includegraphics[scale=0.50]{sevClusterPlot.png}
+%\includegraphics[scale=0.60]{sevClusterPlot.eps}
 \end{center}
 \vspace{-0.2in}
-\caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Teal for $LossAmount$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
+\caption{Showing clusters by color scheme: Cluster 1 - Red, Cluster 2 - Green, Cluster 3 - Blue, Cluster 4 - Orange for $Severity$ vs $Density$ on a log scale. \textcolor{red}{[The resolution of this figure could be higher. Similar for Figure~3.]}}
 \label{fig:vet1a}
 \end{figure}
 
@@ -549,7 +549,22 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \end{table}
 
 Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
-significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models.  Furthermore, by using the likelihood ratio test defined in \eqref{LRTest}, Cluster~1 has no evidence of zero-inflation. Thus, only a Poisson model was estimated for Cluster~1. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
+significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models. 
+\begin{table}[!htb]
+ \begin{center}
+\caption{Comparison of BIC for CWM vs ZCWM model on each cluster. (I will later add a LR comparison test later to this, the results of each LR test agree with the }
+\begin{tabular}{r|rr}
+\hline
+Cluster & CWM  & ZCWM  \\
+\hline
+ 1 & $58,311$ & $58,180$ \\
+ 2 & $76,672$ & $76,301$ \\
+ 3 & $1,488$  & $1,503$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+ Furthermore, by using the likelihood ratio test defined in \eqref{LRTest}, Cluster~1 has no evidence of zero-inflation. Thus, only a Poisson model was estimated for Cluster~1. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -813,22 +828,23 @@ Coefficient & \textcolor{green}{Estimate} & Error    & P   & \textcolor{red}{Est
 \label{frequencySummary}
 \begin{tabular}{|l|rrc|rrc|rrc|}
 \hline\hline
-          & Cluster 1 & (Red) &   & Cluster 2 & (Green) &  & Cluster 3 & (Blue) &   \\
+          & Cluster 1 & (Blue) &   & Cluster 2 & (Green) &  & Cluster 3 & (Red) &   \\
 Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
 pertaining to the $P$ value of the specific coefficient.}             & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
  \hline
-(Intercept) & -10.199   & 0.109 & *** & -7.217    & 0.216   & *** & -13.694   & 0.099  & *** \\
-Density     & 1.860     & 0.027 & *** & 0.442     & 0.013   & *** & 1.771     & 0.013  & *** \\
-Exposure    & 0.825     & 0.040 & *** & 0.726     & 0.192   & *** & 0.745     & 0.046  & *** \\
-P-GH        & -0.063    & 0.030 & *   & -0.004    & 0.035   &     & 0.013     & 0.030  &     \\
-P-Other     & -0.019    & 0.042 &     & 0.049     & 0.043   &     & 0.107     & 0.040  & **  \\
+Intercept & 80.34056  & 4.82835 & *** & -4.21884 & 0.23567 & *** & -4.71437 & 0.16072 & *** \\
+Density   & -15.36444 & 0.87135 & *** & 0.20128  & 0.02916 & *** & 0.37081  & 0.03414 & *** \\
+D2        & -0.28067  & 0.3133  &     & -0.15287 & 0.06008 & *   & -0.09767 & 0.05987 &     \\
+D3        & -0.33352  & 0.31412 &     & -0.30113 & 0.06088 & *** & -0.28937 & 0.06156 & *** \\
+D4        & -1.02815  & 0.39399 & **  & 0.03986  & 0.0711  &     & -0.02955 & 0.08005 &     \\
+D5        & 0.11692   & 0.46536 &     & 0.47363  & 0.07558 & *** & 0.6164   & 0.07787 &     \\
+C2        & -1.00529  & 0.79119 &     & 0.59803  & 0.59803 & *** & 0.67169  & 0.67169 & *** \\
+C3        & 2.05854   & 0.71373 & **  & 0.85653  & 0.85653 & *** & 0.69215  & 0.69215 & *** \\
+C4        & 2.20552   & 0.71347 & **  & 0.76843  & 0.76843 & *** & 0.63158  & 0.63158 & *** \\
+C5        & 2.06543   & 0.72307 & **  & 0.52438  & 0.52438 & *** & 0.36033  & 0.36033 & *** \\
 \hline
-(Intercept) &          &      &    & 2.424     & 0.188   & *** & 1.886     & 0.356  & *** \\
-Exposure    &          &      &    & -5.871    & 0.758   & *** & 16.520    & 2.990  & *** \\
-C2          &          &      &    & -0.541    & 0.176   & **  & -0.922    & 0.368  & *   \\
-C3          &          &      &    & -1.217    & 0.201   & *** & -2.263    & 0.553  & *** \\
-C4          &          &      &    & -1.265    & 0.225   & *** & 10.805    & 72.677 &     \\
-C5          &          &      &    & -0.808    & 0.266   & **  & -6.355    & 30.867 &   \\
+Intercept &           &         &     & -1.66782 & 0.37735 & *** & -3.9712  & 0.5473  & *** \\
+Density   &           &         &     & 0.28258  & 0.04674 & *** & 0.9032   & 0.1041  & *** \\ 
 \hline\hline
 \end{tabular}
 \end{sidewaystable}
