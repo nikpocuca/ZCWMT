@@ -66,70 +66,97 @@ loadDataServer <- function() {
 
 # Load data depending on where you are, you can either do it from the package, or locally. 
 #m <- loadData()
-m <- loadDataServer()
-m$Severity <- m$AggClaimAmount/m$ClaimNb
-m$LogSeverity <- log(m$Severity)
-library(flexCWM)
-
+#library(flexCWM)
+library(flexCWMz)
 set.seed(101)
 runSev <- function(dataInput) {
   
   attach(dataInput)
-  #fitLognormal <-  cwm(formulaY= LogSeverity ~ Density + factor(CatCarAge) + factor(CatDriverAge), #+ Region + powerF + Gas,
-  #                     k=4:5, data=dataInput,
-  #                     familyY=gaussian(link="identity"),
-  #                     Xnorm = cbind(Density),
-  #                     iter.max = 500,
-  #                     modelXnorm = 'V'
-  #)
+  #fitLognormal <-  cwm(formulaY= LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF, #+ Region + powerF + Gas,
+                       #k=1:6, data=dataInput,
+                       #familyY=inverse.gaussian(link = "identity"),
+                       #familyY=Gamma(link ="identity"),
+                       #familyY = gaussian(link="identity"),
+   #                    Xnorm = cbind(Density),
+                       #iter.max = 500,
+  #                     modelXnorm = 'V')
   
   
-  fitLognormalt <- cwm(formulaY= LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge), # + Region + powerF + Gas,
-                       k=4:7, data=dataInput,
-                       familyY=gaussian(link="identity"),
+  fitLognormalt <- cwm(formulaY= LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge)+ factor(Region)+ powerF, # + Region + powerF + Gas,
+                       k=4, data=dataInput,
+                       #familyY = gaussian(link="identity"),
+                       familyY = gaussian(link="identity"),
+                       #familyY=inverse.gaussian(link = "identity"),
+                       #familyY=Gamma(link ="identity"),
                        Xnorm = cbind(LogDensity),
-                       iter.max = 500,
-                       modelXnorm = 'V'
-  )
+                       #iter.max = 500,
+                       modelXnorm = 'V')
   
   detach(dataInput)
   
-  return(list(#u = fitLognormal,
-              t = fitLognormalt))
+  return(list(u = fitLognormalt))
+  #            t = fitLognormalt))
 }
 
 # 
-Results <- runSev(m)
-m24 <- m[m$Region == "R24",]
+#Results <- runSev(m)
+ClaimGlobal <- m$ClaimNb
 # Run the above function. 
-Results <- runSev(m24)
+Results <- runSev(m)
 
-# save the results. 
-u_model <- Results$u
 t_model <- Results$t
-save(u_model,file = "u_model")
-save(t_model, file = "t_model")
+#save(u_model,file = "u_model")
+#save(t_model, file = "t_model")
+# ============================================================
+
+library(ggplot2)
+detach(package:flexCWM)
+library(flexCWMz)
+m <- loadDataServer()
+m$Severity <- m$AggClaimAmount/m$ClaimNb
+m$LogSeverity <- log(m$Severity)
+ClaimGlobal <- m$ClaimNb
+Results <- runSev(m)
+m$clusters <- getCluster(Results$u) +1
+c_new <- m$clusters
+c_new[c_new == 2] <- 'limegreen'
+c_new[c_new == 3] <- 'red'
+c_new[c_new == 4] <- '#ffb62f'
+c_new[c_new == 5] <- 'blue'
+m$c_new <- c_new
+
+p <-  ggplot(m, aes(x=LogDensity, y=LogSeverity)) +
+     theme( axis.line = element_line(colour = "black"),
+            panel.background = element_blank()) + 
+  geom_point(color=c_new)  + xlab("Density") + ylab("Severity") 
+p
 
 
-plotClusters <- function(data_input) {
-  data_input$clusters <- getCluster(t_model) + 1
-  data_input[data_input$clusters == 7,]$clusters <- 8
-  plot(data_input$LogDensity,data_input$LogSeverity,col = data_input$clusters,#getCluster(t_model) ,
-       pch = 19,
-       #main = "Claims vs. Density Transformed",
-       xlab = "Density",
-       ylab = "Severity",
-       cex = 0.5)
-}
-# 2 is red, 3 is green, 4 is blue, 5 is teal, 6 is purple, 7 is yellow
-plotClusters(m24)
+#plot(m$LogDensity, m$LogSeverity, col = m$clusters, main = "Individually Weighted")
+table(getCluster(Results$u))
+print("RUNNING INDIVIDUALLY WEIGHTED")
 
-
-
-# Uncomment this code so you dont have to run above again. 
-#load("u_model")
-#load("t_model")
-
+# ============================================================
+detach(package:flexCWMz)
+library(flexCWM)
+library(ggplot2)
+Results <- runSev(m)
+table(getCluster(Results$u))
+m$clusters <- getCluster(Results$u) + 1
+c_new <- m$clusters
+c_new[c_new == 2] <- 'blue' 
+c_new[c_new == 3] <- 'orange'
+c_new[c_new == 4] <- 'red'
+c_new[c_new == 5] <- 'limegreen'
+m$c_new <- c_new
+p <- NULL
+q <-  ggplot(m, aes(x=LogDensity, y=LogSeverity)) +
+  geom_point(color=c_new)  + xlab("Density") + ylab("Severity") 
+q
+table(getCluster(Results$u))
+table(c_new)
+print("RUNNING ClUSTER WEIGHTED")
+# =============================================================
 
 getIC(u_model)
 getIC(t_model)
@@ -144,7 +171,7 @@ colnames(u_model_table) <- c("AIC","AICc","AICu","AIC3","AWE","BIC","CAIC","ICL"
 
 u_model_table_AIC <- u_model_table$AIC
 u_model_table_BIC <- u_model_table$BIC
-u_model_table_components <- 1:5
+u_model_table_components <- 1:6
 u_model_table_final <- cbind(u_model_table_components,
                              u_model_table_AIC,
                              u_model_table_BIC)
@@ -165,7 +192,7 @@ colnames(t_model_table) <- c("AIC","AICc","AICu","AIC3","AWE","BIC","CAIC","ICL"
 
 t_model_table_AIC <- t_model_table$AIC
 t_model_table_BIC <- t_model_table$BIC
-t_model_table_components <- 1:5
+t_model_table_components <- 1:6
 t_model_table_final <- cbind(t_model_table_components,
                              t_model_table_AIC,
                              t_model_table_BIC)
@@ -287,3 +314,37 @@ holdModel <-  cwm(formulaY= LogAggClaimAmount ~ LogDensity + CatCarAge + CatDriv
 
 
 
+getFitted <- function(object, ...){
+  best <- getBestModel(object,...)
+  obj  <- best$models[[1]]
+  if (!is.null(obj$GLModel)){
+    lr <- lapply(seq_len(obj$k), function(i){
+      par <- obj$GLModel[[i]]
+      c(list(fitted=par$model$fitted.values),par[-1])
+    })
+    names(lr) <- paste0("GLMComp.",seq_len(obj$k))
+    lr
+  } else NULL
+}
+
+
+getResiduals <- function(object, ...){
+  best <- getBestModel(object,...)
+  obj  <- best$models[[1]]
+  if (!is.null(obj$GLModel)){
+    lr <- lapply(seq_len(obj$k), function(i){
+      par <- obj$GLModel[[i]]
+      c(list(resid=par$model$residuals),par[-1])
+    })
+    names(lr) <- paste0("GLMComp.",seq_len(obj$k))
+    lr
+  } else NULL
+}
+
+fit_u <- glm(formula = formula(LogSeverity ~ Density + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF),
+             family = gaussian(link="identity"),
+             data = m )
+
+fit_t <- glm(formula = formula(LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF),
+             family = gaussian(link="identity"),
+             data = m)

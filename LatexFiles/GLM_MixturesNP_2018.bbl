@@ -1,4 +1,4 @@
-\begin{thebibliography}{35}
+\begin{thebibliography}{36}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -31,6 +31,11 @@ Dempster, A.~P., Laird, N.~M., Rubin, D.~B., 1977. Maximum likelihood from
 \bibitem[{Dutang and Charpentier(2016)}]{Dutang+Charpentier:2016}
 Dutang, C., Charpentier, A., 2016. {CASdatasets}. {R} package version 1.0-6.
 \newline\urlprefix\url{http://cas.uqam.ca/pub/R/}
+
+\bibitem[{Frees et~al.(2014)Frees, Derrig, and Meyers}]{frees2015}
+Frees, E.~W., Derrig, R.~A., Meyers, Glenn, e., 2014. Predictive Modeling
+  Applications in Actuarial Science. Vol.~1 of International Series on
+  Actuarial Science. International Series on Actuarial Science.
 
 \bibitem[{Gershenfeld(1997)}]{Gershenfeld:1997}
 Gershenfeld, N., 1997. Nonlinear inference and cluster-weighted modeling.

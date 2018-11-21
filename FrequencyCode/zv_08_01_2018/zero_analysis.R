@@ -1,8 +1,26 @@
 new_m <- read.csv("new_m.csv")
 attach(new_m)
 
+c_new <- new_m$partitions
+c_new[c_new == 1] <- 'limegreen'
+c_new[c_new == 2] <- 'red'
+#c_new[c_new == 3] <- '#ffb62f'
+c_new[c_new == 3] <- 'blue'
+new_m$c_new <- c_new
+
+
+p <-  ggplot(new_m, aes(x=LogDensity, y=ClaimNb)) +
+  theme( axis.line = element_line(colour = "black"),
+         panel.background = element_blank()) + 
+  geom_point(color=c_new,
+             size = partitions/2
+             )  + xlab("Density") + ylab("Frequency") 
+p
+
+
+
 plot(LogDensity, ClaimNb,
-     col = Clusters + 1,
+     col = partitions + 1,
      xlab = "Density",
      ylab = "Claim Nb",
      type = "p", 
@@ -10,9 +28,9 @@ plot(LogDensity, ClaimNb,
      cex = 0.8)
 
 
-cluster3 <- new_m[Clusters == 3,]
-cluster2 <- new_m[Clusters == 2,]
-cluster1 <- new_m[Clusters == 1,]
+cluster3 <- new_m[partitions == 3,]
+cluster2 <- new_m[partitions == 2,]
+cluster1 <- new_m[partitions == 1,]
 
 
 plot(cluster1$LogDensity,cluster1$ClaimNb, col = 2)
