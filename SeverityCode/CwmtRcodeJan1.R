@@ -104,7 +104,7 @@ ClaimGlobal <- m$ClaimNb
 # Run the above function. 
 Results <- runSev(m)
 
-t_model <- Results$t
+t_model <- Results$u
 #save(u_model,file = "u_model")
 #save(t_model, file = "t_model")
 # ============================================================
@@ -156,6 +156,35 @@ q
 table(getCluster(Results$u))
 table(c_new)
 print("RUNNING ClUSTER WEIGHTED")
+
+# Get Volatility 
+
+#Green
+m1 <- m[m$clusters -1 == 1,]
+m1_vol <- c(min(m1$Severity), mean(m1$Severity), max(m1$Severity), sd(m1$Severity))
+m1_vol
+
+# Red
+m2 <- m[m$clusters -1 == 2,]
+m2_vol <- c(min(m2$Severity), mean(m2$Severity), max(m2$Severity), sd(m2$Severity))
+m2_vol
+
+
+# Orange
+m3 <- m[m$clusters - 1 == 3,]
+m3_vol <- c(min(m3$Severity), mean(m3$Severity), max(m3$Severity), sd(m3$Severity))
+m3_vol
+
+# Blue
+m4 <- m[m$clusters - 1 == 4,]
+m4_vol <- c(min(m4$Severity), mean(m4$Severity), max(m4$Severity), sd(m4$Severity))
+m4_vol
+
+
+
+
+
+
 # =============================================================
 
 getIC(u_model)

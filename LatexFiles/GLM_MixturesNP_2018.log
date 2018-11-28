@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  28 NOV 2018 09:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  28 NOV 2018 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -674,20 +674,56 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 
 LaTeX Font Warning: Command \tiny invalid in math mode on input line 397.
 
-[12] [13]
-<sevClusterPlot.png, id=67, 786.94pt x 485.815pt>
+[12]
+Package epstopdf Info: Source file: <Untransformed_Density.eps>
+(epstopdf)                    date: 2018-11-28 11:22:51
+(epstopdf)                    size: 4955 bytes
+(epstopdf)             Output file: <Untransformed_Density-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2018-11-28 11:25:05
+(epstopdf)                    size: 9081 bytes
+(epstopdf)             Command: <repstopdf --outfile=Untransformed_Density-eps-
+converted-to.pdf Untransformed_Density.eps>
+(epstopdf)             \includegraphics on input line 413.
+Package epstopdf Info: Output file is already uptodate.
+<Untransformed_Density-eps-converted-to.pdf, id=62, 344.28625pt x 315.1775pt>
+File: Untransformed_Density-eps-converted-to.pdf Graphic file (type pdf)
+<use Untransformed_Density-eps-converted-to.pdf>
+Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf  used on in
+put line 413.
+(pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
+Package epstopdf Info: Source file: <transformed_Density.eps>
+(epstopdf)                    date: 2018-11-28 11:23:06
+(epstopdf)                    size: 4669 bytes
+(epstopdf)             Output file: <transformed_Density-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-11-28 11:24:34
+(epstopdf)                    size: 9171 bytes
+(epstopdf)             Command: <repstopdf --outfile=transformed_Density-eps-co
+nverted-to.pdf transformed_Density.eps>
+(epstopdf)             \includegraphics on input line 414.
+Package epstopdf Info: Output file is already uptodate.
+<transformed_Density-eps-converted-to.pdf, id=63, 344.28625pt x 315.1775pt>
+File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
+<use transformed_Density-eps-converted-to.pdf>
+Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
+t line 414.
+(pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
+ [13]
+<sevClusterPlot.png, id=69, 786.94pt x 485.815pt>
 File: sevClusterPlot.png Graphic file (type png)
 <use sevClusterPlot.png>
 Package pdftex.def Info: sevClusterPlot.png  used on input line 463.
 (pdftex.def)             Requested size: 393.46904pt x 242.9069pt.
- [14] [15 <./sevClusterPlot.png>]
+ [14 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
+converted-to.pdf>] [15 <./sevClusterPlot.png>]
 Overfull \hbox (10.97794pt too wide) in paragraph at lines 503--505
 \OT1/ptm/m/n/10 In this sec-tion, we model fre-quency of the French mo-tor clai
 ms. We con-sider the co-vari-ates $\OML/cmm/m/it/10 Density$\OT1/ptm/m/n/10 , $
 \OML/cmm/m/it/10 DriverAge$\OT1/ptm/m/n/10 ,
  []
 
-<freqPlot.png, id=77, 973.6375pt x 387.4475pt>
+[16]
+<freqPlot.png, id=96, 973.6375pt x 387.4475pt>
 File: freqPlot.png Graphic file (type png)
 <use freqPlot.png>
 Package pdftex.def Info: freqPlot.png  used on input line 531.
@@ -697,7 +733,11 @@ Overfull \hbox (16.76222pt too wide) in paragraph at lines 531--532
  [] 
  []
 
-[16] [17 <./freqPlot.png>] [18] [19] [20] [21] [22
+[17] [18 <./freqPlot.png>] [19]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[20] [21] [22
 
 ]
 Overfull \hbox (0.98257pt too wide) in paragraph at lines 739--751
@@ -722,10 +762,10 @@ See the caption package documentation for explanation.
 
 [30] (./GLM_MixturesNP_2018.aux) ) 
 Here is how much of TeX's memory you used:
- 6726 strings out of 492649
- 97259 string characters out of 6129622
- 199918 words of memory out of 5000000
- 10390 multiletter control sequences out of 15000+600000
+ 6737 strings out of 492649
+ 97725 string characters out of 6129622
+ 198918 words of memory out of 5000000
+ 10398 multiletter control sequences out of 15000+600000
  49644 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,40p,1713b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -759,10 +799,10 @@ ocal/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (30 pages, 482286 bytes).
+Output written on GLM_MixturesNP_2018.pdf (30 pages, 494913 bytes).
 PDF statistics:
- 223 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
+ 239 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

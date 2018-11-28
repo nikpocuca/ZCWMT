@@ -410,8 +410,8 @@ Beginning with the continuous covariate $Density$, we want to inspect the shape 
 The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
 \begin{figure}[!htb]
 \begin{center}
-%\includegraphics[scale=0.27]{probDensity}
-%\includegraphics[scale=0.27]{probDensitytrans}
+\includegraphics[scale=0.63]{Untransformed_Density.eps}
+\includegraphics[scale=0.63]{transformed_Density.eps}
 \end{center}
 \vspace{-0.2in}
 \caption{Density variable: Left figure shows the fit when Gaussian distribution is imposed (CMW approach) to highly skewed data. Right figure shows the fit when log-normal assumption is applied (GCWM approach).}
@@ -442,7 +442,7 @@ GCWM &  1 & $110,627$ &  $110,810$ \\
 
 	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various groups of drivers. \textcolor{red}{[The previous sentence seems to me to contain the key point. I think this should be highlighted in the introduction and, insofar as possible, expanded upon here and maybe in the conclusions.]} \textcolor{blue}{The results of the GCWM allows for the classification of drivers into various groups allowing one to assign different rates. } \textcolor{red}{[What following GCWM?]}
 
-After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeSev}. Attention is brought to largest quantity of drivers that are grouped into Cluster 4. This accounts for $ 46 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1a}. From the results we can create an insurance model with the distinct characteristics.
+After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeSev}. Attention is brought to largest quantity of drivers that are grouped into Cluster 3. This accounts for $ 47 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1a}. From the results we can create an insurance model with the distinct characteristics.
 \begin{table}[!htb]
 \centering
 \caption{Size and colours of clusters for the GCWM a model.}
@@ -469,10 +469,10 @@ Red & Green & Blue & Orange \\
 \end{figure}
 
 
-The Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 4 drivers have also low variability but a higher average cost, thus they would have a rate higher than Cluster 3. Cluster 2 drivers have the next highest cost and variability of the clusters, these drivers are colored in green in Figure \ref{fig:vet1}. The final cluster colored in red has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
+The Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most ideal case as these claims have very low variance and cost. Cluster 2 drivers have also low variability but a higher average cost, thus they would have a rate higher than Cluster 3. Cluster 1 drivers have the next highest cost and variability of the clusters, these drivers are colored in red in Figure \ref{fig:vet1}. The final cluster colored in orange has the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
 
 
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \euro$51$ to  \euro$ 154$, with a standard deviation of  \euro$13$, and a mean of  \euro$79$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between  \euro$1,039$ to  \euro$1,324$, with a standard deviation of  \euro$52$, and a mean of  \euro$1,109$.  Proceeding to V3, \textcolor{red}{its} volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between  \euro$221$ to  \euro$8,841$, with a mean of  \euro$1,687$, and a standard deviation of  \euro$1,284$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of  \euro$2,036,833$, a mean of  \euro$9,717$, and a standard deviation of  \euro$64,835$. \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \euro$1,033$ to  \euro$1,325$, with a standard deviation of  \euro$52$, and a mean of  \euro$1,171$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between  \euro$395$ to  \euro$3,221$, with a standard deviation of  \euro$559$, and a mean of  \euro$1,350$.  Proceeding to V3, \textcolor{red}{its} volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between  \euro$21$ to  \euro$281,403$, with a mean of  \euro$2,956$, and a standard deviation of  \euro$11,878$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of  \euro$2,036,833$, a mean of  \euro$3,771$, and a standard deviation of  \euro$40,334$. \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
 
  \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
  
@@ -484,10 +484,10 @@ Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by v
 \hline
 Volatility Level (Cluster)     & Minimum & Mean  & Maximum & $\sigma$    \\
 \hline
-V1 (3) & 51  & 79 & 154 & \textbf{ 13} \\
-V2 (4) & 1,039  & 1,109  &  1,324 & \textbf{ 52} \\
-V3 (2) & 221 & 1,687  & 8,841  &\textbf{ 1,284}  \\
-V4 (1) & 2 & 9,717 & 2,036,833  & \textbf{ 64,835}\\
+V1 (3) & 1,033 & 1,171 & 1,325 & \textbf{52} \\
+V2 (2) & 395 & 1,350 & 3,221 & \textbf{559} \\
+V3 (1) & 2 & 2,956 & 281,403 & \textbf{11,878 }\\
+V4 (4) & 2 & 3,771 & 2,036,833 & \textbf{ 40,334 } \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -801,31 +801,30 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
 \label{severity_coef_table}
 \begin{tabular}{|l|rrc|rrc|rrc|rrc|}
 \hline\hline
-         & V1         & (Red)     &    & V2         & (Green)   &    & V3          & (Blue)     &    & V4          & (Teal)     &    \\
+         & V1         & (Blue)     &    & V2         & (Green)   &    & V3          & (Red)     &    & V4          & (Orange)     &    \\
 Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
 pertaining to the $P$ value of the specific coefficient. C\# refers to the Car Age category, D\# refers to the Driver Age category, R\# refers to the region of France, and P refers to the power category.  }      & Estimate   & Error     & P   & Estimate   & Error     & P   & Estimate    & Error      & P   & Estimate    & Error      & P   \\ \hline
-Int.    & 6.9520  & 0.0434 & *** & 7.3062  & 0.1376 & *** & 7.2121  & 0.1355 & *** & 7.0766  & 0.0031 & *** \\
-Density & -0.0093 & 0.0031 & **  & -0.0055 & 0.0111 &     & -0.0524 & 0.0144 & *** & 0.0001  & 0.0002 &     \\
-C2      & 0.0691  & 0.0229 & **  & -0.2782 & 0.0640 & *** & 0.3288  & 0.0742 & *** & 0.0075  & 0.0020 & *** \\
-C3      & 0.2218  & 0.0230 & *** & -0.4597 & 0.0642 & *** & 0.1606  & 0.0737 & *   & 0.0017  & 0.0020 &     \\
-C4      & 0.0745  & 0.0235 & **  & -0.6929 & 0.0659 & *** & 0.1034  & 0.0743 &     & 0.0035  & 0.0020 & .   \\
-C5      & 0.1024  & 0.0266 & *** & -0.6076 & 0.0755 & *** & 0.2335  & 0.0805 & **  & 0.0092  & 0.0022 & *** \\
-D2      & 0.0310  & 0.0261 &     & -0.2100 & 0.0799 & **  & -0.6904 & 0.0676 & *** & -0.0070 & 0.0016 & *** \\
-D3      & -0.0209 & 0.0264 &     & -0.2495 & 0.0807 & **  & -0.8343 & 0.0688 & *** & -0.0084 & 0.0017 & *** \\
-D4      & -0.0137 & 0.0308 &     & -0.1219 & 0.0911 &     & -0.7532 & 0.0841 & *** & -0.0115 & 0.0021 & *** \\
-D5      & 0.0780  & 0.0320 & *   & 0.1076  & 0.0955 &     & -0.1824 & 0.0826 & *   & -0.0059 & 0.0022 & **  \\
-R23     & -0.0593 & 0.0360 & .   & 0.1145  & 0.1103 &     & -0.0067 & 0.1224 &     & 0.0022  & 0.0036 &     \\
-R24     & 0.0911  & 0.0155 & *** & -0.2793 & 0.0418 & *** & -0.0032 & 0.0747 &     & -0.0133 & 0.0013 & *** \\
-R25     & -0.3619 & 0.0303 & *** & -0.0273 & 0.0860 &     & 0.2573  & 0.0992 & **  & -0.0194 & 0.0024 & *** \\
-R31     & 0.0252  & 0.0203 &     & 0.1110  & 0.0534 & *   & 0.0348  & 0.1061 &     & -0.0021 & 0.0018 &     \\
-R52     & -0.0016 & 0.0189 &     & -0.2597 & 0.0507 & *** & 0.0153  & 0.0849 &     & -0.0157 & 0.0015 & *** \\
-R53     & 0.1189  & 0.0187 & *** & -0.1061 & 0.0526 & *   & 0.0915  & 0.0818 &     & -0.0129 & 0.0015 & *** \\
-R54     & 0.0986  & 0.0256 & *** & -0.2946 & 0.0722 & *** & 0.1167  & 0.0899 &     & -0.0136 & 0.0019 & *** \\
-R72     & 0.1234  & 0.0207 & *** & 0.0029  & 0.0563 &     & 0.2392  & 0.0879 & **  & -0.0076 & 0.0018 & *** \\
-R74     & -0.1248 & 0.0499 & *   & -0.1414 & 0.1695 &     & 0.1312  & 0.1177 &     & -0.0197 & 0.0032 & *** \\
-P-FGH   & 0.0060  & 0.0106 &     & 0.1079  & 0.0297 & *** & 0.0028  & 0.0295 &     & 0.0014  & 0.0008 & .   \\
-P-Other & 0.0129  & 0.0140 &     & 0.1162  & 0.0383 & **  & 0.0566  & 0.0409 &     & 0.0048  & 0.0011 & *** \\
-Coefficient & \textcolor{green}{Estimate} & Error    & P   & \textcolor{red}{Estimate} & Error    & P   & \textcolor{orange}{Estimate} & Error    & P   & \textcolor{blue}{Estimate}  & Error    & P   \\
+Int. & 7.077 & 0.003 & *** & 6.952 & 0.043 & *** & 7.306 & 0.138 & *** & 7.212 & 0.136 & *** \\
+Density & 0.000 & 0.000 &  & -0.009 & 0.003 & ** & -0.006 & 0.011 &  & -0.052 & 0.014 & *** \\
+C2 & 0.008 & 0.002 & *** & 0.069 & 0.023 & ** & -0.278 & 0.064 & *** & 0.329 & 0.074 & *** \\
+C3 & 0.002 & 0.002 &  & 0.222 & 0.023 & *** & -0.460 & 0.064 & *** & 0.161 & 0.074 & * \\
+C4 & 0.004 & 0.002 & . & 0.075 & 0.024 & ** & -0.693 & 0.066 & *** & 0.103 & 0.074 &  \\
+C5 & 0.009 & 0.002 & *** & 0.102 & 0.027 & *** & -0.608 & 0.076 & *** & 0.234 & 0.081 & ** \\
+D2 & -0.007 & 0.002 & *** & 0.031 & 0.026 &  & -0.210 & 0.080 & ** & -0.690 & 0.068 & *** \\
+D3 & -0.008 & 0.002 & *** & -0.021 & 0.026 &  & -0.250 & 0.081 & ** & -0.834 & 0.069 & *** \\
+D4 & -0.012 & 0.002 & *** & -0.014 & 0.031 &  & -0.122 & 0.091 &  & -0.753 & 0.084 & *** \\
+D5 & -0.006 & 0.002 & ** & 0.078 & 0.032 & * & 0.108 & 0.096 &  & -0.182 & 0.083 & * \\
+R23 & 0.002 & 0.004 &  & -0.059 & 0.036 & . & 0.115 & 0.110 &  & -0.007 & 0.122 &  \\
+R24 & -0.013 & 0.001 & *** & 0.091 & 0.016 & *** & -0.279 & 0.042 & *** & -0.003 & 0.075 &  \\
+R25 & -0.019 & 0.002 & *** & -0.362 & 0.030 & *** & -0.027 & 0.086 &  & 0.257 & 0.099 & ** \\
+R31 & -0.002 & 0.002 &  & 0.025 & 0.020 &  & 0.111 & 0.053 & * & 0.035 & 0.106 &  \\
+R52 & -0.016 & 0.002 & *** & -0.002 & 0.019 &  & -0.260 & 0.051 & *** & 0.015 & 0.085 &  \\
+R53 & -0.013 & 0.002 & *** & 0.119 & 0.019 & *** & -0.106 & 0.053 & * & 0.092 & 0.082 &  \\
+R54 & -0.014 & 0.002 & *** & 0.099 & 0.026 & *** & -0.295 & 0.072 & *** & 0.117 & 0.090 &  \\
+R72 & -0.008 & 0.002 & *** & 0.123 & 0.021 & *** & 0.003 & 0.056 &  & 0.239 & 0.088 & ** \\
+R74 & -0.020 & 0.003 & *** & -0.125 & 0.050 & * & -0.141 & 0.170 &  & 0.131 & 0.118 &  \\
+P-FGH & 0.001 & 0.001 & . & 0.006 & 0.011 &  & 0.108 & 0.030 & *** & 0.003 & 0.030 &  \\
+P-Other & 0.005 & 0.001 & *** & 0.013 & 0.014 &  & 0.116 & 0.038 & ** & 0.057 & 0.041 &  \\
 \hline\hline
 \end{tabular}
 \end{sidewaystable}
