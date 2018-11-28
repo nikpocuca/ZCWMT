@@ -393,7 +393,7 @@ Severity & Average Claim calculated from aggregating Loss Amount and dividing by
 
 \subsection{Discussion and Results}
 \subsubsection{Modelling Severity}
-\textcolor{blue}{In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk.} We consider the following covariates: population density ($Density$), driver age ($DriverAge$), car age ($CarAge$), car power level ($Power$), gas ($Gas$),  and geographical region in France ($Region$). %Nik: why is this list not identical to the list from a few lines above?
+\textcolor{blue}{In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk.} We consider the following covariates: population density ($Density$), driver age ($DriverAge$), car age ($CarAge$), car power level ($Power$),  and geographical region in France ($Region$). %Nik: why is this list not identical to the list from a few lines above?
 \textcolor{red}{[I do not like this way of expressing the model. It seems very informal. I think covariates written like $X_{\tiny \text{Region}}$, with $\beta_j$ coefficients, would be better.]}
 %Nik: this is not an equation. Please reformulate.
  \textcolor{red}{[You already said this in math, don't repeat.]} 
@@ -402,7 +402,7 @@ $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[
 DEF, GH, and other. The fitted model is defined with the following expression
 \begin{align}
 g(\mathbb{E}\left[Y_{Severity}|\bm{x}\right]) = 
- & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} + \beta_{jGas} x_{Gas} \label{regressionModel}  =: \bm{\xTilda} \bm{\beta}_j^{'}.
+ & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} \label{regressionModel}  =: \bm{\xTilda} \bm{\beta}_j^{'}.
 \end{align}
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
@@ -500,19 +500,19 @@ In summary, the drivers have been clustered into four categories with distinct c
 
  \subsubsection{Modeling Claims Frequency}
 
-In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, $Exposure$ and $Power$. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
+In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, and $Exposure$. Here, $Exposure$ is used as an offset to account for the rate at which a claim occurs. For example, four claims over 1 week should not amount to the same as four claims over 1 year \citep{frees2015}. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
 The GCWM is fitted with the following expression
 \begin{align}
 g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right]) & = 
-  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jExposure}  x_{Exposure}+ \beta_{jPower}x_{Power}  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} + \bar{\beta}_{jExposure} x_{Exposure} +  \bar{\beta}_{jCarAge} x_{CarAge} =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
+  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jDriverAge}x_{DriverAge} \nonumber \\    &  \quad\quad\quad +  \beta_{jCarAge}x_{CarAge}   + g_p(x_{Exposure})  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} + g_z(x_{Exposure})  =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
-where $Density$, $Exposure$, and $Power$ are explanitory variables in a Poisson model, while $Exposure$ and $Car Age$ are explantory for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
-After fitting the model, GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the three clusters.
+where $Density$, $DriverAge$, and $CarAge$ are explanitory variables in a Poisson model, while only $Density$ is an explantory variable for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
+After fitting the model, GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the two of the clusters with Cluster 3 only consisting of $0.53 \%$ of the data.
 \begin{table}[!htb]
 \centering
-\caption{Size of clusters for the GCWM a model. \textcolor{red}{[There is clearly something other than sizes in this table, i.e., the colours.]}}
+\caption{Size of clusters and their colours for the GCWM a model. \textcolor{red}{[There is clearly something other than sizes in this table, i.e., the colours.]}}
 \label{table:sizeFreq}
 \begin{tabular}{rrrr}
 \hline
@@ -524,7 +524,7 @@ Green & Red & Blue  \\
 \end{tabular}
 \end{table}
 
-Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the least dense cities with a mean of 7.86 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.23 km and 3.38 km, respectively.
+Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the most dense areas with a mean of 7.37 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.45 km and 4.05 km, respectively.
 \begin{figure}[!ht]
 \begin{center}
 %\includegraphics[scale=0.60]{freqPlot.eps}
@@ -536,13 +536,13 @@ Similarly to modelling severity, the GCWM finds clusters with unique characateri
 \begin{table}[!htb]
  \begin{center}
  \caption{Summary of each cluster with log-normal assumptions for the $Density$ covariate measured in km on a log scale.} \label{summarycovariates}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{rlrrrr}
 \hline
 Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \hline
-1 &   Red         & 0.69    & 3.38 & 5.60    & 0.60  \\
-2 &  Green       & 6.29    & 7.86 & 10.20   & 1.03  \\
-3 &  Blue        & 4.13    & 5.23 & 9.66    & 0.65 \\
+1       & Green  & 0.69 & 4.05 & 5.46  & 0.87 \\
+2       & Red    & 5.48 & 7.37 & 10.20 & 1.24 \\
+3       & Blue   & 5.12 & 5.45 & 5.47  & 0.03 \\
 \hline
 \end{tabular}
 \end{center}
@@ -550,21 +550,28 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 
 Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
 significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models. 
+
 \begin{table}[!htb]
  \begin{center}
-\caption{Comparison of BIC for CWM vs ZCWM model on each cluster. (I will later add a LR comparison test later to this, the results of each LR test agree with the }
-\begin{tabular}{r|rr}
+\caption{Comparison of BIC and Chi-square test \eqref{LRTest} for CWM vs GCWM model on each cluster \\ ( ``-"  denotes a negative $\varphi$ value where no test is necessary).  }
+\label{compareResults_models}
+\begin{tabular}{r|rrc}
 \hline
-Cluster & CWM  & ZCWM  \\
+Cluster & CWM  & GCWM &  $\varphi $\\
 \hline
- 1 & $58,311$ & $58,180$ \\
- 2 & $76,672$ & $76,301$ \\
- 3 & $1,488$  & $1,503$ \\
+ 1 & $58,311$ & $\bm{58,180}$ & $ 4.61 < 154.70$ \\
+ 2 & $76,672$ & $\bm{76,301}$ & $ 4.61 < 395.59 $\\
+ 3 & $\bm{1,488}$  & $1,503$ &  -  \\ 
+\hline 
+All & $136,471$ & $135,984$ &  $10.64 < 270.03$
+  \\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
- Furthermore, by using the likelihood ratio test defined in \eqref{LRTest}, Cluster~1 has no evidence of zero-inflation. Thus, only a Poisson model was estimated for Cluster~1. \textcolor{red}{[Reword previous sentence.]} In summary, we see that the GCWM can account for zero-inflated data in pricing.
+
+The results for comparing GCWM to CWM are shown in Table \ref{compareResults_models}. By using the likelihood ratio test  defined in \eqref{LRTest} and comparing the models across each component, Cluster~1 and 2 have evidence of zero inflation. In addition, GCWMs have BIC values that are lower in comparison to CWMs.  Cluster~3 has no evidence of zero-inflation which is in agreement with the BIC comparison. Thus, only a Poisson model is chosen for Cluster~3. \textcolor{red}{[Reword previous sentence.]}  Overall, we see that there is evidence of zero inflation across the entire dataset when comparing GCWM vs. CWM across all clusters. 
+In summary, we see that the GCWM can account for zero-inflated data in pricing.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -824,27 +831,27 @@ Coefficient & \textcolor{green}{Estimate} & Error    & P   & \textcolor{red}{Est
 \end{sidewaystable}
 
 \begin{sidewaystable}
-\caption{Summary of coefficients for frequency clusters.}
+\caption{Summary of coefficients for frequency clusters and their respective colours.}
 \label{frequencySummary}
 \begin{tabular}{|l|rrc|rrc|rrc|}
 \hline\hline
-          & Cluster 1 & (Blue) &   & Cluster 2 & (Green) &  & Cluster 3 & (Red) &   \\
+          & Cluster 1 & (Green) &   & Cluster 2 & (Red) &  & Cluster 3 & (Blue) &   \\
 Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
 pertaining to the $P$ value of the specific coefficient.}             & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
  \hline
-Intercept & 80.34056  & 4.82835 & *** & -4.21884 & 0.23567 & *** & -4.71437 & 0.16072 & *** \\
-Density   & -15.36444 & 0.87135 & *** & 0.20128  & 0.02916 & *** & 0.37081  & 0.03414 & *** \\
-D2        & -0.28067  & 0.3133  &     & -0.15287 & 0.06008 & *   & -0.09767 & 0.05987 &     \\
-D3        & -0.33352  & 0.31412 &     & -0.30113 & 0.06088 & *** & -0.28937 & 0.06156 & *** \\
-D4        & -1.02815  & 0.39399 & **  & 0.03986  & 0.0711  &     & -0.02955 & 0.08005 &     \\
-D5        & 0.11692   & 0.46536 &     & 0.47363  & 0.07558 & *** & 0.6164   & 0.07787 &     \\
-C2        & -1.00529  & 0.79119 &     & 0.59803  & 0.59803 & *** & 0.67169  & 0.67169 & *** \\
-C3        & 2.05854   & 0.71373 & **  & 0.85653  & 0.85653 & *** & 0.69215  & 0.69215 & *** \\
-C4        & 2.20552   & 0.71347 & **  & 0.76843  & 0.76843 & *** & 0.63158  & 0.63158 & *** \\
-C5        & 2.06543   & 0.72307 & **  & 0.52438  & 0.52438 & *** & 0.36033  & 0.36033 & *** \\
+Intercept & -4.71437 & 0.16072 & *** & -4.21884 & 0.23567 & *** & 80.34056  & 4.82835 & *** \\
+Density   & 0.37081  & 0.03414 & *** & 0.20128  & 0.02916 & *** & -15.36444 & 0.87135 & *** \\
+D2        & -0.09767 & 0.05987 &     & -0.15287 & 0.06008 & *   & -0.28067  & 0.3133  &     \\
+D3        & -0.28937 & 0.06156 & *** & -0.30113 & 0.06088 & *** & -0.33352  & 0.31412 &     \\
+D4        & -0.02955 & 0.08005 &     & 0.03986  & 0.0711  &     & -1.02815  & 0.39399 & **  \\
+D5        & 0.6164   & 0.07787 &     & 0.47363  & 0.07558 & *** & 0.11692   & 0.46536 &     \\
+C2        & 0.67169  & 0.67169 & *** & 0.59803  & 0.59803 & *** & -1.00529  & 0.79119 &     \\
+C3        & 0.69215  & 0.69215 & *** & 0.85653  & 0.85653 & *** & 2.05854   & 0.71373 & **  \\
+C4        & 0.63158  & 0.63158 & *** & 0.76843  & 0.76843 & *** & 2.20552   & 0.71347 & **  \\
+C5        & 0.36033  & 0.36033 & *** & 0.52438  & 0.52438 & *** & 2.06543   & 0.72307 & **  \\
 \hline
-Intercept &           &         &     & -1.66782 & 0.37735 & *** & -3.9712  & 0.5473  & *** \\
-Density   &           &         &     & 0.28258  & 0.04674 & *** & 0.9032   & 0.1041  & *** \\ 
+Intercept & -3.9712  & 0.5473  & *** & -1.66782 & 0.37735 & *** &           &         &     \\
+Density   & 0.9032   & 0.1041  & *** & 0.28258  & 0.04674 & *** &           &         &    \\
 \hline\hline
 \end{tabular}
 \end{sidewaystable}

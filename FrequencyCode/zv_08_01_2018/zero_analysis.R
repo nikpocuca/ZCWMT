@@ -1,3 +1,4 @@
+setwd("~/GitRepos/ZCWMT/FrequencyCode/zv_08_01_2018")
 new_m <- read.csv("new_m.csv")
 attach(new_m)
 
@@ -9,23 +10,31 @@ c_new[c_new == 3] <- 'blue'
 new_m$c_new <- c_new
 
 
-p <-  ggplot(new_m, aes(x=LogDensity, y=ClaimNb)) +
-  theme( axis.line = element_line(colour = "black"),
-         panel.background = element_blank()) + 
-  geom_point(color=c_new,
-             size = partitions/2
-             )  + xlab("Density") + ylab("Frequency") 
-p
+getDensityTable <- function(in_df){
+  in_log <- in_df$LogDensity
+  return(c(min(in_log),mean(in_log),max(in_log),sd(in_log)))
+}
 
 
 
-plot(LogDensity, ClaimNb,
-     col = partitions + 1,
-     xlab = "Density",
-     ylab = "Claim Nb",
-     type = "p", 
-     pch = 19,
-     cex = 0.8)
+
+#p <-  ggplot(new_m, aes(x=LogDensity, y=ClaimNb)) +
+#  theme( axis.line = element_line(colour = "black"),
+#         panel.background = element_blank()) + 
+#  geom_point(color=c_new,
+#             size = partitions/2
+#             )  + xlab("Density") + ylab("Frequency") 
+#p
+
+
+
+#plot(LogDensity, ClaimNb,
+#     col = partitions + 1,
+#     xlab = "Density",
+#     ylab = "Claim Nb",
+#     type = "p", 
+#     pch = 19,
+#     cex = 0.8)
 
 
 cluster3 <- new_m[partitions == 3,]
