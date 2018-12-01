@@ -442,7 +442,7 @@ GCWM &  1 & $110,627$ &  $110,810$ \\
 
 	We now investigate the results of GCWM in relation to the valuation of risk. For practical uses, finding clusters allows us to create different classifications of risk for various groups of drivers. \textcolor{red}{[The previous sentence seems to me to contain the key point. I think this should be highlighted in the introduction and, insofar as possible, expanded upon here and maybe in the conclusions.]} \textcolor{blue}{The results of the GCWM allows for the classification of drivers into various groups allowing one to assign different rates. } \textcolor{red}{[What following GCWM?]}
 
-After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeSev}. Attention is brought to largest quantity of drivers that are grouped into Cluster 3. This accounts for $ 47 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1a}. From the results we can create an insurance model with the distinct characteristics.
+After fitting the model, we then inspect the size of each cluster. The GCWM approach has chosen four components as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeSev}. Attention is brought to largest quantity of drivers that are grouped into (blue) Cluster 3. This accounts for $ 47 \% $ of all drivers and is fairly concentrated in the center of Figure \ref{fig:vet1a}. From the results we can create an insurance model with the distinct characteristics.
 \begin{table}[!htb]
 \centering
 \caption{Size and colours of clusters for the GCWM a model.}
@@ -452,7 +452,7 @@ After fitting the model, we then inspect the size of each cluster. The GCWM appr
 Cluster 1   & Cluster 2  & Cluster 3   & Cluster 4    \\
 \hline
 $3,064$ & $1,873$  &$ 7,259$ & $3,194$ \\
-Red & Green & Blue & Orange \\
+red & green & blue & orange \\
 
 \hline
 \end{tabular}
@@ -469,7 +469,7 @@ Red & Green & Blue & Orange \\
 \end{figure}
 
 
-The (blue) Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most favourable cluster as these claims have very low variance and cost. The (green) Cluster 2  drivers , have also low variability but a higher average cost, thus they should have a rate higher than (blue) Cluster 3  drivers. The (red) Cluster 1  drivers have the next highest cost and variability of the clusters in Figure \ref{fig:vet1}. The (orange) Cluster 4  drivers have the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
+The (blue) Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most favourable cluster as claims belonging to it have very low variance and cost. The (green) Cluster 2  drivers, have also low variability but a higher average cost, thus they should have a rate higher than (blue) Cluster 3  drivers. The (red) Cluster 1  drivers have the next highest cost and variability of the clusters in Figure \ref{fig:vet1}. Finally, the (orange) Cluster 4  drivers have the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster would have the highest rate.
 
 
 Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \euro$1,033$ to  \euro$1,325$, with a standard deviation of  \euro$52$, and a mean of  \euro$1,171$. That means that these drivers rarely exceed costs and tend to have very low volatility of claims. Moving onto V2 , these drivers have the second lowest level of volatility. Drivers in this range tend to have claims anywhere between  \euro$395$ to  \euro$3,221$, with a standard deviation of  \euro$559$, and a mean of  \euro$1,350$.  Proceeding to V3, \textcolor{red}{its} volatility in claims is greater than the preceding levels. Drivers in this cluster have claims anywhere between  \euro$21$ to  \euro$281,403$, with a mean of  \euro$2,956$, and a standard deviation of  \euro$11,878$. Finally, V4 denotes the level of highest volatility. Claims in this level  reach the highest recorded claim of  \euro$2,036,833$, a mean of  \euro$3,771$, and a standard deviation of  \euro$40,334$. \textcolor{red}{I think we should try to add monetary units; as a reviewer, this would annoy me.]}
@@ -519,7 +519,7 @@ After fitting the model, GCWM has found two zero-inflated components and one Poi
 Cluster 1   & Cluster 2  & Cluster 3   \\
 \hline
 $191,601$& $219,393$ & $2,175$ \\
-Green & Red & Blue  \\
+green & red & blue  \\
 \hline
 \end{tabular}
 \end{table}
@@ -540,9 +540,9 @@ Similarly to modelling severity, the GCWM finds clusters with unique characateri
 \hline
 Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \hline
-1       & Green  & 0.69 & 4.05 & 5.46  & 0.87 \\
-2       & Red    & 5.48 & 7.37 & 10.20 & 1.24 \\
-3       & Blue   & 5.12 & 5.45 & 5.47  & 0.03 \\
+1       & green  & 0.69 & 4.05 & 5.46  & 0.87 \\
+2       & red    & 5.48 & 7.37 & 10.20 & 1.24 \\
+3       & blue   & 5.12 & 5.45 & 5.47  & 0.03 \\
 \hline
 \end{tabular}
 \end{center}
