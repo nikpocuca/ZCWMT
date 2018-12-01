@@ -308,14 +308,14 @@ For modelling severity, each observation $y_i$ must be weighted according to the
 \label{eqFrees}
 \end{align}
 
-Here, $\mathcal{\omega}_i$ is the number of claims the client occurs over the exposure period. Since $\mathcal{\omega}_i$ is constant at every EM iteration $s$, the flexCWM package is easily adjusted to account for this additional weight by multiplying  $\pi^{(s)}_{ij}$ by the number of claims $\mathcal{\omega}_i$ when optimizing the GLM model on cluster $j$. 
+Here, $\mathcal{\omega}_i$ is the number of claims the client occurs over the exposure period. Since $\mathcal{\omega}_i$ is constant at every EM iteration $s$, the flexCWM package is easily amenable to account for this methodological adjustment.
 
 %For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
 
 \subsection{EM Algorithm for Zero-inflated Model} 
 \textcolor{blue}{For a zero-inflated model, the EM-algorithm follows a similar procedure as above to optimize the conditional density given in \eqref{ziGCWM}. }  \textcolor{green}{[But what is its purpose? What new information, if any, is the reader supposed to get here? What would be lost if it were just deleted?]} \textcolor{red}{[What is the purpose of the previous sentence? What does it add?]} Specifically, the log-likelihood function of $\psi_k$ and $\lambda_k$ is expressed as
 \begin{equation*}\begin{split}
-l(\psi_k,\lambda_k|y,\bm{x}) &= \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda}_i \bm{\bar{\beta}}_k^{'}  } + \exp{( - e^ { -\bm{\xTilda}_i \bm{\beta}_k^{'} })} \big] + \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta}_k^{'} + e^{ \xTilda_i \bm{\beta}_k^{'} } \right)\\ &\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad- \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bm{\bar{\beta}}_k^{'} } \right) - \sum_{y_i > 0} \log(y_i ! ),
+l(\psi_k,\lambda_k|y,\bm{x}) &= \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda}_i \bm{\bar{\beta}}_k^{'}  } + \exp{( - e^ { -\bm{\xTilda}_i \bm{\beta}_k^{'} })} \big]  \\ & +  \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta}_k^{'} + e^{ \xTilda_i \bm{\beta}_k^{'} } \right)  - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bm{\bar{\beta}}_k^{'} } \right) - \sum_{y_i > 0} \log(y_i ! ),
 \end{split}\end{equation*}
 where $y_i$, and $\xTilda_i$ refers to the $i$th row of the response variable $y$ and covariate \textcolor{blue}{vector} $\xTilda$. \textcolor{green}{[I do not see any mention of ``covariate matrix" in Section 2.3 or anywhere else in the paper before this point. I do not see how we have a matrix of covariates?]}  Due to the first term, the log-likelihood function is rather complicated to maximize, however \cite{Lambert} gives a meaningful solution. \textcolor{blue}{ Consider a random variable $\zZ_{ik}$ indicating with ${\zz_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition $k$, and $\zz_{ik} = 0$ when $y_i$ is generated from the Poisson random variable of the same partition.} \textcolor{green}{[Please use a letter other than $O$, perhaps $W$? Random variables are usually taken from near the end of the alphabet, i.e., $U,V,\ldots,Z$, and constants from near the start. Also, note that $\mathcal{O}$ is usually used for ``order'', as in big-O notation.]} \textcolor{red}{[What is ${\mathcal{O}_{ik}}$? The notation here suggests it is not a random variable.]}  Then, the complete-data log-likelihood is 
 
@@ -401,7 +401,7 @@ The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
 DEF, GH, and other. The fitted model is defined with the following expression
 \begin{align}
-g(\mathbb{E}\left[Y_{Severity}|\bm{x}\right]) = 
+g(\mathbb{E}\left[Y_{Severity}|\bm{x},  \bm{\beta}_j  \right]) = 
  & \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jCar Age} x_{Car Age}+ \beta_{jDriver Age} x_{Driver Age} + \nonumber \\ &  \beta_{jRegion} x_{Region} + \beta_{jPower} x_{Power} \label{regressionModel}  =: \bm{\xTilda} \bm{\beta}_j^{'}.
 \end{align}
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
@@ -418,7 +418,7 @@ The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density
 \label{fig:vet1}
 \end{figure}
 
-\textcolor{blue}{Given the log-normal assumption, the result of the transformation is a better AIC and BIC for GCWM over CWM.} \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of 285,268 is significantly higher than the four component GCWM with a considerably lower BIC of 89,568.
+\textcolor{blue}{Given the log-normal assumption, the result of the transformation is a better AIC and BIC for GCWM over CWM.} \textcolor{red}{[Need a fuller sentence here.]} Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of $281,680$ is significantly higher than the four component GCWM with a considerably lower BIC of $88,564$.
 \begin{table}[!htbp] \centering
   \caption{Comparison of AIC and BIC for CWM versus GCWM for $G$ number of clusters estimated. \textcolor{red}{[Column~2 here is ``k''. What is ``k''?]}}\label{comparingCWM_models}
 \begin{tabular}{@{\extracolsep{5pt}} rrrr}
@@ -503,9 +503,9 @@ In summary, the drivers have been clustered into four categories with distinct c
 In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, and $Exposure$. Here, $Exposure$ is used as an offset to account for the rate at which a claim occurs. For example, four claims over 1 week should not amount to the same as four claims over 1 year \citep{frees2015}. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
 The GCWM is fitted with the following expression
 \begin{align}
-g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right]) & = 
+g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
   \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jDriverAge}x_{DriverAge} \nonumber \\    &  \quad\quad\quad +  \beta_{jCarAge}x_{CarAge}   + g_p(x_{Exposure})  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}\right])& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} + g_z(x_{Exposure})  =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bar{\bm{\beta}}_j \right])& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} + g_z(x_{Exposure})  =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $DriverAge$, and $CarAge$ are explanitory variables in a Poisson model, while only $Density$ is an explantory variable for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).

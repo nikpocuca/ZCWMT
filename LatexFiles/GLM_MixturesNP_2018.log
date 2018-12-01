@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  1 DEC 2018 11:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  1 DEC 2018 11:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -708,14 +708,14 @@ File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
 t line 414.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
- [13] [14 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density
--eps-converted-to.pdf>]
-<sevClusterPlot.png, id=86, 786.94pt x 485.815pt>
+ [13]
+<sevClusterPlot.png, id=69, 786.94pt x 485.815pt>
 File: sevClusterPlot.png Graphic file (type png)
 <use sevClusterPlot.png>
 Package pdftex.def Info: sevClusterPlot.png  used on input line 463.
 (pdftex.def)             Requested size: 393.46904pt x 242.9069pt.
- [15 <./sevClusterPlot.png>]
+ [14 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
+converted-to.pdf>] [15 <./sevClusterPlot.png>]
 Overfull \hbox (10.97794pt too wide) in paragraph at lines 503--505
 \OT1/ptm/m/n/10 In this sec-tion, we model fre-quency of the French mo-tor clai
 ms. We con-sider the co-vari-ates $\OML/cmm/m/it/10 Density$\OT1/ptm/m/n/10 , $
@@ -799,7 +799,7 @@ ocal/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018
 /texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (30 pages, 494996 bytes).
+Output written on GLM_MixturesNP_2018.pdf (30 pages, 495038 bytes).
 PDF statistics:
  239 PDF objects out of 1000 (max. 8388607)
  166 compressed objects within 2 object streams
