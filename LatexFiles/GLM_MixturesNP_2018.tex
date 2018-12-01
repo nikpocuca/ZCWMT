@@ -308,7 +308,7 @@ For modelling severity, each observation $y_i$ must be weighted according to the
 \label{eqFrees}
 \end{align}
 
-Here, $\mathcal{\omega}_i$ is the number of claims the client occurs over the exposure period. Since $\mathcal{\omega}_i$ is constant at every EM iteration s, the flexCWM package is easily adjusted to account for this additional weight by multiplying  $\pi^{(s)}_{ij}$. 
+Here, $\mathcal{\omega}_i$ is the number of claims the client occurs over the exposure period. Since $\mathcal{\omega}_i$ is constant at every EM iteration $s$, the flexCWM package is easily adjusted to account for this additional weight by multiplying  $\pi^{(s)}_{ij}$ by the number of claims $\mathcal{\omega}_i$ when optimizing the GLM model on cluster $j$. 
 
 %For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
 
