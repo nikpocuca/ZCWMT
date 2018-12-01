@@ -83,7 +83,7 @@
 \begin{document}
 \title{Modeling  Frequency and Severity of Claims with the Generalized  Cluster-Weighted Model}
 
-\author{Nikola Po\v cu\v ca, Tatjana Miljkovic,  Petar Jevti\' c and Paul D. McNicholas}
+\author{Nikola Po\v cu\v ca,  Petar Jevti\' c, Tatjana Miljkovic, and Paul D. McNicholas}
 
 \maketitle
 \doublespacing
@@ -553,11 +553,11 @@ significance codes are the same as in Table \ref{severity_coef_table}. In each c
 
 \begin{table}[!htb]
  \begin{center}
-\caption{Comparison of BIC and Chi-square test \eqref{LRTest} for CWM vs GCWM model on each cluster \\ ( ``-"  denotes a negative $\varphi$ value where no test is necessary).  }
+\caption{Comparison of BIC and Chi-square ($\chi^2$) test \eqref{LRTest} for CWM vs GCWM model on each cluster \\ ( ``-"  denotes a negative $\varphi$ value where no test is necessary).  }
 \label{compareResults_models}
 \begin{tabular}{r|rrc}
 \hline
-Cluster & CWM  & GCWM &  $\varphi $\\
+Cluster & BIC (CWM)  & BIC (GCWM) &  $\varphi $\\
 \hline
  1 & $58,311$ & $\bm{58,180}$ & $ 4.61 < 154.70$ \\
  2 & $76,672$ & $\bm{76,301}$ & $ 4.61 < 395.59 $\\
@@ -569,9 +569,8 @@ All & $136,471$ & $135,984$ &  $10.64 < 270.03$
 \end{tabular}
 \end{center}
 \end{table}
-
-The results for comparing GCWM to CWM are shown in Table \ref{compareResults_models}. By using the likelihood ratio test  defined in \eqref{LRTest} and comparing the models across each component, Cluster~1 and 2 have evidence of zero inflation. In addition, GCWMs have BIC values that are lower in comparison to CWMs.  Cluster~3 has no evidence of zero-inflation which is in agreement with the BIC comparison. Thus, only a Poisson model is chosen for Cluster~3. \textcolor{red}{[Reword previous sentence.]}  Overall, we see that there is evidence of zero inflation across the entire dataset when comparing GCWM vs. CWM across all clusters. 
-In summary, we see that the GCWM can account for zero-inflated data in pricing.
+The results for comparing GCWM to CWM are shown in Table \ref{compareResults_models}. By using the likelihood ratio test in \eqref{LRTest} and comparing the models across each component, The Clusters~1 and 2 have evidence of zero inflation. In addition, GCWMs have BIC values that are lower in comparison to CWMs.  Cluster~3 has no evidence of zero-inflation which is in agreement with the BIC comparison. Thus, only a Poisson model is chosen for Cluster~3.  Overall, we see that there is evidence of zero inflation across the entire dataset when comparing GCWM vs. CWM across all clusters. 
+Thus, for rate making purposes the GCWM can account for zero-inflation.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -700,15 +699,15 @@ In summary, our simulation results showed good performance of the GCWM approach 
 In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components are genereated under similar coefficients estimated from the \textbf{CASDatasets} package. Again for easy of interpretation, coefficients are rounded and treated as true parameters from which the simulated data is generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
 The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates with 
 \begin{align}
-g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
-  \beta_{0} +  \beta_{SimDensity} X_{SimDensity} +  \beta_{SimDriverAge} X_{SimDriverAge} \nonumber  \\ & + 
-   \beta_{SimCarAge} X_{SimCarAge},  \label{poissonRegSim} \\
-g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{X}\right]) & = 
-  \bar{\beta_{0}} +  \bar{\beta}_{SimDensity} X_{SimDensity} +  \bar{\beta}_{SimDriverAge} X_{SimDriverAge} \nonumber \\ & + 
-  \bar{ \beta}_{SimCarAge} X_{SimCarAge}.  \label{zeroRegSim}
+g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
+  \beta_{j0} +  \beta_{jSimDensity} x_{SimDensity} +  \beta_{jSimDriverAge} x_{SimDriverAge} \nonumber  \\ & + 
+   \beta_{jSimCarAge} x_{SimCarAge} := \bm{\xTilda} \bm{\beta}_j^{'},  \label{poissonRegSim} \\
+g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x} , \bar{\bm{\beta}}_j  \right]) & = 
+  \bar{\beta_{j0}} +  \bar{\beta}_{jSimDensity} x_{SimDensity} +  \bar{\beta}_{jSimDriverAge} x_{SimDriverAge} \nonumber \\ & + 
+  \bar{ \beta}_{jSimCarAge} x_{SimCarAge} =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'}.  \label{zeroRegSim}
 \end{align}
 
-as their respective linear models.  The covariates $X_{SimDensity}$, $X_{SimDriverAge}$, and $X_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
+as their respective linear models.  The covariates $x_{SimDensity}$, $x_{SimDriverAge}$, and $x_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
  Here, the GCWM classifies drivers based on simulated data into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation are aggregated in Table \ref{misclassTable}. We observe the total misclassification rate of $1.8 \% $, where the majority of misclassified components are between components two and three.
 \begin{table}[!htb]
 \begin{center}

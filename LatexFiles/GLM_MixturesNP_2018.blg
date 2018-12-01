@@ -6,8 +6,8 @@ Database file #1: GLM_Mixtures_2018.bib
 You've used 36 entries,
             2821 wiz_defined-function locations,
             872 strings with 10552 characters,
-and the built_in function-call counts, 16500 in all, are:
-= -- 1737
+and the built_in function-call counts, 16503 in all, are:
+= -- 1738
 > -- 739
 < -- 26
 + -- 289
@@ -22,7 +22,7 @@ cite$ -- 36
 duplicate$ -- 628
 empty$ -- 1167
 format.name$ -- 360
-if$ -- 3327
+if$ -- 3329
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 42
