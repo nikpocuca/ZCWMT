@@ -91,10 +91,10 @@
 
 \begin{abstract}
 
-In this paper, we propose a generalized cluster-weighted model (GCWM) that allows for modeling non-Gaussian distribution of the continuous covariates and a new zero-inflated GCWM (ZI-GCWM) for modeling insurance claims data with excess zeros. We describe two expectation-optimization (EM) algorithms for parameter estimation in GCWM and ZI-GCWM. A simulation study showed that both cluster models perform well for different settings in contrast to the existing mixture-based approaches. A real data set based on French automobile policies is used to illustrate the application of the proposed models.
+In this paper, we propose a generalized cluster-weighted model (GCWM) that allows for modeling non-Gaussian distribution of the continuous covariates and a new zero-inflated GCWM for modeling insurance claims data with excess zeros. We describe two expectation-optimization (EM) algorithms for parameter estimation in GCWM. A simulation study showed that both cluster models perform well for different settings in contrast to the existing mixture-based approaches. A real data set based on French automobile policies is used to illustrate the application of the proposed models.
 
 \end{abstract}
-\textsc{Key Words:} GCWM, CWM, ZI-GCWM, clustering, automobile claims.\\
+\textsc{Key Words:} GCWM, CWM, clustering, automobile claims.\\
 \textsc{JEL Classification:}  C02, C40, C60.\\
 % C02-Mathematical Methods, C40-General mathematical and statistical methods: special topics, c60-General mathematical methods, programming models, mathematical and simulation modeling%
 \section{Introduction}\label{sec:introduction}
@@ -102,7 +102,7 @@ A significant number of clustering methods have been proposed for sub-grouping t
 
 Sub-grouping of insurance policies based on risk classification is a standard practice in insurance. The heterogenous nature of insurance data allows for explorations of many different techniques for sub-grouping risk. As a result, there is a growing number of papers in the area of mixture modeling of univariate and multivariate insurance data to account for heterogeneity of risk. \cite{Lee+Lin:2010}, \cite{Verbelen+Gong+Antonio+Badescu+Lin:2015}, and \cite{Miljkovic+Grun:2016} proposed mixture models for univariate loss data, and mixture modeling of univariate insurance data has been extended to the multivariate context. A finite mixture of bivariate Poisson regression models with an application to insurance ratemaking was studied by \cite{Bermudez+Karlis:2012}. A Poisson mixture model for count data was considered by \cite{Brown+Buckley:2015} with application in managing a Group Life insurance portfolio. Recently, \cite{risks_miljkovic} reviewed two complementary mixture-based clustering approaches (CWMs and mixture-based clustering for an ordered stereotype model) for modeling unobserved heterogeneity in an automobile insurance portfolio, depending on the data structure under consideration. 
 
-In this paper, we extend the CWM family proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} to allow for modeling of non-Gaussian continuous covariates and a zero-inflated Poisson (ZIP) claims data with excess zeros, which are commonly seen in the insurance applications. We consider a generalized cluster-weighted model (GCWM) as well as a zero-inflated GCWM (ZI-GCWM). Two partitioning methods are considered with two separate expectation-maximization (EM) algorithms \citep{Dempster+Laird+Rubin:1977}. \textcolor{blue} {The EM algorithm is based on the complete-data likelihood, which encompasses the observed data together with the missing data and/or latent variables. The EM algorithm can be highly effective for maximum likelihood estimation when data is incomplete or is assumed to be incomplete.} The first EM algorithm is for parameter estimation for the GCWM models, while the second EM is for parameter estimation for the ZI-GCWM. We show that the Bernoulli and Poisson GCWM accurately estimate the initialization of the EM algorithm for the ZI-GCWM model. These models utilize individual claims data and should be useful in the areas of ratemaking and risk management.
+In this paper, we extend the CWM family proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} to allow for modeling of non-Gaussian continuous covariates and a zero-inflated Poisson (ZIP) claims data with excess zeros, which are commonly seen in the insurance applications. We consider a generalized cluster-weighted model (GCWM) as well as a zero-inflated GCWM. Two partitioning methods are considered with two separate expectation-maximization (EM) algorithms \citep{Dempster+Laird+Rubin:1977}. \textcolor{blue} {The EM algorithm is based on the complete-data likelihood, which encompasses the observed data together with the missing data and/or latent variables. The EM algorithm can be highly effective for maximum likelihood estimation when data is incomplete or is assumed to be incomplete.} The first EM algorithm is for parameter estimation for the GCWM models, while the second EM is for parameter estimation for the GCWM. We show that the Bernoulli and Poisson GCWM accurately estimate the initialization of the EM algorithm for the zero inflated GCWM model. These models utilize individual claims data and should be useful in the areas of ratemaking and risk management.
 
 This paper is organized as follows. The GCWM and GCWM approaches are discussed in Section~\ref{sec:model}, and parameter estimation is discussed in Section~\ref{sec:estmeth}. Then, our methodology is applied to real data on French automobile claims and an extensive simulation study is conducted (Section~\ref{sec:numapp}). This paper concludes with a discussion and some suggestions for future work (Section~\ref{sec:sim}).
 
@@ -216,7 +216,7 @@ q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar
 & = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{ 1, ..., G  \}.
 \label{ziGCWM}
 \end{align}
-The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes the ZI-GCWM. The ZI-GCWM is compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
+The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes the zero inflated GCWM. The ZI-GCWM is compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
 
 \section{Parameter Estimation}\label{sec:estmeth}
 
@@ -358,7 +358,7 @@ and the test statistic $\varphi$ is given by
 \varphi = -2 \big[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\big].
 \label{LRTest}
 \end{equation}
-\textcolor{blue}{The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution ($0.5\chi^2_0+0.5\chi^2_{m}$) where $m$ is the  number of degrees of freedom of the model. For our purposes, $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{See Liklihood Ratio Tests in  \cite{newIntuitive}}. } Note that  a $\chi^2_0$ distribution is a zero distribution, hence the $95{\mbox{\sl{th}}}$ percentile of a  $0.5\chi^2_0+0.5\chi^2_{m}$ distribution is equal to the $90{\mbox{\sl{th}}}$ percentile of a $\chi^2_{m}$ distribution and the test statistic at a level of significance of $\alpha=0.05$ equals that of a one-tailed $\chi^2$ test, with $m$ degrees of freedom, at a level of significance of $\alpha=0.10$ \citep[see][]{newIntuitive}. The function 
+\textcolor{blue}{The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution ($0.5\chi^2_0+0.5\chi^2_{m}$) where $m$ is the  number of degrees of freedom of the model. For our purposes, $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{See Liklihood Ratio Tests in  \cite{newIntuitive}}. } Note that  a $\chi^2_0$ distribution has 0 degrees of freedom, hence the $95{\mbox{\sl{th}}}$ percentile of a  $0.5\chi^2_0+0.5\chi^2_{m}$ distribution is equal to the $90{\mbox{\sl{th}}}$ percentile of a $\chi^2_{m}$ distribution and the test statistic at a level of significance of $\alpha=0.05$ equals that of a one-tailed $\chi^2$ test, with $m$ degrees of freedom, at a level of significance of $\alpha=0.10$ \citep[see][]{newIntuitive}. The function 
 $l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parametrized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation parameter of the $k$th partition.  In our approach, we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on $\Omega_k$. This approach quickly determines if there is zero-inflation on partition $\Omega_k$.  When evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
 
 \section{Numerical Application}\label{sec:numapp}
@@ -501,7 +501,7 @@ In summary, the drivers have been clustered into four categories with distinct c
  \subsubsection{Modeling Claims Frequency}
 
 In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, and $Exposure$. Here, $Exposure$ is used as an offset to account for the rate at which a claim occurs. For example, four claims over 1 week should not amount to the same as four claims over 1 year \citep{frees2015}. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
-The GCWM is fitted with the following expression
+The ZI-GCWM is fitted with the following expression
 \begin{align}
 g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
   \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jDriverAge}x_{DriverAge} \nonumber \\    &  \quad\quad\quad +  \beta_{jCarAge}x_{CarAge}   + g_p(x_{Exposure})  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
@@ -509,10 +509,10 @@ g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bar{\bm{\beta}}_j \right])& = \bar{\bet
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $DriverAge$, and $CarAge$ are explanitory variables in a Poisson model, while only $Density$ is an explantory variable for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
-After fitting the model, GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the two of the clusters with Cluster 3 only consisting of $0.53 \%$ of the data.
+After fitting the model, ZI-GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the two of the clusters with Cluster 3 only consisting of $0.53 \%$ of the data.
 \begin{table}[!htb]
 \centering
-\caption{Size of clusters and their colours for the GCWM a model. \textcolor{red}{[There is clearly something other than sizes in this table, i.e., the colours.]}}
+\caption{Size of clusters and their colours for the ZI-GCWM a model. \textcolor{red}{[There is clearly something other than sizes in this table, i.e., the colours.]}}
 \label{table:sizeFreq}
 \begin{tabular}{rrrr}
 \hline
@@ -524,7 +524,7 @@ green & red & blue  \\
 \end{tabular}
 \end{table}
 
-Similarly to modelling severity, the GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the most dense areas with a mean of 7.37 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.45 km and 4.05 km, respectively.
+Similarly to modelling severity, the ZI-GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the ZI-GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the most dense areas with a mean of 7.37 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.45 km and 4.05 km, respectively.
 \begin{figure}[!ht]
 \begin{center}
 %\includegraphics[scale=0.60]{freqPlot.eps}
@@ -553,11 +553,11 @@ significance codes are the same as in Table \ref{severity_coef_table}. In each c
 
 \begin{table}[!htb]
  \begin{center}
-\caption{Comparison of BIC and Chi-square ($\chi^2$) test \eqref{LRTest} for CWM vs GCWM model on each cluster \\ ( ``-"  denotes a negative $\varphi$ value where no test is necessary).  }
+\caption{Comparison of BIC and Chi-square ($\chi^2$) test \eqref{LRTest} for CWM vs ZI-GCWM model on each cluster \\ ( ``-"  denotes a negative $\varphi$ value where no test is necessary).  }
 \label{compareResults_models}
 \begin{tabular}{r|rrc}
 \hline
-Cluster & BIC (CWM)  & BIC (GCWM) &  $\varphi $\\
+Cluster & BIC (CWM)  & BIC (ZI-GCWM) &  $\varphi $\\
 \hline
  1 & $58,311$ & $\bm{58,180}$ & $ 4.61 < 154.70$ \\
  2 & $76,672$ & $\bm{76,301}$ & $ 4.61 < 395.59 $\\
@@ -569,8 +569,8 @@ All & $136,471$ & $135,984$ &  $10.64 < 270.03$
 \end{tabular}
 \end{center}
 \end{table}
-The results for comparing GCWM to CWM are shown in Table \ref{compareResults_models}. By using the likelihood ratio test in \eqref{LRTest} and comparing the models across each component, The Clusters~1 and 2 have evidence of zero inflation. In addition, GCWMs have BIC values that are lower in comparison to CWMs.  Cluster~3 has no evidence of zero-inflation which is in agreement with the BIC comparison. Thus, only a Poisson model is chosen for Cluster~3.  Overall, we see that there is evidence of zero inflation across the entire dataset when comparing GCWM vs. CWM across all clusters. 
-Thus, for rate making purposes the GCWM can account for zero-inflation.
+The results for comparing ZI-GCWM to CWM are shown in Table \ref{compareResults_models}. By using the likelihood ratio test in \eqref{LRTest} and comparing the models across each component, The Clusters~1 and 2 have evidence of zero inflation. In addition, ZI-GCWMs have BIC values that are lower in comparison to CWMs.  Cluster~3 has no evidence of zero-inflation which is in agreement with the BIC comparison. Thus, only a Poisson model is chosen for Cluster~3.  Overall, we see that there is evidence of zero inflation across the entire dataset when comparing ZI-GCWM vs. CWM across all clusters. 
+Thus, for rate making purposes the ZI-GCWM can account for zero-inflation.
 
 
 \section{Simulation Study}\label{sec:sim}
@@ -696,7 +696,7 @@ In summary, our simulation results showed good performance of the GCWM approach 
 
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
-In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components are genereated under similar coefficients estimated from the \textbf{CASDatasets} package. Again for easy of interpretation, coefficients are rounded and treated as true parameters from which the simulated data is generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
+In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components are genereated under similar coefficients estimated from the \textbf{CASDatasets} package. Again for easy of interpretation, coefficients are rounded and treated as true parameters from which the simulated data is generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the ZI-GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
 The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates with 
 \begin{align}
 g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
@@ -708,7 +708,7 @@ g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x} , \bar{\bm{\beta}}_j  \right]) & =
 \end{align}
 
 as their respective linear models.  The covariates $x_{SimDensity}$, $x_{SimDriverAge}$, and $x_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
- Here, the GCWM classifies drivers based on simulated data into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the GCWM a model.  The results of the simulation are aggregated in Table \ref{misclassTable}. We observe the total misclassification rate of $1.8 \% $, where the majority of misclassified components are between components two and three.
+ Here, the ZI-GCWM classifies drivers based on simulated data into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the ZI-GCWM a model.  The results of the simulation are aggregated in Table \ref{misclassTable}. We observe the total misclassification rate of $1.8 \% $, where the majority of misclassified components are between components two and three.
 \begin{table}[!htb]
 \begin{center}
 \caption{Misclassfication rate and label comparison of generated data.}
@@ -743,7 +743,7 @@ Misclassification Rate& normal        & 1.70\% & (6.00)       & 1.60\%  & (6.00)
        & close      & 5.00\% & (7.00)       & 6.00\% & (2.00)         & 7.00\% & (4.00)         \\
 Average Purity & normal     & 98.87\% & (2.00)    & 98.91\% & (2.25)      & 99.18\% & (0.81)     \\
        & close       & 95.38\% & (4.00)    & 94.55\% & (1.00)      & 96.95\% & (0.48)      \\
-Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & ( 0.07)     & 0.9729 & (0.0217)      \\
+Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & (0.07)     & 0.9729 & (0.0217)      \\
        & close         & 0.8706 & (0.08)    & 0.8366 & (0.04)      & 0.8538 & ( 0.0453) \\
        \hline\hline
 \end{tabular}
@@ -760,7 +760,7 @@ The AP for the BP partitioning method is the best out of all other methods, ther
 
 In this paper, we extend the class of generalized linear mixture CWM models by accomplishing two main goals. First, we proposed the methodology that allows for continuous covariates to follow a non-Gaussian distribution. Imposing Gaussian distribution on a skewed data may result in an suboptimal model fit. Second, we proposed a new Poisson CWM methodology that uses Bernoulli-Poisson partitioning method and allows for implementation of zero-inflated Poisson CWM model (ZI-GCWM). We name our proposed model class as the Generelized Cluster-Weighted Model (GCWM), to reflect the two extensions made to the existing CWM class of models.
 
-Our proposed GCWM models allow for great applications in predictive modeling of insurance claims by overcoming a few limitations of the current CWM models. The ZI-GCWM allows for finding clusters within claims frequency which is an important information in risk classification and modeling of claims frequency. Further, some insurance rating variables used in the predictive modeling of severity claims may not strictly follow Gaussian assumptions, for example driver's age or car age, when treated as continuous covariates. An adequate extension to non-Gaussian covariates can be considered to relax current assumptions and improve the model fit. Given our data, we convincingly demonstrated that there is a need for a log-normal assumption in the $Density$ covariate, and by making it we have consideredly the model fit. 
+Our proposed GCWM models allow for great applications in predictive modeling of insurance claims by overcoming a few limitations of the current CWM models. The GCWM allows for finding clusters within claims frequency which is an important information in risk classification and modeling of claims frequency. Further, some insurance rating variables used in the predictive modeling of severity claims may not strictly follow Gaussian assumptions, for example driver's age or car age, when treated as continuous covariates. An adequate extension to non-Gaussian covariates can be considered to relax current assumptions and improve the model fit. Given our data, we convincingly demonstrated that there is a need for a log-normal assumption in the $Density$ covariate, and by making it we have consideredly the model fit. 
 
 The results of our extensive simulation study showed the excellent performance of the proposed models in case of modeling non-Gaussian covariates. We found  that current CWM model fails to estimate the parameters accurately when the Gaussian assumption is violated. The GCWM a shows significant improvement in the model fit over the CWM model based on AIC and BIC criteria. We also tested Bernoulli-Poisson partitioning of zero-inflated GCWM under different conditions and found that our proposed partitioning method has a very low misclassification rate, high average purity, and high average rand index.
 
