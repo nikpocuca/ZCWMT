@@ -505,7 +505,7 @@ The ZI-GCWM is fitted with the following expression
 \begin{align}
 g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
   \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jDriverAge}x_{DriverAge} \nonumber \\    &  \quad\quad\quad +  \beta_{jCarAge}x_{CarAge}   + g_p(x_{Exposure})  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bar{\bm{\beta}}_j \right])& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} + g_z(x_{Exposure})  =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
+g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bar{\bm{\beta}}_j \right])& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} + g_p(x_{Exposure})  =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
 \end{align}
 \textcolor{red}{[Same comment as before about the way this is presented.]}
 where $Density$, $DriverAge$, and $CarAge$ are explanitory variables in a Poisson model, while only $Density$ is an explantory variable for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
