@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 DEC 2018 18:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 DEC 2018 18:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -719,4 +719,207 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 [2]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 112.
-LaTeX Font In
+LaTeX Font Info:    Try loading font information for U+msa on input line 114.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 114.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 114.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+) [3]
+Overfull \hbox (4.6895pt too wide) in paragraph at lines 137--139
+\OT1/ptm/m/n/10.95 marginal den-sity of Gaus-sian co-vari-ates, with pa-ram-e-t
+er vec-tor $\OML/cmm/b/it/10.95 ^^R[]$\OT1/ptm/m/n/10.95 , and $\OML/cmm/m/it/1
+0.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 u\OT1/cmr/m/n/10.95 ; \OML/cmm/b/
+it/10.95 ^^R[]\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 de-notes the marginal
+ []
+
+[4] [5] [6] [7] [8] [9]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 314.
+
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [10]
+Overfull \hbox (27.55943pt too wide) in paragraph at lines 337--341
+\OT1/ptm/m/n/10.95 where $\OML/cmm/b/it/10.95 z[] \OT1/cmr/m/n/10.95 := []$ \OT
+1/ptm/m/n/10.95 is a re-al-iza-tion of $\OML/cmm/b/it/10.95 Z[] \OT1/cmr/m/n/10
+.95 := []$\OT1/ptm/m/n/10.95 . Note that $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/1
+0.95 (\OML/cmm/m/it/10.95  []; ^^U[]\OMS/cmsy/m/n/10.95 jf\OML/cmm/m/it/10.95 y
+[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/
+it/10.95 x[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[
+]\OT1/cmr/m/n/10.95 )$
+ []
+
+
+Overfull \hbox (28.24136pt too wide) in paragraph at lines 337--341
+\OT1/ptm/m/n/10.95 can be sep-a-rated al-low-ing the max-i-miza-tion of $\OML/c
+mm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  []\OT1/cmr/m/n/10.95 
+; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m
+/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x[]\OMS/cmsy/m/n/10.95 g[]
+\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n
+/10.95 and $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U[
+]\OT1/cmr/m/n/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n
+/10.95 g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x[]\OM
+S/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/1
+0.95 )$
+ []
+
+[11] [12]
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 381.
+
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+Overfull \hbox (12.34433pt too wide) in paragraph at lines 388--405
+ [] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 409.
+[13]
+Package epstopdf Info: Source file: <Untransformed_Density.eps>
+(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    size: 4955 bytes
+(epstopdf)             Output file: <Untransformed_Density-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    size: 9081 bytes
+(epstopdf)             Command: <repstopdf --outfile=Untransformed_Density-eps-
+converted-to.pdf Untransformed_Density.eps>
+(epstopdf)             \includegraphics on input line 426.
+Package epstopdf Info: Output file is already uptodate.
+<Untransformed_Density-eps-converted-to.pdf, id=68, 344.28625pt x 315.1775pt>
+File: Untransformed_Density-eps-converted-to.pdf Graphic file (type pdf)
+<use Untransformed_Density-eps-converted-to.pdf>
+Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf  used on in
+put line 426.
+(pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
+Package epstopdf Info: Source file: <transformed_Density.eps>
+(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    size: 4669 bytes
+(epstopdf)             Output file: <transformed_Density-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    size: 9171 bytes
+(epstopdf)             Command: <repstopdf --outfile=transformed_Density-eps-co
+nverted-to.pdf transformed_Density.eps>
+(epstopdf)             \includegraphics on input line 427.
+Package epstopdf Info: Output file is already uptodate.
+<transformed_Density-eps-converted-to.pdf, id=69, 344.28625pt x 315.1775pt>
+File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
+<use transformed_Density-eps-converted-to.pdf>
+Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
+t line 427.
+(pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
+ [14]
+Package epstopdf Info: Source file: <sevClusterPlot.eps>
+(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    size: 810112 bytes
+(epstopdf)             Output file: <sevClusterPlot-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-10 08:24:26
+(epstopdf)                    size: 999031 bytes
+(epstopdf)             Command: <repstopdf --outfile=sevClusterPlot-eps-convert
+ed-to.pdf sevClusterPlot.eps>
+(epstopdf)             \includegraphics on input line 476.
+Package epstopdf Info: Output file is already uptodate.
+<sevClusterPlot-eps-converted-to.pdf, id=73, 590.205pt x 364.36125pt>
+File: sevClusterPlot-eps-converted-to.pdf Graphic file (type pdf)
+<use sevClusterPlot-eps-converted-to.pdf>
+Package pdftex.def Info: sevClusterPlot-eps-converted-to.pdf  used on input lin
+e 476.
+(pdftex.def)             Requested size: 398.38919pt x 245.94434pt.
+ [15 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
+converted-to.pdf>]
+
+LaTeX Warning: Text page 16 contains only floats.
+
+[16 <./sevClusterPlot-eps-converted-to.pdf>] [17]
+Package epstopdf Info: Source file: <claimNb_eps_freq.eps>
+(epstopdf)                    date: 2018-12-10 08:27:47
+(epstopdf)                    size: 15556697 bytes
+(epstopdf)             Output file: <claimNb_eps_freq-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-10 08:31:21
+(epstopdf)                    size: 11985136 bytes
+(epstopdf)             Command: <repstopdf --outfile=claimNb_eps_freq-eps-conve
+rted-to.pdf claimNb_eps_freq.eps>
+(epstopdf)             \includegraphics on input line 542.
+Package epstopdf Info: Output file is already uptodate.
+<claimNb_eps_freq-eps-converted-to.pdf, id=108, 762.85pt x 356.33125pt>
+File: claimNb_eps_freq-eps-converted-to.pdf Graphic file (type pdf)
+<use claimNb_eps_freq-eps-converted-to.pdf>
+Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf  used on input l
+ine 542.
+(pdftex.def)             Requested size: 404.30858pt x 188.85466pt.
+ [18] [19 <./claimNb_eps_freq-eps-converted-to.pdf>] [20]
+Overfull \hbox (15.19359pt too wide) in paragraph at lines 605--630
+ [][] 
+ []
+
+[21] [22] [23] [24] [25] [26]
+Overfull \hbox (20.31328pt too wide) in paragraph at lines 783--785
+[]\OT1/ptm/b/n/10.95 Lemma A.1. []\OT1/ptm/m/it/10.95 Let the ran-dom vari-able
+ $\OML/cmm/b/it/10.95 X$ \OT1/ptm/m/it/10.95 have mul-ti-vari-ate nor-mal dis-t
+ri-bu-tion ie. $\OML/cmm/b/it/10.95 X \OMS/cmsy/m/n/10.95 ^^X []\OT1/cmr/m/n/10
+.95 (\OML/cmm/b/it/10.95 x\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 ^^V\OML/cmm
+/m/it/10.95 ; \OT1/cmr/bx/n/10.95 ^^F\OT1/cmr/m/n/10.95 )$\OT1/ptm/m/it/10.95 ,
+
+ []
+
+[27] [28] [29] [30] (./GLM_MixturesNP_2018.bbl [31] [32] [33])
+
+Package caption Warning: Unused \captionsetup[sub] on input line 35.
+See the caption package documentation for explanation.
+
+[34] (./GLM_MixturesNP_2018.aux) ) 
+Here is how much of TeX's memory you used:
+ 6792 strings out of 492649
+ 98361 string characters out of 6129622
+ 194698 words of memory out of 5000000
+ 10454 multiletter control sequences out of 15000+600000
+ 50779 words of font info for 121 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,21n,40p,1691b,565s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc
+/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cmextra/cmbsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cmextra/cmex8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+extra/cmmib6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361127 bytes).
+PDF statistics:
+ 267 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+
