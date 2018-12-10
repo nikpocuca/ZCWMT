@@ -1,5 +1,5 @@
 \UseRawInputEncoding
-\documentclass[11pt,letterpaper]{article}
+\documentclass[12pt,letterpaper]{article}
 \usepackage[margin=1.2in]{geometry}
 \usepackage{amsmath, amssymb}
 \usepackage{times}
@@ -81,7 +81,7 @@
 
 
 \begin{document}
-\title{Modeling  Frequency and Severity of Claims with the (Newly) Extended Generalized  Cluster-Weighted Models}
+\title{Modeling  Frequency and Severity of Claims with the Zero-Inflated Generalized  Cluster-Weighted Models}
 
 \author{Nikola Po\v cu\v ca,  Petar Jevti\' c, Tatjana Miljkovic, and Paul D. McNicholas}
 
@@ -91,7 +91,7 @@
 
 \begin{abstract}
 
-In this paper, for insurance purposes we propose two important extensions to the generalized cluster-weighted models (GCWM). First, we extend GCWM to allow for modeling non-Gaussian distribution of the continuous covariates as they are frequently found in insurance practice. Secondly, we introduce a zero-inflated extension of GCWM for modeling insurance claims data with excess zeros. Additionally, we give two expectation-optimization (EM) algorithms for parameter estimation in proposed extensions. Furthermore, an appropriate simulation study shows that both extended models perform well for different settings in contrast to the existing mixture-based approaches. Finally, a real data set based on French auto-mobile policies is used to illustrate the application of the proposed extensions.
+In this paper, we propose two important extensions to cluster-weighted models (CWMs). First, we extend CWMs to have generalized cluster-weighted models (GCWMs) by allowing modeling of non-Gaussian distribution of the continuous covariates, as they frequently occur in insurance practice. Secondly, we introduce a zero-inflated extension of GCWM (ZI-GCWM) for modeling insurance claims data with excess zeros coming from heterogenous sources. Additionally, we give two expectation-optimization (EM) algorithms for parameter estimation given the proposed models. An appropriate simulation study shows that, for various settings and in contrast to the existing mixture-based approaches, both extended models perform well. Finally, a real data set based on French auto-mobile policies is used to illustrate the application of the proposed extensions.
 
 \end{abstract}
 \textsc{Key Words:} GCWM, CWM, clustering, automobile claims.\\
@@ -113,87 +113,99 @@ This paper is organized as follows. The GCWM and GCWM approaches are discussed i
 
 Let $(\bm{X^{'}}, Y)^{'}$  be the pair of a vector of covariates  $\bm{X}$ and a response variable $Y$. Assume this pair is defined on some sample space $\Omega$ that takes values in an appropriate Euclidian subspace. Now, assume that there exists $G$ non-overlapping partitions of $\Omega$, denoted as $\Omega_1, \ldots, \Omega_G$.  \cite{Gershenfeld:1997} characterized CWMs as a finite mixture of GLMs; hence, the joint distribution $(\bm{X^{'}}, Y )^{'}$ has the form
  \begin{align}
- f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\vartheta}_j),
+ f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\theta}_j),
 \label{eq1}
 \end{align}
-where $\bm{\Phi}$ denotes the model parameters.
+where $\bm{\Phi}:=\{\bm{\vartheta}_j, \bm{\theta}_j\}$ denotes the model parameters.
 %
-The pair $q(y|\bm{x};\bm{\vartheta}_j)$ and $p(\bm{x};\bm{\vartheta}_j)$ are conditional and marginal distributions of $(\bm{X^{'}}, Y)^{'}$, respectively, while $\tau_j$ is the $j$th mixing proportion such that $\sum_{j=1}^{G}\tau_j=1$, $\tau_j>0$.
+The pair $q(y|\bm{x};\bm{\vartheta}_j)$ and $p(\bm{x};\bm{\theta}_j)$ are conditional and marginal distributions of $(\bm{X^{'}}, Y)^{'}$, respectively, while $\tau_j$ is the $j$th mixing proportion such that $\sum_{j=1}^{G}\tau_j=1$, $\tau_j>0$.
 \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} proposed a flexible family of mixture models for fitting the joint distribution of a random vector $(\bm{X^{'}}, Y)^{'}$ by splitting the covariates into continuous and discrete, i.e., $ \bm{X}=(\bm{V}',  \bm{W}')'$. The assumption of independence between continuous and discrete covariates allows us to multiply their corresponding marginal distributions. Thus, for this setting the model in \eqref{eq1} is reformulated as follows
 \begin{align}
  f(\bm{x}, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{x};\bm{\theta}_j)=\sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{v}; \bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})
 \label{eq2}
 \end{align}
-where $\bm{v}$ and $\bm{w}$ are the vectors of continuous and discrete covariates, respectively, $q(y|\bm{x};\bm{\vartheta}_j)$ is the conditional density of $Y|\bm{x}$ with parameter vector $\bm{\vartheta}_j$, $p(\bm{v};\bm{\theta}_j^{\star})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta}_j^{\star}$, and $p(\bm{w};\bm{\theta}_j^{\star\star})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta}_j^{\star\star}$. As before, $\bm{\Phi}$ denotes the model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
-Note that the conditional distribution $q(y|\bm{x};\bm{\vartheta}_j)$ is assumed to belong to an exponential family of distributions and as such can be modeled in the GLM framework. Here, the marginal distribution of continuous covariates is assumed to be Gaussian. Unfortunately, this last assumption is too strong for use in insurance related applications, specifically in rate-making. To relax it, we develop the GCWM, which allows for non-Gaussian covariates as discussed in the next section.
+where $\bm{v}$ and $\bm{w}$ are respectively the realized vectors of continuous and discrete covariates, $q(y|\bm{x};\bm{\vartheta}_j)$ is the conditional density of $Y|\bm{x}$ with parameter vector $\bm{\vartheta}_j$, $p(\bm{v};\bm{\theta}_j^{\star})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta}_j^{\star}$, and $p(\bm{w};\bm{\theta}_j^{\star\star})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta}_j^{\star\star}$. As before, $\bm{\Phi}$ denotes the set containing all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
+The conditional distribution $q(y|\bm{x};\bm{\vartheta}_j)$ is assumed to belong to an exponential family of distributions and as such can be modeled in the GLM framework. The marginal distribution of continuous covariates is assumed to be Gaussian. 
+
+Unfortunately, this last assumption is too strong for use in insurance related applications, specifically in rate-making or reserving. To relax it, we develop the GCWM, which allows for non-Gaussian covariates as discussed in the next section.
 
 \subsection{Generalized cluster-weighted model (GCWM) }
-We proceed to extend \eqref{eq2} by splitting the continuous covariates $\bm{V}$ via $\bm{V}=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ contains the non-Gaussian covariates and $\bm{T}$ contains the Gaussian covariates. Thus \eqref{eq2} becomes
+We proceed to extend \eqref{eq2} by splitting the continuous covariates $\bm{V}$ via $\bm{V}=(\bm U^{'}, \bm T^{'})^{'}$, where $\bm{U}$ contains the non-Gaussian covariates and $\bm{T}$ contains the Gaussian covariates. We do this keep the possibility of having both Gaussian and non-Gaussian covariates. Then, with the final relabelling of parameter vectors, \eqref{eq2} becomes
 \begin{align}
  f(\bm x, y; \bm{\Phi})= \sum_{j=1}^{G} \tau_j q(y|\bm{x};\bm{\vartheta}_j)p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}),
 \label{eq3}
 \end{align}
-which we refer to as the GCWM. Here, $p(\bm{t};\bm{\theta}_j^{\star})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta}^{\star}$, and $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ is the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta}_j^{\star\star\star} $.
+which we refer to as the GCWM. Here, $p(\bm{t};\bm{\theta}_j^{\star})$ denotes the marginal density of Gaussian covariates, with parameter vector $\bm{\theta}^{\star}_j$, and $p(\bm{u};\bm{\theta}_j^{\star\star\star})$ denotes the marginal density of the non-Gaussian covariates with parameter vector $ \bm{ \theta}_j^{\star\star\star} $.
 
 
-Because of its relevance to the actuarial application in this paper, we focus on the multivariate log-normal distribution  for non-Gaussian covariates --- this, however, does not reduce the generality of our general framework. With the log-normal assumption for $p(\bm{u};\bm{\theta}_j^{\star\star\star})$, we have that $\bm{u}$ is defined on $\mathbb{R}^p_+$ with parameter vector $\bm{\theta}_j^{\star\star\star}= (\bm{\mu}_j^{\star\star\star} ,\bm{\Sigma}_j^{\star\star\star})$ and probability density function
+Due to its relevance for the applications in the actuarial domain, in this work, we make the particular choice of the multivariate log-normal distribution  for non-Gaussian covariates --- this, however, does not reduce the generality of our developed framework. With the log-normal assumption for $p(\bm{u};\bm{\theta}_j^{\star\star\star})$, we have that $\bm{u}$ is defined on $\mathbb{R}^p_+$ with parameter vector $\bm{\theta}_j^{\star\star\star}= (\bm{\mu}_j^{\star\star\star} ,\bm{\Sigma}_j^{\star\star\star})$ and probability density function
 \begin{equation}\label{eqn:logn} 
 p \left(  \bm{u}; \bm{\theta}_j^{\star\star\star} \right) = \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_j^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_j^{\star\star\star})^{'}\bm{\Sigma}_j^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_j^{\star\star\star})\right].
-\end{equation} The derivation of \eqref{eqn:logn} can be found in the Appendix \ref{changeVarUni}.
+\end{equation} The derivation of \eqref{eqn:logn} can be found in the Appendix \ref{changeVarUni}, and the application of the procedure therein can be followed for other types of non-Gaussian covariates, thus generalizing the CWM model.
 
 %Nik: is this a density? What range of values of x? What values can mu and sigma take?
 % PM: Is this more clear?
 
-\subsection{Zero-inflated Poisson Model}%Nik: not sure what this means? Specifically, what is the role of the first "-"
+\subsection{Zero-inflated Generalized cluster-weighted model (ZI-GCWM)}%Nik: not sure what this means? Specifically, what is the role of the first "-"
 
-In the zero-inflated Poisson (ZIP) model \citep[see][]{Lambert}, we can split the conditional density of the response variable $Y$, i.e., $p(y|\bm{x},\bm{\vartheta}_j)$, into zero and non-zero densities. The conditional probability mass associated with the event $y=0$ is characterized by $q(y = 0|\bm{x},\bm{\vartheta}_{j})$. For situations when $y > 0$, the response variable $Y$ is conditionally distributed with density $q(y > 0|\bm{x}, \bm{\vartheta}_{j} )$. Given the conditional density for the ZIP model, \eqref{eq3} can be re-written as
+Using the Zero-inflated Poisson model (ZIP) as a special and most widely used case of Zero-inflated models we further extend the Generalized cluster-weighted model class to Zero Inflated Generalized cluster-weighted model (ZI-GCWM). This choice by no means reduces the generality of our approach. 
+
+We begin by noting that the single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable  \citep[see][]{Lambert}. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros \citep[see][]{Bermudez+Karlis:2012}. In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. 
+
+Thus, seen in the context of GCWM, considering the zero-inflated Poisson (ZIP) model, we can split the conditional density of the response variable $Y$, i.e., $p(y|\bm{x},\bm{\vartheta}_j)$, into zero and non-zero densities for each group $j$. The conditional probability mass associated with the event $\{y=0\}$ is characterized by $q(y = 0|\bm{x};\bm{\vartheta}_{j})$. For the event $\{y > 0\}$, the response variable $Y$ is conditionally distributed with density $q(y > 0|\bm{x}; \bm{\vartheta}_{j} )$. All this considered, given the conditional density for the ZIP model, \eqref{eq3} can be re-written as
  \begin{align}
- f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(y = 0|\bm{x};\bm{\vartheta}_{j} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{j}  ) \right]   p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
+ f(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j \left[ q(y = 0|\bm{x};\bm{\vartheta}_{j} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{j}  ) \right]   p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star})
 \end{align}
+which characterizes the zero Inflated Generalized cluster-weighted model (ZI-GCWM).
 
-Define $\xTilda = [\bm{1},\bm{x}]$, which contains the covariates together with a placeholder for the intercept in the GLM. Denote the Poisson conditional density  as $ q^P(y|\bm{x}; \lambda_j) $, where $y \in \{0,1,\dots\}$, and let $\bm{\beta}_j$ be a row coefficient vector.
-The link function will be modelled with log-link for the GLM such that
- \begin{align*}
+Specifically, have the Poisson conditional density  denoted as $ q^P(y|\bm{x}; \lambda_j) $ where $y \in \{0,1,\dots\}$. Additionally, have vector $\xTilda := [\bm{1},\bm{x}]$ to contain the covariates $\bm{x}$ together with a placeholder for the intercept in the GLM and let $\bm{\beta}_j$ be a row coefficient vector.
+The link function will be chosen to be log-link such that
+ \begin{align}\label{g1link}
 \lambda_j = e^{\xTilda \bm{\beta}_j'} && \text{and} & & %\beta_{0j} + \beta_j^{'}x
 q^P(y|\bm{ x} ; \lambda_{j} ) = e^{-\lambda_j} \frac{{\lambda_j}^y}{y!}.
- \end{align*}
-Now, we use a Bernoulli model for the conditional density. We denote the density as $ q^{B}(y|\bm{x}; \bm{\bar{\beta}}_j) $, where $\bar{\bm{\beta}_j}$ is a row coefficient vector.  Here, the GLM will be modelled with the associated logit link function so that
- \begin{align*}
+ \end{align}
+Also, have a Bernoulli model for the conditional density denoted as $ q^{B}(y|\bm{x}; \bm{\bar{\beta}}_j) $, where $\bar{\bm{\beta}_j}$ is a row coefficient vector.  Here, the link function is chosen to be logit link function so that
+ \begin{align}\label{g2link}
  \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda  \bm{\bar{\beta}}_j'}}  && \text{and} && 
  q^B(y | \bm{x} ; {\psi}_j) = \begin{cases}
       \quad \psi_j, & y = 0,\\
      1 -  \psi_j,  & y > 0.
    \end{cases}
- \end{align*}
- Now, given a combination of two preceding models, we introduce the ZIP model in which zero counts come from two random variables. One is the Bernoulli random variable, which generates structural zeros, and the other is the Poisson random variable. The coefficients $\bm{\vartheta}_{j}=\{ \bm{\beta}_{j},  \bm{\bar{\beta}}_j \}$ correspond to the two above introduced conditional densities where the coefficients are estimated using a GLM as in \cite{Lambert}. The components of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{j}  )$ are %Nik: something missing here?, PM: Fixed.
+ \end{align}
+By creating composition of two preceding models, we have the ZIP model in which zero counts come from two random variables. One is the Bernoulli random variable, which generates structural zeros, and the other is the Poisson random variable. The coefficients $\bm{\vartheta}_{j}=\{ \bm{\beta}_{j},  \bm{\bar{\beta}}_j \}$ correspond to the two above introduced conditional densities where the coefficients can be estimated as in \cite{Lambert}. The $j$th component of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{j}  )$ is %Nik: something missing here?, PM: Fixed.
  \begin{align*}
  q( y = 0| \bm{x} ; \bm{ \vartheta}_{j}  ) = \psi_j + (1 - \psi_j)e^{-\lambda_j}  & &  \text{and}  & &
 q(y > 0 |  \bm{x} ; \bm{ \vartheta}_{j}  ) = (1 - \psi_j)e^{-\lambda_j} \frac{\left(\lambda_j \right)^y  }{y!}.
  \end{align*}
-Also, the link functions we consider are log-link for the Poisson and logit link for the Bernoulli model so that
- \begin{align}
- \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda \bm{\bar{\beta}}_j'}}  & & \text{and} & &
-\lambda_j  = e^{\xTilda \bm{\beta}_j'}. \label{bern::ref}
- \end{align}
-Noe that, here, the parameter $\psi_j$ denotes the mean of the Bernoulli distribution of the $j$th component from which extra zeros emanate, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. This allows for a more nuanced approach to handling the inflation of zeros for automobile insurance  \citep[see][]{Bermudez+Karlis:2012}.
+%Also, the link functions we consider are log-link for the Poisson and logit link for the Bernoulli model so that
+% \begin{align}
+% \psi_j =  \frac{e^{\xTilda \bm{\bar{\beta}}_j'}}{1+ e^{\xTilda \bm{\bar{\beta}}_j'}}  & & \text{and} & &
+%\lambda_j  = e^{\xTilda \bm{\beta}_j'}. \label{bern::ref}
+% \end{align}
+The parameter $\psi_j$ denotes the mean of the Bernoulli distribution of the $j$th component from which extra zeros emanate, and the parameter $ \lambda_j $ characterizes the $j$th Poisson distribution. 
 
-\subsection{Bernoulli-Poisson Sample Space Partitioning}
+In our numerical example related to automobile insurance, it will be shown that this allows for a more nuanced approach to handling the inflation of zeros coming from heterogeneous sources. % \citep[see][]{Bermudez+Karlis:2012}.  \textcolor{red}{Why this reference?}
 
-The single component ZIP model assumes that the inflated zeros emanate from both a Bernoulli and Poisson random variables while the non-zeros are assumed to come exclusively from the Poisson random variable. However, recent research  extends the single component ZIP models to mixture models for heterogeneous count data with excess zeros \citep[see][]{Bermudez+Karlis:2012}. In mixtures of ZIPs, zeros are assumed to come from multiple different Binomial and Poisson random variables. Difficulties are apparent  during the maximization step of the EM algorithm when means of covariates are very close together \cite[see][]{LimHwa}. However, misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}. 
 
-	In this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. In the first EM algorithm we estimate parameters pertaining to the GCWM under the assumption of a Poisson model and, separately, we carry out the same process under the assumption of a Bernoulli model. Using the obtained parameter estimates from the two separate applications of the EM algorithm, we set the initialization parameters for the second EM algorithm pertaining to parameter estimation of the ZI-GCWM. The work of \cite{Lambert} specifies that the MLE estimates for the separate Poisson and Bernoulli models provide an excellent initial guess, allowing EM to converge quickly for ZIPs. The Bernoulli-Poisson sample space partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. 
+\section{Parameter Estimation}\label{sec:estmeth}
+
+The common approach for estimating parameters in finite mixture models is based on the EM algorithm \citep[see][for examples]{mcnicholas16a}.
+The estimation of the developed Bernoulli-Poisson partitioning method is split into two EM algorithms. The first EM algorithm partitions the sample space, while the second EM algorithm optimizes the zero inflated portion.
+ %Nik: this is incorrect. The EM algorithm does not estimate the optimal number of components.  PM: Removed.
+
+\subsection{Note on Bernoulli-Poisson Sample Space Partitioning}
+
+Unfortunately, in the context of mixture models for heterogeneous count data with excess zeros the difficulties are apparent  during the maximization step of the EM algorithm when means of covariates are very close together \cite[see][]{LimHwa}. The good news is that the misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}. 
+
+However, in this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. In the first EM algorithm we estimate parameters pertaining to the GCWM under the assumption of a Poisson model and, separately, we carry out the same process under the assumption of a Bernoulli model. Using the obtained parameter estimates from the two separate applications of the EM algorithm, we set the initialization parameters for the second EM algorithm pertaining to parameter estimation of the ZI-GCWM. The work of \cite{Lambert} specifies that the MLE estimates for the separate Poisson and Bernoulli models provide an excellent initial guess, allowing EM to converge quickly for ZIPs. The Bernoulli-Poisson sample space partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. 
+
+\textcolor{blue}{Potential cut start point! ---------------}
+
+ \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]}  \textcolor{blue}{[Petar: It aims to clarify estimation approach however if it is not pedagogically written then it should be either further improved or removed. I am increasingly not sure about its usefulness. It looks as an confusion and attack surface for reviewers.]} 
+
+	To make the above statements more mathematically precise recall, $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$.   By assumption, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes it ie. $ \Omega = \bigcup_{k=1}^G \Omega_k $.	For each set $\Omega_k$, a Poisson or a zero-inflated Poisson model exists. In the case of having a Poisson model for group $k$, it's sample space denoted as $\Omega^P_k$, coincides with the sample space $\Omega_k$ such that  $\Omega_k = \Omega^P_k$.  However, for the case of a zero-inflated Poisson model for group $k$ is a bit more nuanced. Let $\Omega_k^{B}$ be the sample space of the Bernoulli  model on $\Omega_k$ and decompose $\Omega_k^{B}$ into the space of excess zeros $\Omega_k^{BZ}$, and the space of non-excess zeros $\Omega^{NZ}$ such that $\Omega_k^B = \Omega_k^{BZ} \cup \Omega_k^{NZ} $.   By definition non-excess zeros must emanate from a Poisson model thus $\Omega_k^{NZ} $ will coincide with the sample space of $\Omega^P_k$ such that $ \Omega_k^{NZ} =  \Omega^P_k$. Thus the  $\Omega_k = \Omega^{BZ}_k \cup \Omega^{P}_k $, where $\Omega^{BZ}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. Thus this construction allows both Poisson models, and zero-inflated Poisson models to exist on the same sample space $\Omega_k$.   
 	
-	Recall, $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$.   By assumption, this sample space is partitioned into $G$ non-overlapping sets such that their union constitutes it ie. $ \Omega = \bigcup_{k=1}^G \Omega_k $. \textcolor{red}{[I do not think this has been discussed. I am not sure it is helpful?]}  \textcolor{red}{[In what precise sense does a set have a shape?]} 
-	
-	
-For each set $\Omega_k$, a Poisson or a zero-inflated Poisson model exists. In the case of a Poisson model for group $k$, it's sample space $\Omega^P_k$, coincides with the sample space $\Omega_k$ such that  $\Omega_k = \Omega^P_k$.  
-For the case of a zero-inflated Poisson model for group $k$, let $\Omega_k^{B}$ be the sample space of the Bernoulli  model on $\Omega_k$. We decompose $\Omega_k^{B}$ into the space of excess zeros $\Omega_k^{BZ}$, and the space of non-excess zeros $\Omega^{NZ}$ as $\Omega_k^B = \Omega_k^{BZ} \cup \Omega_k^{NZ} $.   By definition non-excess zeros must emanate from a Poisson model thus $\Omega_k^{NZ} $ will coincide with the sample space of $\Omega^P_k$ such that $ \Omega_k^{NZ} =  \Omega^P_k$. Thus the  $\Omega_k = \Omega^{BZ}_k \cup \Omega^{P}_k $, where $\Omega^{BZ}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. Thus this construction allows both Poisson models, and zero-inflated Poisson models to exist on the same sample space $\Omega$.   
-
-
-
-
-
-	 \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]} Specifically, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
+	 More generally, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
 \Omega^B =  \bigcup_{l =1}^{M \leq G}  \Omega_l^B & & \text{and} &  &
 f^B(\bm x, y; \Phi)= \sum_{l=1}^{M \leq G} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
 \end{align*}
@@ -204,24 +216,24 @@ Similarly, if we introduce a Poisson model in a generalized form, the sample spa
 f^P(\bm x, y; \Phi)= \sum_{j=1}^{G} \tau_j q^P(y|\bm{x};\bm{\beta}_{j}) p(\bm{t};\bm{\theta}_j^{\star})p(\bm{w};\bm{\theta}_j^{\star\star})p(\bm{u};\bm{\theta}_j^{\star\star\star}).
 \end{align*}
 Where the sample space $\Omega^P$ is partitioned into  $G$ non-overlapping sets.
- Now, we can see a partitioning of a sample space $\Omega$ as
+ Now, assuming that in principle for some $k$ the $\Omega_k^B$ can be an empty set, we can see a partitioning of a sample space $\Omega$ as
  \begin{align*}
-  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{M\leq G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup^G_{k = 1} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \in \{ 1, ..., G  \} } \Omega_k^Z,
+  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{G} \Omega^B_l \right) \bigcup \left( \bigcup_{j=1}^G \Omega^P_j  \right) = \bigcup^G_{k = 1} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \in \{ 1, ..., G  \} } \Omega_k^{ZI}.
  \end{align*}
-there, the joint probability density function $f^Z$ becomes
- $$f^Z(\bm{x},y,\Phi) = \sum_{k=1}^{G} \tau_k q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  Therefore the new conditional density for $\Omega^Z_k$ is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
+ \textcolor{blue}{Potential cut end point! ---------------}
+ 
+Here, the joint probability density function $f^{ZI}$ becomes
+ $$f^{ZI}(\bm{x},y,\Phi) = \sum_{k=1}^{G} \tau_k q^{ZI}_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  
+ The new conditional density is now result of a model in which each component is captured by the conditional probability density function that is a mixture of particular Bernoulli and particular Poisson densities
 \begin{align}
-q^Z_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
+q^{ZI}_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k) & := q^B(y|\bm{x}; \bm{\bar{\beta}}_k) +(1-  q^B(y|\bm{x}; \bm{\bar{\beta}}_k) ) q^P(y|\bm{x};\bm{\beta}_k) \nonumber \\
 & = q(y = 0|\bm{x};\bm{\vartheta}_{k} ) +  q(y > 0|\bm{x} ; \bm{\vartheta}_{k}), \quad k \in \{ 1, ..., G  \}.
 \label{ziGCWM}
 \end{align}
+
 The initialization parameters for the second EM algorithm are provided by Bernoulli and Poisson GCWMs from \eqref{ziGCWM} giving parameter pairs ($ \psi_k,\lambda_k  $). The second EM procedure then optimizes the zero inflated GCWM. The ZI-GCWM is compared against the standard Poisson GCWM using a likelihood ratio test which is discussed in Section~\ref{subsec:: compareZero}.
 
-\section{Parameter Estimation}\label{sec:estmeth}
 
-The common approach for estimating parameters in finite mixture models is based on the EM algorithm \citep[see][for examples]{mcnicholas16a}.
-The estimation of the developed Bernoulli-Poisson partitioning method is split into two EM algorithms. The first EM algorithm partitions the sample space, while the second EM algorithm optimizes the zero inflated portion.
- %Nik: this is incorrect. The EM algorithm does not estimate the optimal number of components.  PM: Removed.
 
 \subsection{EM Algorithm for Partitioning of Sample Space}
 
@@ -233,9 +245,10 @@ The initial values of the parameter estimates can be generated from a variety of
 The convergence criterion of the EM algorithm is based on the Aitken acceleration. It is used to estimate the asymptotic maximum of the log-likelihood at each iteration of the EM algorithm when the relative increase in the log-likelihood function is no bigger than a small pre-specified tolerance value or the number of iterations reach a limit. %Nik: that is a possible stopping rule but is not a convergence criterion per se.
 To find an optimal number of components, maximum likelihood estimation is obtained over a range of $G$ groups, and the best model is selected based on the Bayesian information criterion (BIC).   %Nik: which one? Explain. %PM: BIC was used.
 
-In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM  is based on the assumption that $q(y|\bm{x},\bm{\vartheta}_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function defines the relationship between the linear predictor and the expected value of the distribution function as $g(\bm{\mu}_j)= \xTilda \bm{\beta}^{'}$, where $g(\bm{\mu}_j)$ is the link function. We are interested in the estimation of the vector $\bm {\beta}_j$, thus the distribution of $Y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta}_j, \lambda_j)$, where $\lambda_j$ signifies an additional parameter to account for when a distribution belongs to a two-parameter exponential family.
+In this subsection, we explain the parameter estimation in line with the GCWM methodology proposed by \cite{Ingrassia+Punzo+Vittadini+Minotti:2015}. The proposed GCWM  is based on the assumption that $q(y|\bm{x},\bm{\vartheta}_j)$ belongs to the exponential family of distributions that are strictly related to GLMs. The link function in each group $j$ defines the relationship between the linear predictor and the expected value of the distribution function.   %$\bm{\mu}_j$ as $g(\bm{\mu}_j)= \xTilda \bm{\beta}^{'}$. 
+Here we are interested in the estimation of the vector $\bm {\beta}_j$, thus the distribution of $Y|\bm{x}$ is denoted by $q(y|\bm{x}; \bm{\beta}_j, \nu_j)$, where $\nu_j$ signifies an additional parameter to account for when a distribution belongs to a two-parameter exponential family.\footnote{In the work of \cite{Ingrassia+Punzo+Vittadini+Minotti:2015} this parameter is referred to as $\lambda_j$.} 
 
-The marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density  $p(\bm{t}; \bm \theta_j^{\star}:=( \bm {\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) )$ is modeled as a  Gaussian distribution with mean $\bm {\mu}_j^{\star}$ and covariance matrix $\bm{\Sigma}_j^{\star}$. 
+Recall that the marginal distribution $p(\bm{x}; \bm \theta_j)$ has the following components: $p(\bm{t}; \bm \theta_j^{\star})$, $p(\bm{w}; \bm \theta_j^{\star\star})$, and $p(\bm{u};\bm \theta_{j}^{\star\star\star})$. The first marginal density  $p(\bm{t}; \bm \theta_j^{\star}:=( \bm {\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) )$ is modeled as a  Gaussian distribution with mean $\bm {\mu}_j^{\star}$ and covariance matrix $\bm{\Sigma}_j^{\star}$. 
  The marginal density of discrete covaraites $p(\bm{w};\bm{\theta}_{j}^{\star\star})$ is assumed to have for each finite discrete covariate in $\bm{W}$, a representative binary vector $\bm{w}^r=(w^{r1},\ldots,w^{rc_r})^{'}$, where $w^{rs}=1$ if $w_r = s\in\{1, \ldots, c_r\}$, %Nik: this wording seems very awkward. Does "has the value" just mean "="? If so, why not write "="?
 and $w^{rs}=0$ otherwise.
 
@@ -251,31 +264,30 @@ Let $(\bm x_1, y_1),\ldots, (\bm x_n, y_n)$ be a sample of $n$ independent obser
 
  Given the sample, the complete-data likelihood function $L_c(\bm\Phi)$ is given by
 \begin{align}
-L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i; \bm \beta_j, \lambda_{j})p(t_i; \bm\mu_j^{\star}, \bm\Sigma_j^{\star}) p(w_i; \gamma_j)p(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}) \right]^{z_{ij}},
+L_c(\bm\Phi)=\prod_{i=1}^{n}\prod_{j=1}^{G}\left[{\tau_j}q(y_i|x_i; \bm \beta_j, \nu_{j})p(t_i; \bm\mu_j^{\star}, \bm\Sigma_j^{\star}) p(w_i; \gamma_j)p(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}) \right]^{z_{ij}},
 \label{eq27}
 \end{align}
 
 %
 Taking the logarithm of \eqref{eq27}, the complete-data log-likelihood is 
-\begin{equation}\begin{split}
-\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[\log(\tau_{j}) + \log{q}(y_i|x_i; \bm{\beta}_j,\lambda_j)+& \\ \log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) & + \log p(w_i; \bm{\gamma}_j) +\log {p}(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}) \big].
-\label{CompleteLiklihood}
-\end{split}\end{equation}
+\begin{align}
+\ell_c(\bm\Phi)= \sum_{i=1}^{n}\sum_{j=1}^{G}{z_{ij}}\big[&\log(\tau_{j}) + \log{q}(y_i|x_i; \bm{\beta}_j,\nu_j)\nonumber\\&+  \log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j^{\star}) + \log p(w_i; \bm{\gamma}_j) +\log {p}(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}) \big].\label{CompleteLiklihood}
+\end{align}
 
 %\subsubsection{E-Step - Partitioning}
 On the $(s+1)$th iteration, the E-step requires calculation of the conditional expectation of $\ell_c(\bm\Phi)$. Because $\ell_c(\bm\Phi)$ is linear with respect to  $z_{ij}$, we simplify the calculation to the current expectation of $Z_{ij}$, where $Z_{ij}$ is the random variable corresponding to the realization $z_{ij}$. Given the previous parameters $\bm\Phi^{(s)}$ and the observed data,  we calculate the current conditional expectation of $Z_{ij}$ as
 \begin{equation*}\begin{split}
     {\pi_{ij}}^{(s)} &= {E}[Z_{ij} |(\bm{x_i}, y_i); \bm{\Phi}^{(s)}]\\
-     &= \frac{{\tau_j}^{(s)}q(y_i|x_i; \bm \beta_j^{(s)}, \lambda^{(s)}_{j})p(t_i; \bm\mu_j^{{\star}(s)}, \bm\Sigma_j^{{\star}(s)}) p(w_i; \bm \gamma_j^{(s)})p(u_i; \bm{\mu}_j^{\star\star\star (s)},\bm{\Sigma}_j^{\star\star\star (s)})}{f(\bm{x}_i, y_i; \bm{\Phi}^{(s)})
+     &= \frac{{\tau_j}^{(s)}q(y_i|x_i; \bm \beta_j^{(s)}, \nu^{(s)}_{j})p(t_i; \bm\mu_j^{{\star}(s)}, \bm\Sigma_j^{{\star}(s)}) p(w_i; \bm \gamma_j^{(s)})p(u_i; \bm{\mu}_j^{\star\star\star (s)},\bm{\Sigma}_j^{\star\star\star (s)})}{f(\bm{x}_i, y_i; \bm{\Phi}^{(s)})
 \label{eq29}                       }.
 \end{split}\end{equation*}
 %
 %\subsubsection{M-Step - Partitioning}
 On the M-step of the $(s+1)$th iteration, the conditional expectation of $\ell_c(\bm\Phi)$ denoted as a function $Q(\Phi|\Phi^{(s)})$ is maximized with respect to $\Phi $ where  \textcolor{red}{[What does the previous sentence mean? It seems to me that $Q(\Phi|\Phi^{(s)})$ is simply what is calculated on the E-step; however, what is written here suggests something quite different.]} the values of $z_{ij}$ in \eqref{CompleteLiklihood} are replaced by their current expectations $\pi_{ij}$ yielding 
 \begin{equation}\begin{split}
-Q(\bm\Phi|\bm\Phi^{(s)}) &= \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}} \big[\log(\tau_{j}) + \log{q}(y_i|x_i;\bm{\beta}_j,\lambda_j)+ \log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j^{\star})  + \log p(w_i; \bm{\gamma}_j)\\ 
+Q(\bm\Phi|\bm\Phi^{(s)}) &= \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}} \big[\log(\tau_{j}) + \log{q}(y_i|x_i;\bm{\beta}_j,\nu_j)+ \log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j^{\star})  + \log p(w_i; \bm{\gamma}_j)\\ 
 &\qquad\qquad\qquad\qquad+\log {p}(u_i; \bm{\mu}_j^{\star\star\star },\bm{\Sigma}_j^{\star\star\star })\big] \\
-&=\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)} \log(\tau_{j}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log{q}(y_i|x_i;\bm{\beta}_j},\lambda_j) +\sum_{i=1}^{n}\sum_{j=1}^{G} {\pi_{ij}^{(s)}}\log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j) \\
+&=\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)} \log(\tau_{j}) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log{q}(y_i|x_i;\bm{\beta}_j},\nu_j) +\sum_{i=1}^{n}\sum_{j=1}^{G} {\pi_{ij}^{(s)}}\log p(t_i; \bm{\mu}_j^{\star}, \bm{\Sigma}_j) \\
 &\qquad\qquad\qquad\qquad+\sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log p(w_i; \bm{\gamma}_j) + \sum_{i=1}^{n}\sum_{j=1}^{G}{\pi_{ij}^{(s)}}\log {p}(u_i; \bm{\mu}_j^{\star\star\star},\bm{\Sigma}_j^{\star\star\star}).\label{Qfunction}
 \end{split}\end{equation}
 
@@ -295,7 +307,7 @@ Parameter updates for the log-normal distribution are as follows
 \end{split}\end{equation*}
 The updates for $\bm{\beta}_j$ are computed by maximizing the $G$ conditional density terms of the form  \textcolor{red}{[Note sure what the previous sen.\ means?]}
 \begin{align}
-\sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i;\bm \beta_j,\lambda_j).
+\sum_{i=1}^{n}\pi^{(s)}_{ij} \log{q}(y_i|\bm x_i;\bm \beta_j,\nu_j).
 \label{eq30}
 \end{align}
 The numerical optimization for each term is discussed in \cite{Wedel+DeSabro:1995} and \cite{Wedel:2002}.
@@ -303,7 +315,7 @@ For additional implementation information, the reader is referred to the manual 
 
 For modelling severity, each observation $y_i$ must be weighted according to the number of claims the client has incurred \citep[see pages 118-119][]{frees2015}. Thus \eqref{eq30} is re-written as 
 \begin{align}
-\sum_{i=1}^{n}\pi^{(s)}_{ij} \mathcal{\omega}_i \log{q}(y_i|\bm x_i;\bm \beta_j,\lambda_j).
+\sum_{i=1}^{n}\pi^{(s)}_{ij} \mathcal{\omega}_i \log{q}(y_i|\bm x_i;\bm \beta_j,\nu_j).
 \label{eqFrees}
 \end{align}
 
@@ -312,24 +324,26 @@ Here, $\mathcal{\omega}_i$ is the number of claims the client occurs over the ex
 %For insurance applications, the GCWM model introduced herein can be used for modeling frequency of claims assuming that $Y$ belongs to ZIP distribution. When modelling  non-gaussian covariates $\bm{X}$ can be assumed accommodate Gamma or Log-normal distributions. \textcolor{red}{[What does the previous sentence mean?]} All of these applications are based on CWM as the underlying approach. \textcolor{red}{[Does the previous sentence mean, specifically, that the {\tt flexCWM} package is used? If so, we should just state that.]} For additional implementation information, the reader is referred to the manual of the {\tt flexCWM} package \citep{Ingrassia+Punzo+Vittadini+Minotti:2015} for ${\sf R}$ \citep{R18}.
 
 \subsection{EM Algorithm for Zero-inflated Model} 
-For a zero-inflated model, the EM-algorithm follows a similar procedure as above to optimize the conditional density given in \eqref{ziGCWM}.  Specifically, the log-likelihood function of $\psi_k$ and $\lambda_k$ is expressed as
+For a zero-inflated model, the EM-algorithm follows a similar procedure as above to optimize the conditional density given in \eqref{ziGCWM}.  Specifically, the log-likelihood function of $\psi_k$ and $\lambda_k$ is 
 \begin{equation*}\begin{split}
-l(\psi_k,\lambda_k|y,\bm{x}) &= \sum_{y_i = 0} \log \big[ e^{ \bm{ \xTilda}_i \bm{\bar{\beta}}_k^{'}  } + \exp{( - e^ { -\bm{\xTilda}_i \bm{\beta}_k^{'} })} \big]  \\ & +  \sum_{y_i > 0 } \left( y_i \xTilda_i \bm{\beta}_k^{'} + e^{ \xTilda_i \bm{\beta}_k^{'} } \right)  - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bm{\bar{\beta}}_k^{'} } \right) - \sum_{y_i > 0} \log(y_i ! ),
+l(\psi_k,\lambda_k| \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n) &= \sum_{\{y_i = 0\}} \log \big[ e^{ \bm{ \xTilda}_i \bm{\bar{\beta}}_k^{'}  } + \exp{( - e^ { -\bm{\xTilda}_i \bm{\beta}_k^{'} })} \big]  \\ & +  \sum_{\{y_i > 0\}} \left( y_i \xTilda_i \bm{\beta}_k^{'} + e^{ \xTilda_i \bm{\beta}_k^{'} } \right)  - \sum_{i=1}^n  \log \left(1 + e^ {\xTilda_i \bm{\bar{\beta}}_k^{'} } \right) - \sum_{\{y_i > 0\}} \log(y_i ! ).
 \end{split}\end{equation*}
-where $y_i$, and $\xTilda_i$ refers to the $i$th row of the response variable $y$ and covariate vector $\xTilda$.  Due to the first term, the log-likelihood function is rather complicated to maximize, however \cite{Lambert} gives a meaningful solution.  Consider a random variable $\zZ_{ik}$ indicating with ${\zz_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition $k$, and $\zz_{ik} = 0$ when $y_i$ is generated from the Poisson random variable of the same partition.  Then, the complete-data log-likelihood is 
-
-\begin{equation*}\begin{split}
-l_c(\psi_k,\lambda_k|y,\bm{x},{\bm{\zz}_k}) &= \sum_{i=1}^n \left( \zz_{ik}\xTilda_i \bar{\bm{\beta}_k }^{'} - \log\left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}}\right) \right)  \\ \qquad\qquad\qquad\qquad\qquad\qquad& + \sum_{i=1}^n (1-\zz_{ik}) (y_i \xTilda_i \bm{\beta}_k^{'}  - e^{\xTilda_i \bm{\beta}_k^{'}})+ \sum_{i=1}^n (1-\zz_{ik})\log(y_i!)\\
-&= \quad l_c(\psi_k;y,\bm{x},{{\bm{\zz}_k}}) + l_c(\lambda_k; y,\bm{x},{{\bm{\zz}_k}}) + \sum_{i=1}^n (1- \zz_{ik})\log(y_i!), %\label{CompleteZLog}
-\end{split}\end{equation*}
+%where $y_i$, and $\xTilda_i$ respectively refer to the $i$th response variable $y$ and covariate vector $\xTilda$. 
+Due to the first term, the log-likelihood function is difficult to maximize, however \cite{Lambert} gives a meaningful solution.  Consider a random variable $\zZ_{ik}$ indicating with ${\zz_{ik}} = 1$ when $y_i$ is generated from the Bernoulli random variable of partition $k$, and $\zz_{ik} = 0$ when $y_i$ is generated from the Poisson random variable of the same partition.  Then, the complete-data log-likelihood is 
+\begin{align*}
+l_c(\psi_k,\lambda_k| \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,{\bm{\zz}_k}) &= \sum_{i=1}^n \left( \zz_{ik}\xTilda_i \bar{\bm{\beta}_k }^{'} - \log\left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}}\right) \right)  \\ & + \sum_{i=1}^n (1-\zz_{ik}) (y_i \xTilda_i \bm{\beta}_k^{'}  - e^{\xTilda_i \bm{\beta}_k^{'}})+ \sum_{i=1}^n (1-\zz_{ik})\log(y_i!)\\
+&= l_c(\psi_k;\{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,{{\bm{\zz}_k}}) + l_c(\lambda_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,{{\bm{\zz}_k}}) \\
+&+ \sum_{i=1}^n (1- \zz_{ik})\log(y_i!), %\label{CompleteZLog}
+\end{align*}
 where $\bm{\zz}_k := \left[\zz_{1k}, ..., \zz_{nk} \right]$ is a realization of $\bm{\zZ}_k  := \left[\zZ_{1k}, ..., \zZ_{nk} \right]$.
  
- Note that $l_c(\psi_k,\lambda_k|y,\bm{x},\bm{\zz}_k)$ separates allowing the maximization of  $l_c(\psi_k; y,\bm{x},\bm{\zz}_k) $ and $l_c(\lambda_k; y,\bm{x},\bm{\zz}_k) $ separately for parameters $\psi_k$ and $\lambda_k$. With the EM algorithm, maximization of parameters are done iteratively between estimating $\zZ_{ik}$ with its expectation under current estimates for $\lambda_k$ and $\psi_k$ (E-Step), and then maximizing the conditional expectation of the complete-data log-likelihood (M-Step). 
+ Note that $l_c(\psi_k,\lambda_k|\{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k)$ can be separated allowing the maximization of $l_c(\psi_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k)$ and $l_c(\lambda_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k) $ idependently for parameters $\psi_k$ and $\lambda_k$. With the EM algorithm, maximization of parameters are performed iteratively between estimating $\zZ_{ik}$ with its expectation under current estimates for $\lambda_k$ and $\psi_k$ (E-Step), and then maximizing the conditional expectation of the complete-data log-likelihood (M-Step). 
 
 %\subsubsection{E-step -  Zero-inflated Model}%Nik: again, why the first "-"?
  % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density.
 
-In the E-step, using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ from the partition $ \Omega^Z_{k}$, we calculate the expected value of ${\bm{\zZ}_{ik}}$ by its posterior mean ${\hat{\zz}_{ik}^{(s)}}$ for each cluster $k$ at iteration $s$ as
+In the E-step, using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ %from the partition $ \Omega^Z_{k}$, 
+we calculate the expected value of ${{\zZ}_{ik}}$ by its posterior mean ${\hat{\zz}_{ik}^{(s)}}$ for each cluster $k$ at iteration $s$ as
 \begin{align*}
 {\hat{\zz}}_{ik}^{(s)} = \begin{cases}  \left[ 1 + \exp{\big(-\xTilda_i \bar{\bm{\beta}_k}^{'(s)} - e^ {\bm{\xTilda_i} \bm{\beta}_k^{'(s)}} \big) } \right]^{-1}, &  y_{i} = 0 \\
   0 \quad , & y_{i}> 0 .
@@ -339,8 +353,8 @@ In the E-step, using current estimates $\psi_k^{(s)}$ and $ \lambda_k^{(s)} $ fr
 %\subsubsection{M-Step - Zero-inflated Model} 
 The M-Step can be split into the maximization of two complete data log-likelihoods and the $\hat{\bm{\zz}}_k$ calculated from the previous iteration $(s)$ as
 \begin{align}
- l_c(\lambda_k; y,\bm{x}| \hat{\bm{\zz}}_k^{(s)}) &= \sum_{i=1}^n (1- \hat{\zz}_{ik}^{(s)}) (y_i \xTilda_i \bm{\beta}_k^{'}  - e^{\xTilda_i \bm{\beta}_k^{'}})\label{eq7}.\\
-l_c(\psi_k;y,\bm{x}|\hat{\bm{\zz}}_k^{(s)}) &=\sum_{i=1}^n \left( \hat{\zz}_{ik}^{(s)} \xTilda_i \bar{\bm{\beta}_k }^{'} - \log \left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}} \right) \right). \label{eq6}   
+ l_c(\lambda_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n| \hat{\bm{\zz}}_k^{(s)}) &= \sum_{i=1}^n (1- \hat{\zz}_{ik}^{(s)}) (y_i \xTilda_i \bm{\beta}_k^{'}  - e^{\xTilda_i \bm{\beta}_k^{'}})\label{eq7}.\\
+l_c(\psi_k;\{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n|\hat{\bm{\zz}}_k^{(s)}) &=\sum_{i=1}^n \left( \hat{\zz}_{ik}^{(s)} \xTilda_i \bar{\bm{\beta}_k }^{'} - \log \left(1+ e^{ \xTilda_i \bar{\bm{\beta}_k }^{'}} \right) \right). \label{eq6}   
  \end{align}
 
 The maximization of \eqref{eq7} for GLM coefficients $\lambda_k$ can be carried out using a weighted log-linear Poisson regression with weights $1 - \hat{\zz}_{ik}^{(s)}$ \citep[see][]{McCullaghNelder1989}), yielding $\lambda_k^{(s+1)}$.
@@ -354,15 +368,20 @@ Until recently the Vuong Test for non-nested models  \citep{vuongTest} has frequ
 \end{align*}
 and the test statistic $\varphi$ is given by
 \begin{equation}
-\varphi = -2 \big[l(\tilde{\lambda_k}; y, \bm{x}) - l(\lambda_k, \psi_k; y , \bm{x} )\big].
+\varphi = -2 \big[l(\tilde{\lambda_k}; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n) - l(\lambda_k, \psi_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n )\big].
 \label{LRTest}
 \end{equation}
-The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution ($0.5\chi^2_0+0.5\chi^2_{m}$) where $m$ is the  number of degrees of freedom of the model. For our purposes, $m$ is the number of covariates selected for the Bernoulli model in \eqref{bern::ref}.\footnote{See Liklihood Ratio Tests in  \cite{newIntuitive}}. Note that  a $\chi^2_0$ distribution has 0 degrees of freedom, hence the $95{\mbox{\sl{th}}}$ percentile of a  $0.5\chi^2_0+0.5\chi^2_{m}$ distribution is equal to the $90{\mbox{\sl{th}}}$ percentile of a $\chi^2_{m}$ distribution and the test statistic at a level of significance of $\alpha=0.05$ equals that of a one-tailed $\chi^2$ test, with $m$ degrees of freedom, at a level of significance of $\alpha=0.10$ \citep[see][]{newIntuitive}. The function 
-$l(\tilde{\lambda_k}; y , \bm{x})$ is the log-likelihood of a single component GCWM Poisson model on $\Omega_{Z_k}$ parametrized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation parameter of the $k$th partition.  In our approach, we will be using \eqref{LRTest} to  test for evidence of zero-inflation on partition $\Omega_k$, and then using BIC for model comparisons on $\Omega_k$. This approach quickly determines if there is zero-inflation on partition $\Omega_k$.  When evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
+The test statistic \eqref{LRTest} is shown to follow a chi-squared distribution ($0.5\chi^2_0+0.5\chi^2_{m}$) where $m$ is the  number of degrees of freedom of the model. For our purposes, $m$ is the number of covariates selected for the Bernoulli model in (\ref{g2link}).\footnote{See Likelihood Ratio Tests in  \cite{newIntuitive}.} Note that  a $\chi^2_0$ distribution has 0 degrees of freedom, hence the $95{\mbox{\sl{th}}}$ percentile of a  $0.5\chi^2_0+0.5\chi^2_{m}$ distribution is equal to the $90{\mbox{\sl{th}}}$ percentile of a $\chi^2_{m}$ distribution and the test statistic at a level of significance of $\alpha=0.05$ equals that of a one-tailed $\chi^2$ test, with $m$ degrees of freedom, at a level of significance of $\alpha=0.10$ \citep[see][]{newIntuitive}. 
+
+The function 
+$l(\tilde{\lambda_k}; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n)$ is the log-likelihood of a single component GCWM Poisson model parametrized by $\tilde{\lambda_k}$. Recall that $\psi_k$ is the zero-inflation parameter of the $k$th partition.  In our approach, we will be using \eqref{LRTest} to test for evidence of zero-inflation for $k$th group, and then using BIC for model comparisons on $k$th group. This approach quickly determines if there is zero-inflation.  When evidence of zero-inflation is established, we search for the best possible linear model using BIC. 
 
 \section{Numerical Application}\label{sec:numapp}
 \subsection{Dataset}
-The proposed methodology is illustrated on the French motor severity and frequency datasets by policy. These datasets are available as part of the {\sf R} package {\tt CASdatasets} \citep{Dutang+Charpentier:2016} and they were previously used by \cite{Charpentier:2014} who demonstrated various GLM modeling approaches for fitting frequency and severity. The French automobile portfolio consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided.  In the following section all monetary units are considered to be of euro denomination as the dataset originates from France. 
+We illustrate the use of ZI-GCWM on the French motor severity and frequency datasets which are available as part of the {\sf R} package {\tt CASdatasets} \citep{Dutang+Charpentier:2016}. Previously they were used by \cite{Charpentier:2014} who demonstrated various GLM modeling approaches for fitting frequency and severity. 
+The dataset consists of 413,169 motor third-party liability policies with the associated risk characteristics. The loss amounts by policy ID are also provided. 
+
+%In the following section all monetary units are considered to be of euro denomination as the dataset originates from France. 
 \begin{small}
 \begin{table}[!htb]
 \begin{center}
@@ -392,7 +411,9 @@ Severity & Average Claim calculated from aggregating Loss Amount and dividing by
 
 \subsection{Discussion and Results}
 \subsubsection{Modelling Severity}
-In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore we investigate the results of the GCWM model for the valuation of heterogeneous risk. We consider the following covariates: population density ($Density$), driver age ($DriverAge$), car age ($CarAge$), car power level ($Power$),  and geographical region in France ($Region$). %Nik: why is this list not identical to the list from a few lines above?
+In this section, we show improved results for GCWM  over CWM in modeling French motor losses. Furthermore, we investigate the results of the GCWM model for the valuation of heterogeneous risk. 
+
+In the numerical analysis we consider the following covariates: population density ($Density$), driver age ($DriverAge$), car age ($CarAge$), car power level ($Power$),  and geographical region in France ($Region$). %Nik: why is this list not identical to the list from a few lines above?
 The
 $CarAge$ is modelled as a categorical variable with five categories: $[0,1)$, $[1,5)$, $[5,10)$, $[10,15)$, and $15+$. Additionally, $DriverAge$ is modelled as a categorical variable with five categories: $[18,23)$, $[23,27)$, $[27,43)$, $[43,75)$, and $75+$. $Power$ is modelled into three categories as in \cite{Charpentier:2014}:
 DEF, GH, and other. The fitted model is defined with the following expression
@@ -414,7 +435,7 @@ The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density
 \label{fig:vet1}
 \end{figure}
 
-Given the log-normal assumption, the result of the transformation is a better AIC and BIC for GCWM over CWM.Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of $281,680$ is significantly higher than the four component GCWM with a considerably lower BIC of $88,564$.
+Given the log-normal assumption, the result of the transformation is reflected in a better AIC and BIC for GCWM over CWM. Table~\ref{comparingCWM_models} shows a considerable difference in BIC and AIC comparing CWM and GCWM. The five component CWM with a BIC of $281,680$ is significantly higher than the four component GCWM with a considerably lower BIC of $88,564$.
 \begin{table}[!htbp] \centering
   \caption{Comparison of AIC and BIC for CWM versus GCWM for $G$ number of clusters estimated. }\label{comparingCWM_models}
 \begin{tabular}{@{\extracolsep{5pt}} rrrr}
@@ -456,8 +477,8 @@ red & green & blue & orange \\
 \begin{figure}[!htb]
 \begin{center}
 %\includegraphics[scale=0.60]{epsVersiondens.eps}
-\includegraphics[scale=0.50]{sevClusterPlot.png}
-%\includegraphics[scale=0.60]{sevClusterPlot.eps}
+%\includegraphics[scale=0.50]{sevClusterPlot.png}
+\includegraphics[scale=0.60]{sevClusterPlot.eps}
 \end{center}
 \vspace{-0.2in}
 \caption{Showing clusters by color scheme: Cluster 1 - red, Cluster 2 - green, Cluster 3 - blue, Cluster 4 - orange for $Severity$ vs $Density$ on a log scale. }
@@ -465,17 +486,18 @@ red & green & blue & orange \\
 \end{figure}
 
 
-The (blue) Cluster 3 drivers have both low variability and low average cost in claims, thus can be insured with a lower rate than other drivers. From a risk management perspective this is the most favourable cluster as claims belonging to it have very low variance and cost. The (green) Cluster 2  drivers, have also low variability but a higher average cost, thus they should have a rate higher than (blue) Cluster 3  drivers. The (red) Cluster 1  drivers have the next highest cost and variability of the clusters in Figure \ref{fig:vet1}. Finally, the (orange) Cluster 4  drivers have the highest cost and variaiblity in claims out of any of the other clusters. From a risk management perspective this cluster should have the highest rate.
+The (blue) Cluster 3 drivers have both low variability and low level of claims, thus can be insured with a lower rate than all other drivers. Similarly, the (green) Cluster 2 drivers, have also low variability of claims but a higher level of claims, thus they should have a rate higher than (blue) Cluster 3  drivers. The (red) Cluster 1 drivers have the next highest level of claims and variability of the clusters in Figure \ref{fig:vet1}. Finally, the (orange) Cluster 4  drivers have the highest level of claims and variability in claims out of any of the other clusters. From a risk management perspective, the drivers belonging to  this cluster should be insured at the highest rate.
 
 
-Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \euro$1,033$ and  \euro$1,325$, with a standard deviation of  \euro$52$, and a mean of  \euro$1,171$. Moving onto V2 , these drivers have the second lowest level of volatility.Also, drivers in this volatility level tend to have claims anywhere between  \euro$395$ and  \euro$3,221$, with a standard deviation of  \euro$559$, and a mean of  \euro$1,350$.  Proceeding to V3 volatility level, we observe that volatility in claims is greater than the preceding levels. Drivers in this volatility level have claims anywhere between  \euro$2$ and \euro$281,403$, with a mean of  \euro$2,956$, and a standard deviation of  \euro$11,878$. Finally, with V4 denotes the level of highest volatility. A claim in this level reach the highest recorded value of  \euro$2,036,833$. The mean of  claims in this volitility level is \euro$3,771$, and a standard deviation of  \euro$40,334$. 
+Table \ref{table:volSev} shows a breakdown of the types of drivers, ordered by volatility in descending order. Beginning with V1 volatility level, these drivers tend to have claims between \euro$1,033$ and  \euro$1,325$, with a standard deviation of  \euro$52$, and a mean of  \euro$1,171$. Moving to V2 , these drivers have the second lowest level of volatility. Also, drivers in this volatility level tend to have claims anywhere between  \euro$395$ and  \euro$3,221$, with a standard deviation of  \euro$559$, and a mean of  \euro$1,350$.  Proceeding to V3 volatility level, we observe that volatility in claims is greater than the preceding levels. Drivers in this volatility level have claims anywhere between  \euro$2$ and \euro$281,403$, with a mean of  \euro$2,956$, and a standard deviation of  \euro$11,878$. Finally, with V4 denotes the level of highest volatility. A claim in this level reach the highest recorded value of  \euro$2,036,833$. The mean of  claims in this volitility level is \euro$3,771$, and a standard deviation of  \euro$40,334$. 
 \begin{table}[!htb]
 \centering
 \caption{Summarized volatility information of each cluster for Claims.}
 \label{table:volSev}
-\begin{tabular}{lrrrr}
+\begin{tabular}{l|rrrr}
 \hline
-Volatility Level (Cluster)     & Minimum & Mean  & Maximum & $\sigma$    \\
+Volatility Level     & \multicolumn{4}{c}{Claim size}   \\ 
+ (Cluster)     & Minimum & Mean  & Maximum & $\sigma$    \\
 \hline
 V1 (3) & 1,033 & 1,171 & 1,325 & \textbf{52} \\
 V2 (2) & 395 & 1,350 & 3,221 & \textbf{559} \\
@@ -486,23 +508,23 @@ V4 (4) & 2 & 3,771 & 2,036,833 & \textbf{ 40,334 } \\
 \end{table}
 
 
-Coefficients of clustered results are used to calculate premiums in car insurance. Table~\ref{severity_coef_table} (Appendix~\ref{app:tables}) shows the coefficients of the fitted model. In each cluster, statistical significance varies but overall the majority of coefficients are statistically significant.
+The coefficients in the discovered clusters are relevant for premium calculations in auto insurance. Table~\ref{severity_coef_table} (Appendix~\ref{app:tables}) shows the coefficients of the fitted model. In each cluster, statistical significance varies but overall the majority of coefficients are statistically significant.
 
-In summary, the drivers have been clustered into four categories with distinct characteristics outlined in Table~\ref{table:volSev}. We have seen how using the results from GCWM, one can create an insurance model based on clustering algorithms with various levels of risk represented in each cluster. GCWM found a group that contains a clear majority of drivers, in which the volatility of their claims was extremely low regardless of $Density$ or $DriverAge$. The results show that GCWM may potentially find unique clusters that are otherwise hidden within the data.
+In summary, the drivers have been clustered into four categories with distinct characteristics outlined in Table~\ref{table:volSev}. We have seen how using the results from GCWM, one can create a rate model based on clustering algorithms with various levels of risk represented in each cluster. GCWM found a group that contains a clear majority of drivers, in which the volatility of their claims was extremely low regardless of $Density$ or $DriverAge$. The results show that GCWM may potentially find unique clusters that are otherwise hidden within the data.
 
 
  \subsubsection{Modeling Claims Frequency}
 
-In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, and $Exposure$. Here, $Exposure$ is used as an offset to account for the rate at which a claim occurs. For example, four claims over 1 week should not amount to the same as four claims over 1 year \citep{frees2015}. The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
+In this section, we model frequency of the French motor claims. We consider the covariates $Density$, $DriverAge$, $CarAge$, and $Exposure$. Here, $Exposure$ is used as an offset to account for the rate at which a claim occurs (see \cite{frees2015}). The choice of covariates stems from the previously modelled single component ZIP \citep{Charpentier:2014}.
 The ZI-GCWM is fitted with the following expression
 \begin{align}
-g_p(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
-  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jDriverAge}x_{DriverAge} \nonumber \\    &  \quad\quad\quad +  \beta_{jCarAge}x_{CarAge}   + g_p(x_{Exposure})  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
-g_z(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bar{\bm{\beta}}_j \right])& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} + g_p(x_{Exposure})  =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
+g_P(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bm{\beta}_j \right]/x_{Exposure}) & = 
+  \beta_{j0} +  \beta_{jDensity}x_{Density}+ \beta_{jDriverAge}x_{DriverAge} \nonumber \\    &  \quad\quad\quad +  \beta_{jCarAge}x_{CarAge}  =: \bm{\xTilda} \bm{\beta}_j^{'},   \label{poissonReg}\\
+g_{ZI}(\mathbb{E}\left[Y_{ClaimNb}|\bm{x}, \bar{\bm{\beta}}_j \right]/x_{Exposure})& = \bar{\beta}_{j0} +  \bar{\beta}_{jDensity} x_{Density} =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'},  \label{zeroReg} 
 \end{align}
 
-where $Density$, $DriverAge$, and $CarAge$ are explanitory variables in a Poisson model, while only $Density$ is an explantory variable for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{bern::ref}).
-After fitting the model, ZI-GCWM has found two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the two of the clusters with Cluster 3 only consisting of $0.53 \%$ of the data.
+where $Density$, $DriverAge$, and $CarAge$ are explanitory variables in a Poisson model, while only $Density$ is an explantory variable for a Bernoulli model. As in Section 4.2.1, we also impose a log-normal assumption on the $Density$ covariate. The link functions $g_p$ and $g_z$ are chosen to be the log link and logit link respectively as in (\ref{g1link}) and (\ref{g2link}).
+After fitting ZI-GCWM we find two zero-inflated components and one Poisson component as the best model to represent the data. The size of each cluster is displayed in Table~\ref{table:sizeFreq} and we note a fairly even spread of the size across the two of the clusters with Cluster 3 only consisting of $0.53 \%$ of the data.
 \begin{table}[!htb]
 \centering
 \caption{Size of clusters and their colours for the ZI-GCWM a model.}
@@ -517,13 +539,15 @@ green & red & blue  \\
 \end{tabular}
 \end{table}
 
-Similarly to modelling severity, the ZI-GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the ZI-GCWM has split up the drivers into three groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the most dense areas with a mean of 7.37 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.45 km and 4.05 km, respectively.
+Similarly to modelling severity, the ZI-GCWM finds clusters with unique characateristics. This is evident when looking at the Claims vs. Density plot (Figure~\ref{frequencyGraph}). We see that the ZI-GCWM has assigned the drivers into three distinct groups based on the Density of cities. Table \ref{summarycovariates} shows that Cluster 2 drivers live in the most dense areas with a mean of 7.37 km on the log-scale. Followed by Clusters 3 and 1 with a mean of 5.45 km and 4.05 km, respectively.
 \begin{figure}[!ht]
 \begin{center}
 %\includegraphics[scale=0.60]{freqPlot.eps}
-\includegraphics[scale=0.47]{freqPlot.png}
+%\includegraphics[scale=0.47]{freqPlot.png}
+%\includegraphics[scale=0.45]{claimNb_png_freq.png}
+\includegraphics[scale=0.53]{claimNb_eps_freq.eps}
 \end{center}
-\vspace{-0.2in}\caption{Showing clusters in color for Frequency vs Density under log-normal assumptions.}
+\vspace{-0.2in}\caption{Showing clusters by color scheme: Cluster 1 - green, Cluster 2 - red, Cluster 3 - blue for $Claim Nb$ vs $Density$ on a log scale. }
 \label{frequencyGraph}
 \end{figure}
 \begin{table}[!htb]
@@ -541,12 +565,12 @@ Cluster  & Color & Minimum & Mean & Maximum & $\sigma$  \\
 \end{center}
 \end{table}
 
-Table \ref{frequencySummary} (Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
+Table \ref{frequencySummary} (see Appendix~\ref{app:tables}) shows a summary of the coefficients for the zero-inflated model. The
 significance codes are the same as in Table \ref{severity_coef_table}. In each cluster we can see that the majority of the coefficients are significant. Specifically for the coefficients pertaining to the the Bernoulli zero-count models. 
 
 \begin{table}[!htb]
  \begin{center}
-\caption{Comparison of BIC and Chi-square ($\chi^2$) test \eqref{LRTest} for CWM vs ZI-GCWM model on each cluster \\ ( ``-"  denotes a negative $\varphi$ value where no test is necessary).  }
+\caption{Comparison of BIC and Chi-square ($\chi^2$) test \eqref{LRTest} for CWM vs ZI-GCWM model on each cluster. }
 \label{compareResults_models}
 \begin{tabular}{r|rrc}
 \hline
@@ -571,16 +595,16 @@ Thus, for rate making purposes the ZI-GCWM can account for zero-inflation.
 Two simulation studies are conducted to determine the validity of the log-normal assumption and the effectiveness of the Bernoulli-Poisson partitioning method. The first section outlines the need for a non-Gaussian assumption for the covariates. The second section shows the classification accuracy and other relevant analysis for the Bernoulli-Poisson method.
 
 
-\subsection{Simulation Study for GCWM}
+\subsection{Simulation Study - GCWM}
 
 
-In this section, we show how the proposed methodology works for different simulation settings. The simulation study is generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This design specifically tests both models in the event when one of the covariates is non-Gaussian. The motivation behind this is fact is that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus this simulation is aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
+In this section, we show how the proposed methodology performs under different simulation settings. The simulation study is generated based on the regression coefficients of the CASdataset used in the previous section. The aim of the simulation study is to test the accuracy and ability of both GCWM a and CWM to return estimates of true parameters when one or more of the covariates is log-normal and the other two are Gaussian. This design specifically tests both models in the event when one of the covariates is non-Gaussian. The motivation behind this choice lies in fact that many covariates used in insurance are likely to come from non-Gaussian distributions. Thus, this simulation is aimed to test the relevancy of CWM, which treats all covariates as Gaussian.
 
-We define Model 1 as the baseline model, where the coefficients are selected to be reminiscent of those estimated from \textbf{CASdataset} and reported in upper portion of Table \ref{severity_coef_table}. The intercept for each component is increased to make sure simulated loss is positive. For ease of interpretation, these coefficients are then rounded and treated as true parameters for the simulation study.  A simulation with a 3 group mixture model is generated from the aforementioned true parameters however, the third covariate ($X_3$) is generated from a log-normal distribution.  In addition, the covariate $X_2$ for the second component is made insignificant and has no effect on the response. 
+We define Model 1 as the baseline model, where the coefficients are selected to be reminiscent of those estimated from \textbf{CASdataset} and reported in upper portion of Table \ref{severity_coef_table} (see Appendix B). The intercept for each component is increased to make sure simulated loss is positive. For ease of interpretation, these coefficients are then rounded and treated as true parameters for the simulation study.  A simulation with a 3 group mixture model is generated from the aforementioned true parameters however, the third covariate ($X_3$) is generated from a log-normal distribution.  In addition, the covariate $X_2$ for the second component is made insignificant and has no effect on the response. 
 
 
-Results aggregated from $1000$ runs are summarized in Table \ref{gcwmAccuracy} and Table \ref{mseTable} . Given a Gaussian assumption of for the residual error, we record the percentage of runs in which the error fall between a two-tailed $\% 5$ confidence interval in Table \ref{gcwmAccuracy}. For example, we report $90.10\%$ accuracy for predictor $X_2$ in the component 2. This means that $90.1\%$ of the time the true parameter is estimated within a $95\%$ confidence interval. 
-Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor form the CASdataset model. This is done to test the accuracy of the GCWM and its sensitivity to changes in coefficient sizes. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
+Results aggregated from $1000$ runs are summarized in Table \ref{gcwmAccuracy} and Table \ref{mseTable}. Given a Gaussian assumption of for the residual error, we record the percentage of runs in which the error fall between a two-tailed $\% 5$ confidence interval in Table \ref{gcwmAccuracy}. For example, we report $90.10\%$ accuracy for predictor $X_2$ in the component 2. This means that $90.1\%$ of the time the true parameter is estimated within a $95\%$ confidence interval. 
+Further, we create Models 2, 3, 4 and 5 by altering the parameters of Model~1 by $+30\%$, $-30\%$, $+50\%$, and $-50\%$, respectively, and keeping the second covariate of the second component as an insignificant predictor from the CASdataset model. This is done to test the accuracy of the GCWM and its sensitivity to changes in coefficient sizes. Based on the results in Table \ref{gcwmAccuracy}, we can see that GCWM performs well for all simulation settings.
 \begin{table}[!htb]
 \centering
 \caption{GCWM a vs CWM Accuracy: covariate $X_3$ is treated as log-normally distributed, while the rest of covariates are of the Gaussian type.}
@@ -613,10 +637,10 @@ Mod. & $G$ & Int. & $X_1$ &$X_2$ & $X_3$& Int. & $X_1$ &$X_2$ & $X_3$  \\
 \end{table}
 
 % Table 4 provides the summary of the results when CWM was used in the analysis of the same models considered in Table 3. Commented sentanced 
-In line with expectations we note that barely any of the simulation runs are estimated correctlly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
+For CWM, in line with expectations, we note that barely any of the simulation runs are estimated correctly, as most of the results are zero. This means that the performance of CWM approach is poor in presence of one non-Gaussian covariate which in this case is a log-normal covariate. 
 
-Table \ref{mseTable} provides the summary of mean squared errors (MSEs). The MSE is computed using the following formula, MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate. The MSE for each parameter pertaining to each model are aggregated in Table~\ref{gcwmAccuracy}. 
-Overall GCWM outperforms CWM in both accuracy and MSE. 
+Table \ref{mseTable} provides the summary of mean squared errors (MSEs). The MSE is computed using the following formula, MSE $(\beta) = \frac{\sum_i^n (\beta_i - \hat\beta_i ) ^2}{n}$. Here, $n$ accounts for the number of simulation runs, $\beta$ is the true parameter of interest while $\hat{\beta}$ accounts for its estimate. In case of GCWM, the MSE for each parameter pertaining to each model are aggregated in Table~\ref{mseTable}. 
+Overall, comparing Tables \ref{mseTable} and \ref{my-label} it is clear that GCWM outperforms CWM in both accuracy and MSE. 
 \begin{table}[h!]
 \centering
 \caption{ GCWM results: the summary of MSE for all parameters used in five models. The covariate $X_3$ is treated as log-normal distributed, while the rest of covariates are Gaussian. These results correspond to same simulated runs as those in Table~\ref{gcwmAccuracy}.}
@@ -679,7 +703,7 @@ Mod. & $G$ & $\beta_o$ &  MSE($\beta_o$)   &  $\beta_1$ & MSE($\beta_1$)& $\beta
 \end{table}
 
 
-We can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table \ref{gcwmAccuracy} shows the accuracy of CWM is not good when attempting to model non-Gaussian predictors as Gaussian. 
+From Table~\ref{my-label} we can observe that the MSEs for most of the models and their corresponding coefficients are not calculated at all due to convergence failures and as such they are shown as $(\cdot)$. This is not surprising because Table \ref{gcwmAccuracy} shows the accuracy of CWM is low when attempting to model non-Gaussian predictors as Gaussian. 
 
 In summary, our simulation results showed good performance of the GCWM approach in modeling non-Gaussian covariates. More specifically, these results show high accuracy when covariates are log-normal. In contrary, CWM fails to estimate parameters accurately when the Gaussian assumption is violated.
 
@@ -689,17 +713,17 @@ In summary, our simulation results showed good performance of the GCWM approach 
 \subsection{Simulation Study - Bernoulli-Poisson Partitioning}
 
 In this section we show how the Bernoulli-Poisson (BP) partitioning method behaves under different conditions. The components are genereated under similar coefficients estimated from the \textbf{CASDatasets} package. Again for easy of interpretation, coefficients are rounded and treated as true parameters from which the simulated data is generated from. The mean and standard deviation of the covariates within each component was also taken into account when generating data. The first simulation examines the performance of the ZI-GCWM model for classification. We generate three components each with sample size $N=1000$ for a total of $3000$ simulated points.
-The model generated is similar to the mean and standard deviations of Table \ref{summarycovariates}. Consider three simulated covariates with 
+The model generated is similar in the mean and standard deviations presented in Table \ref{summarycovariates}. Consider three simulated covariates with 
 \begin{align}
-g_p(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
+g_P(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x}, \bm{\beta}_j \right]) & = 
   \beta_{j0} +  \beta_{jSimDensity} x_{SimDensity} +  \beta_{jSimDriverAge} x_{SimDriverAge} \nonumber  \\ & + 
    \beta_{jSimCarAge} x_{SimCarAge} := \bm{\xTilda} \bm{\beta}_j^{'},  \label{poissonRegSim} \\
-g_z(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x} , \bar{\bm{\beta}}_j  \right]) & = 
+g_{ZI}(\mathbb{E}\left[Y_{SimClaimNb}|\bm{x} , \bar{\bm{\beta}}_j  \right]) & = 
   \bar{\beta_{j0}} +  \bar{\beta}_{jSimDensity} x_{SimDensity} +  \bar{\beta}_{jSimDriverAge} x_{SimDriverAge} \nonumber \\ & + 
   \bar{ \beta}_{jSimCarAge} x_{SimCarAge} =: \bm{\xTilda} \bar{\bm{\beta}}_j^{'}.  \label{zeroRegSim}
 \end{align}
 
-as their respective linear models.  The covariates $x_{SimDensity}$, $x_{SimDriverAge}$, and $x_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_p$ and $g_z$ are chosen to be log-link and logit-link respectively. 
+as their respective linear models.  The covariates $x_{SimDensity}$, $x_{SimDriverAge}$, and $x_{SimCarAge}$ are considered for both the Poisson and Bernoulli models. Furthermore the link functions $g_P$ and $g_{ZI}$ are chosen to be log-link and logit-link respectively. 
  Here, the ZI-GCWM classifies drivers based on simulated data into three components. The misclassification rate is calculated by the proportion of true labels placed in other components by the ZI-GCWM a model.  The results of the simulation are aggregated in Table \ref{misclassTable}. We observe the total misclassification rate of $1.8 \% $, where the majority of misclassified components are between components two and three.
 \begin{table}[!htb]
 \begin{center}
@@ -721,7 +745,7 @@ as their respective linear models.  The covariates $x_{SimDensity}$, $x_{SimDriv
 \end{center}
 \end{table}
 
-The simulation is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations of covariates are taken directly from sample statistics of \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario defined as ``close", the covariate means are manipulated so that they are $20 \%$ closer to each other. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. The expansion of the simulation to $1000$ runs tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The results of this expansion are aggregated in Table \ref{table:exper2}.  The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
+The simulation is expanded further to show how Bernoulli-Poisson partitioning behaves over 1000 runs and under two different conditions. The first condition is defined as follows. The mean and standard deviations of covariates are taken directly from sample statistics of \textbf{CASDataset}. The second condition involves adjusting the means of two of the covariates so they are closer to each other. The goal is to show that the BP-method holds its use even when means among covariates are close. The conditions are divided into two scenarios. In the first scenario which we consider ``normal", the covariate means are taken directly from the sample data. In the second scenario defined as ``close", the covariate means are manipulated so that they are $20 \%$ closer to each other. This is a common problem in classification where if the means among two different components are close, then misclassification rate increases \citep{LimHwa}. The expansion of the simulation to $1000$ runs tests the accuracy of 3 different partitioning methods to initialize a zero-inflated model. The results of this expansion are aggregated in Table \ref{table:exper2}.  The Poisson partitioning method assumes that the presence of non-zeros will provide a better partitioning of the data-set. The Bernoulli partitioning method assumes that the presence of excess zeros will determine the best partitioning of the data-set. Finally, the BP partitioning method assumes that both methods are weighed equally and therefore both must be taken into account when partitioning the dataset. The mean and standard deviation of each measurement is provided in Table \ref{table:exper2}.
 
 \begin{table}[!htb]
 \begin{center}
@@ -748,11 +772,16 @@ Adjusted Rand Index  & normal      & 0.9662 & (0.07)    & 0.9677  & (0.07)     &
  %  \footnote{ The Average Purity is calculated as $AP = \frac{1}{N} \sum_i  n_{i i}.$} (AP) 
 The AP for the BP partitioning method is the best out of all other methods, therefore the BP method is the most relevant for classification.
 
+
+\textcolor{blue}{Petar: Conclusion needs to be reworked}
+
 \section{Conclusion}
 
-In this paper, we extend the class of generalized linear mixture CWM models by accomplishing two main goals. First, we proposed the methodology that allows for continuous covariates to follow a non-Gaussian distribution. Imposing Gaussian distribution on a skewed data may result in an suboptimal model fit. Second, we proposed a new Poisson CWM methodology that uses Bernoulli-Poisson partitioning method and allows for implementation of zero-inflated Poisson CWM model (ZI-GCWM). We name our proposed model class as the Generelized Cluster-Weighted Model (GCWM), to reflect the two extensions made to the existing CWM class of models.
+By accomplishing two main goals, in this work, we extend the class of generalized linear mixture CWM models to Zero-inflated Generalized CWM (ZI-GCWM). First, we proposed the methodology that allows for continuous covariates to follow a non-Gaussian distribution. This is an important extension, at least in insurance modeling context, as imposing Gaussian distribution on a skewed data may result in an suboptimal model fit. Second, we proposed a new CWM methodology that uses Bernoulli-Poisson partitioning method and allows for implementation of Zero-inflated CWM. 
 
-Our proposed GCWM models allow for great applications in predictive modeling of insurance claims by overcoming a few limitations of the current CWM models. The GCWM allows for finding clusters within claims frequency which is an important information in risk classification and modeling of claims frequency. Further, some insurance rating variables used in the predictive modeling of severity claims may not strictly follow Gaussian assumptions, for example driver's age or car age, when treated as continuous covariates. An adequate extension to non-Gaussian covariates can be considered to relax current assumptions and improve the model fit. Given our data, we convincingly demonstrated that there is a need for a log-normal assumption in the $Density$ covariate, and by making it we have consideredly the model fit. 
+%We name our proposed model class as the Generelized Cluster-Weighted Model (GCWM), to reflect the two extensions made to the existing CWM class of models.
+
+Our proposed GCWM models allow applications in predictive modeling of insurance claims by overcoming a few limitations of the current CWM models. The GCWM allows for finding clusters within claims frequency which is an important information in risk classification and modeling of claims frequency. Further, some insurance rating variables used in the predictive modeling of severity claims may not strictly follow Gaussian assumptions, for example driver's age or car age, when treated as continuous covariates. An adequate extension to non-Gaussian covariates can be considered to relax current assumptions and improve the model fit. Given our data, we convincingly demonstrated that there is a need for a log-normal assumption in the $Density$ covariate, and by making it we have consideredly the model fit. 
 
 The results of our extensive simulation study showed the excellent performance of the proposed models in case of modeling non-Gaussian covariates. We found  that current CWM model fails to estimate the parameters accurately when the Gaussian assumption is violated. The GCWM a shows significant improvement in the model fit over the CWM model based on AIC and BIC criteria. We also tested Bernoulli-Poisson partitioning of zero-inflated GCWM under different conditions and found that our proposed partitioning method has a very low misclassification rate, high average purity, and high average rand index.
 
@@ -761,7 +790,7 @@ Our approach is relevant to the actuarial pricing and risk management when curre
 
 
 \appendix
-\section{Derivation of the Log-normal Distribution }
+\section{Derivation of the Multivariate Log-normal Distribution }
 Consider a random variable $U$ having univariate log-normal distribution with parameters $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}_+ $. Have $u \in \mathbb{R}_+$, then the probability density function of random variable $U$ is defined as \footnote{For full definition see \cite{johnson1995continuous}}
 $$\mathcal{LN}(u; \mu, \sigma) = \frac{1}{u\sigma\sqrt{2\pi}}\exp\left[-\frac{(\ln u - \mu)^2}{2\sigma^2}	\right].$$
 \text{Further, if random variable }$X$\text{ is normally distributed i.e. }$ X \sim \mathcal{N}(x; \mu, \sigma) $, then $U := \exp{(X)}\sim \mathcal{LN}(u; \mu, \sigma) $.
@@ -792,7 +821,7 @@ Let $f^U(\bm{u}; \bm{\mu},\bm{\Sigma})$ and $f^X(\bm{x}; \bm{\mu},\bm{\Sigma})$ 
 \label{severity_coef_table}
 \begin{tabular}{|l|rrc|rrc|rrc|rrc|}
 \hline\hline
-         & V1         & (Blue)     &    & V2         & (Green)   &    & V3          & (Red)     &    & V4          & (Orange)     &    \\
+         & V1         & (blue)     &    & V2         & (green)   &    & V3          & (red)     &    & V4          & (orange)     &    \\
 Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
 pertaining to the $P$ value of the specific coefficient. C\# refers to the Car Age category, D\# refers to the Driver Age category, R\# refers to the region of France, and P refers to the power category.  }      & Estimate   & Error     & P   & Estimate   & Error     & P   & Estimate    & Error      & P   & Estimate    & Error      & P   \\ \hline
 Int. & 7.077 & 0.003 & *** & 6.952 & 0.043 & *** & 7.306 & 0.138 & *** & 7.212 & 0.136 & *** \\
@@ -821,13 +850,13 @@ P-Other & 0.005 & 0.001 & *** & 0.013 & 0.014 &  & 0.116 & 0.038 & ** & 0.057 & 
 \end{sidewaystable}
 
 \begin{sidewaystable}
-\caption{Summary of coefficients for frequency clusters and their respective colours.}
+\caption{Summary of coefficients for frequency clusters.}
 \label{frequencySummary}
 \begin{tabular}{|l|rrc|rrc|rrc|}
 \hline\hline
-          & Cluster 1 & (Green) &   & Cluster 2 & (Red) &  & Cluster 3 & (Blue) &   \\
+          & Cluster 1 & (green) &   & Cluster 2 & (red) &  & Cluster 3 & (blue) &   \\
 Coefficient \footnote{The significance codes are defined as $  P < 0.001 : $  (***), $0.001 < P < 0.01:$ (**), $  0.01 < P < 0.05:$ (*),\\ $0.05 < P < 0.10 : $ (.) %Nik: something wrong here; all of these could be considered $\approx 0$... use < some value. \\
-pertaining to the $P$ value of the specific coefficient.}             & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
+pertaining to the $P$ value of the specific coefficient. C\# refers to the Car Age category, D\# refers to the Driver Age category.  }         & Estimate  & Error & P   & Estimate  & Error   & P   & Estimate  & Error  & P  \\
  \hline
 Intercept & -4.71437 & 0.16072 & *** & -4.21884 & 0.23567 & *** & 80.34056  & 4.82835 & *** \\
 Density   & 0.37081  & 0.03414 & *** & 0.20128  & 0.02916 & *** & -15.36444 & 0.87135 & *** \\

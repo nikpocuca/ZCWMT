@@ -1,14 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.8.8)  7 DEC 2018 16:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 DEC 2018 08:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **GLM_MixturesNP_2018.tex
 (./GLM_MixturesNP_2018.tex
-LaTeX2e <2018-04-01> patch level 5
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@section=\count81
@@ -23,7 +24,7 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/04/16 v5.8 Page Geometry
+Package: geometry 2018/03/24 v5.7 Page Geometry
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -243,14 +244,14 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count104
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen125
 \captionmargin@=\dimen126
 \captionwidth=\dimen127
@@ -273,10 +274,10 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2018/05/02 v1.0c Color table columns (DPC)
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
+Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
 \col@sep=\dimen132
 \ar@mcellbox=\box31
 \extrarowheight=\dimen133
@@ -355,7 +356,7 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@affil=\count118
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip61
 \multirow@cntb=\count119
 \multirow@dima=\skip62
@@ -382,7 +383,7 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \@thisrulewidth=\dimen148
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
+Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
 \c@tracingmulticols=\count124
 \mult@box=\box37
 \multicol@leftmargin=\dimen149
@@ -586,12 +587,12 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \topmargin=-22.54622pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=59.0pt
+* \marginparwidth=44.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -622,23 +623,29 @@ Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 )
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
+
+Overfull \hbox (15.88641pt too wide) in paragraph at lines 94--95
+[]\OT1/ptm/m/n/10.95 In this pa-per, we pro-pose two im-por-tant ex-ten-sions t
+o cluster-weighted mod-els (CWMs).
+ []
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 97--100
 
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 100.
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+[2]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 112.
 LaTeX Font Info:    Try loading font information for U+msa on input line 114.
-
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 114.
@@ -650,149 +657,208 @@ LaTeX Font Info:    Try loading font information for U+rsfs on input line 114.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [2] [3]
-[4] [5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 302.
+) [3] [4]
+[5] [6]
+Overfull \hbox (0.71158pt too wide) in paragraph at lines 204--205
+[][]\OT1/ptm/m/n/10.95 [I am not sure that all the ma-te-rial about sam-ple spa
+ces in the fol-low-ing is help-ful here. Thoughts?][]
+ []
 
+[7] [8] [9] [10]
+Overfull \hbox (1.62167pt too wide) detected at line 292
+[]
+ []
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [9] [10]
 [11]
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 365.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 314.
+
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [12]
+Overfull \hbox (86.6403pt too wide) in paragraph at lines 340--341
+[]\OT1/ptm/m/n/10.95 Note that $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML
+/cmm/m/it/10.95  []; ^^U[]\OMS/cmsy/m/n/10.95 jf\OML/cmm/m/it/10.95 y[]\OMS/cms
+y/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x
+[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/
+m/n/10.95 )$ \OT1/ptm/m/n/10.95 can be sep-a-rated al-low-ing the max-i-miza-ti
+on of $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  []\OT1/c
+mr/m/n/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 
+g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x[]\OMS/cmsy/
+m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/10.95 )$
+
+ []
+
+[13] [14]
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 381.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-Overfull \hbox (12.34433pt too wide) in paragraph at lines 371--389
+Overfull \hbox (53.50041pt too wide) in paragraph at lines 390--408
  [] 
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 394.
-[12]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 413.
+[15]
 Package epstopdf Info: Source file: <Untransformed_Density.eps>
-(epstopdf)                    date: 2018-12-07 15:40:03
+(epstopdf)                    date: 2018-12-07 15:20:08
 (epstopdf)                    size: 4955 bytes
 (epstopdf)             Output file: <Untransformed_Density-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2018-12-07 15:40:03
+(epstopdf)                    date: 2018-12-07 15:20:08
 (epstopdf)                    size: 9081 bytes
 (epstopdf)             Command: <repstopdf --outfile=Untransformed_Density-eps-
 converted-to.pdf Untransformed_Density.eps>
-(epstopdf)             \includegraphics on input line 409.
+(epstopdf)             \includegraphics on input line 430.
 Package epstopdf Info: Output file is already uptodate.
-<Untransformed_Density-eps-converted-to.pdf, id=64, 344.28625pt x 315.1775pt>
+<Untransformed_Density-eps-converted-to.pdf, id=74, 344.28625pt x 315.1775pt>
 File: Untransformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 <use Untransformed_Density-eps-converted-to.pdf>
 Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf  used on in
-put line 409.
+put line 430.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
 Package epstopdf Info: Source file: <transformed_Density.eps>
-(epstopdf)                    date: 2018-12-07 15:40:04
+(epstopdf)                    date: 2018-12-07 15:20:08
 (epstopdf)                    size: 4669 bytes
 (epstopdf)             Output file: <transformed_Density-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-07 15:40:04
+(epstopdf)                    date: 2018-12-07 15:20:08
 (epstopdf)                    size: 9171 bytes
 (epstopdf)             Command: <repstopdf --outfile=transformed_Density-eps-co
 nverted-to.pdf transformed_Density.eps>
-(epstopdf)             \includegraphics on input line 410.
+(epstopdf)             \includegraphics on input line 431.
 Package epstopdf Info: Output file is already uptodate.
-<transformed_Density-eps-converted-to.pdf, id=65, 344.28625pt x 315.1775pt>
+<transformed_Density-eps-converted-to.pdf, id=75, 344.28625pt x 315.1775pt>
 File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 <use transformed_Density-eps-converted-to.pdf>
 Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
-t line 410.
+t line 431.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
-<sevClusterPlot.png, id=66, 786.94pt x 485.815pt>
-File: sevClusterPlot.png Graphic file (type png)
-<use sevClusterPlot.png>
-Package pdftex.def Info: sevClusterPlot.png  used on input line 459.
-(pdftex.def)             Requested size: 393.46904pt x 242.9069pt.
- [13] [14 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density
--eps-converted-to.pdf>] [15 <./sevClusterPlot.png>]
-Overfull \hbox (10.97794pt too wide) in paragraph at lines 496--498
-\OT1/ptm/m/n/10 In this sec-tion, we model fre-quency of the French mo-tor clai
-ms. We con-sider the co-vari-ates $\OML/cmm/m/it/10 Density$\OT1/ptm/m/n/10 , $
-\OML/cmm/m/it/10 DriverAge$\OT1/ptm/m/n/10 ,
+Package epstopdf Info: Source file: <sevClusterPlot.eps>
+(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    size: 810112 bytes
+(epstopdf)             Output file: <sevClusterPlot-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-10 08:24:26
+(epstopdf)                    size: 999031 bytes
+(epstopdf)             Command: <repstopdf --outfile=sevClusterPlot-eps-convert
+ed-to.pdf sevClusterPlot.eps>
+(epstopdf)             \includegraphics on input line 481.
+Package epstopdf Info: Output file is already uptodate.
+<sevClusterPlot-eps-converted-to.pdf, id=76, 590.205pt x 364.36125pt>
+File: sevClusterPlot-eps-converted-to.pdf Graphic file (type pdf)
+<use sevClusterPlot-eps-converted-to.pdf>
+Package pdftex.def Info: sevClusterPlot-eps-converted-to.pdf  used on input lin
+e 481.
+(pdftex.def)             Requested size: 354.12573pt x 218.61842pt.
+ [16] [17 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density
+-eps-converted-to.pdf>] [18 <./sevClusterPlot-eps-converted-to.pdf>]
+[19]
+Package epstopdf Info: Source file: <claimNb_eps_freq.eps>
+(epstopdf)                    date: 2018-12-10 08:27:47
+(epstopdf)                    size: 15556697 bytes
+(epstopdf)             Output file: <claimNb_eps_freq-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-12-10 08:31:21
+(epstopdf)                    size: 11985136 bytes
+(epstopdf)             Command: <repstopdf --outfile=claimNb_eps_freq-eps-conve
+rted-to.pdf claimNb_eps_freq.eps>
+(epstopdf)             \includegraphics on input line 548.
+Package epstopdf Info: Output file is already uptodate.
+<claimNb_eps_freq-eps-converted-to.pdf, id=115, 762.85pt x 356.33125pt>
+File: claimNb_eps_freq-eps-converted-to.pdf Graphic file (type pdf)
+<use claimNb_eps_freq-eps-converted-to.pdf>
+Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf  used on input l
+ine 548.
+(pdftex.def)             Requested size: 404.30858pt x 188.85466pt.
+ [20] [21 <./claimNb_eps_freq-eps-converted-to.pdf>]
+Overfull \hbox (16.85631pt too wide) in paragraph at lines 612--637
+ [][] 
  []
 
-<freqPlot.png, id=94, 973.6375pt x 387.4475pt>
-File: freqPlot.png Graphic file (type png)
-<use freqPlot.png>
-Package pdftex.def Info: freqPlot.png  used on input line 524.
-(pdftex.def)             Requested size: 457.60968pt x 182.10034pt.
-
-Overfull \hbox (16.76222pt too wide) in paragraph at lines 524--525
- [] 
+[22]
+Overfull \hbox (1.52298pt too wide) in paragraph at lines 648--673
+ [][] 
  []
 
-[16] [17 <./freqPlot.png>] [18]
+
+Overfull \hbox (1.52298pt too wide) in paragraph at lines 678--703
+ [][] 
+ []
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19] [20] [21
+[23]
 
-] [22] [23]
-Overfull \hbox (3.98006pt too wide) in paragraph at lines 766--769
-[]$\OML/cmm/m/it/10 X$[]$X \OMS/cmsy/m/n/10 ^^X N\OT1/cmr/m/n/10 (\OML/cmm/m/it
-/10 x\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ^^V; ^^[\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/
-10 , then $\OML/cmm/m/it/10 U \OT1/cmr/m/n/10 := [] [] \OMS/cmsy/m/n/10 ^^X []\
-OT1/cmr/m/n/10 (\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ^^V; ^^[\O
-T1/cmr/m/n/10 )$\OT1/ptm/m/n/10 .
+LaTeX Warning: Text page 24 contains only floats.
+
+[24] [25] [26
+
+]
+Overfull \hbox (31.1449pt too wide) in paragraph at lines 754--766
+ [] 
  []
 
-[24] [25] [26] (./GLM_MixturesNP_2018.bbl [27]
+[27] [28] [29]
+Overfull \hbox (20.31328pt too wide) in paragraph at lines 801--803
+[]\OT1/ptm/b/n/10.95 Lemma A.1. []\OT1/ptm/m/it/10.95 Let the ran-dom vari-able
+ $\OML/cmm/b/it/10.95 X$ \OT1/ptm/m/it/10.95 have mul-ti-vari-ate nor-mal dis-t
+ri-bu-tion ie. $\OML/cmm/b/it/10.95 X \OMS/cmsy/m/n/10.95 ^^X []\OT1/cmr/m/n/10
+.95 (\OML/cmm/b/it/10.95 x\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 ^^V\OML/cmm
+/m/it/10.95 ; \OT1/cmr/bx/n/10.95 ^^F\OT1/cmr/m/n/10.95 )$\OT1/ptm/m/it/10.95 ,
+
+ []
+
+[30] [31] [32] (./GLM_MixturesNP_2018.bbl [33] [34]
 Missing character: There is no ’ in font ptmr7t!
- [28])
+ [35])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 35.
 See the caption package documentation for explanation.
 
-[29] (./GLM_MixturesNP_2018.aux) ) 
+[36] (./GLM_MixturesNP_2018.aux) ) 
 Here is how much of TeX's memory you used:
- 6772 strings out of 492642
- 98337 string characters out of 6129385
- 199737 words of memory out of 5000000
- 10435 multiletter control sequences out of 15000+600000
- 51286 words of font info for 122 fonts, out of 8000000 for 9000
+ 6735 strings out of 492649
+ 97979 string characters out of 6129622
+ 197926 words of memory out of 5000000
+ 10399 multiletter control sequences out of 15000+600000
+ 50779 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,21n,40p,1702b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,21n,40p,1706b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc
 /dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cmextra/cmbsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+nts/cmextra/cmbsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cmextra/cmex7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+sfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cmextra/cmex8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-extra/cmmib5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cmextra/cmmib7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+extra/cmmib6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.p
-fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dis
-t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (29 pages, 497218 bytes).
+nts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on GLM_MixturesNP_2018.pdf (36 pages, 13370343 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 167 compressed objects within 2 object streams
+ 273 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

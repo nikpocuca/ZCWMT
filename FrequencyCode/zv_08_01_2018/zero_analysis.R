@@ -18,13 +18,13 @@ getDensityTable <- function(in_df){
 
 
 
-#p <-  ggplot(new_m, aes(x=LogDensity, y=ClaimNb)) +
-#  theme( axis.line = element_line(colour = "black"),
-#         panel.background = element_blank()) + 
-#  geom_point(color=c_new,
-#             size = partitions/2
-#             )  + xlab("Density") + ylab("Frequency") 
-#p
+p <-  ggplot(new_m, aes(x=LogDensity, y=ClaimNb)) +
+  theme( axis.line = element_line(colour = "black"),
+         panel.background = element_blank()) + 
+  geom_point(color=c_new,
+             size = partitions/2
+             )  + xlab("Density") + ylab("Claim Nb") 
+p
 
 
 
