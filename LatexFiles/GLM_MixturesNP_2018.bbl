@@ -11,7 +11,7 @@ Berm\'{u}dez, L., Karlis, D., 2012. A finite mixture of bivariate poisson
 
 \bibitem[{Biernacki et~al.(2000)Biernacki, Celeux, and
   Govaert}]{initialPaperGrassiaRef}
-Biernacki, C., Celeux, G., Govaert, G., Jul 2000. Assessing a mixture model for
+Biernacki, C., Celeux, G., Govaert, G., 2000. Assessing a mixture model for
   clustering with the integrated completed likelihood. IEEE Transactions on
   Pattern Analysis and Machine Intelligence 22~(7), 719--725.
 
@@ -68,9 +68,9 @@ Ingrassia, S., Minotti, S.~C., Vittadini, G., 2014{\natexlab{b}}. Local
 
 \bibitem[{Ingrassia et~al.(2015)Ingrassia, Punzo, Vittadini, and
   Minotti}]{Ingrassia+Punzo+Vittadini+Minotti:2015}
-Ingrassia, S., Punzo, A., Vittadini, G., Minotti, S.~C., Jul 2015. Erratum to:
-  The generalized linear mixed cluster-weighted model. Journal of
-  Classification 32~(2), 327--355.
+Ingrassia, S., Punzo, A., Vittadini, G., Minotti, S.~C., 2015. Erratum to: The
+  generalized linear mixed cluster-weighted model. Journal of Classification
+  32~(2), 327--355.
 
 \bibitem[{Johnson et~al.(1994)Johnson, Kotz, and
   Balakrishnan}]{johnson1995continuous}
@@ -78,7 +78,7 @@ Johnson, N.~L., Kotz, S., Balakrishnan, N., 1994. Continuous Univariate
   Probability Distributions,(Vol. 1). John Wiley \& Sons Inc., NY.
 
 \bibitem[{Lambert(1992)}]{Lambert}
-Lambert, D., 02 1992. Zero-inflated poisson regression, with an application to
+Lambert, D., 1992. Zero-inflated poisson regression, with an application to
   defects in manufacturing. Technometrics 34, 1--14.
 
 \bibitem[{Lee and Lin(2010)}]{Lee+Lin:2010}
@@ -87,8 +87,8 @@ Lee, S. C.~K., Lin, X.~S., 2010. Modeling and evaluating insurance losses via
   107--130.
 
 \bibitem[{Lim et~al.(2014)Lim, Li, and Yu}]{LimHwa}
-Lim, H., Li, W., Yu, P., 03 2014. Zero-inflated poisson regression mixture
-  model. Computational Statistics and Data Analysis 71, 151--158.
+Lim, H., Li, W., Yu, P., 2014. Zero-inflated poisson regression mixture model.
+  Computational Statistics and Data Analysis 71, 151--158.
 
 \bibitem[{McCullagh and Nelder(1989)}]{McCullaghNelder1989}
 McCullagh, P., Nelder, J.~A., 1989. Generalized linear models. Vol.~37. CRC
@@ -99,17 +99,17 @@ McNicholas, P.~D., 2016. Mixture Model-Based Classification. Chapman \&
   Hall/CRC Press, Boca Raton.
 
 \bibitem[{McNicholas and Murphy(2008)}]{McNicholas:2010}
-McNicholas, P.~D., Murphy, T.~B., Sep 2008. Parsimonious gaussian mixture
-  models. Statistics and Computing 18~(3), 285--296.
+McNicholas, P.~D., Murphy, T.~B., 2008. Parsimonious gaussian mixture models.
+  Statistics and Computing 18~(3), 285--296.
 \newline\urlprefix\url{https://doi.org/10.1007/s11222-008-9056-0}
 
 \bibitem[{Miljkovic and Fern{\'a}ndez(2018)}]{risks_miljkovic}
-Miljkovic, T., Fern{\'a}ndez, D., May 2018. On two mixture-based clustering
+Miljkovic, T., Fern{\'a}ndez, D., 2018. On two mixture-based clustering
   approaches used in modeling an insurance portfolio. Risks 6~(2), 57.
 
 \bibitem[{Miljkovic and Gr\"un(2016)}]{Miljkovic+Grun:2016}
 Miljkovic, T., Gr\"un, B., 2016. Modeling loss data using mixtures of
-  distributions. Insurance: Mathematics and Economics.
+  distributions. Insurance: Mathematics and Economics 70, 387--396.
 
 \bibitem[{Murphy and Bach(2012)}]{murphy2012machine}
 Murphy, K.~P., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
@@ -163,7 +163,7 @@ Wedel, M., De~Sabro, W., 1995. A mixture likelihood approach for generalized
   linear models. Journal of Classification 12~(3), 21--55.
 
 \bibitem[{Wilson(2015)}]{misuse}
-Wilson, P., 02 2015. The misuse of the vuong test for non-nested models to test
+Wilson, P., 2015. The misuse of the vuong test for non-nested models to test
   for zero-inflation. Economics Letters 127.
 
 \bibitem[{Wilson and Einbeck(2018)}]{newIntuitive}
