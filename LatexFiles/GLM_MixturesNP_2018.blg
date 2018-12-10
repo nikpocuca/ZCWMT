@@ -1,41 +1,41 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: GLM_MixturesNP_2018.aux
 The style file: elsart-harv.bst
 Database file #1: GLM_Mixtures_2018.bib
 You've used 36 entries,
             2821 wiz_defined-function locations,
-            872 strings with 10552 characters,
-and the built_in function-call counts, 16503 in all, are:
-= -- 1738
-> -- 739
+            872 strings with 10354 characters,
+and the built_in function-call counts, 16390 in all, are:
+= -- 1727
+> -- 730
 < -- 26
-+ -- 289
-- -- 240
-* -- 1407
-:= -- 2976
++ -- 284
+- -- 237
+* -- 1390
+:= -- 2963
 add.period$ -- 111
 call.type$ -- 36
-change.case$ -- 250
+change.case$ -- 249
 chr.to.int$ -- 35
 cite$ -- 36
-duplicate$ -- 628
-empty$ -- 1167
-format.name$ -- 360
-if$ -- 3329
+duplicate$ -- 626
+empty$ -- 1163
+format.name$ -- 353
+if$ -- 3308
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 42
 newline$ -- 117
 num.names$ -- 144
-pop$ -- 249
+pop$ -- 246
 preamble$ -- 1
-purify$ -- 224
+purify$ -- 223
 quote$ -- 0
 skip$ -- 485
 stack$ -- 0
-substring$ -- 933
-swap$ -- 90
+substring$ -- 919
+swap$ -- 88
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0

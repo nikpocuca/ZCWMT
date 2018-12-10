@@ -1,48 +1,50 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 DEC 2018 10:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  10 DEC 2018 16:35
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **GLM_MixturesNP_2018.tex
 (./GLM_MixturesNP_2018.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size12.clo
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/03/24 v5.7 Page Geometry
+(/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -53,50 +55,50 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2017/09/02 v2.17a AMS math features
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen111
 ))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen112
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count91
-LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count92
-\leftroot@=\count93
-LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count94
-\DOTSCASE@=\count95
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen113
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count96
-\c@MaxMatrixCols=\count97
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
 \dotsspace@=\muskip10
-\c@parentequation=\count98
-\dspbrk@lvl=\count99
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
 \tag@help=\toks17
-\row@=\count100
-\column@=\count101
-\maxfields@=\count102
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
 \andhelp@=\toks18
 \eqnshift@=\dimen114
 \alignsep@=\dimen115
@@ -108,56 +110,64 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/euscript.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/euscript.sty
 Package: euscript 2009/06/22 v3.00 Euler Script fonts
 LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
 (Font)                  U/eus/m/n --> U/eus/b/n on input line 33.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count102
 ))
 \Gin@req@height=\dimen120
 \Gin@req@width=\dimen121
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 147.
+Package color Info: Driver file: pdftex.def on input line 142.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/generic/ulem/ulem.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box28
 \UL@hyphenbox=\box29
 \UL@skip=\skip46
@@ -169,43 +179,37 @@ Package color Info: Driver file: pdftex.def on input line 147.
 Package: ulem 2012/05/18
 \ULdepth=\dimen124
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/bm.sty
-Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
 \symboldletters=\mathgroup7
 \symboldsymbols=\mathgroup8
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf.sty
-Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
 Package etexcmds Info: Could not find \expanded.
@@ -213,45 +217,43 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup9
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/natbib.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip47
 \bibsep=\skip48
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count104
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen125
 \captionmargin@=\dimen126
 \captionwidth=\dimen127
@@ -265,43 +267,41 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \c@subfigure=\count106
 \c@subtable=\count107
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/colortbl/colortbl.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen132
-\ar@mcellbox=\box31
 \extrarowheight=\dimen133
 \NC@list=\toks22
 \extratabsurround=\skip49
 \backup@length=\skip50
-\ar@cellbox=\box32
 )
 \everycr=\toks23
 \minrowclearance=\skip51
 )
-LaTeX Info: Redefining \color on input line 709.
+LaTeX Info: Redefining \color on input line 702.
 \rownum=\count108
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip52
 \LTright=\skip53
@@ -309,18 +309,18 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTpost=\skip55
 \LTchunksize=\count109
 \LTcapwidth=\dimen134
-\LT@head=\box33
-\LT@firsthead=\box34
-\LT@foot=\box35
-\LT@lastfoot=\box36
+\LT@head=\box31
+\LT@firsthead=\box32
+\LT@foot=\box33
+\LT@lastfoot=\box34
 \LT@cols=\count110
 \LT@rows=\count111
 \c@LT@tables=\count112
 \c@LT@chunks=\count113
 \LT@p@ftn=\toks24
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2017/10/31 v2.20.4
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks25
 \thm@bodyfont=\toks26
 \thm@headfont=\toks27
@@ -331,23 +331,23 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip58
 \dth@everypar=\toks30
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/relsize/relsize.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/pdflscape.sty
-Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/lscape.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/changepage/changepage.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/changepage/changepage.sty
 Package: changepage 2009/10/20 v1.0c check page and change page layout
 \c@cp@cntr=\count114
 \cp@tempcnt=\count115
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/preprint/authblk.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/preprint/authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
 \affilsep=\skip59
 \@affilsep=\skip60
@@ -355,15 +355,11 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@authors=\count117
 \c@affil=\count118
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
-\multirow@colwidth=\skip61
-\multirow@cntb=\count119
-\multirow@dima=\skip62
+(/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen135
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2016/04/27 v1.618033 publication quality tables
+(/usr/local/texlive/2015/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen136
 \lightrulewidth=\dimen137
 \cmidrulewidth=\dimen138
@@ -374,37 +370,39 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen143
 \cmidrulekern=\dimen144
 \defaultaddspace=\dimen145
-\@cmidla=\count120
-\@cmidlb=\count121
+\@cmidla=\count119
+\@cmidlb=\count120
 \@aboverulesep=\dimen146
 \@belowrulesep=\dimen147
-\@thisruleclass=\count122
-\@lastruleclass=\count123
+\@thisruleclass=\count121
+\@lastruleclass=\count122
 \@thisrulewidth=\dimen148
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
-\c@tracingmulticols=\count124
-\mult@box=\box37
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
+\c@tracingmulticols=\count123
+\mult@box=\box35
 \multicol@leftmargin=\dimen149
-\c@unbalance=\count125
-\c@collectmore=\count126
-\doublecol@number=\count127
-\multicoltolerance=\count128
-\multicolpretolerance=\count129
+\c@unbalance=\count124
+\c@collectmore=\count125
+\doublecol@number=\count126
+\multicoltolerance=\count127
+\multicolpretolerance=\count128
 \full@width=\dimen150
 \page@free=\dimen151
 \premulticols=\dimen152
 \postmulticols=\dimen153
-\multicolsep=\skip63
-\multicolbaselineskip=\skip64
-\partial@page=\box38
-\last@line=\box39
+\multicolsep=\skip61
+\multicolbaselineskip=\skip62
+\partial@page=\box36
+\last@line=\box37
 \maxbalancingoverflow=\dimen154
-\mult@rightbox=\box40
-\mult@grightbox=\box41
-\mult@gfirstbox=\box42
-\mult@firstbox=\box43
+\mult@rightbox=\box38
+\mult@grightbox=\box39
+\mult@gfirstbox=\box40
+\mult@firstbox=\box41
+\@tempa=\box42
+\@tempa=\box43
 \@tempa=\box44
 \@tempa=\box45
 \@tempa=\box46
@@ -420,38 +418,36 @@ Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
 \@tempa=\box56
 \@tempa=\box57
 \@tempa=\box58
-\@tempa=\box59
-\@tempa=\box60
-\c@columnbadness=\count130
-\c@finalcolumnbadness=\count131
+\c@columnbadness=\count129
+\c@finalcolumnbadness=\count130
 \last@try=\dimen155
 \multicolovershoot=\dimen156
 \multicolundershoot=\dimen157
-\mult@nat@firstbox=\box61
-\colbreak@box=\box62
-\mc@col@check@num=\count132
+\mult@nat@firstbox=\box59
+\colbreak@box=\box60
+\mc@col@check@num=\count131
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/setspace/setspace.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/rotating.sty
-Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+(/usr/local/texlive/2015/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count133
-\rotFPtop=\skip65
-\rotFPbot=\skip66
-\rot@float@box=\box63
+\c@r@tfl@t=\count132
+\rotFPtop=\skip63
+\rotFPbot=\skip64
+\rot@float@box=\box61
 \rot@mess@toks=\toks31
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/eurosym/eurosym.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/eurosym/eurosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
-\@eurobox=\box64
+\@eurobox=\box62
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -465,7 +461,7 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
 LaTeX Info: Redefining \oldstylenums on input line 334.
@@ -532,14 +528,14 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/bbm-macros/bbm.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
 LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
 (Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
 )
-\c@theorem=\count134
+\c@theorem=\count133
 
 (./GLM_MixturesNP_2018.aux)
 \openout1 = `GLM_MixturesNP_2018.aux'.
@@ -559,13 +555,13 @@ LaTeX Font Info:    ... okay on input line 83.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 83.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 83.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 83.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 *geometry* driver: auto-detecting
@@ -602,24 +598,24 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count135
+\scratchcounter=\count134
 \scratchdimen=\dimen158
-\scratchbox=\box65
-\nofMPsegments=\count136
-\nofMParguments=\count137
+\scratchbox=\box63
+\nofMPsegments=\count135
+\nofMParguments=\count136
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count138
+\MPscratchCnt=\count137
 \MPscratchDim=\dimen159
-\MPnumerator=\count139
-\makeMPintoPDFobject=\count140
+\MPnumerator=\count138
+\makeMPintoPDFobject=\count139
 \everyMPtoPDFconversion=\toks33
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: longtable package is loaded.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/ltcaption.sty
-Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 )
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -640,166 +636,172 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 100.
 [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 112.
 LaTeX Font Info:    Try loading font information for U+msa on input line 114.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 114.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 114.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [3] [4]
-[5] [6]
-Overfull \hbox (0.71158pt too wide) in paragraph at lines 204--205
-[][]\OT1/ptm/m/n/10.95 [I am not sure that all the ma-te-rial about sam-ple spa
-ces in the fol-low-ing is help-ful here. Thoughts?][]
+) [3]
+Overfull \hbox (4.6895pt too wide) in paragraph at lines 137--139
+\OT1/ptm/m/n/10.95 marginal den-sity of Gaus-sian co-vari-ates, with pa-ram-e-t
+er vec-tor $\OML/cmm/b/it/10.95 ^^R[]$\OT1/ptm/m/n/10.95 , and $\OML/cmm/m/it/1
+0.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 u\OT1/cmr/m/n/10.95 ; \OML/cmm/b/
+it/10.95 ^^R[]\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 de-notes the marginal
  []
 
-[7] [8] [9] [10]
-Overfull \hbox (1.62167pt too wide) detected at line 292
-[]
- []
-
-[11]
+[4] [5] [6] [7] [8] [9]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 314.
 
- (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [12]
-Overfull \hbox (86.6403pt too wide) in paragraph at lines 340--341
-[]\OT1/ptm/m/n/10.95 Note that $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML
-/cmm/m/it/10.95  []; ^^U[]\OMS/cmsy/m/n/10.95 jf\OML/cmm/m/it/10.95 y[]\OMS/cms
-y/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x
-[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/
-m/n/10.95 )$ \OT1/ptm/m/n/10.95 can be sep-a-rated al-low-ing the max-i-miza-ti
-on of $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  []\OT1/c
-mr/m/n/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 
-g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x[]\OMS/cmsy/
-m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/10.95 )$
 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [10]
+Overfull \hbox (29.04015pt too wide) in paragraph at lines 337--341
+\OT1/ptm/m/n/10.95 where $\OML/cmm/b/it/10.95 z[] \OT1/cmr/m/n/10.95 := []$ \OT
+1/ptm/m/n/10.95 is a re-al-iza-tion of $\OML/cmm/b/it/10.95 Z[] \OT1/cmr/m/n/10
+.95 := []$\OT1/ptm/m/n/10.95 . Note that $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/1
+0.95 (\OML/cmm/m/it/10.95  []; ^^U[]\OMS/cmsy/m/n/10.95 jf\OML/cmm/m/it/10.95 y
+[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/
+it/10.95 x[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[
+]\OT1/cmr/m/n/10.95 )$
  []
 
-[13] [14]
+
+Overfull \hbox (29.72208pt too wide) in paragraph at lines 337--341
+\OT1/ptm/m/n/10.95 can be sep-a-rated al-low-ing the max-i-miza-tion of $\OML/c
+mm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  []\OT1/cmr/m/n/10.95 
+; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m
+/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x[]\OMS/cmsy/m/n/10.95 g[]
+\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n
+/10.95 and $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^U[
+]\OT1/cmr/m/n/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n
+/10.95 g[]\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/b/it/10.95 x[]\OM
+S/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/1
+0.95 )$
+ []
+
+[11] [12]
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 381.
 
- (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-Overfull \hbox (53.50041pt too wide) in paragraph at lines 390--408
+Overfull \hbox (12.34433pt too wide) in paragraph at lines 388--405
  [] 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 413.
-[15]
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 409.
+[13]
 Package epstopdf Info: Source file: <Untransformed_Density.eps>
-(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 4955 bytes
 (epstopdf)             Output file: <Untransformed_Density-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 9081 bytes
-(epstopdf)             Command: <repstopdf --outfile=Untransformed_Density-eps-
-converted-to.pdf Untransformed_Density.eps>
-(epstopdf)             \includegraphics on input line 430.
+(epstopdf)             Command: <epstopdf --outfile=Untransformed_Density-eps-c
+onverted-to.pdf Untransformed_Density.eps>
+(epstopdf)             \includegraphics on input line 426.
 Package epstopdf Info: Output file is already uptodate.
-<Untransformed_Density-eps-converted-to.pdf, id=74, 344.28625pt x 315.1775pt>
+
+<Untransformed_Density-eps-converted-to.pdf, id=68, 344.28625pt x 315.1775pt>
 File: Untransformed_Density-eps-converted-to.pdf Graphic file (type pdf)
+
 <use Untransformed_Density-eps-converted-to.pdf>
-Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf  used on in
-put line 430.
+Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf used on inp
+ut line 426.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
 Package epstopdf Info: Source file: <transformed_Density.eps>
-(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 4669 bytes
 (epstopdf)             Output file: <transformed_Density-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 9171 bytes
-(epstopdf)             Command: <repstopdf --outfile=transformed_Density-eps-co
-nverted-to.pdf transformed_Density.eps>
-(epstopdf)             \includegraphics on input line 431.
+(epstopdf)             Command: <epstopdf --outfile=transformed_Density-eps-con
+verted-to.pdf transformed_Density.eps>
+(epstopdf)             \includegraphics on input line 427.
 Package epstopdf Info: Output file is already uptodate.
-<transformed_Density-eps-converted-to.pdf, id=75, 344.28625pt x 315.1775pt>
+
+<transformed_Density-eps-converted-to.pdf, id=69, 344.28625pt x 315.1775pt>
 File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
+
 <use transformed_Density-eps-converted-to.pdf>
-Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
-t line 431.
+Package pdftex.def Info: transformed_Density-eps-converted-to.pdf used on input
+ line 427.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
+ [14]
 Package epstopdf Info: Source file: <sevClusterPlot.eps>
-(epstopdf)                    date: 2018-12-07 15:20:08
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 810112 bytes
 (epstopdf)             Output file: <sevClusterPlot-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-10 08:24:26
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 999031 bytes
-(epstopdf)             Command: <repstopdf --outfile=sevClusterPlot-eps-convert
-ed-to.pdf sevClusterPlot.eps>
-(epstopdf)             \includegraphics on input line 481.
+(epstopdf)             Command: <epstopdf --outfile=sevClusterPlot-eps-converte
+d-to.pdf sevClusterPlot.eps>
+(epstopdf)             \includegraphics on input line 476.
 Package epstopdf Info: Output file is already uptodate.
-<sevClusterPlot-eps-converted-to.pdf, id=76, 590.205pt x 364.36125pt>
+
+<sevClusterPlot-eps-converted-to.pdf, id=73, 590.205pt x 364.36125pt>
 File: sevClusterPlot-eps-converted-to.pdf Graphic file (type pdf)
+
 <use sevClusterPlot-eps-converted-to.pdf>
-Package pdftex.def Info: sevClusterPlot-eps-converted-to.pdf  used on input lin
-e 481.
-(pdftex.def)             Requested size: 354.12573pt x 218.61842pt.
- [16] [17 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density
--eps-converted-to.pdf>] [18 <./sevClusterPlot-eps-converted-to.pdf>]
-[19]
+Package pdftex.def Info: sevClusterPlot-eps-converted-to.pdf used on input line
+ 476.
+(pdftex.def)             Requested size: 398.38919pt x 245.94434pt.
+ [15 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
+converted-to.pdf>]
+
+LaTeX Warning: Text page 16 contains only floats.
+
+[16 <./sevClusterPlot-eps-converted-to.pdf>] [17]
 Package epstopdf Info: Source file: <claimNb_eps_freq.eps>
-(epstopdf)                    date: 2018-12-10 08:27:47
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 15556697 bytes
 (epstopdf)             Output file: <claimNb_eps_freq-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-12-10 08:31:21
+(epstopdf)                    date: 2018-12-10 12:25:33
 (epstopdf)                    size: 11985136 bytes
-(epstopdf)             Command: <repstopdf --outfile=claimNb_eps_freq-eps-conve
-rted-to.pdf claimNb_eps_freq.eps>
-(epstopdf)             \includegraphics on input line 548.
+(epstopdf)             Command: <epstopdf --outfile=claimNb_eps_freq-eps-conver
+ted-to.pdf claimNb_eps_freq.eps>
+(epstopdf)             \includegraphics on input line 542.
 Package epstopdf Info: Output file is already uptodate.
-<claimNb_eps_freq-eps-converted-to.pdf, id=115, 762.85pt x 356.33125pt>
+
+<claimNb_eps_freq-eps-converted-to.pdf, id=108, 762.85pt x 356.33125pt>
 File: claimNb_eps_freq-eps-converted-to.pdf Graphic file (type pdf)
+
 <use claimNb_eps_freq-eps-converted-to.pdf>
-Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf  used on input l
-ine 548.
+Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf used on input li
+ne 542.
 (pdftex.def)             Requested size: 404.30858pt x 188.85466pt.
- [20] [21 <./claimNb_eps_freq-eps-converted-to.pdf>]
-Overfull \hbox (16.85631pt too wide) in paragraph at lines 612--637
+ [18] [19 <./claimNb_eps_freq-eps-converted-to.pdf>] [20]
+Overfull \hbox (16.85631pt too wide) in paragraph at lines 605--630
  [][] 
  []
 
-[22]
-Overfull \hbox (1.52298pt too wide) in paragraph at lines 648--673
- [][] 
- []
-
-
-Overfull \hbox (1.52298pt too wide) in paragraph at lines 678--703
+[21]
+Overfull \hbox (1.52298pt too wide) in paragraph at lines 641--666
  [][] 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[23]
-
-LaTeX Warning: Text page 24 contains only floats.
-
-[24] [25] [26
-
-]
-Overfull \hbox (31.1449pt too wide) in paragraph at lines 754--766
- [] 
+Overfull \hbox (1.52298pt too wide) in paragraph at lines 671--696
+ [][] 
  []
 
-[27] [28] [29]
-Overfull \hbox (20.31328pt too wide) in paragraph at lines 801--803
+[22] [23] [24] [25] [26]
+Overfull \hbox (20.31328pt too wide) in paragraph at lines 783--785
 []\OT1/ptm/b/n/10.95 Lemma A.1. []\OT1/ptm/m/it/10.95 Let the ran-dom vari-able
  $\OML/cmm/b/it/10.95 X$ \OT1/ptm/m/it/10.95 have mul-ti-vari-ate nor-mal dis-t
 ri-bu-tion ie. $\OML/cmm/b/it/10.95 X \OMS/cmsy/m/n/10.95 ^^X []\OT1/cmr/m/n/10
@@ -808,57 +810,55 @@ ri-bu-tion ie. $\OML/cmm/b/it/10.95 X \OMS/cmsy/m/n/10.95 ^^X []\OT1/cmr/m/n/10
 
  []
 
-[30] [31] [32] (./GLM_MixturesNP_2018.bbl [33] [34]
-Missing character: There is no ’ in font ptmr7t!
- [35])
+[27] [28] [29] [30] (./GLM_MixturesNP_2018.bbl [31] [32] [33])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 35.
 See the caption package documentation for explanation.
 
-[36] (./GLM_MixturesNP_2018.aux) ) 
+[34] (./GLM_MixturesNP_2018.aux) ) 
 Here is how much of TeX's memory you used:
- 6735 strings out of 492649
- 97979 string characters out of 6129622
- 197926 words of memory out of 5000000
- 10399 multiletter control sequences out of 15000+600000
+ 6691 strings out of 493089
+ 97150 string characters out of 6134842
+ 189483 words of memory out of 5000000
+ 9958 multiletter control sequences out of 15000+600000
  50779 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,21n,40p,1706b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc
-/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cmextra/cmbsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cmextra/cmex8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-extra/cmmib6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/font
+ 42i,21n,40p,1691b,566s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc
+/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cmextra/cmbsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cmextra/cmex8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+extra/cmmib6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cmextra/cmmib8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (36 pages, 13370343 bytes).
+Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361857 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
+ 267 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

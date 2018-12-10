@@ -50,6 +50,10 @@ Gershenfeld, N., Schoner, B., Metois, E., 1999. Cluster-weighted modelling for
 Gershenfeld, N.~A., 1999. The nature of mathematical modeling. Cambridge
   university press.
 
+\bibitem[{Hubert and Arabie(1985)}]{hubert85}
+Hubert, L., Arabie, P., 1985. Comparing partitions. Journal of Classification
+  2~(1), 193--218.
+
 \bibitem[{Ingrassia et~al.(2014{\natexlab{a}})Ingrassia, Minotti, and
   Punzo}]{Ingrassia+Minotti+Punzo:2014}
 Ingrassia, S., Minotti, S.~C., Punzo, A., 2014{\natexlab{a}}. Model-based
@@ -99,11 +103,6 @@ McNicholas, P.~D., Murphy, T.~B., Sep 2008. Parsimonious gaussian mixture
   models. Statistics and Computing 18~(3), 285--296.
 \newline\urlprefix\url{https://doi.org/10.1007/s11222-008-9056-0}
 
-\bibitem[{Miljkovic and Barabanov(2015)}]{miljkovic2015}
-Miljkovic, T., Barabanov, N., 2015. Modeling veterans’ health benefit grants
-  using the expectation maximization algorithm. Journal of Applied Statistics
-  42~(6), 1166--1182.
-
 \bibitem[{Miljkovic and Fern{\'a}ndez(2018)}]{risks_miljkovic}
 Miljkovic, T., Fern{\'a}ndez, D., May 2018. On two mixture-based clustering
   approaches used in modeling an insurance portfolio. Risks 6~(2), 57.
@@ -111,11 +110,6 @@ Miljkovic, T., Fern{\'a}ndez, D., May 2018. On two mixture-based clustering
 \bibitem[{Miljkovic and Gr\"un(2016)}]{Miljkovic+Grun:2016}
 Miljkovic, T., Gr\"un, B., 2016. Modeling loss data using mixtures of
   distributions. Insurance: Mathematics and Economics.
-
-\bibitem[{Miljkovic and Orr(2017)}]{miljkovic+orr:2017}
-Miljkovic, T., Orr, M., 2017. An evaluation of the reconstructed coefficient of
-  determination and potential adjustments. Communications in
-  Statistics-Simulation and Computation 46~(9), 6705--6718.
 
 \bibitem[{Murphy and Bach(2012)}]{murphy2012machine}
 Murphy, K.~P., Bach, F., 2012. Machine Learning: A Probabilistic Perspective.
@@ -133,6 +127,10 @@ Punzo, A., McNicholas, P.~D., 2017. Robust clustering in regression analysis
 \bibitem[{{R Core Team}(2018)}]{R18}
 {R Core Team}, 2018. R: A Language and Environment for Statistical Computing. R
   Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[{Rand(1971)}]{rand71}
+Rand, W.~M., 1971. Objective criteria for the evaluation of clustering methods.
+  Journal of the American Statistical Association 66~(336), 846--850.
 
 \bibitem[{Subedi et~al.(2013)Subedi, Punzo, Ingrassia, and
   McNicholas}]{subedi13}
