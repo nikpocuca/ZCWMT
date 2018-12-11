@@ -337,7 +337,7 @@ l_c(\psi_k,\lambda_k| \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,{\bm{\zz}_k}) &= \sum
 \end{align*}
 where $\bm{\zz}_k := \left[\zz_{1k}, ..., \zz_{nk} \right]$ is a realization of $\bm{\zZ}_k  := \left[\zZ_{1k}, ..., \zZ_{nk} \right]$.
 % 
- Note that $l_c(\psi_k,\lambda_k|\{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k)$ can be separated allowing the maximization of $l_c(\psi_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k)$ and $l_c(\lambda_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k) $ idependently for parameters $\psi_k$ and $\lambda_k$. With the EM algorithm, maximization of parameters are performed iteratively between estimating $\zZ_{ik}$ with its expectation under current estimates for $\lambda_k$ and $\psi_k$ (E-Step), and then maximizing the conditional expectation of the complete-data log-likelihood (M-Step). 
+ Note that $l_c(\psi_k,\lambda_k|\{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k)$ can be separated allowing the maximization of $l_c(\psi_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k)$ and $l_c(\lambda_k; \{y_i\}_{i=1}^n,\{\bm{x}_i\}_{i=1}^n,\bm{\zz}_k) $ independently for parameters $\psi_k$ and $\lambda_k$. With the EM algorithm, maximization of parameters are performed iteratively between estimating $\zZ_{ik}$ with its expectation under current estimates for $\lambda_k$ and $\psi_k$ (E-Step), and then maximizing the conditional expectation of the complete-data log-likelihood (M-Step). 
 
 %\subsubsection{E-step -  Zero-inflated Model}%Nik: again, why the first "-"?
  % PM: There are two EM algorithms, one is used to partition the dataset, the other EM is to optimize the Zero inflated cond density.
@@ -420,7 +420,7 @@ g(\mathbb{E}\left[Y_{Severity}|\bm{x},  \bm{\beta}_k  \right]) =
 The canonnical log-link function $g$ is used for the GCWM in \eqref{regressionModel}. 
 
 Beginning with the continuous covariate $Density$, we want to inspect the shape of its univariate data to see if it follows Gaussian distribution. %Nik: use teletype for variable names , Paul: Like this? I am not sure what you mean by teletype, like telegraph type? or Mathematical type?
-The left-hand side of Figure \ref{fig:vet1} clearly revels that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
+The left-hand side of Figure \ref{fig:vet1} clearly reveals that the the $Density$ is rather skewed right with several observations that report high value of density. This indicates a need for a transformation. The log-normal transformation clearly improves the fit (see the right side of Figure \ref{fig:vet1}).
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[scale=0.63]{Untransformed_Density.eps}
@@ -447,7 +447,7 @@ CWM & $1$ & $351,965$ & $352,149$\\
 GCWM &  1 & $110,627$ &  $110,810$ \\
 & $2$ &  $88,828$ & $89,203$ \\
 & $3$  & $88,338$  &$ 88,903$ \\
-& $\bm{4}$ &  $\bm{87,808}$ & $\bm{88,564}$ \\
+& $\bm{4}$ &  $ \bm{87,808} $ & $ \bm{88,564} $ \\
 & 5 & $88,009$  & $88,956$ \\
 \hline
 \end{tabular}
