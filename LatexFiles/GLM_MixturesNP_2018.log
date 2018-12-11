@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 DEC 2018 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 DEC 2018 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -733,7 +733,7 @@ LaTeX Font Info:    Try loading font information for U+rsfs on input line 114.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [3]
-Overfull \hbox (4.6895pt too wide) in paragraph at lines 137--139
+Overfull \hbox (4.7286pt too wide) in paragraph at lines 137--139
 \OT1/ptm/m/n/10.95 marginal den-sity of Gaus-sian co-vari-ates, with pa-ram-e-t
 er vec-tor $\OML/cmm/b/it/10.95 ^^R[]$\OT1/ptm/m/n/10.95 , and $\OML/cmm/m/it/1
 0.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 u\OT1/cmr/m/n/10.95 ; \OML/cmm/b/
@@ -747,7 +747,7 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 314.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [10]
-Overfull \hbox (27.55943pt too wide) in paragraph at lines 337--341
+Overfull \hbox (29.04015pt too wide) in paragraph at lines 337--341
 \OT1/ptm/m/n/10.95 where $\OML/cmm/b/it/10.95 z[] \OT1/cmr/m/n/10.95 := []$ \OT
 1/ptm/m/n/10.95 is a re-al-iza-tion of $\OML/cmm/b/it/10.95 Z[] \OT1/cmr/m/n/10
 .95 := []$\OT1/ptm/m/n/10.95 . Note that $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/1
@@ -758,7 +758,7 @@ it/10.95 x[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[
  []
 
 
-Overfull \hbox (28.24136pt too wide) in paragraph at lines 337--341
+Overfull \hbox (29.72208pt too wide) in paragraph at lines 337--341
 \OT1/ptm/m/n/10.95 can be sep-a-rated al-low-ing the max-i-miza-tion of $\OML/c
 mm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  []\OT1/cmr/m/n/10.95 
 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m
@@ -857,11 +857,21 @@ Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf  used on input l
 ine 542.
 (pdftex.def)             Requested size: 404.30858pt x 188.85466pt.
  [18] [19 <./claimNb_eps_freq-eps-converted-to.pdf>] [20]
-Overfull \hbox (15.19359pt too wide) in paragraph at lines 605--630
+Overfull \hbox (13.58806pt too wide) in paragraph at lines 605--630
  [][] 
  []
 
-[21] [22] [23] [24] [25] [26]
+[21]
+Overfull \hbox (3.11298pt too wide) in paragraph at lines 641--666
+ [][] 
+ []
+
+
+Overfull \hbox (3.11298pt too wide) in paragraph at lines 671--696
+ [][] 
+ []
+
+[22] [23] [24] [25] [26]
 Overfull \hbox (20.31328pt too wide) in paragraph at lines 783--785
 []\OT1/ptm/b/n/10.95 Lemma A.1. []\OT1/ptm/m/it/10.95 Let the ran-dom vari-able
  $\OML/cmm/b/it/10.95 X$ \OT1/ptm/m/it/10.95 have mul-ti-vari-ate nor-mal dis-t
@@ -876,7 +886,11 @@ ri-bu-tion ie. $\OML/cmm/b/it/10.95 X \OMS/cmsy/m/n/10.95 ^^X []\OT1/cmr/m/n/10
 Package caption Warning: Unused \captionsetup[sub] on input line 35.
 See the caption package documentation for explanation.
 
-[34] (./GLM_MixturesNP_2018.aux) ) 
+[34] (./GLM_MixturesNP_2018.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  6792 strings out of 492649
  98361 string characters out of 6129622
@@ -885,38 +899,37 @@ Here is how much of TeX's memory you used:
  50779 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,40p,1691b,565s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc
-/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cmextra/cmbsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cmextra/cmex8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-extra/cmmib6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cmextra/cmmib8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361136 bytes).
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/local/texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist
+/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361571 bytes).
 PDF statistics:
  267 PDF objects out of 1000 (max. 8388607)
  187 compressed objects within 2 object streams
