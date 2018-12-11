@@ -13,3 +13,7 @@ Pages 1-8 have been re-written, almost done methodology
 ## September 11th 2018
 
 Updated full paper and files. 
+
+## Dec 3rd 2018
+
+Finished Paper
