@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 DEC 2018 18:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 DEC 2018 23:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,13 +741,13 @@ it/10.95 ^^R[]\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 de-notes the marginal
  []
 
 [4] [5] [6] [7] [8] [9] [10]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 314.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 284.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [11]
-Overfull \hbox (29.04015pt too wide) in paragraph at lines 337--341
+Overfull \hbox (29.04015pt too wide) in paragraph at lines 307--311
 \OT1/ptm/m/n/10.95 where $\OML/cmm/b/it/10.95 z[] \OT1/cmr/m/n/10.95 := []$ \OT
 1/ptm/m/n/10.95 is a re-al-iza-tion of $\OML/cmm/b/it/10.95 Z[] \OT1/cmr/m/n/10
 .95 := []$\OT1/ptm/m/n/10.95 . Note that $\OML/cmm/m/it/10.95 l[]\OT1/cmr/m/n/1
@@ -758,7 +758,7 @@ it/10.95 x[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[
  []
 
 
-Overfull \hbox (29.72208pt too wide) in paragraph at lines 337--341
+Overfull \hbox (29.72208pt too wide) in paragraph at lines 307--311
 \OT1/ptm/m/n/10.95 can be sep-a-rated al-low-ing the max-i-miza-tion of $\OML/c
 mm/m/it/10.95 l[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  []\OT1/cmr/m/n/10.95 
 ; \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 y[]\OMS/cmsy/m/n/10.95 g[]\OML/cmm/m
@@ -772,18 +772,18 @@ S/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/1
  []
 
 [12]
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 381.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 351.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-Overfull \hbox (12.34433pt too wide) in paragraph at lines 388--405
+Overfull \hbox (12.34433pt too wide) in paragraph at lines 358--375
  [] 
  []
 
 [13]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 409.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 379.
  [14]
 Package epstopdf Info: Source file: <Untransformed_Density.eps>
 (epstopdf)                    date: 2018-12-07 15:20:08
@@ -794,13 +794,13 @@ Package epstopdf Info: Source file: <Untransformed_Density.eps>
 (epstopdf)                    size: 9081 bytes
 (epstopdf)             Command: <repstopdf --outfile=Untransformed_Density-eps-
 converted-to.pdf Untransformed_Density.eps>
-(epstopdf)             \includegraphics on input line 426.
+(epstopdf)             \includegraphics on input line 396.
 Package epstopdf Info: Output file is already uptodate.
 <Untransformed_Density-eps-converted-to.pdf, id=71, 344.28625pt x 315.1775pt>
 File: Untransformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 <use Untransformed_Density-eps-converted-to.pdf>
 Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf  used on in
-put line 426.
+put line 396.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
 Package epstopdf Info: Source file: <transformed_Density.eps>
 (epstopdf)                    date: 2018-12-07 15:20:08
@@ -810,13 +810,13 @@ Package epstopdf Info: Source file: <transformed_Density.eps>
 (epstopdf)                    size: 9171 bytes
 (epstopdf)             Command: <repstopdf --outfile=transformed_Density-eps-co
 nverted-to.pdf transformed_Density.eps>
-(epstopdf)             \includegraphics on input line 427.
+(epstopdf)             \includegraphics on input line 397.
 Package epstopdf Info: Output file is already uptodate.
 <transformed_Density-eps-converted-to.pdf, id=72, 344.28625pt x 315.1775pt>
 File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 <use transformed_Density-eps-converted-to.pdf>
 Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
-t line 427.
+t line 397.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
  [15 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
 converted-to.pdf>]
@@ -828,13 +828,13 @@ Package epstopdf Info: Source file: <sevClusterPlot.eps>
 (epstopdf)                    size: 999031 bytes
 (epstopdf)             Command: <repstopdf --outfile=sevClusterPlot-eps-convert
 ed-to.pdf sevClusterPlot.eps>
-(epstopdf)             \includegraphics on input line 476.
+(epstopdf)             \includegraphics on input line 446.
 Package epstopdf Info: Output file is already uptodate.
 <sevClusterPlot-eps-converted-to.pdf, id=90, 590.205pt x 364.36125pt>
 File: sevClusterPlot-eps-converted-to.pdf Graphic file (type pdf)
 <use sevClusterPlot-eps-converted-to.pdf>
 Package pdftex.def Info: sevClusterPlot-eps-converted-to.pdf  used on input lin
-e 476.
+e 446.
 (pdftex.def)             Requested size: 398.38919pt x 245.94434pt.
  [16] [17 <./sevClusterPlot-eps-converted-to.pdf>]
 [18]
@@ -846,26 +846,26 @@ Package epstopdf Info: Source file: <claimNb_eps_freq.eps>
 (epstopdf)                    size: 11985136 bytes
 (epstopdf)             Command: <repstopdf --outfile=claimNb_eps_freq-eps-conve
 rted-to.pdf claimNb_eps_freq.eps>
-(epstopdf)             \includegraphics on input line 542.
+(epstopdf)             \includegraphics on input line 512.
 Package epstopdf Info: Output file is already uptodate.
 <claimNb_eps_freq-eps-converted-to.pdf, id=111, 762.85pt x 356.33125pt>
 File: claimNb_eps_freq-eps-converted-to.pdf Graphic file (type pdf)
 <use claimNb_eps_freq-eps-converted-to.pdf>
 Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf  used on input l
-ine 542.
+ine 512.
 (pdftex.def)             Requested size: 404.30858pt x 188.85466pt.
  [19 <./claimNb_eps_freq-eps-converted-to.pdf>] [20]
-Overfull \hbox (13.58806pt too wide) in paragraph at lines 605--630
+Overfull \hbox (13.58806pt too wide) in paragraph at lines 575--600
  [][] 
  []
 
 [21]
-Overfull \hbox (3.11298pt too wide) in paragraph at lines 641--666
+Overfull \hbox (3.11298pt too wide) in paragraph at lines 611--636
  [][] 
  []
 
 
-Overfull \hbox (3.11298pt too wide) in paragraph at lines 671--696
+Overfull \hbox (3.11298pt too wide) in paragraph at lines 641--666
  [][] 
  []
 
@@ -877,7 +877,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: Text page 23 contains only floats.
 
 [23] [24] [25] [26]
-Overfull \hbox (20.31328pt too wide) in paragraph at lines 783--785
+Overfull \hbox (20.31328pt too wide) in paragraph at lines 753--755
 []\OT1/ptm/b/n/10.95 Lemma A.1. []\OT1/ptm/m/it/10.95 Let the ran-dom vari-able
  $\OML/cmm/b/it/10.95 X$ \OT1/ptm/m/it/10.95 have mul-ti-vari-ate nor-mal dis-t
 ri-bu-tion ie. $\OML/cmm/b/it/10.95 X \OMS/cmsy/m/n/10.95 ^^X []\OT1/cmr/m/n/10
@@ -931,7 +931,7 @@ l/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361059 bytes).
+Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361058 bytes).
 PDF statistics:
  267 PDF objects out of 1000 (max. 8388607)
  187 compressed objects within 2 object streams
