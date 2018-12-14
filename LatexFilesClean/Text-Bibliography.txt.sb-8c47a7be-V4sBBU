@@ -1,0 +1,120 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1670
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww23040\viewh12680\viewkind0
+\deftab720
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+Berm\'fadez, L., Karlis, D., 2012. A finite mixture of bivariate poisson regression models with an application to insurance ratemaking. Computational Statistics and Data Analysis 56 (12), 3988\'96 3999. 
+\fs24 \
+
+\fs29\fsmilli14667 Biernacki, C., Celeux, G., Govaert, G., 2000. Assessing a mixture model for clustering with the integrated completed likelihood. IEEE Transactions on Pattern Analysis and Machine Intelligence 22 (7), 719\'96725. 
+\fs24 \
+
+\fs29\fsmilli14667 Brown, G. O., Buckley, W. S., 2015. Experience rating with poisson mixtures. Annals of Actuarial Science 9 (02), 304\'96321. 
+\fs24 \
+
+\fs29\fsmilli14667 Charpentier, A., 2014. Computational Actuarial Science with R. CRC press. 
+\fs24 \
+
+\fs29\fsmilli14667 Dempster, A. P., Laird, N. M., Rubin, D. B., 1977. Maximum likelihood from incomplete data via the EM-algorithm. Journal of the Royal Statistical Society B 39, 1\'9638. 
+\fs24 \
+
+\fs29\fsmilli14667 Dutang, C., Charpentier, A., 2016. CASdatasets. R package version 1.0-6. URL http://cas.uqam.ca/pub/R/ 
+\fs24 \
+
+\fs29\fsmilli14667 Frees, E. W., Derrig, R. A., Meyers, Glenn, e., 2014. Predictive Modeling Applications in Actuarial Science. Vol. 1 of International Series on Actuarial Science. International Series on Actuarial Science. \
+Gershenfeld, N., 1997. Nonlinear inference and cluster-weighted modeling. Annals of the New York Academy of Sciences 808 (1), 18\'9624. 
+\fs24 \
+
+\fs29\fsmilli14667 Gershenfeld, N., Schoner, B., Metois, E., 1999. Cluster-weighted modelling for time-series analysis. Nature 397 (67171), 329\'96332. 
+\fs24 \
+
+\fs29\fsmilli14667 Gershenfeld, N. A., 1999. The nature of mathematical modeling. Cambridge university press. 
+\fs24 \
+
+\fs29\fsmilli14667 Hubert, L., Arabie, P., 1985. Comparing partitions. Journal of Classification 2 (1), 193\'96218. 
+\fs24 \
+
+\fs29\fsmilli14667 Ingrassia, S., Minotti, S. C., Punzo, A., 2014a. Model-based clustering via linear cluster-weighted models. Computational Statistics & Data Analysis 71, 159\'96182. 
+\fs24 \
+
+\fs29\fsmilli14667 Ingrassia, S., Minotti, S. C., Vittadini, G., 2014b. Local statistical modeling via a cluster-weighted approach with elliptical distributions. Journal of classification 29 (3), 363\'96401. 
+\fs24 \
+
+\fs29\fsmilli14667 Ingrassia, S., Punzo, A., Vittadini, G., Minotti, S. C., 2015. Erratum to: The generalized linear mixed cluster-weighted model. Journal of Classification 32 (2), 327\'96355. 
+\fs24 \
+
+\fs29\fsmilli14667 Johnson, N. L., Kotz, S., Balakrishnan, N., 1994. Continuous Univariate Probability Distributions,(Vol. 1). John Wiley & Sons Inc., NY. 
+\fs24 \
+
+\fs29\fsmilli14667 Lambert, D., 1992. Zero-inflated poisson regression, with an application to defects in manufacturing. Technometrics 34, 1\'9614. 
+\fs24 \
+
+\fs29\fsmilli14667 Lee, S. C. K., Lin, X. S., 2010. Modeling and evaluating insurance losses via mixtures of Erlang distributions. North American Actuarial Journal 14 (1), 107\'96130. 
+\fs24 \
+
+\fs29\fsmilli14667 Lim, H., Li, W., Yu, P., 2014. Zero-inflated poisson regression mixture model. Computational Statistics and Data Analysis 71, 151\'96158. 
+\fs24 \
+
+\fs29\fsmilli14667 McCullagh, P., Nelder, J. A., 1989. Generalized linear models. Vol. 37. CRC press. 
+\fs24 \
+
+\fs29\fsmilli14667 McNicholas, P. D., 2016. Mixture Model-Based Classification. Chapman & Hall/CRC Press, Boca Raton. \
+McNicholas, P. D., Murphy, T. B., 2008. Parsimonious gaussian mixture models. Statistics and Computing 18 (3), 285\'96296.\uc0\u8232 URL https://doi.org/10.1007/s11222-008-9056-0 
+\fs24 \
+
+\fs29\fsmilli14667 Miljkovic, T., Fern\'e1ndez, D., 2018. On two mixture-based clustering approaches used in modeling an insurance portfolio. Risks 6 (2), 57. 
+\fs24 \
+
+\fs29\fsmilli14667 Miljkovic, T., Gr\'fcn, B., 2016. Modeling loss data using mixtures of distributions. Insurance: Mathematics and Economics 70, 387\'96396. 
+\fs24 \
+
+\fs29\fsmilli14667 Murphy, K. P., Bach, F., 2012. Machine Learning: A Probabilistic Perspective. Adaptive Computation and Machi. MIT Press. 
+\fs24 \
+
+\fs29\fsmilli14667 Punzo, A., Ingrassia, S., ., 2014. Parsimonious generalized linear Gaussian cluster-weighted models. Springer International Publishing. 
+\fs24 \
+
+\fs29\fsmilli14667 Punzo, A., McNicholas, P. D., 2017. Robust clustering in regression analysis via the contaminated gaussian cluster-weighted model. Journal of Classification 34 (2), 249\'96293. 
+\fs24 \
+
+\fs29\fsmilli14667 R Core Team, 2018. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing, Vienna, Austria. 
+\fs24 \
+
+\fs29\fsmilli14667 Rand, W. M., 1971. Objective criteria for the evaluation of clustering methods. Journal of the American Statistical Association 66 (336), 846\'96850. 
+\fs24 \
+
+\fs29\fsmilli14667 Subedi, S., Punzo, A., Ingrassia, S., McNicholas, P. D., 2013. Clustering and classification via cluster-weighted factor analyzers. Advances in Data Analysis and Classification 7 (1), 5\'9640. 
+\fs24 \
+
+\fs29\fsmilli14667 Subedi, S., Punzo, A., Ingrassia, S., McNicholas, P. D., 2015. Cluster-weighted t-factor analyzers for robust model-based clustering and dimension reduction. Statistical Methods and Applications 24 (4), 623\'96649. 
+\fs24 \
+
+\fs29\fsmilli14667 Verbelen, R., Gong, L., Antonio, K., Badescu, A., Lin, S., 2015. Fitting mixtures of Erlangs to censored and truncated data using the EM algorithm. ASTIN Bulletin 45 (3), 729\'96758. 
+\fs24 \
+
+\fs29\fsmilli14667 Vuong, Q. H., 1989. Likelihood ratio tests for model selection and non-nested hypotheses. Econometrica 57 (2), 307\'96333. 
+\fs24 \
+
+\fs29\fsmilli14667 Wedel, M., 2002. Concominat variables in finite mixture modeling. Statistica Neerlandica 56 (3), 362\'96375. 
+\fs24 \
+
+\fs29\fsmilli14667 Wedel, M., De Sabro, W., 1995. A mixture likelihood approach for generalized linear models. Journal of Classification 12 (3), 21\'9655. 
+\fs24 \
+
+\fs29\fsmilli14667 Wilson, P., 2015. The misuse of the vuong test for non-nested models to test for zero-inflation. Economics Letters 127. 
+\fs24 \
+
+\fs29\fsmilli14667 Wilson, P., Einbeck, J., 2018. A new and intuitive test for zero modification. Statistical Modelling. 
+\fs24 \
+
+\fs29\fsmilli14667 \
+\
+\
+
+\fs24 \
+\
+}
