@@ -124,7 +124,7 @@ The pair $q(y|\bm{x};\bm{\vartheta}_k)$ and $p(\bm{x};\bm{\theta}_k)$ are condit
  f(\bm{x}, y; \bm{\Phi})= \sum_{k=1}^{K} \tau_k q(y|\bm{x};\bm{\vartheta}_k)p(\bm{x};\bm{\theta}_k)=\sum_{k=1}^{K} \tau_k q(y|\bm{x};\bm{\vartheta}_k)p(\bm{v}; \bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})
 \label{eq2}
 \end{align}
-where $\bm{v}$ and $\bm{w}$ are respectively the realized vectors of continuous and discrete covariates, $q(y|\bm{x};\bm{\vartheta}_k)$ is the conditional density of $Y|\bm{x}$ with parameter vector $\bm{\vartheta}_k$, $p(\bm{v};\bm{\theta}_k^{\star})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta}_k^{\star}$, and $p(\bm{w};\bm{\theta}_k^{\star\star})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta}_k^{\star\star}$. As before, $\bm{\Phi}$ denotes the set containing all model parameters. %Nik: this does not seem to be all model parameters? Also, vartheta is either bold face (vector) or not (scalar), and what is $\lm$?. % Notation Corrected - Nik
+where $\bm{v}$ and $\bm{w}$ are respectively the realized vectors of continuous and discrete covariates, $q(y|\bm{x};\bm{\vartheta}_k)$ is the conditional density of $Y|\bm{x}$ with parameter vector $\bm{\vartheta}_k$, $p(\bm{v};\bm{\theta}_k^{\star})$ is the marginal distribution of $\bm{v}$ with parameter vector $\bm{\theta}_k^{\star}$, and $p(\bm{w};\bm{\theta}_k^{\star\star})$ is the marginal distribution of $\bm{w}$ with parameter vector $\bm{\theta}_k^{\star\star}$. As before, $\bm{\Phi}$ denotes the set containing all model parameters. 
 The conditional distribution $q(y|\bm{x};\bm{\vartheta}_k)$ is assumed to belong to an exponential family of distributions and as such can be modeled in the GLM framework. The marginal distribution of continuous covariates is assumed to be Gaussian. 
 
 Unfortunately, this last assumption is too strong for use in insurance related applications, specifically in rate-making or reserving. To relax it, we develop an extension which allows for non-Gaussian covariates. Though developed through a specific example, the methodology discussed in the next section is of general applicability.
@@ -143,10 +143,8 @@ Due to its relevance for the applications in the actuarial domain, in this work,
 p \left(  \bm{u}; \bm{\theta}_k^{\star\star\star} \right) = \frac{1}{(\prod_{i=1}^{p}u_{i})|\bm{ \Sigma}_k^{\star\star\star} |(2 \pi)^{\frac{p}{2}}}   \exp\left[-\frac{1}{2}(\ln\bm{ u}-\bm{\mu}_k^{\star\star\star})^{'}\bm{\Sigma}_k^{{\star\star\star}_{-1}}(\ln \bm {u}-\bm{\mu}_k^{\star\star\star})\right].
 \end{equation} The derivation of \eqref{eqn:logn} can be found in the Appendix \ref{changeVarUni}, and the application of the procedure therein can be followed for other types of non-Gaussian covariates, thus generalizing the CWM model.
 
-%Nik: is this a density? What range of values of x? What values can mu and sigma take?
-% PM: Is this more clear?
 
-\subsection{Zero-Inflated Generalized Cluster-Weighted Model}%Nik: not sure what this means? Specifically, what is the role of the first "-"
+\subsection{Zero-Inflated Generalized Cluster-Weighted Model}
 
 Using the zero-inflated Poisson model (ZIP) as a special and most widely used case of zero-inflated models we further extend the generalized cluster-weighted model class to zero-inflated generalized cluster-weighted model (ZI-GCWM). This choice by no means reduces the generality of our approach. 
 
@@ -172,55 +170,27 @@ Also, have a Bernoulli model for the conditional density denoted as $ q^{B}(y|\b
      1 -  \psi_k,  & y > 0.
    \end{cases}
  \end{align}
-By creating composition of two preceding models, we have the ZIP model in which zero counts come from two random variables. One is the Bernoulli random variable, which generates structural zeros, and the other is the Poisson random variable. The coefficients $\bm{\vartheta}_{k}=\{ \bm{\beta}_{k},  \bm{\bar{\beta}}_k \}$ correspond to the two above introduced conditional densities where the coefficients can be estimated as in \cite{Lambert}. The $k$th component of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{k}  )$ is %Nik: something missing here?, PM: Fixed.
+By creating composition of two preceding models, we have the ZIP model in which zero counts come from two random variables. One is the Bernoulli random variable, which generates structural zeros, and the other is the Poisson random variable. The coefficients $\bm{\vartheta}_{k}=\{ \bm{\beta}_{k},  \bm{\bar{\beta}}_k \}$ correspond to the two above introduced conditional densities where the coefficients can be estimated as in \cite{Lambert}. The $k$th component of ZIP conditional density $q(y|\bm{x}; \bm{\vartheta}_{k}  )$ is 
  \begin{align*}
  q( y = 0| \bm{x} ; \bm{ \vartheta}_{k}  ) = \psi_k + (1 - \psi_k)e^{-\lambda_k}  & &  \text{and}  & &
 q(y > 0 |  \bm{x} ; \bm{ \vartheta}_{k}  ) = (1 - \psi_k)e^{-\lambda_k} \frac{\left(\lambda_k \right)^y  }{y!}.
  \end{align*}
-%Also, the link functions we consider are log-link for the Poisson and logit link for the Bernoulli model so that
-% \begin{align}
-% \psi_k =  \frac{e^{\xTilda \bm{\bar{\beta}}_k'}}{1+ e^{\xTilda \bm{\bar{\beta}}_k'}}  & & \text{and} & &
-%\lambda_k  = e^{\xTilda \bm{\beta}_k'}. \label{bern::ref}
-% \end{align}
+
 The parameter $\psi_k$ denotes the mean of the Bernoulli distribution of the $k$th component from which extra zeros emanate, and the parameter $ \lambda_k $ characterizes the $k$th Poisson distribution. 
 
-In our numerical example related to automobile insurance, it will be shown that this allows for a more nuanced approach to handling the inflation of zeros coming from heterogeneous sources. % \citep[see][]{Bermudez+Karlis:2012}.  \textcolor{red}{Why this reference?}
-
+In our numerical example related to automobile insurance, it will be shown that this allows for a more nuanced approach to handling the inflation of zeros coming from heterogeneous sources. 
 
 \section{Parameter Estimation}\label{sec:estmeth}
 
 The common approach for estimating parameters in finite mixture models is based on the EM algorithm \citep[see][for examples]{mcnicholas16a}.
 The estimation of the developed Bernoulli-Poisson partitioning method is split into two EM algorithms. The first EM algorithm partitions the sample space, while the second EM algorithm optimizes the zero inflated portion.
- %Nik: this is incorrect. The EM algorithm does not estimate the optimal number of components.  PM: Removed.
+
 
 \subsection{Note on Bernoulli-Poisson Sample Space Partitioning}
 
 Unfortunately, in the context of mixture models for heterogeneous count data with excess zeros the difficulties are apparent  during the maximization step of the EM algorithm when means of covariates are very close together \cite[see][]{LimHwa}. The good news is that the misclassification error can be reduced using parsimonious models for the independent variables as in  \cite{McNicholas:2010}. 
 
 However, in this work, we propose a new method to rectify this problem and partition the dataset using Bernoulli and Poisson GCWMs. Furthermore, we construct a ZI-GCWM using the previously generated Bernoulli and Poisson GCWMs. In the first EM algorithm we estimate parameters pertaining to the GCWM under the assumption of a Poisson model and, separately, we carry out the same process under the assumption of a Bernoulli model. Using the obtained parameter estimates from the two separate applications of the EM algorithm, we set the initialization parameters for the second EM algorithm pertaining to parameter estimation of the ZI-GCWM. The work of \cite{Lambert} specifies that the MLE estimates for the separate Poisson and Bernoulli models provide an excellent initial guess, allowing EM to converge quickly for ZIPs. The Bernoulli-Poisson sample space partitioning method consists of two separate EM algorithms. The first EM algorithm is for generating the GCWM models, while the second EM is for optimizing the ZI-GCWM. 
-
-%\textcolor{blue}{Potential cut start point! ---------------}
-%
-% \textcolor{red}{[I am not sure that all the material about sample spaces in the following is helpful here. Thoughts?]}  \textcolor{blue}{[Petar: It aims to clarify estimation approach however if it is not pedagogically written then it should be either further improved or removed. I am increasingly not sure about its usefulness. It looks as an confusion and attack surface for reviewers.]} 
-%
-%	To make the above statements more mathematically precise recall, $(\bm {X^{'}}, Y)^{'}$ to be a vector defined on some sample space $\Omega$.   By assumption, this sample space is partitioned into $K$ non-overlapping sets such that their union constitutes it ie. $ \Omega = \bigcup_{k=1}^K \Omega_k $.	For each set $\Omega_k$, a Poisson or a zero-inflated Poisson model exists. In the case of having a Poisson model for group $k$, it's sample space denoted as $\Omega^P_k$, coincides with the sample space $\Omega_k$ such that  $\Omega_k = \Omega^P_k$.  However, for the case of a zero-inflated Poisson model for group $k$ is a bit more nuanced. Let $\Omega_k^{B}$ be the sample space of the Bernoulli  model on $\Omega_k$ and decompose $\Omega_k^{B}$ into the space of excess zeros $\Omega_k^{BZ}$, and the space of non-excess zeros $\Omega^{NZ}$ such that $\Omega_k^B = \Omega_k^{BZ} \cup \Omega_k^{NZ} $.   By definition non-excess zeros must emanate from a Poisson model thus $\Omega_k^{NZ} $ will coincide with the sample space of $\Omega^P_k$ such that $ \Omega_k^{NZ} =  \Omega^P_k$. Thus the  $\Omega_k = \Omega^{BZ}_k \cup \Omega^{P}_k $, where $\Omega^{BZ}_k$ is the sample space of excess zeros emanating from a Bernoulli model, and $\Omega^{P}_k$ is the sample space relating to a Poisson model. Thus this construction allows both Poisson models, and zero-inflated Poisson models to exist on the same sample space $\Omega_k$.   
-%	
-%	 More generally, if we introduce the Bernoulli model in a generalized form for conditional density \citep[see][]{Ingrassia+Punzo+Vittadini+Minotti:2015}, we have the sample space $\Omega^B$ and joint probability density function $f^B$ to be \begin{align*}
-%\Omega^B =  \bigcup_{l =1}^{M \leq K}  \Omega_l^B & & \text{and} &  &
-%f^B(\bm x, y; \Phi)= \sum_{l=1}^{M \leq K} \tau_l q^B(y|\bm{x}; \bm{\bar{\beta}}_l) p(\bm{t};\bm{\theta}_l^{\star})p(\bm{w};\bm{\theta}_l^{\star\star})p(\bm{u};\bm{\theta}_l^{\star\star\star}).
-%\end{align*}
-%Where the sample space $\Omega^B$ is partitioned up to $M \leq K$ non-overlapping sets.
-%Similarly, if we introduce a Poisson model in a generalized form, the sample space $\Omega^P$ and joint probability density function $f^P$ become
-%\begin{align*}
-%\Omega^P =  \bigcup_{j =1}^{K} \Omega_k^P & & \text{and} &  &
-%f^P(\bm x, y; \Phi)= \sum_{k=1}^{K} \tau_k q^P(y|\bm{x};\bm{\beta}_{k}) p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}).
-%\end{align*}
-%Where the sample space $\Omega^P$ is partitioned into  $K$ non-overlapping sets.
-% Now, assuming that in principle for some $k$ the $\Omega_k^B$ can be an empty set, we can see a partitioning of a sample space $\Omega$ as
-% \begin{align*}
-%  \Omega = & \quad \Omega^B \cup \Omega^P  =  \left(  \bigcup_{l=1}^{K} \Omega^B_l \right) \bigcup \left( \bigcup_{k=1}^K \Omega^P_k  \right) = \bigcup^K_{k = 1} \left(\Omega_k^B \cup \Omega_k^P \right) :=  \bigcup_{k \in \{ 1, ..., K  \} } \Omega_k^{ZI}.
-% \end{align*}
-% \textcolor{blue}{Potential cut end point! ---------------}
  
 Here, the joint probability density function $f^{ZI}$ becomes
  $$f^{ZI}(\bm{x},y,\Phi) = \sum_{k=1}^{K} \tau_k q^{ZI}_{k}(y|\bm{x};  \bm{\bar{\beta}}_k,\bm{ \beta}_k)  p(\bm{t};\bm{\theta}_k^{\star})p(\bm{w};\bm{\theta}_k^{\star\star})p(\bm{u};\bm{\theta}_k^{\star\star\star}). $$  

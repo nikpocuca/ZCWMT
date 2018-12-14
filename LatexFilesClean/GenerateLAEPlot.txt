@@ -1,0 +1,45 @@
+library(evd)
+library(moments)
+data(lossalae)
+xx <- data(lossalae)
+#help(lossalae)
+plot(lossalae$ALAE, type="h")
+
+boxplot(lossalae$ALAE)
+
+x <- lossalae$ALAE/1000
+
+min(x)
+max(x)
+mean(x)
+median(x, na.rm = FALSE)
+quantile(x)
+kurtosis(x)
+skewness(x)
+ 
+options(scipen=5)
+hist(x, breaks=100, col='grey', main="", xlab="ALAE",)
+arrows(490, 400, 501.863, 0, length = 0.25, angle = 20,
+       code = 2, col = par("fg"), lty = par("lty"),
+       lwd = par("lwd"))
+arrows(400, 200, 467.246, 0, length = 0.25, angle = 20,
+       code = 2, col = par("fg"), lty = par("lty"),
+       lwd = par("lwd"))
+arrows(350, 150, 306.246, 0, length = 0.25, angle = 20,
+       code = 2, col = par("fg"), lty = par("lty"),
+       lwd = par("lwd"))
+arrows(250, 180, 280.202, 0, length = 0.25, angle = 20,
+       code = 2, col = par("fg"), lty = par("lty"),
+       lwd = par("lwd"))
+arrows(190, 280, 211.573, 0, length = 0.25, angle = 20,
+       code = 2, col = par("fg"), lty = par("lty"),
+       lwd = par("lwd"))
+text(480, 420, "502")
+text(390, 220, "467")
+text(340, 180, "306")
+text(240, 200, "280")
+text(190, 300, "212")
+
+#Order data 
+or <- order(x)
+dd <- x[or]
