@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  12 DEC 2018 12:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 DEC 2018 18:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -740,13 +740,13 @@ er vec-tor $\OML/cmm/b/it/10.95 ^^R[]$\OT1/ptm/m/n/10.95 , and $\OML/cmm/m/it/1
 it/10.95 ^^R[]\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 de-notes the marginal
  []
 
-[4] [5] [6] [7] [8] [9]
+[4] [5] [6] [7] [8] [9] [10]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 314.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [10]
+) [11]
 Overfull \hbox (29.04015pt too wide) in paragraph at lines 337--341
 \OT1/ptm/m/n/10.95 where $\OML/cmm/b/it/10.95 z[] \OT1/cmr/m/n/10.95 := []$ \OT
 1/ptm/m/n/10.95 is a re-al-iza-tion of $\OML/cmm/b/it/10.95 Z[] \OT1/cmr/m/n/10
@@ -771,7 +771,7 @@ S/cmsy/m/n/10.95 g[]\OML/cmm/m/it/10.95 ; \OML/cmm/b/it/10.95 z[]\OT1/cmr/m/n/1
 0.95 )$
  []
 
-[11] [12]
+[12]
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 381.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd
@@ -781,9 +781,10 @@ Overfull \hbox (12.34433pt too wide) in paragraph at lines 388--405
  [] 
  []
 
+[13]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 409.
-[13]
+ [14]
 Package epstopdf Info: Source file: <Untransformed_Density.eps>
 (epstopdf)                    date: 2018-12-07 15:20:08
 (epstopdf)                    size: 4955 bytes
@@ -795,7 +796,7 @@ Package epstopdf Info: Source file: <Untransformed_Density.eps>
 converted-to.pdf Untransformed_Density.eps>
 (epstopdf)             \includegraphics on input line 426.
 Package epstopdf Info: Output file is already uptodate.
-<Untransformed_Density-eps-converted-to.pdf, id=68, 344.28625pt x 315.1775pt>
+<Untransformed_Density-eps-converted-to.pdf, id=71, 344.28625pt x 315.1775pt>
 File: Untransformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 <use Untransformed_Density-eps-converted-to.pdf>
 Package pdftex.def Info: Untransformed_Density-eps-converted-to.pdf  used on in
@@ -811,13 +812,14 @@ Package epstopdf Info: Source file: <transformed_Density.eps>
 nverted-to.pdf transformed_Density.eps>
 (epstopdf)             \includegraphics on input line 427.
 Package epstopdf Info: Output file is already uptodate.
-<transformed_Density-eps-converted-to.pdf, id=69, 344.28625pt x 315.1775pt>
+<transformed_Density-eps-converted-to.pdf, id=72, 344.28625pt x 315.1775pt>
 File: transformed_Density-eps-converted-to.pdf Graphic file (type pdf)
 <use transformed_Density-eps-converted-to.pdf>
 Package pdftex.def Info: transformed_Density-eps-converted-to.pdf  used on inpu
 t line 427.
 (pdftex.def)             Requested size: 216.90147pt x 198.56287pt.
- [14]
+ [15 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
+converted-to.pdf>]
 Package epstopdf Info: Source file: <sevClusterPlot.eps>
 (epstopdf)                    date: 2018-12-07 15:20:08
 (epstopdf)                    size: 810112 bytes
@@ -828,18 +830,14 @@ Package epstopdf Info: Source file: <sevClusterPlot.eps>
 ed-to.pdf sevClusterPlot.eps>
 (epstopdf)             \includegraphics on input line 476.
 Package epstopdf Info: Output file is already uptodate.
-<sevClusterPlot-eps-converted-to.pdf, id=73, 590.205pt x 364.36125pt>
+<sevClusterPlot-eps-converted-to.pdf, id=90, 590.205pt x 364.36125pt>
 File: sevClusterPlot-eps-converted-to.pdf Graphic file (type pdf)
 <use sevClusterPlot-eps-converted-to.pdf>
 Package pdftex.def Info: sevClusterPlot-eps-converted-to.pdf  used on input lin
 e 476.
 (pdftex.def)             Requested size: 398.38919pt x 245.94434pt.
- [15 <./Untransformed_Density-eps-converted-to.pdf> <./transformed_Density-eps-
-converted-to.pdf>]
-
-LaTeX Warning: Text page 16 contains only floats.
-
-[16 <./sevClusterPlot-eps-converted-to.pdf>] [17]
+ [16] [17 <./sevClusterPlot-eps-converted-to.pdf>]
+[18]
 Package epstopdf Info: Source file: <claimNb_eps_freq.eps>
 (epstopdf)                    date: 2018-12-10 08:27:47
 (epstopdf)                    size: 15556697 bytes
@@ -850,18 +848,18 @@ Package epstopdf Info: Source file: <claimNb_eps_freq.eps>
 rted-to.pdf claimNb_eps_freq.eps>
 (epstopdf)             \includegraphics on input line 542.
 Package epstopdf Info: Output file is already uptodate.
-<claimNb_eps_freq-eps-converted-to.pdf, id=108, 762.85pt x 356.33125pt>
+<claimNb_eps_freq-eps-converted-to.pdf, id=111, 762.85pt x 356.33125pt>
 File: claimNb_eps_freq-eps-converted-to.pdf Graphic file (type pdf)
 <use claimNb_eps_freq-eps-converted-to.pdf>
 Package pdftex.def Info: claimNb_eps_freq-eps-converted-to.pdf  used on input l
 ine 542.
 (pdftex.def)             Requested size: 404.30858pt x 188.85466pt.
- [18] [19 <./claimNb_eps_freq-eps-converted-to.pdf>] [20]
+ [19 <./claimNb_eps_freq-eps-converted-to.pdf>] [20]
 Overfull \hbox (13.58806pt too wide) in paragraph at lines 605--630
  [][] 
  []
 
-
+[21]
 Overfull \hbox (3.11298pt too wide) in paragraph at lines 641--666
  [][] 
  []
@@ -874,11 +872,11 @@ Overfull \hbox (3.11298pt too wide) in paragraph at lines 671--696
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21]
+[22]
 
-LaTeX Warning: Text page 22 contains only floats.
+LaTeX Warning: Text page 23 contains only floats.
 
-[22] [23] [24] [25] [26]
+[23] [24] [25] [26]
 Overfull \hbox (20.31328pt too wide) in paragraph at lines 783--785
 []\OT1/ptm/b/n/10.95 Lemma A.1. []\OT1/ptm/m/it/10.95 Let the ran-dom vari-able
  $\OML/cmm/b/it/10.95 X$ \OT1/ptm/m/it/10.95 have mul-ti-vari-ate nor-mal dis-t
@@ -897,7 +895,7 @@ See the caption package documentation for explanation.
 Here is how much of TeX's memory you used:
  6792 strings out of 492649
  98361 string characters out of 6129622
- 196698 words of memory out of 5000000
+ 196699 words of memory out of 5000000
  10454 multiletter control sequences out of 15000+600000
  50779 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -933,7 +931,7 @@ l/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361437 bytes).
+Output written on GLM_MixturesNP_2018.pdf (34 pages, 13361059 bytes).
 PDF statistics:
  267 PDF objects out of 1000 (max. 8388607)
  187 compressed objects within 2 object streams
