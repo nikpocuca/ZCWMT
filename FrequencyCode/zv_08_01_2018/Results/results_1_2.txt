@@ -1,0 +1,108 @@
+ClaimNb ~ LogDensity + offset(EXPOSURE) + powerF
+ClaimNb ~ factor(CatDriverAge)
+Beginning Partition using CWM 
+============================== 
+
+
+ Poisson Model
+
+
+Estimating model with k=1, Xnorm=V, familyY=poisson *
+Estimating model with k=2, Xnorm=V, familyY=poisson *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+Estimating model with k=3, Xnorm=V, familyY=poisson ****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+Best model according to AIC, AICc, AICu, AIC3, AWE, BIC, CAIC is obtained with k = 3 group(s) and parsimonious model V and family poisson(log) 
+
+Best model according to ICL is obtained with k = 1 group(s) and parsimonious model V and family poisson(log) 
+
+Bernoulli Zero Inflation Model 
+
+
+Estimating model with k=1, Xnorm=V, familyY=binomial *
+Estimating model with k=2, Xnorm=V, familyY=binomial ***
+Estimating model with k=3, Xnorm=V, familyY=binomial **********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************----------------------------------
+Best fitted model according to BIC 
+----------------------------------
+ loglikelihood      n df      BIC
+       -916170 413169 20 -1832598
+
+Clustering table:
+     1      2      3 
+ 93609 151705 167855 
+
+Prior: comp.1 = 0.21635, comp.2 = 0.35912, comp.3 = 0.42453
+
+Distribution used for GLM: poisson(log). Parameters:
+
+Component 1
+             Estimate Std. Error  z value Pr(>|z|)    
+(Intercept) -5.589185   0.069063 -80.9292  < 2e-16 ***
+LogDensity   0.566871   0.017037  33.2731  < 2e-16 ***
+powerFGH    -0.095154   0.031371  -3.0332  0.00242 ** 
+powerFother -0.040456   0.043983  -0.9198  0.35767    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Component 2
+             Estimate Std. Error   z value Pr(>|z|)    
+(Intercept) -9.424090   0.079656 -118.3098  < 2e-16 ***
+LogDensity   0.975586   0.012678   76.9495  < 2e-16 ***
+powerFGH     0.014373   0.030906    0.4651  0.64188    
+powerFother  0.099505   0.041281    2.4105  0.01593 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Component 3
+             Estimate Std. Error  z value Pr(>|z|)    
+(Intercept) -5.587356   0.085540 -65.3183   <2e-16 ***
+LogDensity   0.197165   0.010726  18.3819   <2e-16 ***
+powerFGH    -0.010499   0.031977  -0.3283   0.7427    
+powerFother  0.058749   0.039437   1.4897   0.1363    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Model for normal concomitant variables: V (univariate, unequal variance) with 3 components
+
+----------------------------------
+Best fitted model according to BIC 
+----------------------------------
+ loglikelihood      n df      BIC
+       -916170 413169 20 -1832598
+
+Clustering table:
+     1      2      3 
+ 93609 151705 167855 
+
+Prior: comp.1 = 0.21635, comp.2 = 0.35912, comp.3 = 0.42453
+
+Distribution used for GLM: poisson(log). Parameters:
+
+Component 1
+             Estimate Std. Error  z value Pr(>|z|)    
+(Intercept) -5.589185   0.069063 -80.9292  < 2e-16 ***
+LogDensity   0.566871   0.017037  33.2731  < 2e-16 ***
+powerFGH    -0.095154   0.031371  -3.0332  0.00242 ** 
+powerFother -0.040456   0.043983  -0.9198  0.35767    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Component 2
+             Estimate Std. Error   z value Pr(>|z|)    
+(Intercept) -9.424090   0.079656 -118.3098  < 2e-16 ***
+LogDensity   0.975586   0.012678   76.9495  < 2e-16 ***
+powerFGH     0.014373   0.030906    0.4651  0.64188    
+powerFother  0.099505   0.041281    2.4105  0.01593 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Component 3
+             Estimate Std. Error  z value Pr(>|z|)    
+(Intercept) -5.587356   0.085540 -65.3183   <2e-16 ***
+LogDensity   0.197165   0.010726  18.3819   <2e-16 ***
+powerFGH    -0.010499   0.031977  -0.3283   0.7427    
+powerFother  0.058749   0.039437   1.4897   0.1363    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Model for normal concomitant variables: V (univariate, unequal variance) with 3 components
+

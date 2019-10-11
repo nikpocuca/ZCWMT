@@ -3,7 +3,7 @@
   lmodelY <- list()
   for(h in 1:k){
     modelY <- do.call(glm, 
-    list(formula=formulaY,data=data,family=familyY,weights=z[,h],y=FALSE,model=FALSE,x=FALSE))
+    list(formula=formulaY,data=data,family=familyY,weights=ClaimGlobal*z[,h],y=FALSE,model=FALSE,x=FALSE))
     sigma.hat <-sqrt(crossprod(sqrt(z[,h]/sum(z[,h]))*(Y-fitted(modelY))))
     beta      <- rbind(beta,coef(modelY))
     muY       <- cbind(muY,fitted(modelY)) 

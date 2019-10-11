@@ -58,14 +58,10 @@ cwm2 <- function(formulaY, data, Y, Xnorm, Xmult, Xpois, Xbin,colXm,colXn,colXb,
         pois  <- .PX_Poisson(k=k,X=Xpois,weights=z,n=n) 
         multi <- .PX_multi(colXm=colXm,Xmod=Xmod,z=z,nj=nj,m=m,k=k,n=n)
         
-        
-        # readline("THIS IS IT")
         # Y|x pag 45 of McCullag & Nelder (1989) -----------------------------------------------------
-        zglm <- z*ClaimGlobal
-        
         if (!is.null(data))
           l <- do.call(paste0(".familyY.",familyYname),
-                     list(familyY=familyY,k=k,Y=Y,mY=mY,n=n,data=data,z=zglm,method=method,vY=vY,t_df=t_df,formulaY=formulaY))
+                     list(familyY=familyY,k=k,Y=Y,mY=mY,n=n,data=data,z=z,method=method,vY=vY,t_df=t_df,formulaY=formulaY))
         else l <- list(PY=1)
         # Global - Observed-data log-likelihood ## 
         dens              <- matrix(rep(prior,n),n,k,byrow=TRUE)*norm$PX*multi$PX*pois$PX*bin$PX*l$PY

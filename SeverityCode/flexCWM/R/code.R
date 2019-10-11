@@ -58,7 +58,6 @@ cwm2 <- function(formulaY, data, Y, Xnorm, Xmult, Xpois, Xbin,colXm,colXn,colXb,
         pois  <- .PX_Poisson(k=k,X=Xpois,weights=z,n=n) 
         multi <- .PX_multi(colXm=colXm,Xmod=Xmod,z=z,nj=nj,m=m,k=k,n=n)
         
-        # check for z 
         # Y|x pag 45 of McCullag & Nelder (1989) -----------------------------------------------------
         if (!is.null(data))
           l <- do.call(paste0(".familyY.",familyYname),

@@ -1,7 +1,7 @@
 #sinstall.packages("CASdatasets")
 #install.packages("dplyr")
 #install.packages("GGally")
-setwd("~/GitRepos/ZCWMT/SeverityCode/")
+setwd("~/ZCWMT/SeverityCode/")
 
 loadData <- function() {
   
@@ -69,42 +69,32 @@ loadDataServer <- function() {
 #library(flexCWM)
 library(flexCWMz)
 set.seed(101)
+#set.seed(501)
+#set.seed(1000)
 runSev <- function(dataInput) {
   
   attach(dataInput)
-  #fitLognormal <-  cwm(formulaY= LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge) + Region + powerF, #+ Region + powerF + Gas,
-                       #k=1:6, data=dataInput,
-                       #familyY=inverse.gaussian(link = "identity"),
-                       #familyY=Gamma(link ="identity"),
-                       #familyY = gaussian(link="identity"),
-   #                    Xnorm = cbind(Density),
-                       #iter.max = 500,
-  #                     modelXnorm = 'V')
-  
   
   fitLognormalt <- cwm(formulaY= LogSeverity ~ LogDensity + factor(CatCarAge) + factor(CatDriverAge)+ factor(Region)+ powerF, # + Region + powerF + Gas,
                        k=4, data=dataInput,
-                       #familyY = gaussian(link="identity"),
                        familyY = gaussian(link="identity"),
-                       #familyY=inverse.gaussian(link = "identity"),
-                       #familyY=Gamma(link ="identity"),
                        Xnorm = cbind(LogDensity),
-                       #iter.max = 500,
+                       #iter.max = 1000,
+                       start.z = "random.soft",
                        modelXnorm = 'V')
   
   detach(dataInput)
   
   return(list(u = fitLognormalt))
-  #            t = fitLognormalt))
 }
 
 # 
 #Results <- runSev(m)
-ClaimGlobal <- m$ClaimNb
+#ClaimGlobal <- m$ClaimNb
 # Run the above function. 
-Results <- runSev(m)
+#Results <- runSev(m)
 
-t_model <- Results$u
+#t_model <- Results$u
 #save(u_model,file = "u_model")
 #save(t_model, file = "t_model")
 # ============================================================
